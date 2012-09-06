@@ -1,9 +1,11 @@
+ var requestHeaders = {};
+ 
 function getContextCallback(response) {
 	context = response;
 	var RefCount=40;
 	document.getElementById("testing").innerHTML="lolol";
 	var prefs= new gadgets.Prefs();
-    var requestHeaders = {};
+   
         requestHeaders['Accept-Charset'] = "utf-8";
         requestHeaders['X-ELS-APIKey'] = "0efd37da9830a0e7f43dbe261f5f7956";
         requestHeaders['X-ELS-Authtoken'] = context.secureAuthtoken;      
@@ -27,6 +29,10 @@ function getRef(response){
 	var temp = JSON.parse(response.data);
 	console.log(temp);
 	console.log(temp['abstracts-retrieval-response']['references']['reference'].length);
+	for(var i=0;i<temp['abstracts-retrieval-response']['references']['reference'].length;i++){
+		console.log(temp['abstracts-retrieval-response']['references']['reference'][i]['scopus-id']);
+		
+	}
 }
 
 function panggil(){
