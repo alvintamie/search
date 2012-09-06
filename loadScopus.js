@@ -23,7 +23,7 @@ function getContextCallback(response) {
 }
 
 function callme(respond){
-	console.log(respond);
+	console.log(respond.data);
 }
 function panggil(){
     
