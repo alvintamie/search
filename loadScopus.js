@@ -25,6 +25,13 @@ function getContextCallback(response) {
 function callme(respond){
 	console.log(respond.data);
 }
+
+function getCoAuthor(response){
+	console.log("hello");
+	console.log("1: "+ response.data);	    
+	var temp = JSON.parse(response.data);
+}
+
 function panggil(){
     
     console.log("hoi dfsadfasdf alvin oi kalian");
