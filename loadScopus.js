@@ -1,4 +1,4 @@
 function panggil(){
     
-    console.log("hoi alvin oi");---
+    console.log("hoi alvin oi");
 }
