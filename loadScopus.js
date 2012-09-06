@@ -25,10 +25,10 @@ function getContextCallback(response) {
 
 function getRef(response){
 	console.log("hello");
-//	console.log("1: "+ response.data);	    
+	console.log("1: "+ response.data);	    
 	var temp = JSON.parse(response.data);
 	console.log(temp);
-//	console.log(temp['abstracts-retrieval-response']['references']['reference'].length);
+	console.log(temp['abstracts-retrieval-response']['references']['reference'].length);
 	for(var i=0;i<temp['abstracts-retrieval-response']['references']['reference'].length;i++){
 		scopusId=temp['abstracts-retrieval-response']['references']['reference'][i]['scopus-id'];
 var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+scopusId+"?view=FULL");
@@ -39,7 +39,7 @@ gadgets.sciverse.makeContentApiRequest(urlRef, getRefAbstract, requestHeaders);
 
 function getRefAbstract(response){
 	console.log("refAbstract v");
-	console.log("oi = "+response.text);
+//	console.log("oi = "+response.text);
 	if(!response.data) {
 	
 	console.log("horee");return;}
