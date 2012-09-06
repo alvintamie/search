@@ -43,7 +43,7 @@ function getRefAbstract(response){
 	if(!response.data) {
 	
 	console.log("horee");return;}
-	var temp = JSON.parse(response.data);
+	var temp = JSON.parse(response.text);
 	console.log(temp);
 }
 
