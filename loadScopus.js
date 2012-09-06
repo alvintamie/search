@@ -27,7 +27,7 @@ function getRef(response){
 	console.log("hello");
 //	console.log("1: "+ response.data);	    
 	var temp = JSON.parse(response.data);
-	console.log(temp);
+//	console.log(temp);
 	console.log(temp['abstracts-retrieval-response']['references']['reference'].length);
 	for(var i=0;i<temp['abstracts-retrieval-response']['references']['reference'].length;i++){
 		scopusId=temp['abstracts-retrieval-response']['references']['reference'][i]['scopus-id'];
