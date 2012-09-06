@@ -11,7 +11,7 @@ function getContextCallback(response) {
    
  //var url = encodeURI("http://api.elsevier.com/content/search/index:author?query=affil(university)&co-author="+context.au1Id);
  //  var url = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=au-id("+context.au1Id+")&view=COMPLETE&facets=prefnameauid(count=30);country(count=30)");
-   var url = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+context.scDocId);
+   var url = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+context.scDocId+"?view=REF&startref=0");
    //  //  var url = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=refeid(2-s2.0-73949098611)&view=COMPLETE");
    //?view=REF&startref=0&refcount="+RefCount);
 // var url = encodeURI("http://api.elsevier.com/content/article/pii:"+context.pii+"?view=REF&startref=0&refcount="+5);
