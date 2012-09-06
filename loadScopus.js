@@ -39,7 +39,7 @@ gadgets.sciverse.makeContentApiRequest(urlRef, getRefAbstract, requestHeaders);
 
 function getRefAbstract(response){
 	console.log("refAbstract v");
-//	console.log("oi = "+response.data);
+	console.log("oi = "+response.data);
 	if(!response.data) {
 	
 	console.log("horee");return;}
