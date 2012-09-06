@@ -31,7 +31,6 @@ function getRef(response){
 	console.log(temp['abstracts-retrieval-response']['references']['reference'].length);
 	for(var i=0;i<temp['abstracts-retrieval-response']['references']['reference'].length;i++){
 		scopusId=temp['abstracts-retrieval-response']['references']['reference'][i]['scopus-id'];
-		console.log(scopusId+" : "+i);
 var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+scopusId+"?view=FULL");
 	console.log(i+" : ");
 gadgets.sciverse.makeContentApiRequest(urlRef, getRefAbstract, requestHeaders);
@@ -40,6 +39,7 @@ gadgets.sciverse.makeContentApiRequest(urlRef, getRefAbstract, requestHeaders);
 
 function getRefAbstract(response){
 	console.log("refAbstract v");
+	console.log("oi = "+response.data);
 	var temp = JSON.parse(response.data);
 	console.log(temp);
 }
