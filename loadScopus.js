@@ -37,9 +37,9 @@ gadgets.sciverse.makeContentApiRequest(urlRef, getRefAbstract, requestHeaders);
 }
 
 function getRefAbstract(response){
-	console.log("refAbstract v");
-	var temp = JSON.parse(response.data);
-	console.log(temp);
+//	console.log("refAbstract v");
+//	var temp = JSON.parse(response.data);
+//	console.log(temp);
 }
 
 function panggil(){
