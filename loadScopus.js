@@ -27,5 +27,5 @@ function callme(respond){
 }
 function panggil(){
     
-    console.log("hoi dfsadfasdf alvin oi");
+    console.log("hoi dfsadfasdf alvin oi kalian");
 }
