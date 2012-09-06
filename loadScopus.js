@@ -26,6 +26,7 @@ function getRef(response){
 	console.log("1: "+ response.data);	    
 	var temp = JSON.parse(response.data);
 	console.log(temp);
+	console.log(temp['abstracts-retrieval-response']['references']['reference'])
 }
 
 function panggil(){
