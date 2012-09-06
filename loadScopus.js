@@ -7,7 +7,7 @@ function getContextCallback(response) {
                 requestHeaders['Accept-Charset'] = "utf-8";
                  requestHeaders['X-ELS-APIKey'] = "0efd37da9830a0e7f43dbe261f5f7956";
                 requestHeaders['X-ELS-Authtoken'] = context.secureAuthtoken;      
-                requestHeaders['Accept'] = "application/json, text/xml";
+                requestHeaders['Accept'] = "application/json";
    
  //var url = encodeURI("http://api.elsevier.com/content/search/index:author?query=affil(university)&co-author="+context.au1Id);
  //  var url = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=au-id("+context.au1Id+")&view=COMPLETE&facets=prefnameauid(count=30);country(count=30)");
