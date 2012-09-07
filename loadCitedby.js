@@ -8,7 +8,8 @@ function loadCitedby(index){
   }
   else 
   {
-  	var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?start="+index*25+"&count="+totalCitation-index*25+"25&query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE");
+  console.log(index*25);
+  var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?start="+index*25+"&count="+totalCitation-index*25+"25&query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE");
   }
  
   gadgets.sciverse.makeContentApiRequest(urlCitedby, loadCitedbyCallback, requestHeaders);
