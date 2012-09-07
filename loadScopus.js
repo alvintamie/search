@@ -35,10 +35,16 @@ function getRef(response){
 	for(var i=0;i<temp['abstracts-retrieval-response']['references']['reference'].length;i++){
 		scopusId=temp['abstracts-retrieval-response']['references']['reference'][i]['scopus-id'];
 var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+scopusId+"?view=FULL");
-gadgets.sciverse.makeContentApiRequest(urlRef, getRefAbstract, requestHeaders);
+var urlCoauthor = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=refeid(2-s2.0-"+scopusId+")&view=COMPLETE");
+// gadgets.sciverse.makeContentApiRequest(urlRef, getRefAbstract, requestHeaders);
+gadgets.sciverse.makeContentApiRequest(urlCoauthor, getRefCoauthor, requestHeaders);
 	}
 }
-
+function getRefCoauthir(response){
+	console.log(it++);
+	var temp = JSON.parse(response.text);
+	console.log(temp);
+}
 function getRefAbstract(response){
 
 console.log(it++);
