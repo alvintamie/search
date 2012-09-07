@@ -60,7 +60,7 @@ function getCitedby(response){
 		citedbyObject.push(Obj);
 		}
 	}
-	console.log(citedbyObject[3].author);
+	loadCitedby(1);
 }
 function getRef(response){
 	console.log("hello");
