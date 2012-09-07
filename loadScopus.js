@@ -37,7 +37,7 @@ function getContextCallback(response) {
  				}, 
  					requestHeaders);	
  	
- 	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
+ //	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
 //	document.getElementById("testing").innerHTML="lolol1"+url+" "+prefs.getString("contentApiKey");
 
 }
