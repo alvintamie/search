@@ -52,18 +52,18 @@ console.log(it++);
        		var temp = JSON.parse(response.text);
        		console.log(temp);
        		Obj.available=true;
-       		/*
-       		Obj.abstract = temp['abstract-retrieval-response']['coredata']['dc:description'];
        		
-      		Obj.title = temp['abstract-retrieval-response']['coredata']['dc:title'];
-       		Obj.type = temp['abstract-retrieval-response']['coredata']['prism:aggregation Type'];
-       		Obj.citedbyCount = temp['abstract-retrieval-response']['coredata']['citedby-count'];
-       		Obj.publicationName = temp['abstract-retrieval-response']['coredata']['dc:description'];
-       		Obj.identifier = temp['abstract-retrieval-response']['coredata']['dc:identifier'];
-     	  	Obj.date = temp['abstract-retrieval-response']['coredata']['prism:coverDate'];
-       		Obj.volume = temp['abstract-retrieval-response']['coredata']['prim:volume'];
-       		Obj.affiliation= temp['abstract-retrieval-response']['affilname'];
-       		Obj.author=temp['abstract-retrieval-response']['authors'];
+       		Obj.abstract = temp['abstracts-retrieval-response']['coredata']['dc:description'];
+       		/*
+      		Obj.title = temp['abstracts-retrieval-response']['coredata']['dc:title'];
+       		Obj.type = temp['abstracts-retrieval-response']['coredata']['prism:aggregation Type'];
+       		Obj.citedbyCount = temp['abstracts-retrieval-response']['coredata']['citedby-count'];
+       		Obj.publicationName = temp['abstracts-retrieval-response']['coredata']['dc:description'];
+       		Obj.identifier = temp['abstracts-retrieval-response']['coredata']['dc:identifier'];
+     	  	Obj.date = temp['abstracts-retrieval-response']['coredata']['prism:coverDate'];
+       		Obj.volume = temp['abstracts-retrieval-response']['coredata']['prim:volume'];
+       		Obj.affiliation= temp['abstracts-retrieval-response']['affilname'];
+       		Obj.author=temp['abstracts-retrieval-response']['authors'];
        		*/
        		
 		referenceObject.push(Obj);
