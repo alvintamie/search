@@ -50,10 +50,6 @@ function getCitedby(response){
 		console.log("No citedby");
 		return;}}
 	catch(e){	
-	for(var i=1;i<temp['search-results']['link'].length;i++){
-		citedbyUrl.push(temp['search-results']['link'][i]['@href']);
-		console.log(temp['search-results']['link'][i]['@href']);
-	}
 	citedbySize= temp['search-results']['entry'].length;
 	for(var i=0;i<temp['search-results']['entry'].length;i++){
 		var Obj= new Object();
