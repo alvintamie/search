@@ -53,7 +53,8 @@ console.log(it++);
        		console.log(temp);
        		Obj.available=true;
        		Obj.abstract = temp['abstract-retrieval-response']['coredata']['dc:description'];
-       		Obj.title = temp['abstract-retrieval-response']['coredata']['dc:title'];
+       		/*
+      		Obj.title = temp['abstract-retrieval-response']['coredata']['dc:title'];
        		Obj.type = temp['abstract-retrieval-response']['coredata']['prism:aggregation Type'];
        		Obj.citedbyCount = temp['abstract-retrieval-response']['coredata']['citedby-count'];
        		Obj.publicationName = temp['abstract-retrieval-response']['coredata']['dc:description'];
@@ -62,7 +63,7 @@ console.log(it++);
        		Obj.volume = temp['abstract-retrieval-response']['coredata']['prim:volume'];
        		Obj.affiliation= temp['abstract-retrieval-response']['affilname'];
        		Obj.author=temp['abstract-retrieval-response']['authors'];
-       		
+       		*/
        		
 		referenceObject.push(Obj);
    	   }catch(e){
