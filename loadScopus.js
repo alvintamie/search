@@ -1,6 +1,7 @@
  var requestHeaders = {};
  var scopusId;
  var it;
+ var referenceObject = new Array();
 function getContextCallback(response) {
 	context = response;
 	var RefCount=40;
@@ -41,13 +42,22 @@ gadgets.sciverse.makeContentApiRequest(urlRef, getRefAbstract, requestHeaders);
 function getRefAbstract(response){
 
 console.log(it++);
+	var Obj= new Object();
 	if(!response.data) {
-		console.log("NULL reference");return;}
+		console.log("NULL reference");
+		Obj.available=false;
+		referenceObject.push(Obj);
+		return;}
     	try{
        		var temp = JSON.parse(response.text);
        		console.log(temp);
+       		Obj.available=true;
+       		// Obj.abstract =
+		referenceObject.push(Obj);
    	   }catch(e){
        		console.log("JSON error");
+       		Obj.available=false;
+		referenceObject.push(Obj);
     	}
 
 }
