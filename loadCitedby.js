@@ -4,8 +4,7 @@ function loadCitedby(index){
   requestHeaders['X-ELS-Authtoken'] = context.secureAuthtoken;      
   requestHeaders['Accept'] = "application/json, text/xml";
   
-  var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?start=25&count=10&query=refeid;
-  (2-s2.0-"+context.scDocId+")&view=COMPLETE");
+  var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?start=25&count=10&query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE");
 
   gadgets.sciverse.makeContentApiRequest(urlCitedby, loadCitedbyCallback, requestHeaders);
   
