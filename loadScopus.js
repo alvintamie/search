@@ -43,9 +43,13 @@ function getRefAbstract(response){
 console.log(it++);
 	if(!response.data) {
 		console.log("NULL reference");return;}
-	var temp = JSON.parse(response.text);
-//	if(!temp) console.log("JSON error");
-	console.log(temp);
+    	try{
+       		var temp = JSON.parse(response.text);
+       		console.log(temp);
+   	   }catch(e){
+       		console.log("JSON error");
+    	}
+}
 }
 
 function panggil(){
