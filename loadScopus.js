@@ -6,7 +6,7 @@
  var citedbySize;
  var citedbyUrl = new Array();
  var citedbyObject = new Array();
- 
+ var totalCitation;
 function getContextCallback(response) {
 	context = response;
 	var RefCount=40;
@@ -27,16 +27,19 @@ function getContextCallback(response) {
  //var url = encodeURI("http://api.elsevier.com/content/article/pii:"+context.pii+"?view=REF&startref=0&refcount="+5);
  //view=authid&facets=au-id("+context.au1Id+")");
  //	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
- 	gadgets.sciverse.makeContentApiRequest(urlSelf, getSelf, requestHeaders);
+ 	gadgets.sciverse.makeContentApiRequest(
+ 				urlSelf, 
+ 				var func = function (response){
+					console.log("self");	
+					var temp = JSON.parse(response.text);
+					console.log(temp);,
+	totalCitation = temp['abstracts-retrieval-response']['coredata']['citedby-count'];}, 
+ 				requestHeaders);	
  	gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
 //	document.getElementById("testing").innerHTML="lolol1"+url+" "+prefs.getString("contentApiKey");
 
 }
-function getSelf(response){
-	console.log("self");	
-	var temp = JSON.parse(response.text);
-	console.log(temp);
-}
+
 function getCitedby(response){
     
 	var temp = JSON.parse(response.text);
