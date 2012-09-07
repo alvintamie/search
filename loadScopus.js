@@ -37,7 +37,7 @@ function getCitedby(response){
 		console.log("No citedby");
 		return;}}
 	catch(e){	
-	for(var i=1;i<temp['link'].length;i++){
+	for(var i=1;i<temp['search-results']['link'].length;i++){
 		citedbyUrl.push(temp['link'][i]);
 		console.log(temp['link'][i]);
 	}}
