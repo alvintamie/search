@@ -32,7 +32,8 @@ function getCitedby(response){
 	console.log("citedby");	    
 	var temp = JSON.parse(response.text);
 	console.log(temp);
-	if(!temp) console.log("No citedby");
+	if(temp['service-error']['status']['statusCode']=='INVALID_INPUT')
+		console.log("No citedby");
 }
 function getRef(response){
 	console.log("hello");
