@@ -38,8 +38,8 @@ function getCitedby(response){
 		return;}}
 	catch(e){	
 	for(var i=1;i<temp['search-results']['link'].length;i++){
-		citedbyUrl.push(temp['link'][i]);
-		console.log(temp['link'][i]);
+		citedbyUrl.push(temp['search-results']['link'][i]);
+		console.log(temp['search-results']['link'][i]);
 	}}
 }
 function getRef(response){
