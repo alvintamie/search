@@ -15,11 +15,11 @@ function getContextCallback(response) {
    
  //var url = encodeURI("http://api.elsevier.com/content/search/index:author?query=affil(university)&co-author="+context.au1Id);
  //var url = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=au-id("+context.au1Id+")&view=COMPLETE&facets=prefnameauid(count=30);country(count=30)");
-   var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+context.scDocId+"?view=REF&startref=0");
- //    var urlRef = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE");
-   //?view=REF&startref=0&refcount="+RefCount);
-// var url = encodeURI("http://api.elsevier.com/content/article/pii:"+context.pii+"?view=REF&startref=0&refcount="+5);
-   // view=authid&facets=au-id("+context.au1Id+")");
+   	var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+context.scDocId+"?view=REF&startref=0");
+ //var urlRef = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE");
+ //?view=REF&startref=0&refcount="+RefCount);
+ //var url = encodeURI("http://api.elsevier.com/content/article/pii:"+context.pii+"?view=REF&startref=0&refcount="+5);
+ //view=authid&facets=au-id("+context.au1Id+")");
  	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
 //	document.getElementById("testing").innerHTML="lolol1"+url+" "+prefs.getString("contentApiKey");
 
@@ -35,15 +35,10 @@ function getRef(response){
 	for(var i=0;i<temp['abstracts-retrieval-response']['references']['reference'].length;i++){
 		scopusId=temp['abstracts-retrieval-response']['references']['reference'][i]['scopus-id'];
 var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+scopusId+"?view=FULL");
-var urlCoauthor = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=refeid(2-s2.0-"+scopusId+")&view=COMPLETE");
- gadgets.sciverse.makeContentApiRequest(urlRef, getRefAbstract, requestHeaders);
+gadgets.sciverse.makeContentApiRequest(urlRef, getRefAbstract, requestHeaders);
 	}
 }
-function getRefCoauthor(response){
-	console.log(it++);
-	var temp = JSON.parse(response.text);
-	console.log(temp);
-}
+
 function getRefAbstract(response){
 
 console.log(it++);
@@ -57,7 +52,18 @@ console.log(it++);
        		var temp = JSON.parse(response.text);
        		console.log(temp);
        		Obj.available=true;
-       		// Obj.abstract =
+       		Obj.abstract = temp['abstract-retrieval-response']['coredata']['dc:description'];
+       		Obj.title = temp['abstract-retrieval-response']['coredata']['dc:title'];
+       		Obj.type = temp['abstract-retrieval-response']['coredata']['prism:aggregation Type'];
+       		Obj.citedbyCount = temp['abstract-retrieval-response']['coredata']['citedby-count'];
+       		Obj.publicationName = temp['abstract-retrieval-response']['coredata']['dc:description'];
+       		Obj.identifier = temp['abstract-retrieval-response']['coredata']['dc:identifier'];
+     	  	Obj.date = temp['abstract-retrieval-response']['coredata']['prism:coverDate'];
+       		Obj.volume = temp['abstract-retrieval-response']['coredata']['prim:volume'];
+       		Obj.affiliation= temp['abstract-retrieval-response']['affilname'];
+       		Obj.author=temp['abstract-retrieval-response']['authors'];
+       		
+       		
 		referenceObject.push(Obj);
    	   }catch(e){
        		console.log("JSON error");
