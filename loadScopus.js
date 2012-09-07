@@ -27,7 +27,7 @@ function getContextCallback(response) {
 
 function getRef(response){
 	console.log("hello");
-	console.log("1: "+ response.data);	    
+//	console.log("1: "+ response.data);	    
 	var temp = JSON.parse(response.data);
 	console.log(temp);
 	console.log(temp['abstracts-retrieval-response']['references']['reference'].length);
