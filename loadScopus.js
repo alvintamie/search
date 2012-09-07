@@ -29,7 +29,7 @@ function getContextCallback(response) {
  //	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
  	gadgets.sciverse.makeContentApiRequest(
  				urlSelf, 
- 				var func = function (response){
+ 				function (response){
 					console.log("self");	
 					var temp = JSON.parse(response.text);
 					console.log(temp);,
