@@ -32,19 +32,18 @@ function getRef(response){
 	for(var i=0;i<temp['abstracts-retrieval-response']['references']['reference'].length;i++){
 		scopusId=temp['abstracts-retrieval-response']['references']['reference'][i]['scopus-id'];
 var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+scopusId+"?view=FULL");
-	console.log(i+" : ");
 gadgets.sciverse.makeContentApiRequest(urlRef, getRefAbstract, requestHeaders);
 	}
 }
 
 function getRefAbstract(response){
-	console.log("refAbstract v");
+//	console.log("refAbstract v");
 //	console.log("oi = "+response.text);
 	if(!response.data) {
 	
-	console.log("horee");return;}
+	console.log("NULL reference");return;}
 	var temp = JSON.parse(response.text);
-	console.log("hai "+temp);
+	console.log(temp);
 }
 
 function panggil(){
