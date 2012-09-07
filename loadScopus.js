@@ -44,7 +44,7 @@ function getRefAbstract(response){
 	
 	console.log("horee");return;}
 	var temp = JSON.parse(response.text);
-	console.log(temp);
+	console.log("hai "+temp);
 }
 
 function panggil(){
