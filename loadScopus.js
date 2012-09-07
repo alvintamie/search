@@ -29,8 +29,8 @@ function getContextCallback(response) {
 }
 function getCitedby(response){
 	console.log("citedby");	    
-	var temp = JSON.parse(response.text);
-	console.log(temp);
+//	var temp = JSON.parse(response.text);
+	console.log(response);
 }
 function getRef(response){
 	console.log("hello");
