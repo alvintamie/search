@@ -1,5 +1,6 @@
  var requestHeaders = {};
  var scopusId;
+ var it;
 function getContextCallback(response) {
 	context = response;
 	var RefCount=40;
@@ -29,9 +30,11 @@ function getRef(response){
 	var temp = JSON.parse(response.data);
 	console.log(temp);
 	console.log(temp['abstracts-retrieval-response']['references']['reference'].length);
+	it=0;
 	for(var i=0;i<temp['abstracts-retrieval-response']['references']['reference'].length;i++){
 		scopusId=temp['abstracts-retrieval-response']['references']['reference'][i]['scopus-id'];
 var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+scopusId+"?view=FULL");
+it=i;
 gadgets.sciverse.makeContentApiRequest(urlRef, getRefAbstract, requestHeaders);
 	}
 }
@@ -39,6 +42,7 @@ gadgets.sciverse.makeContentApiRequest(urlRef, getRefAbstract, requestHeaders);
 function getRefAbstract(response){
 //	console.log("refAbstract v");
 //	console.log("oi = "+response.text);
+console.log(it);
 	if(!response.data) {
 	
 	console.log("NULL reference");return;}
