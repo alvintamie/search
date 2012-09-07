@@ -36,7 +36,7 @@ function getCitedby(response){
 	try{ if(temp['service-error']['status']['statusCode']=='INVALID_INPUT'){
 		console.log("No citedby");
 		return;}}
-	catch{	
+	catch(e){	
 	for(var i=1;i<temp['link'].length;i++){
 		citedbyUrl.push(temp['link'][i]);
 		console.log(temp['link'][i]);
