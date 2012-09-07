@@ -3,6 +3,7 @@
  var it;
  var referenceObject = new Array();
  var referenceSize;
+ var citedbyObject = new Array();
 function getContextCallback(response) {
 	context = response;
 	var RefCount=40;
@@ -17,15 +18,20 @@ function getContextCallback(response) {
  //var url = encodeURI("http://api.elsevier.com/content/search/index:author?query=affil(university)&co-author="+context.au1Id);
  //var url = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=au-id("+context.au1Id+")&view=COMPLETE&facets=prefnameauid(count=30);country(count=30)");
    	var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+context.scDocId+"?view=REF&startref=0");
- //var urlRef = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE");
+ 	var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE");
  //?view=REF&startref=0&refcount="+RefCount);
  //var url = encodeURI("http://api.elsevier.com/content/article/pii:"+context.pii+"?view=REF&startref=0&refcount="+5);
  //view=authid&facets=au-id("+context.au1Id+")");
- 	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
+ //	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
+ 	gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
 //	document.getElementById("testing").innerHTML="lolol1"+url+" "+prefs.getString("contentApiKey");
 
 }
-
+function getCitedby(response){
+	console.log("citedby");	    
+	var temp = JSON.parse(response.data);
+	console.log(temp);
+}
 function getRef(response){
 	console.log("hello");
 //	console.log("1: "+ response.data);	    
