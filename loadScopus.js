@@ -61,7 +61,7 @@ console.log(it++);
        		Obj.citedbyCount = temp['abstracts-retrieval-response']['coredata']['citedby-count'];
        		Obj.publicationName = temp['abstracts-retrieval-response']['coredata']['dc:description'];
        		Obj.identifier = temp['abstracts-retrieval-response']['coredata']['dc:identifier'];
-       		var tempId = JSON.parse(temp['abstracts-retrieval-response']['coredata']['dc:identifier']);
+       		var tempId = JSON.parse(temp['abstracts-retrieval-response']['coredata']['dc:identifier'].text);
        		console.log(tempId);
      	  	Obj.date = temp['abstracts-retrieval-response']['coredata']['prism:coverDate'];
        		Obj.volume = temp['abstracts-retrieval-response']['coredata']['prim:volume'];
