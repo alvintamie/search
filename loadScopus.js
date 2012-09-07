@@ -52,8 +52,9 @@ console.log(it++);
        		var temp = JSON.parse(response.text);
        		console.log(temp);
        		Obj.available=true;
-       		Obj.abstract = temp['abstract-retrieval-response']['coredata']['dc:description'];
        		/*
+       		Obj.abstract = temp['abstract-retrieval-response']['coredata']['dc:description'];
+       		
       		Obj.title = temp['abstract-retrieval-response']['coredata']['dc:title'];
        		Obj.type = temp['abstract-retrieval-response']['coredata']['prism:aggregation Type'];
        		Obj.citedbyCount = temp['abstract-retrieval-response']['coredata']['citedby-count'];
