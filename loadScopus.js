@@ -49,7 +49,7 @@ console.log(it++);
    	   }catch(e){
        		console.log("JSON error");
     	}
-}
+
 }
 
 function panggil(){
