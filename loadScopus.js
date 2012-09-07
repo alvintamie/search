@@ -77,7 +77,7 @@ function getCitedby(response){
 function getRef(response){
 	console.log("hello");
 //	console.log("1: "+ response.data);	    
-//	var temp = JSON.parse(response.data);
+	var temp = JSON.parse(response.data);
 	console.log(response);
 	referenceSize=temp['abstracts-retrieval-response']['references']['reference'].length
 	console.log("SizeOfRef : "+temp['abstracts-retrieval-response']['references']['reference'].length);
