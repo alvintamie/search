@@ -29,14 +29,14 @@ function getContextCallback(response) {
 }
 function getCitedby(response){
 	console.log("citedby");	    
-	var temp = JSON.parse(response.data);
+	var temp = JSON.parse(response.text);
 	console.log(temp);
 }
 function getRef(response){
 	console.log("hello");
 //	console.log("1: "+ response.data);	    
-	var temp = JSON.parse(response.data);
-	console.log(temp);
+//	var temp = JSON.parse(response.data);
+	console.log(response);
 	referenceSize=temp['abstracts-retrieval-response']['references']['reference'].length
 	console.log("SizeOfRef : "+temp['abstracts-retrieval-response']['references']['reference'].length);
 	it=0;
