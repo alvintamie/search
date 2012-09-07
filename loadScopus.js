@@ -33,13 +33,14 @@ function getCitedby(response){
 	console.log("citedby");	    
 	var temp = JSON.parse(response.text);
 	console.log(temp);
-	if(temp['service-error']['status']['statusCode']=='INVALID_INPUT'){
+	try{ if(temp['service-error']['status']['statusCode']=='INVALID_INPUT'){
 		console.log("No citedby");
-		return;}
+		return;}}
+	catch{	
 	for(var i=1;i<temp['link'].length;i++){
 		citedbyUrl.push(temp['link'][i]);
 		console.log(temp['link'][i]);
-	}
+	}}
 }
 function getRef(response){
 	console.log("hello");
