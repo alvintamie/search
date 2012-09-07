@@ -39,14 +39,12 @@ gadgets.sciverse.makeContentApiRequest(urlRef, getRefAbstract, requestHeaders);
 }
 
 function getRefAbstract(response){
-//	console.log("refAbstract v");
-//	console.log("oi = "+response.text);
+
 console.log(it++);
 	if(!response.data) {
-	
-	console.log("NULL reference");return;}
+		console.log("NULL reference");return;}
 	var temp = JSON.parse(response.text);
-	console.log(temp);
+//	console.log(temp);
 }
 
 function panggil(){
