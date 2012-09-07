@@ -40,7 +40,7 @@ var urlCoauthor = encodeURI("http://api.elsevier.com/content/search/index:scopus
 gadgets.sciverse.makeContentApiRequest(urlCoauthor, getRefCoauthor, requestHeaders);
 	}
 }
-function getRefCoauthir(response){
+function getRefCoauthor(response){
 	console.log(it++);
 	var temp = JSON.parse(response.text);
 	console.log(temp);
