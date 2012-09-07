@@ -54,7 +54,6 @@ console.log(it++);
        		Obj.available=true;
        		
        		Obj.abstract = temp['abstracts-retrieval-response']['coredata']['dc:description'];
-       		/*
       		Obj.title = temp['abstracts-retrieval-response']['coredata']['dc:title'];
        		Obj.type = temp['abstracts-retrieval-response']['coredata']['prism:aggregation Type'];
        		Obj.citedbyCount = temp['abstracts-retrieval-response']['coredata']['citedby-count'];
@@ -63,9 +62,7 @@ console.log(it++);
      	  	Obj.date = temp['abstracts-retrieval-response']['coredata']['prism:coverDate'];
        		Obj.volume = temp['abstracts-retrieval-response']['coredata']['prim:volume'];
        		Obj.affiliation= temp['abstracts-retrieval-response']['affilname'];
-       		Obj.author=temp['abstracts-retrieval-response']['authors'];
-       		*/
-       		
+       		Obj.author=temp['abstracts-retrieval-response']['authors'];     		
 		referenceObject.push(Obj);
    	   }catch(e){
        		console.log("JSON error");
