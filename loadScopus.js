@@ -26,16 +26,18 @@ function getContextCallback(response) {
  //?view=REF&startref=0&refcount="+RefCount);
  //var url = encodeURI("http://api.elsevier.com/content/article/pii:"+context.pii+"?view=REF&startref=0&refcount="+5);
  //view=authid&facets=au-id("+context.au1Id+")");
- //	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
  	gadgets.sciverse.makeContentApiRequest(
  				urlSelf, 
  				function (response){
 					console.log("self");	
 					var temp = JSON.parse(response.text);
 					console.log(temp);
-					totalCitation = temp['abstracts-retrieval-response']['coredata']['citedby-count'];}, 
+					totalCitation = temp['abstracts-retrieval-response']['coredata']['citedby-count'];
+					gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
+ 				}, 
  					requestHeaders);	
- 	gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
+ 	
+ 	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
 //	document.getElementById("testing").innerHTML="lolol1"+url+" "+prefs.getString("contentApiKey");
 
 }
