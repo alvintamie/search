@@ -36,8 +36,7 @@ function getRef(response){
 		scopusId=temp['abstracts-retrieval-response']['references']['reference'][i]['scopus-id'];
 var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+scopusId+"?view=FULL");
 var urlCoauthor = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=refeid(2-s2.0-"+scopusId+")&view=COMPLETE");
-// gadgets.sciverse.makeContentApiRequest(urlRef, getRefAbstract, requestHeaders);
-gadgets.sciverse.makeContentApiRequest(urlCoauthor, getRefCoauthor, requestHeaders);
+ gadgets.sciverse.makeContentApiRequest(urlRef, getRefAbstract, requestHeaders);
 	}
 }
 function getRefCoauthor(response){
