@@ -4,6 +4,7 @@
  var referenceObject = new Array();
  var referenceSize;
  var citedbyObject = new Array();
+ 
 function getContextCallback(response) {
 	context = response;
 	var RefCount=40;
