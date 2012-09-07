@@ -32,9 +32,7 @@ function getCitedby(response){
 	console.log("citedby");	    
 	var temp = JSON.parse(response.text);
 	console.log(temp);
-	console.log(temp['errors']);
-//	if(temp['errors'][0]="400 Error") 
-//		console.log("No citedby");
+	if(!temp) console.log("No citedby");
 }
 function getRef(response){
 	console.log("hello");
