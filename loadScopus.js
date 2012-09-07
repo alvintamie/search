@@ -32,11 +32,9 @@ function getContextCallback(response) {
  				function (response){
 					console.log("self");	
 					var temp = JSON.parse(response.text);
-					console.log(temp);,
-//	totalCitation = temp['abstracts-retrieval-response']['coredata']['citedby-count'];
-	
- 				}, 
- 				requestHeaders);	
+					console.log(temp);
+					totalCitation = temp['abstracts-retrieval-response']['coredata']['citedby-count'];}, 
+ 					requestHeaders);	
  	gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
 //	document.getElementById("testing").innerHTML="lolol1"+url+" "+prefs.getString("contentApiKey");
 
