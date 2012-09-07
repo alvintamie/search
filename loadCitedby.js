@@ -5,7 +5,7 @@ function loadCitedby(index){
   requestHeaders['Accept'] = "application/json, text/xml";
   
   var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?start=0&count=10&query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE");
-
+  console.log(context.scDocId);
   gadgets.sciverse.makeContentApiRequest(urlCitedby, loadCitedbyCallback, requestHeaders);
   
 }
