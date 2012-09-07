@@ -2,6 +2,7 @@
  var scopusId;
  var it;
  var referenceObject = new Array();
+ var referenceSize;
 function getContextCallback(response) {
 	context = response;
 	var RefCount=40;
@@ -30,12 +31,13 @@ function getRef(response){
 //	console.log("1: "+ response.data);	    
 	var temp = JSON.parse(response.data);
 	console.log(temp);
-	console.log(temp['abstracts-retrieval-response']['references']['reference'].length);
+	referenceSize=temp['abstracts-retrieval-response']['references']['reference'].length
+	console.log("SizeOfRef : "+temp['abstracts-retrieval-response']['references']['reference'].length);
 	it=0;
 	for(var i=0;i<temp['abstracts-retrieval-response']['references']['reference'].length;i++){
 		scopusId=temp['abstracts-retrieval-response']['references']['reference'][i]['scopus-id'];
-var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+scopusId+"?view=FULL");
-gadgets.sciverse.makeContentApiRequest(urlRef, getRefAbstract, requestHeaders);
+		var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+scopusId+"?view=FULL");
+		gadgets.sciverse.makeContentApiRequest(urlRef, getRefAbstract, requestHeaders);
 	}
 }
 
@@ -64,7 +66,8 @@ console.log(it++);
        		Obj.affiliation= temp['abstracts-retrieval-response']['affilname'];
        		Obj.author=temp['abstracts-retrieval-response']['authors'];     		
 		referenceObject.push(Obj);
-   	   }catch(e){
+   	   }
+   	catch(e){
        		console.log("JSON error");
        		Obj.available=false;
 		referenceObject.push(Obj);
