@@ -44,8 +44,8 @@ console.log(it++);
 	if(!response.data) {
 		console.log("NULL reference");return;}
 	var temp = JSON.parse(response.text);
-	if(!temp) console.log("JSON error");
-//	console.log(temp);
+//	if(!temp) console.log("JSON error");
+	console.log(temp);
 }
 
 function panggil(){
