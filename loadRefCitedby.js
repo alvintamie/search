@@ -9,11 +9,12 @@ function loadRefCitedbyCallback(response){
   ++countingRef;
     console.log("citedby ref " + countingRef );
   var temp = JSON.parse(response.text);
-	console.log(temp);
+
 	try{ if(temp['service-error']['status']['statusCode']=='INVALID_INPUT'){
 		console.log("No citedby");
 		return;}}
-	catch(e){	
+	catch(e){
+			console.log(temp);
     /*
 	for(var i=0;i<temp['search-results']['entry'].length;i++){
 		var Obj= new Object();
