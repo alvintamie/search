@@ -12,7 +12,7 @@ function loadRefCitedbyCallback(response){
     console.log("citedby ref " + countingRef );
   //  console.log(response);
   var temp = JSON.parse(response.text);
-	console.log(temp);
+//	console.log(temp);
 	try{ if(temp['service-error']['status']['statusCode']=='INVALID_INPUT'){
 		console.log("No citedby");
 		return;}}
