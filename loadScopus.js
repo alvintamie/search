@@ -81,7 +81,7 @@ function getRef(response){
 		var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+scopusId+"?view=FULL");
 		var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+scopusId+"?view=REF&startref=0");
 		gadgets.sciverse.makeContentApiRequest(urlRef, getRefAbstract, requestHeaders);
-		gadgets.sciverse.makeContentApiRequest(urlRef, getRefCitedby,requestHeaders);
+		getRefCitedby(scopusId,temp['abstracts-retrieval-response']['references']['reference'][i]['citedby-count'])
 	}
 }
 
