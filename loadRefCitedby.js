@@ -72,7 +72,7 @@ function loadRefCitedbyCallback(response){
 	catch(e){
 		
 	
-    /*
+    
 	for(var i=0;i<temp['search-results']['entry'].length;i++){
 		var Obj= new Object();
 		Obj.abstract = temp['search-results']['entry'][i]['dc:description'];
@@ -89,7 +89,7 @@ function loadRefCitedbyCallback(response){
        		Obj.affiliation= temp['search-results']['entry'][i]['affiliation'];
 		citedbyObject.push(Obj);
 		}
-    */
+    
 	}
 }
 
