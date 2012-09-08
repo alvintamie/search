@@ -1,4 +1,4 @@
-int countingRef=0;
+var countingRef=0;
 function getRefCitedby(scopusId,citedbyCount){
   
  var url = encodeURI("http://api.elsevier.com/content/search/index:scopus?start=0"+"&count="+citedbyCount+"&query=refeid(2-s2.0-"+scopusId+")&view=COMPLETE");
