@@ -3,7 +3,6 @@
  var it;
  var referenceObject = new Array();
  var referenceSize;
- var citedbySize;
  var citedbyUrl = new Array();
  var citedbyObject = new Array();
  var totalCitation;
@@ -50,7 +49,6 @@ function getCitedby(response){
 		console.log("No citedby");
 		return;}}
 	catch(e){	
-	citedbySize= temp['search-results']['entry'].length;
 	for(var i=0;i<temp['search-results']['entry'].length;i++){
 		var Obj= new Object();
 		Obj.abstract = temp['search-results']['entry'][i]['dc:description'];
