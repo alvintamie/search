@@ -45,9 +45,22 @@ function getContextCallback(response) {
 
 }
 function getCoauthor(response){
-    	console.log("coauthor")
+    	console.log("coauthor");
 	var temp = JSON.parse(response.text);
 	console.log(temp);
+	
+		for(var i=0;i<temp['search-results']['entry'].length;i++){
+       		var tempId=temp['search-results']['entry'][i]['dc:identifier'].split(":");  	
+		var urlCoauthor=encodeURI( "http://api.elsevier.com/content/author/author_id:"+tempId);
+			gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthorCallback, requestHeaders);
+		}
+}
+
+function getCoauthorCallback(response){
+	console.log("coauthor details");
+	var temp = JSON.parse(response.text);
+	console.log(temp);
+	var Obj= new Object();
 }
 function getCitedby(response){
     	console.log("citedby initial")
