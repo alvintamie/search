@@ -50,8 +50,8 @@ function getCoauthor(response){
 	console.log(temp);
 	
 		for(var i=0;i<temp['search-results']['entry'].length;i++){
-       		var tempId=temp['search-results']['entry'][i]['dc:identifier'].split(":");  	
-		var urlCoauthor=encodeURI( "http://api.elsevier.com/content/author/author_id:"+tempId);
+       		var urlCoauthor=temp['search-results']['entry'][i]['prism:url']; 	
+	                          
 		console.log(urlCoauthor);
 			gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthorCallback, requestHeaders);
 		}
