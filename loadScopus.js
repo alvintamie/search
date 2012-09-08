@@ -6,13 +6,13 @@
  var currentReferenceSize;
  var citedbyUrl = new Array();
  var citedbyObject = new Array();
+ var coauthorObject= new Array();
  var totalCitation;
- var totalCoauthors;8
+ var totalCoauthors;
  var statusCitedby=0;
  var statusCoauthors=0;
 function getContextCallback(response) {
 	context = response;
-	var RefCount=40;
 	document.getElementById("testing").innerHTML="lolol";
 	var prefs= new gadgets.Prefs();
    
@@ -50,6 +50,7 @@ function getCoauthorCallback(response){
 	var temp = JSON.parse(response.text);
 	console.log(temp);
 	var Obj= new Object();
+	coauthorObject.push(temp);
 }
 
 function loadCoauthor(index){  
