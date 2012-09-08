@@ -6,16 +6,19 @@ function loadCitedby(index){
   {
   var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?start="+index*25+"&count="+(totalCitation-index*25)+"&query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE");
   }
- 
   gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
-  
 }
-/*
-function loadCitedbyCallback(response){
-  
-  console.log("load citedby");      
+
+function getCitedby(response){
+    	console.log("citedby initial")
 	var temp = JSON.parse(response.text);
 	console.log(temp);
+	if(!statusCitedby){
+	totalCitation= temp['search-results']['opensearch:totalResults'];statusCitedby=true;loadCitedby(1);}
+	try{ if(temp['service-error']['status']['statusCode']=='INVALID_INPUT'){
+		console.log("No citedby");
+		return;}}
+	catch(e){	
 	for(var i=0;i<temp['search-results']['entry'].length;i++){
 		var Obj= new Object();
 		Obj.abstract = temp['search-results']['entry'][i]['dc:description'];
@@ -32,5 +35,5 @@ function loadCitedbyCallback(response){
        		Obj.affiliation= temp['search-results']['entry'][i]['affiliation'];
 		citedbyObject.push(Obj);
 		}
+	}
 }
-*/
