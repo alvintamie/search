@@ -72,7 +72,7 @@ function getRef(response){
 	console.log("get all ref");
 //	console.log("1: "+ response.data);	    
 	var temp = JSON.parse(response.data);
-	console.log(response);
+	console.log(temp);
 	referenceSize=temp['abstracts-retrieval-response']['references']['reference'].length
 	console.log("SizeOfRef : "+temp['abstracts-retrieval-response']['references']['reference'].length);
 	currentReferenceSize=0;
