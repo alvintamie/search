@@ -3,14 +3,14 @@ function getRefCitedby(scId,citedbyCount){
  
 var url = encodeURI("http://api.elsevier.com/content/search/index:scopus?"+"query=refeid(2-s2.0-"+scId+")&field=scopus-id");
 //var url=encodeURI("http://api.elsevier.com/content/search/mlt.url?eid=2-s2.0-84862690373&src=s&all=true&origin=recordpage&method=ref&zone=relatedDocuments");
- console.log("url : "+url);
+//  console.log("url : "+url);
  gadgets.sciverse.makeContentApiRequest(url, loadRefCitedbyCallback, requestHeaders);
 }
 
 function loadRefCitedbyCallback(response){
   ++countingRef;
     console.log("citedby ref " + countingRef );
-    console.log(response);
+  //  console.log(response);
   var temp = JSON.parse(response.text);
 	console.log(temp);
 	try{ if(temp['service-error']['status']['statusCode']=='INVALID_INPUT'){
