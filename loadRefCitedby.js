@@ -1,3 +1,4 @@
+int countingRef=0;
 function getRefCitedby(scopusId,citedbyCount){
   
  var url = encodeURI("http://api.elsevier.com/content/search/index:scopus?start=0"+"&count="+citedbyCount+"&query=refeid(2-s2.0-"+scopusId+")&view=COMPLETE");
@@ -6,7 +7,7 @@ function getRefCitedby(scopusId,citedbyCount){
 
 function loadRefCitedbyCallback(response){
   
-    console.log("citedby ref")
+    console.log("citedby ref " + ++countingRef)
   var temp = JSON.parse(response.text);
 	console.log(temp);
 	try{ if(temp['service-error']['status']['statusCode']=='INVALID_INPUT'){
