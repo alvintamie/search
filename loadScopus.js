@@ -43,7 +43,7 @@ function getContextCallback(response) {
 //	document.getElementById("testing").innerHTML="lolol1"+url+" "+prefs.getString("contentApiKey");
 
 }
-function getCitedby(response){
+function getCoauthor(response){
     	console.log("coauthor")
 	var temp = JSON.parse(response.text);
 	console.log(temp);
