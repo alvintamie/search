@@ -45,6 +45,13 @@ function getCoauthor(response){
 		}
 }
 
+function getCoauthorCallback(response){
+	console.log("coauthor details");
+	var temp = JSON.parse(response.text);
+	console.log(temp);
+	var Obj= new Object();
+}
+
 function loadCoauthor(index){  
   if((index+1)*25<totalCoauthor){
   var urlCoauthor=encodeURI( "http://api.elsevier.com/content/search/index:author?start="+index*25+"&count="+25+"&query=affil(university)&co-author="+context.au1Id); 
@@ -54,12 +61,6 @@ function loadCoauthor(index){
   var urlCoauthor=encodeURI( "http://api.elsevier.com/content/search/index:author?start="+index*25+"&count="+(totalCoauthor-index*25)+"&query=affil(university)&co-author="+context.au1Id); 
   }
   gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthor, requestHeaders);
-}
-function getCoauthorCallback(response){
-	console.log("coauthor details");
-	var temp = JSON.parse(response.text);
-	console.log(temp);
-	var Obj= new Object();
 }
 
 function getRef(response){
