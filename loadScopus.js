@@ -18,16 +18,12 @@ function getContextCallback(response) {
         requestHeaders['X-ELS-Authtoken'] = context.secureAuthtoken;      
         requestHeaders['Accept'] = "application/json, text/xml";
    
- //var url = encodeURI("http://api.elsevier.com/content/search/index:author?query=affil(university)&co-author="+context.au1Id);
- //var url = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=au-id("+context.au1Id+")&view=COMPLETE&facets=prefnameauid(count=30);country(count=30)");
-   	var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+context.scDocId+"?view=REF&startref=0");
+  	var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+context.scDocId+"?view=REF&startref=0");
  	var urlSelf = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+context.scDocId+"?view=FULL&startref=0");
+ 	var urlSelfAuthor=encodeURI("http://api.elsevier.com/content/author/author_id:"+context.au1Id);
  	var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE");
 	var urlCoauthor=encodeURI( "http://api.elsevier.com/content/search/index:author?query=affil(university)&co-author="+context.au1Id);
-//var urlCoauthor=encodeURI("http://api.elsevier.com/content/author/author_id:"+context.au1Id);
-//?view=REF&startref=0&refcount="+RefCount);
- //var url = encodeURI("http://api.elsevier.com/content/article/pii:"+context.pii+"?view=REF&startref=0&refcount="+5);
- //view=authid&facets=au-id("+context.au1Id+")");
+
  	gadgets.sciverse.makeContentApiRequest(
  				urlSelf, 
  				function (response){
@@ -35,14 +31,22 @@ function getContextCallback(response) {
 					var temp = JSON.parse(response.text);
 					console.log(temp);
 					totalCitation = temp['abstracts-retrieval-response']['coredata']['citedby-count'];
-					gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
+				//	gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
  				}, 
- 					requestHeaders);	
- 	
- 	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
- 	gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthor, requestHeaders);
-//	document.getElementById("testing").innerHTML="lolol1"+url+" "+prefs.getString("contentApiKey");
-
+ 					requestHeaders);
+ 					
+ 	gadgets.sciverse.makeContentApiRequest(
+ 				urlSelfAuthor, 
+ 				function (response){
+					console.log("selfAuthor");	
+					var temp = JSON.parse(response.text);
+					console.log(temp);
+				//	gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthor, requestHeaders);
+				//	totalCitation = temp['abstracts-retrieval-response']['coredata']['citedby-count'];
+ 				}, 
+ 					requestHeaders);
+ //	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
+ 
 }
 function getCoauthor(response){
     	console.log("coauthor");
@@ -50,13 +54,22 @@ function getCoauthor(response){
 	console.log(temp);
 	
 		for(var i=0;i<temp['search-results']['entry'].length;i++){
-       		var urlCoauthor=temp['search-results']['entry'][i]['prism:url']; 	
-	                          
-		console.log(urlCoauthor);
-			gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthorCallback, requestHeaders);
+       		var urlCoauthor=temp['search-results']['entry'][i]['prism:url']; 		                       
+		gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthorCallback, requestHeaders);
 		}
 }
 
+function loadCoauthor(index){  
+  if((index+1)*25<totalCitation){
+  var urlCoauthor=encodeURI( "http://api.elsevier.com/content/search/index:author?start="+index*25+"&count="+25+"&query=affil(university)&co-author="+context.au1Id); 
+  }
+  else 
+  {
+  var urlCoauthor=encodeURI( "http://api.elsevier.com/content/search/index:author?start="+index*25+"&count="+(totalCoauthor-index*25)+"&query=affil(university)&co-author="+context.au1Id); 
+  }
+  gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthor, requestHeaders);
+  
+}
 function getCoauthorCallback(response){
 	console.log("coauthor details");
 	var temp = JSON.parse(response.text);
