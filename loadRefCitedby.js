@@ -1,7 +1,8 @@
 var countingRef=0;
 function getRefCitedby(scId,citedbyCount){
  
- var url = encodeURI("http://api.elsevier.com/content/search/index:scopus?"+"query=refeid(2-s2.0-"+scId+")&view=STANDRARD");
+// var url = encodeURI("http://api.elsevier.com/content/search/index:scopus?"+"query=refeid(2-s2.0-"+scId+")&view=STANDRARD");
+var url=encodeURI("http://www.scopus.com/search/submit/mlt.url?eid=2-s2.0-84862690373&src=s&all=true&origin=recordpage&method=ref&zone=relatedDocuments");
  console.log("url : "+url);
  gadgets.sciverse.makeContentApiRequest(url, loadRefCitedbyCallback, requestHeaders);
 }
@@ -14,7 +15,9 @@ function loadRefCitedbyCallback(response){
 	try{ if(temp['service-error']['status']['statusCode']=='INVALID_INPUT'){
 		console.log("No citedby");
 		return;}}
-	catch(e){	
+	catch(e){
+		
+	
     /*
 	for(var i=0;i<temp['search-results']['entry'].length;i++){
 		var Obj= new Object();
