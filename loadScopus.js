@@ -20,23 +20,11 @@ function getContextCallback(response) {
         requestHeaders['Accept'] = "application/json, text/xml";
    
   	var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+context.scDocId+"?view=REF&startref=0");
- 	var urlSelf = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+context.scDocId+"?view=FULL&startref=0");
- 	var urlSelfAuthor=encodeURI("http://api.elsevier.com/content/author/author_id:"+context.au1Id);
- 	var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE");
+	var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE");
 	var urlCoauthor=encodeURI( "http://api.elsevier.com/content/search/index:author?query=affil(university)&co-author="+context.au1Id);
 
- 	gadgets.sciverse.makeContentApiRequest(
- 				urlSelf, 
- 				function (response){
-					console.log("self");	
-					var temp = JSON.parse(response.text);
-					console.log(temp);
-					totalCitation = temp['abstracts-retrieval-response']['coredata']['citedby-count'];
-					gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
- 				}, 
- 					requestHeaders);
-
-	gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthor, requestHeaders);
+ 	gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
+ 	gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthor, requestHeaders);
 		
  			
  //	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
@@ -75,6 +63,7 @@ function getCitedby(response){
     	console.log("citedby initial")
 	var temp = JSON.parse(response.text);
 	console.log(temp);
+	totalCitedby= temp['search-results']['opensearch:totalResults'];
 	try{ if(temp['service-error']['status']['statusCode']=='INVALID_INPUT'){
 		console.log("No citedby");
 		return;}}
