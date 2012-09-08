@@ -42,7 +42,7 @@ function getContextCallback(response) {
 }
 
 function getCitedby(response){
-    
+    	console.log("citedby initial")
 	var temp = JSON.parse(response.text);
 	console.log(temp);
 	try{ if(temp['service-error']['status']['statusCode']=='INVALID_INPUT'){
