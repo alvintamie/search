@@ -45,8 +45,8 @@ function getContextCallback(response) {
 }
 function getCoauthor(response){
     	console.log("coauthor")
-	var temp = JSON.parse(response.text);
-	console.log(temp);
+//	var temp = JSON.parse(response.text);
+	console.log(response);
 }
 function getCitedby(response){
     	console.log("citedby initial")
