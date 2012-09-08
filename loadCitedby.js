@@ -14,7 +14,7 @@ function getCitedby(response){
 	var temp = JSON.parse(response.text);
 	console.log(temp);
 	if(!statusCitedby){
-	totalCitation= temp['search-results']['opensearch:totalResults'];statusCitedby=true;loadCitedby(1);}
+	totalCitation= temp['search-results']['opensearch:totalResults'];statusCitedby=true;}
 	try{ if(temp['service-error']['status']['statusCode']=='INVALID_INPUT'){
 		console.log("No citedby");
 		return;}}
