@@ -23,8 +23,8 @@ function getContextCallback(response) {
    	var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+context.scDocId+"?view=REF&startref=0");
  	var urlSelf = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+context.scDocId+"?view=FULL&startref=0");
  	var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE");
-//	var urlCoauthor=encodeURI( "http://api.elsevier.com/content/search/index:author?query=affil(university)&co-author("+context.au1Id+")");
-var urlCoauthor=encodeURI("http://api.elsevier.com/content/author/author_id:"+context.au1Id);
+	var urlCoauthor=encodeURI( "http://api.elsevier.com/content/search/index:author?query=affil(university)&co-author="+context.au1Id);
+//var urlCoauthor=encodeURI("http://api.elsevier.com/content/author/author_id:"+context.au1Id);
 //?view=REF&startref=0&refcount="+RefCount);
  //var url = encodeURI("http://api.elsevier.com/content/article/pii:"+context.pii+"?view=REF&startref=0&refcount="+5);
  //view=authid&facets=au-id("+context.au1Id+")");
