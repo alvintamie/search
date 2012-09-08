@@ -7,7 +7,9 @@
  var citedbyUrl = new Array();
  var citedbyObject = new Array();
  var totalCitation;
- var totalCoauthors;
+ var totalCoauthors;8
+ var statusCitedby=0;
+ var statusCoauthors=0;
 function getContextCallback(response) {
 	context = response;
 	var RefCount=40;
@@ -26,7 +28,7 @@ function getContextCallback(response) {
  	gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
  	gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthor, requestHeaders);
 		
- 			
+ 	
  //	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
  
 }
@@ -34,7 +36,8 @@ function getCoauthor(response){
     	console.log("coauthor");
 	var temp = JSON.parse(response.text);
 	console.log(temp);
-	totalCoauthors=temp['search-results']['opensearch:totalResults'];
+	if(!statusCoauthors){
+	totalCoauthors=temp['search-results']['opensearch:totalResults'];statusCoauthors=true;}
 	console.log("totalCoauthors : "+totalCoauthors);
 	for(var i=0;i<temp['search-results']['entry'].length;i++){
        		var urlCoauthor=temp['search-results']['entry'][i]['prism:url']; 		                       
@@ -43,7 +46,7 @@ function getCoauthor(response){
 }
 
 function loadCoauthor(index){  
-  if((index+1)*25<totalCitation){
+  if((index+1)*25<totalCoauthor){
   var urlCoauthor=encodeURI( "http://api.elsevier.com/content/search/index:author?start="+index*25+"&count="+25+"&query=affil(university)&co-author="+context.au1Id); 
   }
   else 
@@ -51,7 +54,6 @@ function loadCoauthor(index){
   var urlCoauthor=encodeURI( "http://api.elsevier.com/content/search/index:author?start="+index*25+"&count="+(totalCoauthor-index*25)+"&query=affil(university)&co-author="+context.au1Id); 
   }
   gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthor, requestHeaders);
-  
 }
 function getCoauthorCallback(response){
 	console.log("coauthor details");
@@ -63,7 +65,8 @@ function getCitedby(response){
     	console.log("citedby initial")
 	var temp = JSON.parse(response.text);
 	console.log(temp);
-	totalCitedby= temp['search-results']['opensearch:totalResults'];
+	if(!statusCitedby){
+	totalCitation= temp['search-results']['opensearch:totalResults'];statusCitedby=true;loadCitedby(1);}
 	try{ if(temp['service-error']['status']['statusCode']=='INVALID_INPUT'){
 		console.log("No citedby");
 		return;}}
