@@ -29,7 +29,7 @@ function getContextCallback(response) {
  	gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthor, requestHeaders);
 		
  	
- //	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
+ 	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
  
 }
 function getCoauthor(response){
@@ -46,9 +46,9 @@ function getCoauthor(response){
 }
 
 function getCoauthorCallback(response){
-	console.log("coauthor details");
+//	console.log("coauthor details");
 	var temp = JSON.parse(response.text);
-	console.log(temp);
+//	console.log(temp);
 	var Obj= new Object();
 	coauthorObject.push(temp);
 }
