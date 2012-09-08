@@ -6,8 +6,8 @@ function getRefCitedby(scopusId,citedbyCount){
 }
 
 function loadRefCitedbyCallback(response){
-  
-    console.log("citedby ref " + ++countingRef);
+  ++countingRef;
+    console.log("citedby ref " + countingRef );
   var temp = JSON.parse(response.text);
 	console.log(temp);
 	try{ if(temp['service-error']['status']['statusCode']=='INVALID_INPUT'){
