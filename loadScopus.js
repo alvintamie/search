@@ -7,6 +7,7 @@
  var citedbyUrl = new Array();
  var citedbyObject = new Array();
  var totalCitation;
+ var totalCoauthors;
 function getContextCallback(response) {
 	context = response;
 	var RefCount=40;
@@ -34,17 +35,10 @@ function getContextCallback(response) {
 					gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
  				}, 
  					requestHeaders);
- 					
- 	gadgets.sciverse.makeContentApiRequest(
- 				urlSelfAuthor, 
- 				function (response){
-					console.log("selfAuthor");	
-					var temp = JSON.parse(response.text);
-					console.log(temp);
-					gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthor, requestHeaders);
-				//	totalCitation = temp['abstracts-retrieval-response']['coredata']['citedby-count'];
- 				}, 
- 					requestHeaders);
+
+	gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthor, requestHeaders);
+		
+ 			
  //	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
  
 }
@@ -52,8 +46,9 @@ function getCoauthor(response){
     	console.log("coauthor");
 	var temp = JSON.parse(response.text);
 	console.log(temp);
-	
-		for(var i=0;i<temp['search-results']['entry'].length;i++){
+	totalCoauthors=temp['search-results']['opensearch:totalResults'];
+	console.log("totalCoauthors : "+totalCoauthors);
+	for(var i=0;i<temp['search-results']['entry'].length;i++){
        		var urlCoauthor=temp['search-results']['entry'][i]['prism:url']; 		                       
 		gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthorCallback, requestHeaders);
 		}
