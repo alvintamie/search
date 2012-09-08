@@ -1,7 +1,7 @@
 var countingRef=0;
 function getRefCitedby(scId,citedbyCount){
  
- var url = encodeURI("http://api.elsevier.com/content/search/index:scopus?"+"query=refeid(2-s2.0-"+scId+")&view=COMPLETE");
+ var url = encodeURI("http://api.elsevier.com/content/search/index:scopus?"+"query=refeid(2-s2.0-"+scId+")&view=STANDRARD");
  console.log("url : "+url);
  gadgets.sciverse.makeContentApiRequest(url, loadRefCitedbyCallback, requestHeaders);
 }
