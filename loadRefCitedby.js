@@ -10,6 +10,7 @@ var url=encodeURI("http://api.elsevier.com/content/search/mlt.url?eid=2-s2.0-848
 function loadRefCitedbyCallback(response){
   ++countingRef;
     console.log("citedby ref " + countingRef );
+    console.log(response);
   var temp = JSON.parse(response.text);
 	console.log(temp);
 	try{ if(temp['service-error']['status']['statusCode']=='INVALID_INPUT'){
