@@ -31,7 +31,7 @@ function getContextCallback(response) {
 					var temp = JSON.parse(response.text);
 					console.log(temp);
 					totalCitation = temp['abstracts-retrieval-response']['coredata']['citedby-count'];
-				//	gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
+					gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
  				}, 
  					requestHeaders);
  					
@@ -41,7 +41,7 @@ function getContextCallback(response) {
 					console.log("selfAuthor");	
 					var temp = JSON.parse(response.text);
 					console.log(temp);
-				//	gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthor, requestHeaders);
+					gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthor, requestHeaders);
 				//	totalCitation = temp['abstracts-retrieval-response']['coredata']['citedby-count'];
  				}, 
  					requestHeaders);
