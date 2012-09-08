@@ -23,7 +23,8 @@ function getContextCallback(response) {
    	var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+context.scDocId+"?view=REF&startref=0");
  	var urlSelf = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+context.scDocId+"?view=FULL&startref=0");
  	var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE");
- //?view=REF&startref=0&refcount="+RefCount);
+	var urlCoauthor=encodeURI("/content/search/index:AUTHOR?query=ayam&co-author("+context.au1Id+")&view=COMPLETE")
+//?view=REF&startref=0&refcount="+RefCount);
  //var url = encodeURI("http://api.elsevier.com/content/article/pii:"+context.pii+"?view=REF&startref=0&refcount="+5);
  //view=authid&facets=au-id("+context.au1Id+")");
  	gadgets.sciverse.makeContentApiRequest(
@@ -38,10 +39,15 @@ function getContextCallback(response) {
  					requestHeaders);	
  	
  	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
+ 	gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthor, requestHeaders);
 //	document.getElementById("testing").innerHTML="lolol1"+url+" "+prefs.getString("contentApiKey");
 
 }
-
+function getCitedby(response){
+    	console.log("coauthor")
+	var temp = JSON.parse(response.text);
+	console.log(temp);
+}
 function getCitedby(response){
     	console.log("citedby initial")
 	var temp = JSON.parse(response.text);
@@ -81,7 +87,7 @@ function getRef(response){
 		var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+scopusId+"?view=FULL");
 		var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+scopusId+"?view=REF&startref=0");
 	//	gadgets.sciverse.makeContentApiRequest(urlRef, getRefAbstract, requestHeaders);
-		getRefCitedby(scopusId,temp['abstracts-retrieval-response']['references']['reference'][i]['citedby-count'])
+	//	getRefCitedby(scopusId,temp['abstracts-retrieval-response']['references']['reference'][i]['citedby-count'])
 	}
 }
 
