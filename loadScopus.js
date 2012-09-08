@@ -36,7 +36,7 @@ function getContextCallback(response) {
  				}, 
  					requestHeaders);	
  	
- //	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
+ 	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
 //	document.getElementById("testing").innerHTML="lolol1"+url+" "+prefs.getString("contentApiKey");
 
 }
@@ -69,7 +69,7 @@ function getCitedby(response){
 	loadCitedby(4);
 }
 function getRef(response){
-	console.log("hello");
+	console.log("get all ref");
 //	console.log("1: "+ response.data);	    
 	var temp = JSON.parse(response.data);
 	console.log(response);
@@ -85,7 +85,7 @@ function getRef(response){
 
 function getRefAbstract(response){
 
-console.log(it++);
+console.log(it++ + "ref abstract");
 	var Obj= new Object();
 	if(!response.data) {
 		console.log("NULL reference");
