@@ -1,7 +1,7 @@
-var countingRef=0;
-function getRefCitedby(scopusId,citedbyCount){
+Ivar countingRef=0;
+function getRefCitedby(scId,citedbyCount){
   
- var url = encodeURI("http://api.elsevier.com/content/search/index:scopus?start=0"+"&count="+citedbyCount+"&query=refeid(2-s2.0-"+scopusId+")&view=COMPLETE");
+ var url = encodeURI("http://api.elsevier.com/content/search/index:scopus?start=0"+"&count="+citedbyCount+"&query=refeid(2-s2.0-"+scId+")&view=COMPLETE");
  gadgets.sciverse.makeContentApiRequest(url, loadRefCitedbyCallback, requestHeaders);
 }
 
@@ -9,12 +9,11 @@ function loadRefCitedbyCallback(response){
   ++countingRef;
     console.log("citedby ref " + countingRef );
   var temp = JSON.parse(response.text);
-
+	console.log(temp);
 	try{ if(temp['service-error']['status']['statusCode']=='INVALID_INPUT'){
 		console.log("No citedby");
 		return;}}
-	catch(e){
-			console.log(temp);
+	catch(e){	
     /*
 	for(var i=0;i<temp['search-results']['entry'].length;i++){
 		var Obj= new Object();
