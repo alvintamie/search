@@ -3,6 +3,7 @@
  var it;
  var referenceObject = new Array();
  var referenceSize;
+ var currentReferenceSize;
  var citedbyUrl = new Array();
  var citedbyObject = new Array();
  var totalCitation;
@@ -74,7 +75,7 @@ function getRef(response){
 	console.log(response);
 	referenceSize=temp['abstracts-retrieval-response']['references']['reference'].length
 	console.log("SizeOfRef : "+temp['abstracts-retrieval-response']['references']['reference'].length);
-	it=0;
+	currentReferenceSize=0;
 	for(var i=0;i<temp['abstracts-retrieval-response']['references']['reference'].length;i++){
 		scopusId=temp['abstracts-retrieval-response']['references']['reference'][i]['scopus-id'];
 		var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+scopusId+"?view=FULL");
@@ -84,7 +85,7 @@ function getRef(response){
 
 function getRefAbstract(response){
 
-console.log(it++ + "ref abstract");
+console.log(currentReferenceSize++ + "ref abstract");
 	var Obj= new Object();
 	if(!response.data) {
 		console.log("NULL reference");
