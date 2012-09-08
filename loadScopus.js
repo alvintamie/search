@@ -30,7 +30,6 @@ function getContextCallback(response) {
 //	document.getElementById("testing").innerHTML="lolol1"+url+" "+prefs.getString("contentApiKey");
 
 }
-
 function getCitedby(response){
 	console.log("citedby");	    
 	var temp = JSON.parse(response.text);
@@ -61,8 +60,8 @@ function getCitedby(response){
 		citedbyObject.push(Obj);
 		}
 	}
+	console.log(citedbyObject[3].author);
 }
-
 function getRef(response){
 	console.log("hello");
 //	console.log("1: "+ response.data);	    
