@@ -24,16 +24,21 @@ function getContextCallback(response) {
   	var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+context.scDocId+"?view=REF&startref=0");
 	var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE");
 	var urlCoauthor=encodeURI( "http://api.elsevier.com/content/search/index:author?query=affil(university)&co-author="+context.au1Id);
-
- 	gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
- 	gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthor, requestHeaders);
+	var url=encodeURI("http://api.elsevier.com/content/search/index:scopus?query=AUTHOR-NAME(a)");
+ //	gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
+ //	gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthor, requestHeaders);
 		
- 	
- 	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
+ 	gadgets.sciverse.makeContentApiRequest(url, getT, requestHeaders);
+ //	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
  
 }
 
-
+function getT(response){
+	
+	console.log("test")
+	var temp = JSON.parse(response.text);
+	console.log(temp);
+}
 
 function panggil(){
     console.log("v1");
