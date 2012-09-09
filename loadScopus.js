@@ -45,7 +45,7 @@ function getT(response){
 	console.log("test")
 	var temp = JSON.parse(response.text);
 //	console.log(temp);
-	console.log(++testCount+temp['affiliation-retrieval-response']['affiliation-name']+" "+temp['affiliation-retrieval-response']['city']+" "+temp['affiliation-retrieval-response']['country']);
+	console.log(++testCount+"\n"+temp['affiliation-retrieval-response']['affiliation-name']+"\n"+temp['affiliation-retrieval-response']['city']+"\n"+temp['affiliation-retrieval-response']['country']);
 }
 
 function panggil(){
