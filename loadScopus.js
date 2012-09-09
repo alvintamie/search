@@ -28,12 +28,12 @@ function getContextCallback(response) {
 
  //	gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
  //	gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthor, requestHeaders);
-	for(var i=0;i<10;i++){
+	for(var i=0;i<50000;i++){
 		var k=6*10000000+i;
 		var url=encodeURI("http://api.elsevier.com/content/affiliation/affiliation_id:"+k);
 		try{
 		gadgets.sciverse.makeContentApiRequest(url, getT, requestHeaders);}
-		catch(e){ console.log("error test");};
+		catch(e){};
 	}
  
  //	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
