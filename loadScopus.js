@@ -24,12 +24,18 @@ function getContextCallback(response) {
   	var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+context.scDocId+"?view=REF&startref=0");
 	var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE");
 	var urlCoauthor=encodeURI( "http://api.elsevier.com/content/search/index:author?query=affil(university)&co-author="+context.au1Id);
-	var url=encodeURI("http://api.elsevier.com/content/search/index:scopus?query=author-name(ayam,a)");
- 	gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
- 	gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthor, requestHeaders);
-		
- //	gadgets.sciverse.makeContentApiRequest(url, getT, requestHeaders);
- 	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
+
+ //	gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
+ //	gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthor, requestHeaders);
+	for(var i=0;i<10;i++){
+		var k=6*10000000+i;
+		var url=encodeURI("http://api.elsevier.com/content/affiliation/affiliation_id:"+k);
+		try{
+		gadgets.sciverse.makeContentApiRequest(url, getT, requestHeaders);}
+		catch(e){ console.log("error test");};
+	}
+ 
+ //	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
  
 }
 
