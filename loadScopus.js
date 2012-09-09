@@ -11,6 +11,7 @@
  var totalCoauthors;
  var statusCitedby=0;
  var statusCoauthors=0;
+ var testCount=0;
 function getContextCallback(response) {
 	context = response;
 	document.getElementById("testing").innerHTML="lolol";
@@ -43,7 +44,8 @@ function getT(response){
 	
 	console.log("test")
 	var temp = JSON.parse(response.text);
-	console.log(temp);
+//	console.log(temp);
+	console.log(++testCount+temp['affiliation-retrieval-response']['affiliation-name']+" "+temp['affiliation-retrieval-response']['city']+" "+temp['affiliation-retrieval-response']['country']);
 }
 
 function panggil(){
