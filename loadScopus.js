@@ -28,14 +28,14 @@ function getContextCallback(response) {
 
  //	gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
  //	gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthor, requestHeaders);
- 	setInterval(getTInit,3000);
+ 	setInterval(getTInit,100);
 
  
  //	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
  
 }
 function getTInit(){
-	
+	if(t<6001000) return;
 	var url=encodeURI("http://api.elsevier.com/content/affiliation/affiliation_id:"+k);
 		try{
 		gadgets.sciverse.makeContentApiRequest(url, getT, requestHeaders);}
