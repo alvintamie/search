@@ -12,6 +12,7 @@
  var statusCitedby=0;
  var statusCoauthors=0;
  var k=60000000;
+ var testCount=0;
 function getContextCallback(response) {
 	context = response;
 	document.getElementById("testing").innerHTML="lolol";
