@@ -11,7 +11,7 @@
  var totalCoauthors;
  var statusCitedby=0;
  var statusCoauthors=0;
- var k=60000000;
+
  
 function getContextCallback(response) {
 	context = response;
@@ -35,16 +35,19 @@ function getContextCallback(response) {
  //	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
  
 }
+ var k        =60005000;
+ var testCount=5000;
+ var limitk   =60010000;
 function getTInit(){
 
-	if(k>60005000) return;
+	if(k>limitk) return;
 	var url=encodeURI("http://api.elsevier.com/content/affiliation/affiliation_id:"+k);
 		try{
 		gadgets.sciverse.makeContentApiRequest(url, getT, requestHeaders);}
 		catch(e){};
 	k++;}
 	
-var testCount=0;
+
 function getT(response){
 	var temp = JSON.parse(response.text);
 //	console.log(temp);
