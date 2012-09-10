@@ -11,8 +11,8 @@
  var totalCoauthors;
  var statusCitedby=0;
  var statusCoauthors=0;
- var k        =60006600;
- var limitk   =60015000;
+ var k        =60011000;
+ var limitk   =60020000;
  
 function getContextCallback(response) {
 	context = response;
@@ -30,8 +30,8 @@ function getContextCallback(response) {
 	var url=encodeURI( "http://api.elsevier.com/content/search/index:scopus?query=a&facets=AF-ID;");
  //	gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
  //	gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthor, requestHeaders);
- //	setInterval(getTInit,500);
- 	gadgets.sciverse.makeContentApiRequest(url, getR, requestHeaders);
+ 	setInterval(getTInit,200);
+ //	gadgets.sciverse.makeContentApiRequest(url, getR, requestHeaders);
  
  //	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
  
