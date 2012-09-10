@@ -11,7 +11,7 @@
  var totalCoauthors;
  var statusCitedby=0;
  var statusCoauthors=0;
- var testCount=60000000;
+ var k=60000000;
 function getContextCallback(response) {
 	context = response;
 	document.getElementById("testing").innerHTML="lolol";
@@ -35,7 +35,7 @@ function getContextCallback(response) {
  
 }
 function getTInit(){
-	if(t<6001000) return;
+	if(k>6001000) return;
 	var url=encodeURI("http://api.elsevier.com/content/affiliation/affiliation_id:"+k);
 		try{
 		gadgets.sciverse.makeContentApiRequest(url, getT, requestHeaders);}
