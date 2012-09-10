@@ -28,7 +28,7 @@ function getContextCallback(response) {
 
  //	gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
  //	gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthor, requestHeaders);
- 	setInterval(getTInit,100);
+ 	setInterval(getTInit,200);
 
  
  //	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
