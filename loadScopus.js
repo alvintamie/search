@@ -11,8 +11,7 @@
  var totalCoauthors;
  var statusCitedby=0;
  var statusCoauthors=0;
- var k        =60006096;
- var testCount=6096;
+ var k        =60000000;
  var limitk   =60015000;
  
 function getContextCallback(response) {
@@ -49,8 +48,10 @@ function getTInit(){
 
 function getT(response){
 	var temp = JSON.parse(response.text);
-	console.log(temp);
-	console.log(++testCount+"\n"+temp['affiliation-retrieval-response']['affiliation-name']+"\n"+temp['affiliation-retrieval-response']['city']+"\n"+temp['affiliation-retrieval-response']['country']);
+//	console.log(temp);
+	console.log(temp['affiliation-retrieval-response']['affiliation-name']+"\n"+temp['affiliation-retrieval-response']['city']+"\n"+temp['affiliation-retrieval-response']['country']+"\n"+temp['affiliation-retrieval-response']['coredata']['dc:identifier']);
+
+
 }
 
 function panggil(){
