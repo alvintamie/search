@@ -11,8 +11,9 @@
   </ModulePrefs>
   <Content type="html" view="profile"><![CDATA[
 <script src="https://raw.github.com/alvi0010/search/master/loadScopus.js" type="text/javascript"></script>
-<script src="https://raw.github.com/alvi0010/search/master/loadRefCitedby.js" type="text/javascript"></script>
 <script src="https://raw.github.com/alvi0010/search/master/loadCitedby.js" type="text/javascript"></script>
+<script src="https://raw.github.com/alvi0010/search/master/loadCoauthor.js" type="text/javascript"></script>
+<script src="https://raw.github.com/alvi0010/search/master/loadReference.js" type="text/javascript"></script>
 <script>
 
 gadgets.util.registerOnLoadHandler(function() {
