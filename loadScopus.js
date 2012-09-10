@@ -37,6 +37,7 @@ function getContextCallback(response) {
  
 }
 function getR(response){
+	console.log(1);
 	var temp = JSON.parse(response.text);
 	console.log(temp);	
 }
