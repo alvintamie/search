@@ -30,8 +30,8 @@ function getContextCallback(response) {
 	var url=encodeURI( "http://api.elsevier.com/content/search/index:scopus?query=a&facets=AF-ID;");
  //	gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
  //	gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthor, requestHeaders);
- 	setInterval(getTInit,200);
- //	gadgets.sciverse.makeContentApiRequest(url, getR, requestHeaders);
+ //	setInterval(getTInit,200);
+ 	gadgets.sciverse.makeContentApiRequest(url, getR, requestHeaders);
  
  //	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
  
