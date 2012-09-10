@@ -49,7 +49,7 @@ function getTInit(){
 
 function getT(response){
 	var temp = JSON.parse(response.text);
-//	console.log(temp);
+	console.log(temp);
 	console.log(++testCount+"\n"+temp['affiliation-retrieval-response']['affiliation-name']+"\n"+temp['affiliation-retrieval-response']['city']+"\n"+temp['affiliation-retrieval-response']['country']);
 }
 
