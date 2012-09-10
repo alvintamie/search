@@ -39,9 +39,7 @@ function getContextCallback(response) {
 }
 
 function getTInit(){
-	console.log(2);
 	if(k>limitk) return;
-	console.log(1);
 	var url=encodeURI("http://api.elsevier.com/content/affiliation/affiliation_id:"+k);
 		try{
 		gadgets.sciverse.makeContentApiRequest(url, getT, requestHeaders);}
