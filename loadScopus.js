@@ -11,7 +11,7 @@
  var totalCoauthors;
  var statusCitedby=0;
  var statusCoauthors=0;
- var testCount=0;
+ var testCount=60000000;
 function getContextCallback(response) {
 	context = response;
 	document.getElementById("testing").innerHTML="lolol";
@@ -28,18 +28,20 @@ function getContextCallback(response) {
 
  //	gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
  //	gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthor, requestHeaders);
-	for(var i=0;i<1000;i++){
-		var k=6*10000000+i;
-		var url=encodeURI("http://api.elsevier.com/content/affiliation/affiliation_id:"+k);
-		try{
-		gadgets.sciverse.makeContentApiRequest(url, getT, requestHeaders);}
-		catch(e){};
-	}
+ 	setInterval(getTInit,3000);
+
  
  //	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
  
 }
-
+function getTInit(){
+	
+	var url=encodeURI("http://api.elsevier.com/content/affiliation/affiliation_id:"+k);
+		try{
+		gadgets.sciverse.makeContentApiRequest(url, getT, requestHeaders);}
+		catch(e){};
+	k++;}
+}
 function getT(response){
 	
 	console.log("test")
