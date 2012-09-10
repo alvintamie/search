@@ -11,7 +11,9 @@
  var totalCoauthors;
  var statusCitedby=0;
  var statusCoauthors=0;
-
+ var k        =60005000;
+ var testCount=5000;
+ var limitk   =60010000;
  
 function getContextCallback(response) {
 	context = response;
@@ -35,9 +37,7 @@ function getContextCallback(response) {
  //	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
  
 }
- var k        =60005000;
- var testCount=5000;
- var limitk   =60010000;
+
 function getTInit(){
 
 	if(k>limitk) return;
