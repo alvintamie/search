@@ -12,7 +12,7 @@
  var statusCitedby=0;
  var statusCoauthors=0;
  var k=60000000;
- var testCount=0;
+ 
 function getContextCallback(response) {
 	context = response;
 	document.getElementById("testing").innerHTML="lolol";
@@ -29,7 +29,7 @@ function getContextCallback(response) {
 
  //	gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
  //	gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthor, requestHeaders);
- 	setInterval(getTInit,200);
+ 	setInterval(getTInit,150);
 
  
  //	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
@@ -43,10 +43,9 @@ function getTInit(){
 		gadgets.sciverse.makeContentApiRequest(url, getT, requestHeaders);}
 		catch(e){};
 	k++;}
-
-function getT(response){
 	
-	console.log("test")
+var testCount=0;
+function getT(response){
 	var temp = JSON.parse(response.text);
 //	console.log(temp);
 	console.log(++testCount+"\n"+temp['affiliation-retrieval-response']['affiliation-name']+"\n"+temp['affiliation-retrieval-response']['city']+"\n"+temp['affiliation-retrieval-response']['country']);
