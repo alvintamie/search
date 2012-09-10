@@ -28,7 +28,7 @@ function getContextCallback(response) {
 
  //	gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
  //	gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthor, requestHeaders);
-	for(var i=0;i<50000;i++){
+	for(var i=0;i<1000;i++){
 		var k=6*10000000+i;
 		var url=encodeURI("http://api.elsevier.com/content/affiliation/affiliation_id:"+k);
 		try{
