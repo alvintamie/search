@@ -41,7 +41,7 @@ function getTInit(){
 		gadgets.sciverse.makeContentApiRequest(url, getT, requestHeaders);}
 		catch(e){};
 	k++;}
-}
+
 function getT(response){
 	
 	console.log("test")
