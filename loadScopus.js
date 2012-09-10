@@ -29,11 +29,11 @@ function getContextCallback(response) {
 	var urlCoauthor=encodeURI( "http://api.elsevier.com/content/search/index:author?query=affil(university)&co-author="+context.au1Id);
 
  //	gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
- //	gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthor, requestHeaders);
+ 	gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthor, requestHeaders);
  //	setInterval(getTInit,200);
 
  
- 	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
+ //	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
  
 }
 
