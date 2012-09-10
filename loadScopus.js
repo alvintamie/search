@@ -11,9 +11,9 @@
  var totalCoauthors;
  var statusCitedby=0;
  var statusCoauthors=0;
- var k        =60002960;
- var testCount=2960;
- var limitk   =60005000;
+ var k        =60005944;
+ var testCount=5944;
+ var limitk   =60010000;
  
 function getContextCallback(response) {
 	context = response;
