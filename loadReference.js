@@ -31,6 +31,7 @@ console.log(currentReferenceSize++ + "ref abstract");
 		console.log("NULL reference");
 		return;}
     //	try{
+    		console.log(response);
        		var temp = JSON.parse(response.text);
        		console.log(temp);
        	/*
