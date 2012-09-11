@@ -1,4 +1,4 @@
-var idToIndex= new Hash();
+var idToIndex= new Object();
 
 function getRef(response){
   console.log("get all ref");	    
