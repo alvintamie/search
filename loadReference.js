@@ -33,9 +33,10 @@ console.log(currentReferenceSize++ + "ref abstract");
     	try{
        		var temp = JSON.parse(response.text);
        		console.log(temp);
+       	/*
        		var tempId=temp['abstracts-retrieval-response']['coredata']['dc:identifier'].split(":");
        		var index = idToIndex[tempId[1]];
-       	/*
+       	
        		referenceObject[index].available=true;
        		
        		referenceObject[index].abstract = temp['abstracts-retrieval-response']['coredata']['dc:description'];
