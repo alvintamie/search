@@ -31,7 +31,11 @@ console.log(currentReferenceSize++ + "ref abstract");
 		console.log("NULL reference");
 		return;}
     //	try{
-    		console.log(response);
+    		console.log(response.text);
+    		var n=response.text.indexOf("\"\$\": \}");
+    		for(var i=n;i<n+4;i++)
+    		response.text[i]=" ";
+    		
        		var temp = JSON.parse(response.text);
        		console.log(temp);
        	/*
