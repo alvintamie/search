@@ -44,7 +44,7 @@ console.log(currentReferenceSize++ + "ref abstract");
     		for(var i=n;i<n+4;i++)
     		{
     			console.log(b[i], i);
-    			b[i]=" ";
+    			b[i]=' ';
     			console.log(b[i], i);
     		}
     		
