@@ -33,9 +33,9 @@ console.log(currentReferenceSize++ + "ref abstract");
     //	try{
     		console.log(response);
     		var n=response.text.indexOf("\"\$\": \}");
-    		console.log("\"\$\": \}");
+    		console.log(n);
     		for(var i=n;i<n+4;i++)
-    		response.text[i]="a";
+    		response.text[i]=" ";
     		
        		var temp = JSON.parse(response.text);
        		console.log(temp);
