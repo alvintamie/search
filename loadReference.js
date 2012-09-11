@@ -33,7 +33,7 @@ console.log(currentReferenceSize++ + "ref abstract");
     //	try{
     		console.log(response);
     		var b=response.text;
-    		var n=b.indexOf("\"$\":");
+    		var n=b.indexOf("\"$\"\:");
     	                       
     		
   		console.log("\"$\"");
