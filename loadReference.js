@@ -32,12 +32,16 @@ console.log(currentReferenceSize++ + "ref abstract");
 		return;}
     //	try{
     		console.log(response);
-    		var n=response.text.indexOf("\"\$\": \}");
+    		var b=response.text;
+    		var n=b.indexOf("\"\$\": \}");
+    		
+    		var m = response.text("a");
+    		console.log(m);
     		console.log(n);
     		for(var i=n;i<n+4;i++)
-    		response.text[i]=" ";
+    		b[i]=" ";
     		
-       		var temp = JSON.parse(response.text);
+       		var temp = JSON.parse(b);
        		console.log(temp);
        	/*
        		var tempId=temp['abstracts-retrieval-response']['coredata']['dc:identifier'].split(":");
