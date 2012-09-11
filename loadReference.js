@@ -38,7 +38,9 @@ console.log(currentReferenceSize++ + "ref abstract");
     		var n;
   		console.log("\"$\"");
     		while(b.indexOf("\"$\" :\}")>0){
+    		
     		n=b.indexOf("\"$\" :\}");
+    			console.log(n);
     		for(var i=n;i<n+4;i++)
     		b[i]=" ";}
     		
