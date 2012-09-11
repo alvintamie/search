@@ -55,8 +55,6 @@ console.log(currentReferenceSize++ + "ref abstract");
    	   }
    	catch(e){
        		console.log("JSON error");
-       		Obj.available=false;
-		referenceObject.push(Obj);
     	}
 
 }
