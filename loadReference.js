@@ -34,10 +34,9 @@ console.log(currentReferenceSize++ + "ref abstract");
     		console.log(response);
     		var b=response.text;
     		var n=b.indexOf("\"$\"");
-    	                         
+    	                       
     		
-    		var m = response.text.indexOf("a");
-    		console.log(m);
+  		console.log("\"$\"");
     		console.log(n);
     	//	for(var i=n;i<n+4;i++)
     	//	b[i]=" ";
