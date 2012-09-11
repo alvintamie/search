@@ -42,7 +42,14 @@ console.log(currentReferenceSize++ + "ref abstract");
     		n=b.indexOf("\"$\" :\}");
     			console.log(n);
     		for(var i=n;i<n+4;i++)
-    		b[i]=" ";}
+    		{
+    			console.log(b[i], i);
+    			b[i]=" ";
+    			console.log(b[i], i);
+    		}
+    		
+    		
+    		}
     		
        		var temp = JSON.parse(b);
        		console.log(temp);
