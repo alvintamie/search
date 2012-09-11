@@ -35,7 +35,7 @@ console.log(currentReferenceSize++ + "ref abstract");
        		console.log(temp);
        		var tempId=temp['abstracts-retrieval-response']['coredata']['dc:identifier'].split(":");
        		var index = idToIndex[tempId[1]];
-       	
+       	/*
        		referenceObject[index].available=true;
        		
        		referenceObject[index].abstract = temp['abstracts-retrieval-response']['coredata']['dc:description'];
@@ -52,6 +52,7 @@ console.log(currentReferenceSize++ + "ref abstract");
        		referenceObject[index].volume = temp['abstracts-retrieval-response']['coredata']['prim:volume'];
        		referenceObject[index].affiliation= temp['abstracts-retrieval-response']['affiliation']['affilname'];
        		referenceObject[index].author=temp['abstracts-retrieval-response']['authors'];     
+       		*/
    	   }
    	catch(e){
        		console.log("JSON error");
