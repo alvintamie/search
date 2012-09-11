@@ -31,7 +31,7 @@ console.log(currentReferenceSize++ + "ref abstract");
 		console.log("NULL reference");
 		return;}
     //	try{
-    	//	console.log(response.text);
+    		console.log(response);
     		var n=response.text.indexOf("\"\$\": \}");
     		for(var i=n;i<n+4;i++)
     		response.text[i]=" ";
