@@ -27,11 +27,11 @@ function getRefAbstract(response){
 
 console.log(currentReferenceSize++ + "ref abstract");
 	var Obj= new Object();
-	if(!response.data) {
+	if(!response.text) {
 		console.log("NULL reference");
 		return;}
     	try{
-    		console.log(response);
+    	//	console.log(response);
     		var b=String(response.data);
     		//var n=b.indexOf("\"$\" :\}");
     	                       
