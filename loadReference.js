@@ -1,12 +1,14 @@
 var idToIndex= new Object();
-
+var readyRef=0;
 function getRef(response){
-  console.log("get all ref");	    
+  try{
+  	console.log("ref is obtained");
 	var temp = JSON.parse(response.data);
 	console.log(temp);
 	referenceSize=temp['abstracts-retrieval-response']['references']['reference'].length
 	console.log("SizeOfRef : "+temp['abstracts-retrieval-response']['references']['reference'].length);
 	currentReferenceSize=0;
+	readyRef=1;
 	for(var i=0;i<temp['abstracts-retrieval-response']['references']['reference'].length;i++){
 		scopusId=temp['abstracts-retrieval-response']['references']['reference'][i]['scopus-id'];
 		var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+scopusId+"?view=FULL");
@@ -21,7 +23,12 @@ function getRef(response){
 		gadgets.sciverse.makeContentApiRequest(urlRef, getRefAbstract, requestHeaders);
 	//	var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+scopusId+"?view=REF&startref=0");
 	//	getRefCitedby(scopusId,temp['abstracts-retrieval-response']['references']['reference'][i]['citedby-count'])
+		}
 	}
+  catch(e){
+  	console.log("No reference Available");
+  	readyRef=2;
+  }
 }
 
 function waiting( ms )
