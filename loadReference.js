@@ -15,7 +15,7 @@ function getRef(response){
 		Obj.citedbyCount=temp['abstracts-retrieval-response']['references']['reference'][i]['citedby-count'];
 		Obj.identifier=scopusId;
 		Obj.available=0;
-		waiting(300);
+		waiting(100);
 		referenceObject.push(Obj);
 		idToIndex[Obj.identifier]=i;
 		gadgets.sciverse.makeContentApiRequest(urlRef, getRefAbstract, requestHeaders);
@@ -35,11 +35,10 @@ function waiting( ms )
 function getRefAbstract(response){
 
 console.log(currentReferenceSize++ + "ref abstract");
-	var Obj= new Object();
-	Obj.available=1;
-	
+	var Obj= new Object();	
 	if(!response.data) {
 		console.log("NULL reference");
+		Obj.available=1;
 		return;}
     	try{
     	//	console.log(response);
@@ -79,7 +78,7 @@ console.log(currentReferenceSize++ + "ref abstract");
    catch(e){
        		console.log("JSON error");
        		referenceObject[index].affiliationId="NO INFO";
-       		referenceObject[index].available=2;
+       		referenceObject[index].available=3;
     	}
 
 }
