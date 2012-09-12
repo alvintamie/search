@@ -36,19 +36,9 @@ console.log(currentReferenceSize++ + "ref abstract");
     		//var n=b.indexOf("\"$\" :\}");
     	                       
     		var n;
-    	//	while(b.indexOf("\"$\" :\}")>0){
-    		var kk=String("ayam");
-    		kk=kk.replace("a","b");
-    		console.log(kk);
-    		n=b.indexOf("\"$\" :\}");
-    		console.log(n);
-    		console.log("1: ",b[n],b[n+1],b[n+2],b[n+3],b[n+4],b[n+5]);
-    		b=b.replace("\"$\" :\}","    }");
-    		b=b.replace("\"$\" :\}","    }");
-    		b=b.replace("\"$\" :\}","    }");
-    			console.log("2: ",b[n],b[n+1],b[n+2],b[n+3],b[n+4],b[n+5]);
-    		
-    	//	}
+    		while(b.indexOf("\"$\" :\}")>0){
+ 
+    		b=b.replace("\"$\" :\}","    }");	}
 
        		var temp = JSON.parse(b);
        		console.log(temp);
