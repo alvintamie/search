@@ -44,7 +44,7 @@ console.log(currentReferenceSize++ + "ref abstract");
     		for(var i=n;i<n+6;i++)
     		{
     			console.log(b[i]);
-    			b[i]=' ';
+    			b[i]='a';
     		
     		}
     			console.log("2: ",b[n],b[n+1],b[n+2],b[n+3],b[n+4],b[n+5]);
