@@ -15,12 +15,20 @@ function getRef(response){
 		Obj.citedbyCount=temp['abstracts-retrieval-response']['references']['reference'][i]['citedby-count'];
 		Obj.identifier=scopusId;
 		Obj.available=false;
+		waiting(300);
 		referenceObject.push(Obj);
 		idToIndex[Obj.identifier]=i;
 		gadgets.sciverse.makeContentApiRequest(urlRef, getRefAbstract, requestHeaders);
 	//	var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+scopusId+"?view=REF&startref=0");
 	//	getRefCitedby(scopusId,temp['abstracts-retrieval-response']['references']['reference'][i]['citedby-count'])
 	}
+}
+
+function waiting( ms )
+{
+	var date = new Date();
+	var curDate = null;
+	while (curDate - date < ms) curDate = new Date();
 }
 
 function getRefAbstract(response){
