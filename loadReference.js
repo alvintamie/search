@@ -1,6 +1,7 @@
 var idToIndex= new Object();
 var readyRef=0;
 var numberRef=0;
+var currentReferenceSize=0;
 function getRef(response){
   try{
   	console.log("ref is obtained");
@@ -9,7 +10,7 @@ function getRef(response){
 	referenceSize=temp['abstracts-retrieval-response']['references']['reference'].length
 	console.log("SizeOfRef : "+temp['abstracts-retrieval-response']['references']['reference'].length);
 	numberRef=temp['abstracts-retrieval-response']['references']['reference'].length;
-	readyRef=1;
+	
 	for(var i=0;i<temp['abstracts-retrieval-response']['references']['reference'].length;i++){
 		scopusId=temp['abstracts-retrieval-response']['references']['reference'][i]['scopus-id'];
 		var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+scopusId+"?view=FULL");
@@ -25,6 +26,7 @@ function getRef(response){
 	//	var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+scopusId+"?view=REF&startref=0");
 	//	getRefCitedby(scopusId,temp['abstracts-retrieval-response']['references']['reference'][i]['citedby-count'])
 		}
+	readyRef=1;
 	}
   catch(e){
   	console.log("No reference Available");
