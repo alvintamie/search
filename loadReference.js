@@ -15,7 +15,7 @@ function getRef(response){
 		scopusId=temp['abstracts-retrieval-response']['references']['reference'][i]['scopus-id'];
 		var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+scopusId+"?view=FULL");
 		var Obj= new Object();
-		Obj.title=temp['abstracts-retrieval-response']['references']['reference'][i]['sourcetitle'];
+	//	Obj.title=temp['abstracts-retrieval-response']['references']['reference'][i]['sourcetitle'];
 		Obj.citedbyCount=temp['abstracts-retrieval-response']['references']['reference'][i]['citedby-count'];
 		Obj.identifier=scopusId;
 		Obj.available=0;
@@ -71,7 +71,7 @@ console.log(currentReferenceSize++ + "ref abstract");
        		referenceObject[index].abstract = temp['abstracts-retrieval-response']['coredata']['dc:description'];
       	
        		referenceObject[index].type = temp['abstracts-retrieval-response']['coredata']['prism:aggregation Type'];
-       	//	Obj.title = temp['abstracts-retrieval-response']['coredata']['dc:title'];
+       		Obj.title = temp['abstracts-retrieval-response']['coredata']['dc:title'];
        	//	Obj.citedbyCount = temp['abstracts-retrieval-response']['coredata']['citedby-count'];
        	//	Obj.identifier= tempId[1];
        		referenceObject[index].publicationName = temp['abstracts-retrieval-response']['coredata']['prism:publicationName'];
