@@ -1,5 +1,6 @@
 var idToIndex= new Object();
 var readyRef=0;
+var numberRef=0;
 function getRef(response){
   try{
   	console.log("ref is obtained");
@@ -7,7 +8,7 @@ function getRef(response){
 	console.log(temp);
 	referenceSize=temp['abstracts-retrieval-response']['references']['reference'].length
 	console.log("SizeOfRef : "+temp['abstracts-retrieval-response']['references']['reference'].length);
-	currentReferenceSize=0;
+	numberRef=temp['abstracts-retrieval-response']['references']['reference'].length;
 	readyRef=1;
 	for(var i=0;i<temp['abstracts-retrieval-response']['references']['reference'].length;i++){
 		scopusId=temp['abstracts-retrieval-response']['references']['reference'][i]['scopus-id'];
