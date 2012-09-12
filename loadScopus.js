@@ -27,7 +27,7 @@ function getContextCallback(response) {
   	var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+context.scDocId+"?view=REF&startref=0");
 	var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE");
 	var urlCoauthor=encodeURI( "http://api.elsevier.com/content/search/index:author?query=affil(university)&co-author="+context.au1Id);
-	var url=encodeURI( "http://api.elsevier.com/content/search/index:scopus?query=abs(\"heart\")&query=affilcity(beijing)&facets=AF-ID;country(count=200);");
+	var url=encodeURI( "http://api.elsevier.com/content/search/index:scopus?query={abs(\"heart\"),query=affilcity(beijing)}&facets=AF-ID;country(count=200);");
  //	gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
  //	gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthor, requestHeaders);
  //	setInterval(getTInit,200);
