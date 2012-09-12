@@ -16,7 +16,7 @@
  
 function getContextCallback(response) {
 	context = response;
-	document.getElementById("testing").innerHTML="lolol";
+	
 	var prefs= new gadgets.Prefs();
    
         requestHeaders['Accept-Charset'] = "utf-8";
