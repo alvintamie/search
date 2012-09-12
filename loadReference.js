@@ -56,8 +56,8 @@ console.log(currentReferenceSize++ + "ref abstract");
        	//	Obj.identifier= tempId[1];
        		referenceObject[index].publicationName = temp['abstracts-retrieval-response']['coredata']['prism:publicationName'];
      	  	referenceObject[index].date = temp['abstracts-retrieval-response']['coredata']['prism:coverDate'];
-     	  	tempId=temp['abstracts-retrieval-response']['affiliation']['@href'].split(":");
-     	  	referenceObject[index].affiliationId=tempId[2];
+     	  //	tempId=temp['abstracts-retrieval-response']['affiliation']['@href'].split(":");
+     	  	referenceObject[index].affiliationId=temp['abstracts-retrieval-response']['affiliation']['@id']
        		referenceObject[index].volume = temp['abstracts-retrieval-response']['coredata']['prim:volume'];
        		referenceObject[index].affiliation= temp['abstracts-retrieval-response']['affiliation']['affilname'];
        		referenceObject[index].author=temp['abstracts-retrieval-response']['authors'];     
