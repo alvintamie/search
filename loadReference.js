@@ -30,7 +30,7 @@ console.log(currentReferenceSize++ + "ref abstract");
 	if(!response.data) {
 		console.log("NULL reference");
 		return;}
-    	try{
+    //	try{
     	//	console.log(response);
     		var b=String(response.data);
     		//var n=b.indexOf("\"$\" :\}");
@@ -61,10 +61,11 @@ console.log(currentReferenceSize++ + "ref abstract");
        		referenceObject[index].volume = temp['abstracts-retrieval-response']['coredata']['prim:volume'];
        		referenceObject[index].affiliation= temp['abstracts-retrieval-response']['affiliation']['affilname'];
        		referenceObject[index].author=temp['abstracts-retrieval-response']['authors'];     
-       		
+   /*    		
    	   }
-   	catch(e){
+   
+   catch(e){
        		console.log("JSON error");
     	}
-
+*/
 }
