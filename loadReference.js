@@ -39,15 +39,15 @@ console.log(currentReferenceSize++ + "ref abstract");
     	//	while(b.indexOf("\"$\" :\}")>0){
     		
     		n=b.indexOf("\"$\" :\}");
-    			console.log(n);
-    			console.log("1: ",b[n],b[n+1],b[n+2],b[n+3],b[n+4]);
-    		for(var i=n;i<n+4;i++)
+    		console.log(n);
+    		console.log("1: ",b[n],b[n+1],b[n+2],b[n+3],b[n+4],b[n+5]);
+    		for(var i=n;i<n+5;i++)
     		{
     			
     			b[i]=' ';
     		
     		}
-    			console.log("2: ",b[n],b[n+1],b[n+2],b[n+3],b[n+4]);
+    			console.log("2: ",b[n],b[n+1],b[n+2],b[n+3],b[n+4],b[n+5]);
     		
     	//	}
     		
