@@ -37,7 +37,9 @@ console.log(currentReferenceSize++ + "ref abstract");
     	                       
     		var n;
     	//	while(b.indexOf("\"$\" :\}")>0){
-    		
+    		var k="ayam";
+    		k.replace("a","b");
+    		console.log(k);
     		n=b.indexOf("\"$\" :\}");
     		console.log(n);
     		console.log("1: ",b[n],b[n+1],b[n+2],b[n+3],b[n+4],b[n+5]);
