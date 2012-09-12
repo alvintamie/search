@@ -49,7 +49,7 @@ console.log(currentReferenceSize++ + "ref abstract");
     			console.log("2: ",b[n],b[n+1],b[n+2],b[n+3],b[n+4],b[n+5]);
     		
     	//	}
-    		
+    		console.log(b);
        		var temp = JSON.parse(b);
        		console.log(temp);
        	/*
