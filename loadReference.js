@@ -14,7 +14,7 @@ function getRef(response){
 		Obj.title=temp['abstracts-retrieval-response']['references']['reference'][i]['sourcetitle'];
 		Obj.citedbyCount=temp['abstracts-retrieval-response']['references']['reference'][i]['citedby-count'];
 		Obj.identifier=scopusId;
-		Obj.available=false;
+		Obj.available=0;
 		waiting(300);
 		referenceObject.push(Obj);
 		idToIndex[Obj.identifier]=i;
@@ -29,12 +29,15 @@ function waiting( ms )
 	var date = new Date();
 	var curDate = null;
 	while (curDate - date < ms) curDate = new Date();
+
 }
 
 function getRefAbstract(response){
 
 console.log(currentReferenceSize++ + "ref abstract");
 	var Obj= new Object();
+	Obj.available=1;
+	
 	if(!response.data) {
 		console.log("NULL reference");
 		return;}
@@ -54,7 +57,7 @@ console.log(currentReferenceSize++ + "ref abstract");
        		var tempId=temp['abstracts-retrieval-response']['coredata']['dc:identifier'].split(":");
        		var index = idToIndex[tempId[1]];
        	
-       		referenceObject[index].available=true;
+       		referenceObject[index].available=2;
        		
        		referenceObject[index].abstract = temp['abstracts-retrieval-response']['coredata']['dc:description'];
       	
@@ -76,6 +79,7 @@ console.log(currentReferenceSize++ + "ref abstract");
    catch(e){
        		console.log("JSON error");
        		referenceObject[index].affiliationId="NO INFO";
+       		referenceObject[index].available=2;
     	}
 
 }
