@@ -45,6 +45,7 @@ console.log(currentReferenceSize++ + "ref abstract");
     		console.log("1: ",b[n],b[n+1],b[n+2],b[n+3],b[n+4],b[n+5]);
     		b=b.replace("\"$\" :\}","     ");
     		b=b.replace("\"$\" :\}","     ");
+    		b=b.replace("\"$\" :\}","     ");
     			console.log("2: ",b[n],b[n+1],b[n+2],b[n+3],b[n+4],b[n+5]);
     		
     	//	}
