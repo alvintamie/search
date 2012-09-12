@@ -30,7 +30,7 @@ function getContextCallback(response) {
 	var url=encodeURI( "http://api.elsevier.com/content/search/index:scopus?query=all(\"heart\")all(\"attack\")&facets=AF-ID;country(count=200);");
  //	gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
  //	gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthor, requestHeaders);
- 	setInterval(getTInit,200);
+ //	setInterval(getTInit,200);
  //	gadgets.sciverse.makeContentApiRequest(url, getR, requestHeaders);
  
  //	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
