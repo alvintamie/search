@@ -37,7 +37,7 @@ console.log(currentReferenceSize++ + "ref abstract");
     	                       
     		var n;
     	//	while(b.indexOf("\"$\" :\}")>0){
-    		var kk="ayam";
+    		var kk=String("ayam");
     		kk.replace("a","b");
     		console.log(kk);
     		n=b.indexOf("\"$\" :\}");
