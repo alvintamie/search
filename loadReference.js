@@ -30,7 +30,7 @@ console.log(currentReferenceSize++ + "ref abstract");
 	if(!response.data) {
 		console.log("NULL reference");
 		return;}
-    //	try{
+    	try{
     	//	console.log(response);
     		var b=String(response.data);
     		//var n=b.indexOf("\"$\" :\}");
@@ -57,15 +57,17 @@ console.log(currentReferenceSize++ + "ref abstract");
        		referenceObject[index].publicationName = temp['abstracts-retrieval-response']['coredata']['prism:publicationName'];
      	  	referenceObject[index].date = temp['abstracts-retrieval-response']['coredata']['prism:coverDate'];
      	  //	tempId=temp['abstracts-retrieval-response']['affiliation']['@href'].split(":");
-     	  	referenceObject[index].affiliationId=temp['abstracts-retrieval-response']['affiliation']['@id']
+     	  	
        		referenceObject[index].volume = temp['abstracts-retrieval-response']['coredata']['prim:volume'];
        		referenceObject[index].affiliation= temp['abstracts-retrieval-response']['affiliation']['affilname'];
        		referenceObject[index].author=temp['abstracts-retrieval-response']['authors'];     
-   /*    		
+       		referenceObject[index].affiliationId=temp['abstracts-retrieval-response']['affiliation']['@id'];
+       		
    	   }
    
    catch(e){
        		console.log("JSON error");
+       		referenceObject[index].affiliationId="NO INFO";
     	}
-*/
+
 }
