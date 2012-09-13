@@ -26,7 +26,7 @@ function getRef(response){
 	//	var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+scopusId+"?view=REF&startref=0");
 	//	getRefCitedby(scopusId,temp['abstracts-retrieval-response']['references']['reference'][i]['citedby-count'])
 		}
-	readyRef=1;
+	readyRef=1; //
 	}
   catch(e){
   	console.log("No reference Available");
@@ -47,19 +47,15 @@ function getRefAbstract(response){
 console.log(currentReferenceSize++ + "ref abstract");
 	var Obj= new Object();	
 	if(!response.data) {
-		console.log("NULL reference");
+		console.log("NULL reference, JSON is returned but NO DATA");
 		Obj.available=1;
 		return;}
     	try{
-    	//	console.log(response);
-    		var b=String(response.data);
-    		//var n=b.indexOf("\"$\" :\}");
-    	                       
+    		var b=String(response.data);  	                       
     		var n;
     		while(b.indexOf("\"$\" :\}")>0){
- 
-    		b=b.replace("\"$\" :\}","    }");	}
-
+    			b=b.replace("\"$\" :\}","    }");	}
+    			
        		var temp = JSON.parse(b);
        		console.log(temp);
        	
