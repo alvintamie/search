@@ -11,8 +11,8 @@
  var totalCoauthors;
  var statusCitedby=0;
  var statusCoauthors=0;
- var k        =60038000;
- var limitk   =60050000;
+ var k        =60036000;
+ var limitk   =60038000;
  
 function getContextCallback(response) {
 	context = response;
@@ -30,10 +30,10 @@ function getContextCallback(response) {
 	var url=encodeURI( "http://api.elsevier.com/content/search/index:scopus?query=all(\"heart\")+affilcity(beijing)&facets=AF-ID;country(count=200);");
  //	gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
  //	gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthor, requestHeaders);
- //	setInterval(getTInit,200);
+ 	setInterval(getTInit,200);
  //	gadgets.sciverse.makeContentApiRequest(url, getR, requestHeaders);
  
- 	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
+ //	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
  
 }
 function getR(response){
