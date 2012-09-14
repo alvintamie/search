@@ -44,6 +44,7 @@ function getR(response){
 	console.log(temp);	
 		var Obj= new Object();
 		Obj.affiliationName=new Array();
+		try{
 		for(var i=0;i<temp['search-results']['entry'].length;i++){
 		
 			if( Object.prototype.toString.call( temp ['search-results']['entry'][i]['affiliation']) === '[object Array]' ) {
@@ -54,6 +55,8 @@ function getR(response){
 			
 			for(var j=0;j<Obj.affiliationName.length;j++){
 				console.log(Obj.affiliationName[i]);}}
+		}
+		catch(e) console.log("no affiliation");
 }
 function getTInit(){
 	if(k>limitk) return;
