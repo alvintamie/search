@@ -79,6 +79,7 @@ console.log(currentReferenceSize++ + "ref abstract");
        		referenceObject[index].affiliation= temp['abstracts-retrieval-response']['affiliation']['affilname'];
        		referenceObject[index].author=temp['abstracts-retrieval-response']['authors'];     
        		referenceObject[index].affiliationId=temp['abstracts-retrieval-response']['affiliation']['@id'];
+       		referenceObject[index].url="http://www.scopus.com/record/display.url?eid=2-s2.0-"+tempId[1]+"&origin=resultslist&sort=plf-f&src=s";
        		insertReference(index);
    	   }
    
