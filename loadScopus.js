@@ -27,7 +27,7 @@ function getContextCallback(response) {
   	var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+context.scDocId+"?view=REF&startref=0");
 	var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE");
 	var urlCoauthor=encodeURI( "http://api.elsevier.com/content/search/index:author?query=affil(university)&co-author="+context.au1Id);
-	var url=encodeURI( "http://api.elsevier.com/content/search/index:scopus?query=all(\"Cytogenetic characterisation of the razor shells Ensis directus \")&sort=coverDate&facets=country(count=200,sort=fd);subjarea(sort=fd);pubyear(count=20,sort=na);authname(count=20,sort=fd);");
+	var url=encodeURI( "http://api.elsevier.com/content/search/index:scopus?query=all(\"apple\")&sort=coverDate&facets=country(count=200,sort=fd);subjarea(sort=fd);pubyear(count=20,sort=na);authname(count=20,sort=fd);");
  //	gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
  //	gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthor, requestHeaders);
 
@@ -42,15 +42,18 @@ function getR(response){
 	console.log("search-test");
 	var temp = JSON.parse(response.text);
 	console.log(temp);	
-	if( Object.prototype.toString.call( temp ['search-results']['entry'][0]['affiliation']) === '[object Array]' ) {
-    alert( 'Array! 1' );
-}
-	if( Object.prototype.toString.call( temp ['search-results']['entry'][1]['affiliation']) === '[object Array]' ) {
-    alert( 'Array! 2' );
-}
-	if( Object.prototype.toString.call( temp ['search-results']['entry'][2]['affiliation']) === '[object Array]' ) {
-    alert( 'Array! 3' );
-}
+		var Obj= new Object();
+		Obj.affiliationName=new Array();
+		for(var j=0;j<temp['search-results']['entry'].length;j++){
+		
+			if( Object.prototype.toString.call( temp ['search-results']['entry'][i]['affiliation']) === '[object Array]' ) {
+				for(var k=0;k<temp['search-results']['entry'][i]['affiliation'].length;k++)
+					Obj.affiliationName.push(temp['search-results']['entry'][i]['affiliation'][i]['affilname']);}
+			else{
+					Obj.affiliationName.push(temp['search-results']['entry'][i]['affiliation']['affilname']);}
+			
+			for(var j=0;j<Obj.affiliationName.length;j++){
+				console.log(Obj.affiliationName[i]);}}
 }
 function getTInit(){
 	if(k>limitk) return;
