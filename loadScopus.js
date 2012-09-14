@@ -27,11 +27,11 @@ function getContextCallback(response) {
   	var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+context.scDocId+"?view=REF&startref=0");
 	var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE");
 	var urlCoauthor=encodeURI( "http://api.elsevier.com/content/search/index:author?query=affil(university)&co-author="+context.au1Id);
-	var url=encodeURI( "http://api.elsevier.com/content/search/index:scopus?query=all(\"estimation\")&sort=coverDate&facets=country(count=200,sort=fd);subjarea(sort=fd);pubyear(count=20,sort=na);authname(count=20,sort=fd);");
+	var url=encodeURI( "http://api.elsevier.com/content/search/index:scopus?query=all(\"Data driven smooth test for paired populations\")&sort=coverDate&facets=country(count=200,sort=fd);subjarea(sort=fd);pubyear(count=20,sort=na);authname(count=20,sort=fd);");
  //	gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
  //	gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthor, requestHeaders);
 
- 	setInterval(getTInit,150);
+ //	setInterval(getTInit,150);
  	gadgets.sciverse.makeContentApiRequest(url, getR, requestHeaders);
 
  	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
@@ -43,18 +43,17 @@ function getR(response){
 	var temp = JSON.parse(response.text);
 	console.log(temp);	
 	if( Object.prototype.toString.call( temp ['search-results']['entry'][0]['affiliation']) === '[object Array]' ) {
-    alert( 'Array!' );
+    alert( 'Array! 1' );
 }
 	if( Object.prototype.toString.call( temp ['search-results']['entry'][1]['affiliation']) === '[object Array]' ) {
-    alert( 'Array!' );
+    alert( 'Array! 2' );
 }
 	if( Object.prototype.toString.call( temp ['search-results']['entry'][2]['affiliation']) === '[object Array]' ) {
-    alert( 'Array!' );
+    alert( 'Array! 3' );
 }
 }
 function getTInit(){
 	if(k>limitk) return;
-	k=60003800;
 	var url=encodeURI("http://api.elsevier.com/content/affiliation/affiliation_id:"+k);
 		try{
 		gadgets.sciverse.makeContentApiRequest(url, getT, requestHeaders);}
