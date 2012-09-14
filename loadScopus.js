@@ -42,7 +42,7 @@ function getR(response){
 	console.log("search-test");
 	var temp = JSON.parse(response.text);
 	console.log(temp);	
-	console.log(temp['search-results']['entry'][0]['affiliation']['affilname']);
+	console.log(temp['search-results']['entry']['affiliation']['affilname']);
 }
 function getTInit(){
 	if(k>limitk) return;
