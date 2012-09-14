@@ -54,7 +54,7 @@ function getR(response){
 						Obj.affiliationName.push(temp['search-results']['entry'][i]['affiliation']['affilname']);}
 				
 				for(var j=0;j<Obj.affiliationName.length;j++){
-					console.log(Obj.affiliationName[i]);}	
+					console.log(i+" "+Obj.affiliationName[j]);}	
 			}
 			catch(e) {
 			
