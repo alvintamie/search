@@ -66,7 +66,7 @@ console.log(currentReferenceSize++ + "ref abstract");
        	
        		referenceObject[index].available=2;
        		
-       		referenceObject[index].abstract = temp['abstracts-retrieval-response']['coredata']['dc:description'];
+       		referenceObject[index].Abstract = temp['abstracts-retrieval-response']['coredata']['dc:description'];
        		referenceObject[index].type = temp['abstracts-retrieval-response']['coredata']['prism:aggregation Type'];
        		referenceObject[index].title = temp['abstracts-retrieval-response']['coredata']['dc:title'];
        	//	Obj.citedbyCount = temp['abstracts-retrieval-response']['coredata']['citedby-count'];
