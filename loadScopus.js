@@ -56,7 +56,9 @@ function getR(response){
 				for(var j=0;j<Obj.affiliationName.length;j++){
 					console.log(Obj.affiliationName[i]);}	
 			}
-			catch(e) console.log("no affiliation");
+			catch(e) {
+			
+			console.log("no affiliation");}
 		}
 		
 }
