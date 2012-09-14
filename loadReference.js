@@ -50,16 +50,15 @@ console.log(currentReferenceSize++ + "ref abstract");
 		console.log("NULL reference, JSON is returned but NO DATA");
 		Obj.available=1;
 		return;}
-   // 	try{
+    	try{
     		var b=String(response.data);  	                       
     		var n;
-    		/*
+    		
     		while(b.indexOf("\"$\" :\}")>0){
     			b=b.replace("\"$\" :\}","    }");	}
-    		*/
-    		console.log(response);
+    		
        		var temp = JSON.parse(b);
-       	//	console.log(temp);
+       		console.log(temp);
        	
        		var tempId=temp['abstracts-retrieval-response']['coredata']['dc:identifier'].split(":");
        		var index = idToIndex[tempId[1]];
@@ -80,7 +79,7 @@ console.log(currentReferenceSize++ + "ref abstract");
        		referenceObject[index].affiliation= temp['abstracts-retrieval-response']['affiliation']['affilname'];
        		referenceObject[index].author=temp['abstracts-retrieval-response']['authors'];     
        		referenceObject[index].affiliationId=temp['abstracts-retrieval-response']['affiliation']['@id'];
-   /*    		
+       		
    	   }
    
    catch(e){
@@ -88,5 +87,5 @@ console.log(currentReferenceSize++ + "ref abstract");
        		referenceObject[index].affiliationId="NO INFO";
        		referenceObject[index].available=3;
     	}
-	*/
+	
 }
