@@ -10,7 +10,8 @@ function getRef(response){
 	referenceSize=temp['abstracts-retrieval-response']['references']['reference'].length
 	console.log("SizeOfRef : "+temp['abstracts-retrieval-response']['references']['reference'].length);
 	numberRef=temp['abstracts-retrieval-response']['references']['reference'].length;
-	
+		readyRef=1; //
+	createDivReference();
 	for(var i=0;i<temp['abstracts-retrieval-response']['references']['reference'].length;i++){
 		scopusId=temp['abstracts-retrieval-response']['references']['reference'][i]['scopus-id'];
 		var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+scopusId+"?view=FULL");
@@ -19,18 +20,18 @@ function getRef(response){
 		Obj.citedbyCount=temp['abstracts-retrieval-response']['references']['reference'][i]['citedby-count'];
 		Obj.identifier=scopusId;
 		Obj.available=0;
-		waiting(100);
+		waiting(50);
 		referenceObject.push(Obj);
 		idToIndex[Obj.identifier]=i;
 		gadgets.sciverse.makeContentApiRequest(urlRef, getRefAbstract, requestHeaders);
 	//	var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+scopusId+"?view=REF&startref=0");
 	//	getRefCitedby(scopusId,temp['abstracts-retrieval-response']['references']['reference'][i]['citedby-count'])
 		}
-	readyRef=1; //
 	}
   catch(e){
   	console.log("No reference Available");
   	readyRef=2;
+  	createDivReference();
   }
 }
 
@@ -79,7 +80,7 @@ console.log(currentReferenceSize++ + "ref abstract");
        		referenceObject[index].affiliation= temp['abstracts-retrieval-response']['affiliation']['affilname'];
        		referenceObject[index].author=temp['abstracts-retrieval-response']['authors'];     
        		referenceObject[index].affiliationId=temp['abstracts-retrieval-response']['affiliation']['@id'];
-       		
+       		insertReference(index);
    	   }
    
    catch(e){
