@@ -42,10 +42,11 @@ function getR(response){
 	console.log("search-test");
 	var temp = JSON.parse(response.text);
 	console.log(temp);	
-		var Obj= new Object();
-		Obj.affiliationName=new Array();
+		
 		
 		for(var i=0;i<temp['search-results']['entry'].length;i++){
+			var Obj= new Object();
+			Obj.affiliationName=new Array();
 			try{
 				if( Object.prototype.toString.call( temp ['search-results']['entry'][i]['affiliation']) === '[object Array]' ) {
 					for(var k=0;k<temp['search-results']['entry'][i]['affiliation'].length;k++)
