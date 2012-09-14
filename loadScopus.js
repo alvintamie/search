@@ -11,7 +11,7 @@
  var totalCoauthors;
  var statusCitedby=0;
  var statusCoauthors=0;
- var k        =60053707;
+ var k        =60055400;
  var limitk   =60070000;
  
 function getContextCallback(response) {
@@ -31,17 +31,13 @@ function getContextCallback(response) {
  //	gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
  //	gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthor, requestHeaders);
 
- //	setInterval(getTInit,150);
+ 	setInterval(getTInit,150);
  //	gadgets.sciverse.makeContentApiRequest(url, getR, requestHeaders);
 
- 	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
+ //	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
  
 }
-function getArticle(response){
-console.log("article");
-var temp = JSON.parse(response.text);
-console.log(temp);
-}
+
 function getR(response){
 
 	var temp = JSON.parse(response.text);
