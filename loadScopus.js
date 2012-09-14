@@ -30,11 +30,17 @@ function getContextCallback(response) {
 	var url=encodeURI( "http://api.elsevier.com/content/search/index:scopus?query=all(\"heart\")+affilcity(beijing)&facets=AF-ID;country(count=200);");
  //	gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
  //	gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthor, requestHeaders);
- 	setInterval(getTInit,150);
+	var urlArticle = encodeURI("http://api.elsevier.com/content/article/scopus_id:"+context.scDocId+"?view=REF&startref=0");
+
+ //	setInterval(getTInit,150);
  //	gadgets.sciverse.makeContentApiRequest(url, getR, requestHeaders);
- 
+ gadgets.sciverse.makeContentApiRequest(urlArticle, getArticle, requestHeaders);
  //	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
  
+}
+function getArticle(response){
+var temp = JSON.parse(response.text);
+console.log(temp);
 }
 function getR(response){
 
