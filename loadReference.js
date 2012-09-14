@@ -50,12 +50,13 @@ console.log(currentReferenceSize++ + "ref abstract");
 		console.log("NULL reference, JSON is returned but NO DATA");
 		Obj.available=1;
 		return;}
-    	try{
+   // 	try{
     		var b=String(response.data);  	                       
     		var n;
+    		/*
     		while(b.indexOf("\"$\" :\}")>0){
     			b=b.replace("\"$\" :\}","    }");	}
-    			
+    		*/	
        		var temp = JSON.parse(b);
        		console.log(temp);
        	
@@ -80,11 +81,11 @@ console.log(currentReferenceSize++ + "ref abstract");
        		referenceObject[index].affiliationId=temp['abstracts-retrieval-response']['affiliation']['@id'];
        		
    	   }
-   
+   /*
    catch(e){
        		console.log("JSON error");
        		referenceObject[index].affiliationId="NO INFO";
        		referenceObject[index].available=3;
     	}
-
+	*/
 }
