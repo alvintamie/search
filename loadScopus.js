@@ -48,7 +48,7 @@ function getR(response){
 		
 			if( Object.prototype.toString.call( temp ['search-results']['entry'][i]['affiliation']) === '[object Array]' ) {
 				for(var k=0;k<temp['search-results']['entry'][i]['affiliation'].length;k++)
-					Obj.affiliationName.push(temp['search-results']['entry'][i]['affiliation'][i]['affilname']);}
+					Obj.affiliationName.push(temp['search-results']['entry'][i]['affiliation'][k]['affilname']);}
 			else{
 					Obj.affiliationName.push(temp['search-results']['entry'][i]['affiliation']['affilname']);}
 			
