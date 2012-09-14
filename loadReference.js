@@ -79,9 +79,9 @@ console.log(currentReferenceSize++ + "ref abstract");
        		referenceObject[index].affiliation= temp['abstracts-retrieval-response']['affiliation']['affilname'];
        		referenceObject[index].author=temp['abstracts-retrieval-response']['authors'];     
        		referenceObject[index].affiliationId=temp['abstracts-retrieval-response']['affiliation']['@id'];
-       		
+   /*    		
    	   }
-   /*
+   
    catch(e){
        		console.log("JSON error");
        		referenceObject[index].affiliationId="NO INFO";
