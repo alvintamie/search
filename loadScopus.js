@@ -31,10 +31,10 @@ function getContextCallback(response) {
  //	gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
  //	gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthor, requestHeaders);
 
- 	setInterval(getTInit,150);
+ //	setInterval(getTInit,150);
  //	gadgets.sciverse.makeContentApiRequest(url, getR, requestHeaders);
 
- //	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
+ 	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
  
 }
 
