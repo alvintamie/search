@@ -51,7 +51,7 @@ function getCitedby(response){
      	  	Obj.date =buffer['prism:coverDate'];
        		Obj.volume = buffer['prim:volume'];
        		Obj.author=buffer['author'];     	
-       		Obj.affiliation= buffer]['affiliation'];
+       		Obj.affiliation= buffer['affiliation'];
 		citedbyObject.push(Obj);
 		}
 		if(totalCitation%25==0) { totalLevelCitation= Math.floor(totalCitation/25); lastLevelCitation=25;}
@@ -86,7 +86,7 @@ function getMoreCitedby(response){
      	  	Obj.date =buffer['prism:coverDate'];
        		Obj.volume = buffer['prim:volume'];
        		Obj.author=buffer['author'];     	
-       		Obj.affiliation= buffer]['affiliation'];
+       		Obj.affiliation= buffer['affiliation'];
 		citedbyObject.push(Obj);
 		}
 	}
