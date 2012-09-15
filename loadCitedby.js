@@ -44,7 +44,7 @@ function getCitedby(response){
 		if( Object.prototype.toString.call( temp ['search-results']['entry']) === '[object Array]' ) {
 		       buffer= temp['search-results']['entry'][i];}
 		else{  buffer= temp['search-results']['entry'];}
-		Obj.abstract = buffer['dc:description'];
+		Obj.Abstract = buffer['dc:description'];
 		Obj.title =    buffer['dc:title'];
        		Obj.type =     buffer['subtypeDescription'];
        		Obj.citedbyCount = buffer['citedby-count'];
