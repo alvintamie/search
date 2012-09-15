@@ -50,7 +50,6 @@ function getCitedby(response){
        		Obj.affiliation= temp['search-results']['entry'][i]['affiliation'];
 		citedbyObject.push(Obj);
 		}
-		endCitation+=temp['search-results']['entry'].length;
 		if(totalCitation%25==0) { totalLevelCitation= Math.floor(totalCitation/25); lastLevelCitation=25;}
 		else 			{ totalLevelCitation= Math.floor(totalCitation/25) + 1;lastLevelCitation=totalCitation%25;}
 		currentLevelCitation=1;
