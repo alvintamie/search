@@ -1,17 +1,43 @@
-function loadCitedby(index){  
-  if((index+1)*25<totalCitation){
-  var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?start="+index*25+"&count=25&query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE");
+var totalCitation;
+var startCitation=0;
+var endCitation=0;
+var deltaLastCitation=0;
+// startCitation and endCitation is not complete;
+function upCitedby(){  
+  var delta= totalCitation-endCitation;
+  if(delta==0) return 0;
+  if(delta>=25){
+  var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?start="+endCitation+"&count=25&query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE");
   }
   else 
   {
-  var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?start="+index*25+"&count="+(totalCitation-index*25)+"&query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE");
+  var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?start="+endCitation+"&count="+delta+"&query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE");
   }
+  citedbyObject=[];
+  startCitation=endCitation;
+  gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
+}
+
+function downCitedby(){
+  if(startCitation==0) return 0;
+  if(startCitation%25==0){
+  endCitation=startCitation;
+  startCitation-=25;
+  var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?start="+startCitation+"&count=25&query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE");
+  }
+  else 
+  {
+  endCitation=startCitation;
+  startCitation=startCitation-(startCitation%25);
+  var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?start="+startCitation+"&count="+delta+"&query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE");
+  }
+  citedbyObject=[];
   gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
 }
 
 function getCitedby(response){
     	console.log("citedby initial")
-	var temp = JSON.parse(response.text);
+	var temp = JSON.parse(parseValidator(response.text));
 	console.log(temp);
 	if(!statusCitedby){
 	totalCitation= temp['search-results']['opensearch:totalResults'];statusCitedby=true;}
@@ -35,5 +61,6 @@ function getCitedby(response){
        		Obj.affiliation= temp['search-results']['entry'][i]['affiliation'];
 		citedbyObject.push(Obj);
 		}
+		endCitation+=temp['search-results']['entry'].length;
 	}
 }
