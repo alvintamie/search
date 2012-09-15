@@ -1,3 +1,5 @@
+var citedbyObject = new Array();
+var statusCitedby=0;
 var totalCitation=-1;
 var totalLevelCitation=0;
 var currentLevelCitation=-1;
