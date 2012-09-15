@@ -18,9 +18,7 @@ var requestHeaders = {};
  var referenceSize;
  var currentReferenceSize;
  // var citedbyUrl = new Array();
- var coauthorObject= new Array();
- var totalCoauthors;
- var statusCoauthors=0;
+
  var k=4937;
  //var k        =60055420;
  var limitk   =60070000;
