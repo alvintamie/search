@@ -89,6 +89,8 @@ function getMoreCitedby(response){
        		Obj.author=buffer['author'];     	
        		Obj.affiliation= buffer['affiliation'];
 		citedbyObject.push(Obj);
+		console.log("more");
+		console.log(Obj);
 		}
 	}
 }
