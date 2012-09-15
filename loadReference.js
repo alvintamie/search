@@ -54,7 +54,7 @@ console.log(currentReferenceSize++ + "ref abstract");
     	try{
     	
      		
-       		var temp = JSON.parse(	parseValidator(response.data));
+       		var temp = JSON.parse(parseValidator(response.data));
        		console.log(temp);
        		var tempId=temp['abstracts-retrieval-response']['coredata']['dc:identifier'].split(":");
        		var index = idToIndex[tempId[1]];
@@ -88,10 +88,7 @@ console.log(currentReferenceSize++ + "ref abstract");
 }
 
 function parseValidator(b){
-		var b=String(response.data);  	                       
-    	
-    		
-    		while(b.indexOf("\"$\" :\}")>0){
+		while(b.indexOf("\"$\" :\}")>0){
     			b=b.replace("\"$\" :\}","    }");	}
     		return b;
 }
