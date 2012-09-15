@@ -77,7 +77,7 @@ function returnArray(a){
 		       return b;}
 }
 
-function getCitedby(response){
+function getMoreCitedby(response){
     	console.log("citedby initial")
 	var temp = JSON.parse(parseValidator(response.text));
 	console.log(temp);
