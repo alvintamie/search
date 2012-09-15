@@ -39,7 +39,7 @@ function getContextCallback(response) {
 	var urlCoauthor=encodeURI( "http://api.elsevier.com/content/search/index:author?query=affil(university)&co-author="+context.au1Id);
 	var url=encodeURI( "http://api.elsevier.com/content/search/index:scopus?query=all(\"apple\")&sort=coverDate&facets=country(count=200,sort=fd);subjarea(count=100,sort=fd);pubyear(count=20);authname(count=20,sort=fd);");
  //	gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
- 	gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthor, requestHeaders);
+ //	gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthor, requestHeaders);
 
  //	setInterval(getTInit,150);
  //	setInterval(getNotRet,150);
