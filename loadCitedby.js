@@ -14,6 +14,7 @@ function upCitedby(){
   citedbyObject=[];
   currentLevelCitation++;
   gadgets.sciverse.makeContentApiRequest(urlCitedby, getMoreCitedby, requestHeaders);
+  return true;
 }
 
 function downCitedby(){
@@ -29,7 +30,8 @@ function getCitedby(response){
 	var temp = JSON.parse(parseValidator(response.text));
 	console.log(temp);
 	if(!statusCitedby){
-	totalCitation= temp['search-results']['opensearch:totalResults'];statusCitedby=true;}
+		totalCitation= temp['search-results']['opensearch:totalResults'];
+		statusCitedby=true;}
 	try{ if(temp['service-error']['status']['statusCode']=='INVALID_INPUT'){
 		console.log("No citedby");
 		return;}}
@@ -50,8 +52,10 @@ function getCitedby(response){
        		Obj.identifier= tempId[1];
      	  	Obj.date =buffer['prism:coverDate'];
        		Obj.volume = buffer['prim:volume'];
-       		Obj.author=buffer['author'];     	
-       		Obj.affiliation= buffer['affiliation'];
+       		Obj.author=returnArray(buffer['author']);     	
+       		Obj.affiliation= returnArray(buffer['affiliation']);
+       		Obj.url="http://www.scopus.com/record/display.url?eid=2-s2.0-"+tempId[1]+"&origin=resultslist&sort=plf-f&src=s";
+       	
 		citedbyObject.push(Obj);
 		console.log(Obj);
 		}
@@ -59,6 +63,15 @@ function getCitedby(response){
 		else 			{ totalLevelCitation= Math.floor(totalCitation/25)+1;lastLevelCitation=totalCitation%25;}
 		currentLevelCitation=1;
 	}
+	
+	
+}
+function returnArray(a){
+		if( Object.prototype.toString.call( a === '[object Array]' ) {
+		       return a;}
+		else{  var b = new Array();
+		       b.push(a);
+		       return b;}
 }
 
 function getMoreCitedby(response){
