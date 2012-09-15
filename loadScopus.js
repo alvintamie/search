@@ -45,7 +45,7 @@ function getContextCallback(response) {
  //	setInterval(getNotRet,150);
  //	gadgets.sciverse.makeContentApiRequest(url, getR, requestHeaders);
 
- //	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
+ 	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
  
 }
 
