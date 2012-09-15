@@ -52,15 +52,10 @@ console.log(currentReferenceSize++ + "ref abstract");
 		Obj.available=1;
 		return;}
     	try{
-    		var b=String(response.data);  	                       
-    		var n;
-    		
-    		while(b.indexOf("\"$\" :\}")>0){
-    			b=b.replace("\"$\" :\}","    }");	}
-    		
-       		var temp = JSON.parse(b);
+    	
+     		
+       		var temp = JSON.parse(	parseValidator(response.data));
        		console.log(temp);
-       	
        		var tempId=temp['abstracts-retrieval-response']['coredata']['dc:identifier'].split(":");
        		var index = idToIndex[tempId[1]];
        	
@@ -90,4 +85,13 @@ console.log(currentReferenceSize++ + "ref abstract");
        		referenceObject[index].available=3;
     	}
 	
+}
+
+function parseValidator(b){
+		var b=String(response.data);  	                       
+    	
+    		
+    		while(b.indexOf("\"$\" :\}")>0){
+    			b=b.replace("\"$\" :\}","    }");	}
+    		return b;
 }
