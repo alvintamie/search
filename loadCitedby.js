@@ -33,25 +33,29 @@ function getCitedby(response){
 	try{ if(temp['service-error']['status']['statusCode']=='INVALID_INPUT'){
 		console.log("No citedby");
 		return;}}
-	catch(e){	
+	catch(e){
+	var buffer;
 	for(var i=0;i<temp['search-results']['entry'].length;i++){
 		var Obj= new Object();
-		Obj.abstract = temp['search-results']['entry'][i]['dc:description'];
-		Obj.title =    temp['search-results']['entry'][i]['dc:title'];
-       		Obj.type =     temp['search-results']['entry'][i]['subtypeDescription'];
-       		Obj.citedbyCount = temp['search-results']['entry'][i]['citedby-count'];
-       		Obj.creator= temp['search-results']['entry'][i]['creator'];
-       		Obj.publicationName = temp['search-results']['entry'][i]['prism:publicationName'];
-       		var tempId=temp['search-results']['entry'][i]['dc:identifier'].split(":");
+		if( Object.prototype.toString.call( temp ['search-results']['entry']) === '[object Array]' ) {
+		       buffer= temp['search-results']['entry'][i];}
+		else{  buffer= temp['search-results']['entry'];}
+		Obj.abstract = buffer['dc:description'];
+		Obj.title =    buffer['dc:title'];
+       		Obj.type =     buffer['subtypeDescription'];
+       		Obj.citedbyCount = buffer['citedby-count'];
+       		Obj.creator= buffer['creator'];
+       		Obj.publicationName = buffer['prism:publicationName'];
+       		var tempId=buffer['dc:identifier'].split(":");
        		Obj.identifier= tempId[1];
-     	  	Obj.date = temp['search-results']['entry'][i]['prism:coverDate'];
-       		Obj.volume = temp['search-results']['entry'][i]['prim:volume'];
-       		Obj.author=temp['search-results']['entry'][i]['author'];     	
-       		Obj.affiliation= temp['search-results']['entry'][i]['affiliation'];
+     	  	Obj.date =buffer['prism:coverDate'];
+       		Obj.volume = buffer['prim:volume'];
+       		Obj.author=buffer['author'];     	
+       		Obj.affiliation= buffer]['affiliation'];
 		citedbyObject.push(Obj);
 		}
 		if(totalCitation%25==0) { totalLevelCitation= Math.floor(totalCitation/25); lastLevelCitation=25;}
-		else 			{ totalLevelCitation= Math.floor(totalCitation/25) + 1;lastLevelCitation=totalCitation%25;}
+		else 			{ totalLevelCitation= Math.floor(totalCitation/25)+1;lastLevelCitation=totalCitation%25;}
 		currentLevelCitation=1;
 	}
 }
@@ -66,7 +70,6 @@ function getMoreCitedby(response){
 		return;}}
 	catch(e){
 	var buffer;
-
 	for(var i=0;i<temp['search-results']['entry'].length;i++){
 		var Obj= new Object();
 		if( Object.prototype.toString.call( temp ['search-results']['entry']) === '[object Array]' ) {
