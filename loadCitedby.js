@@ -30,8 +30,10 @@ function getCitedby(response){
 	var temp = JSON.parse(parseValidator(response.text));
 	console.log(temp);
 	if(!statusCitedby){
-		totalCitation= temp['search-results']['opensearch:totalResults'];
+	try	{totalCitation= temp['search-results']['opensearch:totalResults'];}
+	catch(e){ return;}
 		statusCitedby=true;}
+		
 	try{ if(temp['service-error']['status']['statusCode']=='INVALID_INPUT'){
 		console.log("No citedby");
 		return;}}
@@ -62,6 +64,7 @@ function getCitedby(response){
 		if(totalCitation%25==0) { totalLevelCitation= Math.floor(totalCitation/25); lastLevelCitation=25;}
 		else 			{ totalLevelCitation= Math.floor(totalCitation/25)+1;lastLevelCitation=totalCitation%25;}
 		currentLevelCitation=1;
+		updateCitedBy();
 	}
 	
 	
@@ -74,11 +77,15 @@ function returnArray(a){
 		       return b;}
 }
 
-function getMoreCitedby(response){
-    	console.log("citedby More")
+function getCitedby(response){
+    	console.log("citedby initial")
 	var temp = JSON.parse(parseValidator(response.text));
 	console.log(temp);
-	if(!statusCitedby){statusCitedby=true;}
+	if(!statusCitedby){
+	try	{totalCitation= temp['search-results']['opensearch:totalResults'];}
+	catch(e){ return;}
+		statusCitedby=true;}
+		
 	try{ if(temp['service-error']['status']['statusCode']=='INVALID_INPUT'){
 		console.log("No citedby");
 		return;}}
@@ -99,11 +106,17 @@ function getMoreCitedby(response){
        		Obj.identifier= tempId[1];
      	  	Obj.date =buffer['prism:coverDate'];
        		Obj.volume = buffer['prim:volume'];
-       		Obj.author=buffer['author'];     	
-       		Obj.affiliation= buffer['affiliation'];
+       		Obj.author=returnArray(buffer['author']);     	
+       		Obj.affiliation= returnArray(buffer['affiliation']);
+       		Obj.url="http://www.scopus.com/record/display.url?eid=2-s2.0-"+tempId[1]+"&origin=resultslist&sort=plf-f&src=s";
+       	
 		citedbyObject.push(Obj);
-		console.log("more");
+		console.log("more citedby");
 		console.log(Obj);
 		}
+	updateCitedBy();
+	
 	}
+	
+	
 }
