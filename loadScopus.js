@@ -4,10 +4,9 @@
  var referenceObject = new Array();
  var referenceSize;
  var currentReferenceSize;
- var citedbyUrl = new Array();
+ // var citedbyUrl = new Array();
  var citedbyObject = new Array();
  var coauthorObject= new Array();
- var totalCitation;
  var totalCoauthors;
  var statusCitedby=0;
  var statusCoauthors=0;
