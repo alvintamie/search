@@ -46,7 +46,7 @@ function getContextCallback(response) {
  //	gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthor, requestHeaders);
 
  //	setInterval(getTInit,150);
- 	setInterval(getNotRet,150);
+ //	setInterval(getNotRet,150);
  	gadgets.sciverse.makeContentApiRequest(url, getR, requestHeaders);
 
  	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
@@ -67,7 +67,7 @@ function getTInit(){
 	k++;}
 
 function getNotRet(){
-//		console.log("lol "+notR.indexOf("600021828"));
+
 	if(k==notR.length) return;
 	var l=notR[k];
 	var url=encodeURI("http://api.elsevier.com/content/affiliation/affiliation_id:"+l);
