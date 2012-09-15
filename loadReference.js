@@ -90,3 +90,9 @@ console.log(currentReferenceSize++ + "ref abstract");
     	}
 	
 }
+
+function parseValidator(b){
+		while(b.indexOf("\"$\" :\}")>0){
+    			b=b.replace("\"$\" :\}","    }");	}
+    		return b;
+}
