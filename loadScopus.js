@@ -67,6 +67,7 @@ function getTInit(){
 	k++;}
 
 function getNotRet(){
+		console.log("lol "+notR.indexOf(600021828));
 	if(k==notR.length) return;
 	var l=notR[k];
 	var url=encodeURI("http://api.elsevier.com/content/affiliation/affiliation_id:"+l);
