@@ -4,7 +4,7 @@ var totalCitation=-1;
 var totalLevelCitation=0;
 var currentLevelCitation=-1;
 var lastLevelCitation=0;
-// startCitation and endCitation is not complete;
+// check every property
 function upCitedby(){  
   if(currentLevelCitation==-1 || currentLevelCitation==totalLevelCitation) return false;
   if(currentLevelCitation==totalLevelCitation-1){
@@ -44,8 +44,8 @@ function getCitedby(response){
 		if( Object.prototype.toString.call( temp ['search-results']['entry']) === '[object Array]' ) {
 		       buffer= temp['search-results']['entry'][i];}
 		else{  buffer= temp['search-results']['entry'];}
-		Obj.Abstract = buffer['dc:description'];
-		Obj.title =    buffer['dc:title'];
+		Obj.Abstract = buffer['Abstract'];
+		Obj.title =    buffer['title'];
        		Obj.type =     buffer['subtypeDescription'];
        		Obj.citedbyCount = buffer['citedby-count'];
        		Obj.creator= buffer['creator'];
@@ -96,8 +96,8 @@ function getMoreCitedby(response){
 		if( Object.prototype.toString.call( temp ['search-results']['entry']) === '[object Array]' ) {
 		       buffer= temp['search-results']['entry'][i];}
 		else{  buffer= temp['search-results']['entry'];}
-		Obj.abstract = buffer['dc:description'];
-		Obj.title =    buffer['dc:title'];
+		Obj.Abstract = buffer['Abstract'];
+		Obj.title =    buffer['title'];
        		Obj.type =     buffer['subtypeDescription'];
        		Obj.citedbyCount = buffer['citedby-count'];
        		Obj.creator= buffer['creator'];
