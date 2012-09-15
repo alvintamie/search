@@ -67,7 +67,7 @@ function getCitedby(response){
 	
 }
 function returnArray(a){
-		if( Object.prototype.toString.call( a === '[object Array]' ) {
+		if( Object.prototype.toString.call( a ) === '[object Array]' ) {
 		       return a;}
 		else{  var b = new Array();
 		       b.push(a);
