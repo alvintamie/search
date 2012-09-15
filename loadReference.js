@@ -3,7 +3,7 @@ var readyRef=0;
 var numberRef=0;
 var currentReferenceSize=0;
 function getRef(response){
-  // try{
+  try{
   	console.log("ref is obtained");
 	var temp = JSON.parse(response.data);
 	console.log(temp);
@@ -27,13 +27,12 @@ function getRef(response){
 	//	var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+scopusId+"?view=REF&startref=0");
 	//	getRefCitedby(scopusId,temp['abstracts-retrieval-response']['references']['reference'][i]['citedby-count'])
 		}
-	/*}
-	
+	}
   catch(e){
   	console.log("No reference Available");
   	readyRef=2;
   	createDivReference();
-  } */
+  }
 }
 
 function waiting( ms )
@@ -53,17 +52,21 @@ console.log(currentReferenceSize++ + "ref abstract");
 		Obj.available=1;
 		return;}
     	try{
-    	
-     		
-       		var temp = JSON.parse(parseValidator(response.data));
+    		var b=String(response.data);  	                       
+    		var n;
+    		
+    		while(b.indexOf("\"$\" :\}")>0){
+    			b=b.replace("\"$\" :\}","    }");	}
+    		
+       		var temp = JSON.parse(b);
        		console.log(temp);
+       	
        		var tempId=temp['abstracts-retrieval-response']['coredata']['dc:identifier'].split(":");
        		var index = idToIndex[tempId[1]];
        	
        		referenceObject[index].available=2;
        		
-       		referenceObject[index].Abstract = temp['abstracts-retrieval-response']['coredata']['dc:description'];
-       	//	console.log(referenceObject[index].Abstract);
+       		referenceObject[index].abstract = temp['abstracts-retrieval-response']['coredata']['dc:description'];
        		referenceObject[index].type = temp['abstracts-retrieval-response']['coredata']['prism:aggregation Type'];
        		referenceObject[index].title = temp['abstracts-retrieval-response']['coredata']['dc:title'];
        	//	Obj.citedbyCount = temp['abstracts-retrieval-response']['coredata']['citedby-count'];
@@ -76,7 +79,6 @@ console.log(currentReferenceSize++ + "ref abstract");
        		referenceObject[index].affiliation= temp['abstracts-retrieval-response']['affiliation']['affilname'];
        		referenceObject[index].author=temp['abstracts-retrieval-response']['authors'];     
        		referenceObject[index].affiliationId=temp['abstracts-retrieval-response']['affiliation']['@id'];
-       		referenceObject[index].url="http://www.scopus.com/record/display.url?eid=2-s2.0-"+tempId[1]+"&origin=resultslist&sort=plf-f&src=s";
        		insertReference(index);
    	   }
    
@@ -86,10 +88,4 @@ console.log(currentReferenceSize++ + "ref abstract");
        		referenceObject[index].available=3;
     	}
 	
-}
-
-function parseValidator(b){
-		while(b.indexOf("\"$\" :\}")>0){
-    			b=b.replace("\"$\" :\}","    }");	}
-    		return b;
 }
