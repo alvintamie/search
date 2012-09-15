@@ -31,7 +31,7 @@ function getCitedby(response){
 	console.log(temp);
 	if(!statusCitedby){
 	try	{totalCitation= temp['search-results']['opensearch:totalResults'];}
-	catch(e){ return;}
+	catch(e){ updateCitedby(); return;}
 		statusCitedby=true;}
 		
 	try{ if(temp['service-error']['status']['statusCode']=='INVALID_INPUT'){
