@@ -23,7 +23,7 @@ var requestHeaders = {};
  var totalCoauthors;
  var statusCitedby=0;
  var statusCoauthors=0;
- var k=0;
+ var k=3550;
  //var k        =60055420;
  var limitk   =60070000;
 
@@ -67,7 +67,7 @@ function getTInit(){
 	k++;}
 
 function getNotRet(){
-		console.log("lol "+notR.indexOf("600021828"));
+//		console.log("lol "+notR.indexOf("600021828"));
 	if(k==notR.length) return;
 	var l=notR[k];
 	var url=encodeURI("http://api.elsevier.com/content/affiliation/affiliation_id:"+l);
