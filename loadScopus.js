@@ -23,7 +23,7 @@ var requestHeaders = {};
  var totalCoauthors;
  var statusCitedby=0;
  var statusCoauthors=0;
- var k=3550;
+ var k=4937;
  //var k        =60055420;
  var limitk   =60070000;
 
@@ -46,7 +46,7 @@ function getContextCallback(response) {
  //	gadgets.sciverse.makeContentApiRequest(urlCoauthor, getCoauthor, requestHeaders);
 
  //	setInterval(getTInit,150);
- //	setInterval(getNotRet,150);
+ 	setInterval(getNotRet,150);
  	gadgets.sciverse.makeContentApiRequest(url, getR, requestHeaders);
 
  	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
