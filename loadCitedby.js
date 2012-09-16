@@ -21,7 +21,7 @@ function upCitedby(){
 function downCitedby(){
   if(currentLevelCitation==-1 || currentLevelCitation==1) return false;
   currentLevelCitation--;
-  var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?start="+((currentLevelCitation-2)*25)+"&count=25&query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE");
+  var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?start="+((currentLevelCitation-1)*25)+"&count=25&query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE");
   citedbyObject=[];
   gadgets.sciverse.makeContentApiRequest(urlCitedby, getMoreCitedby, requestHeaders);
 }
