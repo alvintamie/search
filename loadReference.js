@@ -36,7 +36,7 @@ function getRef(response){
   	createDivReference();
   }
 }
-function createDivReference(temp){
+function relatedDocumentQuery(temp){
 	for(var i=0;i<temp['abstracts-retrieval-response']['references']['reference'].length;i++){
 		scopusId=temp['abstracts-retrieval-response']['references']['reference'][i]['scopus-id'];
 		if(i<numberRef){ urlRelevantDocument=urlRelevantDocument+"(2-s2.0-"+scopusId+")";}
