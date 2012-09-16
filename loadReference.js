@@ -42,6 +42,7 @@ function getRef(response){
 
 function getRelevantDocument(response){
 		console.log("related document");
+		console.log(response);
 		var temp = JSON.parse(response.data);
        		console.log(temp);
 }
