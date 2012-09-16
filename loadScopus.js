@@ -71,8 +71,9 @@ function getR(response){
 		try {console.log(buffer[i]['country']);} catch(e){console.log("null");}
 		try {console.log(buffer[i]['dc:identifier']);} catch(e) {console.log("null");}
 	}
-	justCount++;
+	
 	if(justCount==justLast-1) statusWait=1;
+	justCount++;
 }
 
 function getTInit(){
