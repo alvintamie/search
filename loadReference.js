@@ -2,6 +2,7 @@ var idToIndex= new Object();
 var readyRef=0;
 var numberRef=0;
 var currentReferenceSize=0;
+var urlRelevantDocument;
 function getRef(response){
   try{
   	console.log("ref is obtained");
@@ -12,7 +13,7 @@ function getRef(response){
 	numberRef=temp['abstracts-retrieval-response']['references']['reference'].length;
 		readyRef=1; //
 	createDivReference();
-	var urlRelevantDocument="http://api.elsevier.com/content/search/index:SCOPUS?query=REFEID(";
+	urlRelevantDocument="http://api.elsevier.com/content/search/index:SCOPUS?query=REFEID(";
 	for(var i=0;i<temp['abstracts-retrieval-response']['references']['reference'].length;i++){
 		scopusId=temp['abstracts-retrieval-response']['references']['reference'][i]['scopus-id'];
 		if(i<numberRef){ urlRelevantDocument=urlRelevantDocument+"(2-s2.0-"+scopusId+")";}
