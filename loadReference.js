@@ -16,6 +16,7 @@ function getRef(response){
 	createDivReference();
 	urlRelevantDocument="http://api.elsevier.com/content/search/index:SCOPUS?query=REFEID(";
 	for(var i=0;i<temp['abstracts-retrieval-response']['references']['reference'].length;i++){
+		scopusId=temp['abstracts-retrieval-response']['references']['reference'][i]['scopus-id'];
 		if(i<numberRef){ urlRelevantDocument=urlRelevantDocument+"(2-s2.0-"+scopusId+")";}
 		if(i<numberRef-1){ urlRelevantDocument=urlRelevantDocument+" OR ";}
 	}
