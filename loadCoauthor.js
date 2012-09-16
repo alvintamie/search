@@ -76,7 +76,7 @@ function putCoauthorsData(temp){
        		Obj.affiliationId=buffer[i]['affiliation-current']['affiliation-id'];
        		Obj.id=buffer[i]['dc:identifier'].split(":")[1];
        		Obj.documentCount=buffer[i]['document-count'];
-       		Obj.name=returnArray(buffer[i]['name-variant']);
+       		Obj.name=returnArray(buffer[i]['preferred-name']);
        		console.log(Obj);
        	//	Obj.url="http://www.scopus.com/record/display.url?eid=2-s2.0-"+tempId[1]+"&origin=resultslist&sort=plf-f&src=s";
 		coauthorsObject.push(Obj);
