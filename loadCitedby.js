@@ -46,7 +46,7 @@ function getMoreCitedby(response){
 	updateCitedBy();}
 
 function putCitedbyData(temp){
-	console.log("1");
+	console.log(temp);
 	if(!statusCitedby){
 	try	{totalCitation= temp['search-results']['opensearch:totalResults'];}
 	catch(e){ updateCitedBy(); return;}
