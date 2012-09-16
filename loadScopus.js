@@ -40,10 +40,14 @@ function getCountry(){
 	var country="Angola";
 	for(var i=0;i<1;i++){
 	var url=encodeURI( "http://api.elsevier.com/content/search/index:affiliation?query=affil("+country+")&count=180");
-	gadgets.sciverse.makeContentApiRequest(url, getR, requestHeaders);
+	gadgets.sciverse.makeContentApiRequest(url, getInitialR, requestHeaders);
 	}
 }
-
+function getInitialR(response){
+	console.log("search-test");
+	var temp = JSON.parse(parseValidator(response.text));	
+	console.log(temp);
+}
 function getR(response){
 	console.log("search-test");
 	var temp = JSON.parse(parseValidator(response.text));
