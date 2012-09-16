@@ -11,9 +11,9 @@ function upRelevantDocument(){
   if(currentLevelRelevantDocument==-1 || currentLevelRelevantDocument==totalLevelRelevantDocument) return false;
   currentLevelRelevantDocument++;
   if(currentLevelRelevantDocument==totalLevelRelevantDocument){
-     var urlTemp=encodeURI(urlRelevantDocument+"&start="+((currentLevelRelevantDocument-1)*25)+"&count="+lastLevelRelevantDocument);
+     var urlTemp=encodeURI(urlRelevantDocument+"&start="+((currentLevelRelevantDocument-1)*25)+"&count="+lastLevelRelevantDocument);}
   else 
-  {  var urlTemp=encodeURI(urlRelevantDocument+"&start="+((currentLevelRelevantDocument-1)*25)+"&count=25");
+  {  var urlTemp=encodeURI(urlRelevantDocument+"&start="+((currentLevelRelevantDocument-1)*25)+"&count=25");}
   relevantDocumentObject=[];
   readyMoreRelevantDocument=0;
   gadgets.sciverse.makeContentApiRequest(urlTemp, getMoreRelevantDocument, requestHeaders);
