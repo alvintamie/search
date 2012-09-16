@@ -62,8 +62,8 @@ function putCitedbyData(temp){
 		if( Object.prototype.toString.call( temp ['search-results']['entry']) === '[object Array]' ) {
 		       buffer= temp['search-results']['entry'][i];}
 		else{  buffer= temp['search-results']['entry'];}
-		Obj.Abstract = buffer['Abstract'];
-		Obj.title =    buffer['title'];
+		Obj.Abstract = buffer['dc:description'];
+		Obj.title =    buffer['dc:title'];
        		Obj.type =     buffer['subtypeDescription'];
        		Obj.citedbyCount = buffer['citedby-count'];
        		Obj.creator= buffer['creator'];
