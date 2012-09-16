@@ -16,9 +16,14 @@ function getRef(response){
 	createDivReference();
 	urlRelevantDocument="http://api.elsevier.com/content/search/index:SCOPUS?query=REFEID(";
 	for(var i=0;i<temp['abstracts-retrieval-response']['references']['reference'].length;i++){
-		scopusId=temp['abstracts-retrieval-response']['references']['reference'][i]['scopus-id'];
 		if(i<numberRef){ urlRelevantDocument=urlRelevantDocument+"(2-s2.0-"+scopusId+")";}
 		if(i<numberRef-1){ urlRelevantDocument=urlRelevantDocument+" OR ";}
+	}
+	urlRelevantDocument=encodeURI(urlRelevantDocument+") AND NOT EID (2-s2.0-"+context.scDocId+")&view=COMPLETE&sort=+relevance&&facets=country(count=200,sort=fd);");
+	gadgets.sciverse.makeContentApiRequest(urlRelevantDocument, getRelevantDocument, requestHeaders);
+	for(var i=0;i<temp['abstracts-retrieval-response']['references']['reference'].length;i++){
+		scopusId=temp['abstracts-retrieval-response']['references']['reference'][i]['scopus-id'];
+
 		var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+scopusId+"?view=FULL");
 		var Obj= new Object();
 		Obj.citedbyCount=temp['abstracts-retrieval-response']['references']['reference'][i]['citedby-count'];
@@ -29,8 +34,6 @@ function getRef(response){
 		idToIndex[Obj.identifier]=i;
 		gadgets.sciverse.makeContentApiRequest(urlRef, getRefAbstract, requestHeaders);
 		}
-	urlRelevantDocument=encodeURI(urlRelevantDocument+") AND NOT EID (2-s2.0-"+context.scDocId+")&view=COMPLETE&sort=+relevance&&facets=country(count=200,sort=fd);");
-	gadgets.sciverse.makeContentApiRequest(urlRelevantDocument, getRelevantDocument, requestHeaders);
 	}
   catch(e){
   	console.log("No reference Available");
