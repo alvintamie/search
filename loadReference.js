@@ -19,7 +19,6 @@ function getRef(response){
 		if(i<3){ urlRelevantDocument=urlRelevantDocument+" OR ";}
 		var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+scopusId+"?view=FULL");
 		var Obj= new Object();
-	//	Obj.title=temp['abstracts-retrieval-response']['references']['reference'][i]['sourcetitle'];
 		Obj.citedbyCount=temp['abstracts-retrieval-response']['references']['reference'][i]['citedby-count'];
 		Obj.identifier=scopusId;
 		Obj.available=0;
@@ -27,8 +26,6 @@ function getRef(response){
 		referenceObject.push(Obj);
 		idToIndex[Obj.identifier]=i;
 		gadgets.sciverse.makeContentApiRequest(urlRef, getRefAbstract, requestHeaders);
-	//	var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+scopusId+"?view=REF&startref=0");
-	//	getRefCitedby(scopusId,temp['abstracts-retrieval-response']['references']['reference'][i]['citedby-count'])
 		}
 	urlRelevantDocument=encodeURI(urlRelevantDocument+") AND NOT EID (2-s2.0-"+context.scDocId+")&sort=+relevance");
 	gadgets.sciverse.makeContentApiRequest(urlRelevantDocument, getRelevantDocument, requestHeaders);
@@ -42,8 +39,7 @@ function getRef(response){
 
 function getRelevantDocument(response){
 		console.log("related document");
-		console.log(response);
-		var temp = JSON.parse(response.data);
+		var temp = JSON.parse(parseValidator(response.data));
        		console.log(temp);
 }
 
