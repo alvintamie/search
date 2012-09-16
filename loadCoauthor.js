@@ -65,9 +65,6 @@ function putCoauthorsData(temp){
 	var buffer= returnArray(temp['search-results']['entry'])
 	for(var i=0;i<buffer.length;i++){
 		var Obj= new Object();
-	//	if( Object.prototype.toString.call( temp ['search-results']['entry']) === '[object Array]' ) {
-	//	       buffer= temp['search-results']['entry'][i];}
-//		else{  buffer= temp['search-results']['entry'];}
 		try{
 		Obj.city= buffer[i]['affiliation-current']['affiliation-city'];
        		Obj.country=buffer[i]['affiliation-current']['affiliation-country'];
@@ -78,8 +75,7 @@ function putCoauthorsData(temp){
        		Obj.documentCount=buffer[i]['document-count'];
        		Obj.name=buffer[i]['preferred-name'];
        		Obj.url="http://www.scopus.com/authid/detail.url?authorId="+Obj.id;
-       		console.log(Obj);
-       	//	Obj.url="http://www.scopus.com/record/display.url?eid=2-s2.0-"+tempId[1]+"&origin=resultslist&sort=plf-f&src=s";
+       	//	console.log(Obj);
 		coauthorsObject.push(Obj);
 		}
 	}
