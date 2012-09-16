@@ -47,6 +47,7 @@ function getInitialR(response){
 	console.log("search-test");
 	var temp = JSON.parse(parseValidator(response.text));	
 	var total=temp['search-results']['opensearch:totalResults'];
+	console.log("total = "+total);
 	for(var i=0;i<Math.ceil(total/200);i++){
 	var url=encodeURI( "http://api.elsevier.com/content/search/index:affiliation?query=affil("+country+")&start="+(200*i)+"&count=200");
 	gadgets.sciverse.makeContentApiRequest(url,getR,requestHeaders);	
