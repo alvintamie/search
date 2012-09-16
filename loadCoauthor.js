@@ -69,9 +69,8 @@ function putcoauthorsData(temp){
 	//	if( Object.prototype.toString.call( temp ['search-results']['entry']) === '[object Array]' ) {
 	//	       buffer= temp['search-results']['entry'][i];}
 //		else{  buffer= temp['search-results']['entry'];}
-		Obj.Abstract = buffer[i]['dc:description'];
-		Obj.title =    buffer[i]['dc:title'];
-			Obj.city= buffer[i]['affiliation-current']['affiliation-city'];
+
+		Obj.city= buffer[i]['affiliation-current']['affiliation-city'];
        		Obj.country=buffer[i]['affiliation-current']['affiliation-country'];
        		Obj.affiliationId=buffer[i]['affiliation-current']['affiliation-id'];
        		Obj.affiliationName=buffer[i]['affiliation-current']['affiliation-name'];
@@ -79,6 +78,7 @@ function putcoauthorsData(temp){
        		Obj.id=buffer[i]['dc:identifier'];
        		Obj.documentCount=buffer[i]['document-count'];
        		Obj.name=buffer[i]['name-variant'];
+       		console.log(Obj);
        	//	Obj.url="http://www.scopus.com/record/display.url?eid=2-s2.0-"+tempId[1]+"&origin=resultslist&sort=plf-f&src=s";
 		coauthorsObject.push(Obj);
 		}
