@@ -67,7 +67,7 @@ console.log(currentReferenceSize++ + "ref abstract");
     			b=b.replace("\"$\" :\}","    }");	}
     		
        		var temp = JSON.parse(b);
-       		console.log(temp);
+       	//	console.log(temp);
        	
        		var tempId=temp['abstracts-retrieval-response']['coredata']['dc:identifier'].split(":");
        		var index = idToIndex[tempId[1]];
