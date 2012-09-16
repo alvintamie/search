@@ -24,15 +24,16 @@ function getContextCallback(response) {
   	var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+context.scDocId+"?view=REF&startref=0");
 	var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE&facets=country(count=200,sort=fd);");
 	var urlCoauthors=encodeURI( "http://api.elsevier.com/content/search/index:author?query=affil(university)&co-author="+context.au1Id+"&count=200&facets=country(count=200,sort=fd);");
-	var url=encodeURI( "http://api.elsevier.com/content/search/index:scopus?query=all(\"apple\")&sort=coverDate&facets=country(count=200,sort=fd);subjarea(count=100,sort=fd);pubyear(count=20);authname(count=20,sort=fd);");
-	gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
- 	gadgets.sciverse.makeContentApiRequest(urlCoauthors, getCoauthors, requestHeaders);
+//	var url=encodeURI( "http://api.elsevier.com/content/search/index:scopus?query=all(\"apple\")&sort=coverDate&facets=country(count=200,sort=fd);subjarea(count=100,sort=fd);pubyear(count=20);authname(count=20,sort=fd);");
+	var url=encodeURI( "http://api.elsevier.com/content/search/index:scopus?query=all(a)&sort=coverDate&facets=country(count=250,sort=fd);");
+//	gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
+ //	gadgets.sciverse.makeContentApiRequest(urlCoauthors, getCoauthors, requestHeaders);
 
  //	setInterval(getTInit,150);
  //	setInterval(getNotRet,150);
  //	gadgets.sciverse.makeContentApiRequest(urlRelevantDocument, getR, requestHeaders);
-
- 	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
+	gadgets.sciverse.makeContentApiRequest(url, getR, requestHeaders);
+ //	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
  
 }
 
