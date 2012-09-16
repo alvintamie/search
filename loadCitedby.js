@@ -30,7 +30,7 @@ function getCitedby(response){
     	console.log("citedby initial");
     	var temp = JSON.parse(parseValidator(response.text));
 	console.log(temp);
-	putCitedbyData(response);
+	putCitedbyData(temp);
 	affiliationCitation=returnArray(temp['search-results']['facet']['category']);
 	if(totalCitation%25==0) { totalLevelCitation= Math.floor(totalCitation/25); lastLevelCitation=25;}
 	else 			{ totalLevelCitation= Math.floor(totalCitation/25)+1;lastLevelCitation=totalCitation%25;}
@@ -45,7 +45,7 @@ function getMoreCitedby(response){
     	putCitedbyData(response);
 	updateCitedBy();}
 
-function putCitedbyData(response){
+function putCitedbyData(temp){
 	if(!statusCitedby){
 	try	{totalCitation= temp['search-results']['opensearch:totalResults'];}
 	catch(e){ updateCitedBy(); return;}
