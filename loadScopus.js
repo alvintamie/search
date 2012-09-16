@@ -47,19 +47,22 @@ function getCountry(){
 	cc++;
 	gadgets.sciverse.makeContentApiRequest(url, getInitialR, requestHeaders);	
 }
+var justCount=0;
+var justLast=0;
 function getInitialR(response){
 	console.log(country);
 	var temp = JSON.parse(parseValidator(response.text));	
 	var total=temp['search-results']['opensearch:totalResults'];
 	console.log("total search = "+total);
 	if(total==0) { console.log("no result"); statusWait=1; return;}
+	justCount=0; justLast=Math.ceil(total/200);
 	for(var i=0;i<Math.ceil(total/200);i++){
 	var url=encodeURI( "http://api.elsevier.com/content/search/index:affiliation?query=affil("+country+")&start="+(200*i)+"&count=200");
-	if(i==Math.ceil(total/200)-1) gadgets.sciverse.makeContentApiRequest(url,getRLast,requestHeaders);
-	else			      gadgets.sciverse.makeContentApiRequest(url,getR,requestHeaders);
+	gadgets.sciverse.makeContentApiRequest(url,getR,requestHeaders);
 	}
 }
 function getR(response){
+	justCount++;
 //	console.log("search-test");
 	var temp = JSON.parse(parseValidator(response.text));
 	var buffer=returnArray(temp['search-results']['entry']);
@@ -69,19 +72,10 @@ function getR(response){
 		try {console.log(buffer[i]['country']);} catch(e){console.log("null");}
 		try {console.log(buffer[i]['dc:identifier']);} catch(e) {console.log("null");}
 	}
+	justCount++;
+	if(justCount==justLast-1) statusWait=1;
 }
-function getRLast(response){
-//	console.log("search-test");
-	var temp = JSON.parse(parseValidator(response.text));
-	var buffer=returnArray(temp['search-results']['entry']);
-	for(var i=0;i<buffer.length;i++){
-		try {console.log(buffer[i]['affiliation-name']);} catch(e) {console.log("null");}
-		try {console.log(buffer[i]['city']);} catch(e){console.log("null");}
-		try {console.log(buffer[i]['country']);} catch(e){console.log("null");}
-		try {console.log(buffer[i]['dc:identifier']);} catch(e) {console.log("null");}
-	}
-	statusWait=1;
-}
+
 function getTInit(){
 	if(k>limitk) return;
 	var url=encodeURI("http://api.elsevier.com/content/affiliation/affiliation_id:"+k);
