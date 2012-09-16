@@ -55,7 +55,7 @@ function putCitedbyData(temp){
 		console.log("No citedby");
 		return;}}
 	catch(e){
-	console.log("2");
+	console.log("4");
 	var buffer;
 	for(var i=0;i<temp['search-results']['entry'].length;i++){
 		console.log("3");
