@@ -27,7 +27,7 @@ function getRef(response){
 		idToIndex[Obj.identifier]=i;
 		gadgets.sciverse.makeContentApiRequest(urlRef, getRefAbstract, requestHeaders);
 		}
-	urlRelevantDocument=encodeURI(urlRelevantDocument+") AND NOT EID (2-s2.0-"+context.scDocId+")&sort=+relevance");
+	urlRelevantDocument=encodeURI(urlRelevantDocument+") AND NOT EID (2-s2.0-"+context.scDocId+")&view=COMPLETE&sort=+relevance");
 	gadgets.sciverse.makeContentApiRequest(urlRelevantDocument, getRelevantDocument, requestHeaders);
 	}
   catch(e){
