@@ -25,7 +25,6 @@ function downcoauthors(){
   if(currentLevelCoauthors==-1 || currentLevelCoauthors==1) return false;
   currentLevelCoauthors--;
   var urlCoauthor=encodeURI( "http://api.elsevier.com/content/search/index:author?start="+((currentLevelCoauthors-1)*25)+"&count=25&query=affil(university)&co-author="+context.au1Id);
-  context.scDocId+")&view=COMPLETE");
   coauthorsObject=[];
   readyMoreCoauthors=0;
   gadgets.sciverse.makeContentApiRequest(urlcoauthors, getMorecoauthors, requestHeaders);
