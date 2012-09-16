@@ -33,7 +33,7 @@ function getRef(response){
   catch(e){
   	console.log("No reference Available");
   	readyRef=2;
-  	createDivReference();
+  	updateReference();
   }
 }
 function relatedDocumentQuery(temp){
