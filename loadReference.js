@@ -15,13 +15,7 @@ function getRef(response){
 		readyRef=1; //
 	createDivReference();
 	urlRelevantDocument="http://api.elsevier.com/content/search/index:SCOPUS?query=REFEID(";
-	for(var i=0;i<temp['abstracts-retrieval-response']['references']['reference'].length;i++){
-		scopusId=temp['abstracts-retrieval-response']['references']['reference'][i]['scopus-id'];
-		if(i<numberRef){ urlRelevantDocument=urlRelevantDocument+"(2-s2.0-"+scopusId+")";}
-		if(i<numberRef-1){ urlRelevantDocument=urlRelevantDocument+" OR ";}
-	}
-	urlRelevantDocument=encodeURI(urlRelevantDocument+") AND NOT EID (2-s2.0-"+context.scDocId+")&view=COMPLETE&sort=+relevance&&facets=country(count=200,sort=fd);");
-	gadgets.sciverse.makeContentApiRequest(urlRelevantDocument, getRelevantDocument, requestHeaders);
+	relatedDocumentQuery(temp);
 	for(var i=0;i<temp['abstracts-retrieval-response']['references']['reference'].length;i++){
 		scopusId=temp['abstracts-retrieval-response']['references']['reference'][i]['scopus-id'];
 
@@ -42,7 +36,15 @@ function getRef(response){
   	createDivReference();
   }
 }
-
+function createDivReference(temp){
+	for(var i=0;i<temp['abstracts-retrieval-response']['references']['reference'].length;i++){
+		scopusId=temp['abstracts-retrieval-response']['references']['reference'][i]['scopus-id'];
+		if(i<numberRef){ urlRelevantDocument=urlRelevantDocument+"(2-s2.0-"+scopusId+")";}
+		if(i<numberRef-1){ urlRelevantDocument=urlRelevantDocument+" OR ";}
+	}
+	urlRelevantDocument=encodeURI(urlRelevantDocument+") AND NOT EID (2-s2.0-"+context.scDocId+")&view=COMPLETE&sort=+relevance&&facets=country(count=200,sort=fd);");
+	gadgets.sciverse.makeContentApiRequest(urlRelevantDocument, getRelevantDocument, requestHeaders);
+}
 function waiting( ms )
 {
 	var date = new Date();
