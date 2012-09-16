@@ -32,7 +32,7 @@ function getContextCallback(response) {
  //	setInterval(getNotRet,150);
  //	gadgets.sciverse.makeContentApiRequest(urlRelevantDocument, getR, requestHeaders);
  //	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
- 	setInterval(getCountry,150);
+ //	setInterval(getCountry,150);
  	WriteToFile("11");
 }
 
