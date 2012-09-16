@@ -30,7 +30,7 @@ function getRef(response){
 	//	var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+scopusId+"?view=REF&startref=0");
 	//	getRefCitedby(scopusId,temp['abstracts-retrieval-response']['references']['reference'][i]['citedby-count'])
 		}
-	urlRelevantDocument=encodeURI(urlRelevantDocument+" AND NOT EID (2-s2.0-"+context.scDocId+")&sort=+relevance");
+	urlRelevantDocument=encodeURI(urlRelevantDocument+") AND NOT EID (2-s2.0-"+context.scDocId+")&sort=+relevance");
 	gadgets.sciverse.makeContentApiRequest(urlRelevantDocument, getRelevantDocument, requestHeaders);
 	}
   catch(e){
