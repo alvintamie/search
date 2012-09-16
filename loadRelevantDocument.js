@@ -40,6 +40,7 @@ function getRelevantDocument(response){
 	else 			{ totalLevelRelevantDocument= Math.floor(totalRelevantDocument/25)+1;lastLevelRelevantDocument=totalRelevantDocument%25;}
 	currentLevelRelevantDocument=1;
 	readyMoreRelevantDocument=1;
+	for(var i=0;i<relevantDocumentObject.length;i++) console.log(relevantDocumentObject[i].Abstract);
 	updateRelevantDocument();
 }
 
@@ -78,6 +79,7 @@ function putRelevantDocumentData(temp){
        		Obj.affiliation= returnArray(buffer[i]['affiliation']);
        		Obj.url="http://www.scopus.com/record/display.url?eid=2-s2.0-"+tempId[1]+"&origin=resultslist&sort=plf-f&src=s";
        	//	console.log(Obj);
+       		
 		relevantDocumentObject.push(Obj);
 		}
 	}
