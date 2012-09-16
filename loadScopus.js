@@ -62,7 +62,6 @@ function getInitialR(response){
 	}
 }
 function getR(response){
-	justCount++;
 //	console.log("search-test");
 	var temp = JSON.parse(parseValidator(response.text));
 	var buffer=returnArray(temp['search-results']['entry']);
