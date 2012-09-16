@@ -68,12 +68,12 @@ function putCoauthorsData(temp){
 	//	if( Object.prototype.toString.call( temp ['search-results']['entry']) === '[object Array]' ) {
 	//	       buffer= temp['search-results']['entry'][i];}
 //		else{  buffer= temp['search-results']['entry'];}
-
+		try{
 		Obj.city= buffer[i]['affiliation-current']['affiliation-city'];
        		Obj.country=buffer[i]['affiliation-current']['affiliation-country'];
        		Obj.affiliationId=buffer[i]['affiliation-current']['affiliation-id'];
-       		Obj.affiliationName=buffer[i]['affiliation-current']['affiliation-name'];
-       		Obj.affiliationId=buffer[i]['affiliation-current']['affiliation-id'];
+       		Obj.affiliationName=buffer[i]['affiliation-current']['affiliation-name'];}
+		catch(e){};
        		Obj.id=buffer[i]['dc:identifier'].split(":")[1];
        		Obj.documentCount=buffer[i]['document-count'];
        		Obj.name=buffer[i]['preferred-name'];
