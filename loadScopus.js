@@ -35,9 +35,9 @@ function getContextCallback(response) {
  //	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
  	getCountry();
 }
-
-function getCountry(){
 	var country="Angola";
+function getCountry(){
+
 	for(var i=0;i<1;i++){
 	var url=encodeURI( "http://api.elsevier.com/content/search/index:affiliation?query=affil("+country+")");
 	gadgets.sciverse.makeContentApiRequest(url, getInitialR, requestHeaders);
