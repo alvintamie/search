@@ -42,7 +42,7 @@ function getMoreCitedby(response){
     	console.log("citedby more initial");
     	var temp = JSON.parse(parseValidator(response.text));
 	console.log(temp);
-    	putCitedbyData(response);
+    	putCitedbyData(temp);
 	updateCitedBy();}
 
 function putCitedbyData(temp){
