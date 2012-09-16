@@ -56,7 +56,8 @@ function putCitedbyData(temp){
 		return;}}
 	catch(e){
 	var buffer;
-	for(var i=0;i<returnArray(temp['search-results']['entry']).length;i++){
+	temp=returnArray(temp['search-results']['entry']);
+	for(var i=0;i<temp['search-results']['entry'].length;i++){
 		console.log("3");
 		var Obj= new Object();
 		if( Object.prototype.toString.call( temp ['search-results']['entry']) === '[object Array]' ) {
@@ -76,8 +77,6 @@ function putCitedbyData(temp){
        		Obj.affiliation= returnArray(buffer['affiliation']);
        		Obj.url="http://www.scopus.com/record/display.url?eid=2-s2.0-"+tempId[1]+"&origin=resultslist&sort=plf-f&src=s";
 		citedbyObject.push(Obj);
-		console.log("more citedby");
-		console.log(Obj);
 		}
 	}
 }
