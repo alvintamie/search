@@ -13,7 +13,7 @@ function getRef(response){
 	console.log("SizeOfRef : "+temp['abstracts-retrieval-response']['references']['reference'].length);
 	numberRef=temp['abstracts-retrieval-response']['references']['reference'].length;
 		readyRef=1; //
-	createDivReference();
+	updateReference();
 	urlRelevantDocument="http://api.elsevier.com/content/search/index:SCOPUS?query=REFEID(";
 	relatedDocumentQuery(temp);
 	for(var i=0;i<temp['abstracts-retrieval-response']['references']['reference'].length;i++){
