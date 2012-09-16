@@ -9,7 +9,7 @@ var affiliationCitation= new Array();
 function upCitedby(){ 
   if(currentLevelCitation==-1 || currentLevelCitation==totalLevelCitation) return false;
   currentLevelCitation++;
-  if(currentLevelCitation==totalLevelCitation-1){
+  if(currentLevelCitation==totalLevelCitation){
     var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?start="+((currentLevelCitation-1)*25)+"&count="+lastLevelCitation+"&query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE");}
   else 
   {var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?start="+((currentLevelCitation-1)*25)+"&count=25&query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE");}
@@ -55,14 +55,13 @@ function putCitedbyData(temp){
 		console.log("No citedby");
 		return;}}
 	catch(e){
-		var buffer;
-//	var buffer= returnArray(temp['search-results']['entry'])
-	for(var i=0;i<returnArray(temp['search-results']['entry']).length;i++){
-		console.log("3");
+	//	var buffer;
+	var buffer= returnArray(temp['search-results']['entry'])
+	for(var i=0;i<buffer.length;i++){
 		var Obj= new Object();
-		if( Object.prototype.toString.call( temp ['search-results']['entry']) === '[object Array]' ) {
-		       buffer= temp['search-results']['entry'][i];}
-		else{  buffer= temp['search-results']['entry'];}
+	//	if( Object.prototype.toString.call( temp ['search-results']['entry']) === '[object Array]' ) {
+	//	       buffer= temp['search-results']['entry'][i];}
+//		else{  buffer= temp['search-results']['entry'];}
 		Obj.Abstract = buffer['dc:description'];
 		Obj.title =    buffer['dc:title'];
        		Obj.type =     buffer['subtypeDescription'];
