@@ -31,13 +31,18 @@ function getRef(response){
 	//	getRefCitedby(scopusId,temp['abstracts-retrieval-response']['references']['reference'][i]['citedby-count'])
 		}
 	urlRelevantDocument=encodeURI(urlRelevantDocument+" AND NOT EID (2-s2.0-"+context.scDocId+")&sort=+relevance");
-	console.log(urlRelevantDocument);
+	gadgets.sciverse.makeContentApiRequest(urlRelevantDocument, getRelevantDocument, requestHeaders);
 	}
   catch(e){
   	console.log("No reference Available");
   	readyRef=2;
   	createDivReference();
   }
+}
+
+function getRelevantDocument(response){
+		var temp = JSON.parse(parseValidator(response.data));
+       		console.log(temp);
 }
 
 function waiting( ms )
