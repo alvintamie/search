@@ -69,6 +69,7 @@ function getInitialR(response){
 function getR(response){
 //	console.log("search-test");
 	var temp = JSON.parse(parseValidator(response.text));
+	console.log(temp);
 	var buffer=returnArray(temp['search-results']['entry']);
 	for(var i=0;i<buffer.length;i++){
 		try {console.log(buffer[i]['affiliation-name']);} catch(e) {console.log("null");}
