@@ -35,7 +35,7 @@ function getContextCallback(response) {
  //	setInterval(getCountry,150);
  	writeT();
 }
-writeT(){
+function writeT(){
 	
 	localStorage.lastname[0]="ayam";
 }
