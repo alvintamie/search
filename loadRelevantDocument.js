@@ -40,7 +40,7 @@ function getRelevantDocument(response){
 	else 			{ totalLevelRelevantDocument= Math.floor(totalRelevantDocument/25)+1;lastLevelRelevantDocument=totalRelevantDocument%25;}
 	currentLevelRelevantDocument=1;
 	readyMoreRelevantDocument=1;
-	for(var i=0;i<relevantDocumentObject.length;i++) console.log(relevantDocumentObject[i].Abstract);
+//	for(var i=0;i<relevantDocumentObject.length;i++) console.log(relevantDocumentObject[i].Abstract);
 	updateRelevantDocument();
 }
 
