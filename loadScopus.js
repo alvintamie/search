@@ -40,7 +40,7 @@ function getContextCallback(response) {
 	var cc=0;
 function getCountry(){
 	if(statusWait==0) return;
-	if(cc>3) return;
+	if(cc>4) return;
 	country=countryArray[cc];
 	var url=encodeURI( "http://api.elsevier.com/content/search/index:affiliation?query=affil("+country+")");
 	statusWait=0;
