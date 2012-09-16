@@ -77,6 +77,7 @@ function putCoauthorsData(temp){
        		Obj.id=buffer[i]['dc:identifier'].split(":")[1];
        		Obj.documentCount=buffer[i]['document-count'];
        		Obj.name=buffer[i]['preferred-name'];
+       		Obj.url="http://www.scopus.com/authid/detail.url?authorId="+Obj.id;
        		console.log(Obj);
        	//	Obj.url="http://www.scopus.com/record/display.url?eid=2-s2.0-"+tempId[1]+"&origin=resultslist&sort=plf-f&src=s";
 		coauthorsObject.push(Obj);
