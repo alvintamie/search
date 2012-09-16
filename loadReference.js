@@ -15,8 +15,8 @@ function getRef(response){
 	var urlRelevantDocument="http://api.elsevier.com/content/search/index:SCOPUS?query=REFEID(";
 	for(var i=0;i<temp['abstracts-retrieval-response']['references']['reference'].length;i++){
 		scopusId=temp['abstracts-retrieval-response']['references']['reference'][i]['scopus-id'];
-		if(i<4){ urlRelevantDocument=urlRelevantDocument+"(2-s2.0-"+scopusId+")";}
-		if(i<3){ urlRelevantDocument=urlRelevantDocument+" OR ";}
+		if(i<numberRef){ urlRelevantDocument=urlRelevantDocument+"(2-s2.0-"+scopusId+")";}
+		if(i<numberRef-1){ urlRelevantDocument=urlRelevantDocument+" OR ";}
 		var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+scopusId+"?view=FULL");
 		var Obj= new Object();
 		Obj.citedbyCount=temp['abstracts-retrieval-response']['references']['reference'][i]['citedby-count'];
