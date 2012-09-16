@@ -12,8 +12,11 @@ function getRef(response){
 	numberRef=temp['abstracts-retrieval-response']['references']['reference'].length;
 		readyRef=1; //
 	createDivReference();
+	var urlRelevantDocument="http://api.elsevier.com/content/search/index:SCOPUS?query=REFEID(";
 	for(var i=0;i<temp['abstracts-retrieval-response']['references']['reference'].length;i++){
 		scopusId=temp['abstracts-retrieval-response']['references']['reference'][i]['scopus-id'];
+		if(i<4){ urlRelevantDocument=urlRelevantDocument+"(2-s2.0-"+scopusId+")";}
+		if(i<3){ urlRelevantDocument=urlRelevantDocument+" OR ";}
 		var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+scopusId+"?view=FULL");
 		var Obj= new Object();
 	//	Obj.title=temp['abstracts-retrieval-response']['references']['reference'][i]['sourcetitle'];
@@ -27,6 +30,8 @@ function getRef(response){
 	//	var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+scopusId+"?view=REF&startref=0");
 	//	getRefCitedby(scopusId,temp['abstracts-retrieval-response']['references']['reference'][i]['citedby-count'])
 		}
+	urlRelevantDocument=encodeURI(urlRelevantDocument+" AND NOT EID (2-s2.0-"+context.scDocId+")&sort=+relevance");
+	console.log(urlRelevantDocument);
 	}
   catch(e){
   	console.log("No reference Available");
