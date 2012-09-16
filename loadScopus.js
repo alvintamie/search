@@ -39,7 +39,6 @@ function getContextCallback(response) {
 	var country;
 	var cc=0;
 function getCountry(){
-	console.log(statusWait);
 	if(statusWait==0) return;
 	if(cc>3) return;
 	country=countryArray[cc];
