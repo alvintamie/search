@@ -1,12 +1,12 @@
 var coauthorsObject = new Array();
-var statuscoauthors=0;
+var statusCoauthors=0;
 var totalCoauthors=-1;
 var totalLevelCoauthors=0;
 var currentLevelCoauthors=-1;
 var lastLevelCoauthors=0;
 var affiliationCoauthors= new Array();
 var readyMoreCoauthors=1;
-function upcoauthors(){ 
+function upCoauthors(){ 
   if(readyMoreCoauthors==0) return;
   if(currentLevelCoauthors==-1 || currentLevelCoauthors==totalLevelCoauthors) return false;
   currentLevelCoauthors++;
@@ -16,46 +16,46 @@ function upcoauthors(){
   {    var urlCoauthor=encodeURI( "http://api.elsevier.com/content/search/index:author?start="+((currentLevelCoauthors-1)*25)+"&count=25&query=affil(university)&co-author="+context.au1Id);} 
   coauthorsObject=[];
   readyMoreCoauthors=0;
-  gadgets.sciverse.makeContentApiRequest(urlcoauthors, getMorecoauthors, requestHeaders);
+  gadgets.sciverse.makeContentApiRequest(urlCoauthors, getMoreCoauthors, requestHeaders);
   return true;
 }
 
-function downcoauthors(){
+function downCoauthors(){
   if(readyMoreCoauthors==0) return;
   if(currentLevelCoauthors==-1 || currentLevelCoauthors==1) return false;
   currentLevelCoauthors--;
   var urlCoauthor=encodeURI( "http://api.elsevier.com/content/search/index:author?start="+((currentLevelCoauthors-1)*25)+"&count=25&query=affil(university)&co-author="+context.au1Id);
   coauthorsObject=[];
   readyMoreCoauthors=0;
-  gadgets.sciverse.makeContentApiRequest(urlcoauthors, getMorecoauthors, requestHeaders);
+  gadgets.sciverse.makeContentApiRequest(urlCoauthors, getMoreCoauthors, requestHeaders);
 }
 
-function getcoauthors(response){
+function getCoauthors(response){
     	console.log("coauthors initial");
     	var temp = JSON.parse(parseValidator(response.text));
 	console.log(temp);
-	putcoauthorsData(temp);
+	putCoauthorsData(temp);
 //	affiliationCoauthors=returnArray(temp['search-results']['facet']['category']);
 	if(totalCoauthors%25==0) { totalLevelCoauthors= Math.floor(totalCoauthors/25); lastLevelCoauthors=25;}
 	else 			{ totalLevelCoauthors= Math.floor(totalCoauthors/25)+1;lastLevelCoauthors=totalCoauthors%25;}
 	currentLevelCoauthors=1;
 	readyMoreCoauthors=1;
-	updatecoauthors();
+	updateCoauthors();
 }
 
-function getMorecoauthors(response){
+function getMoreCoauthors(response){
     	console.log("coauthors more initial");
     	var temp = JSON.parse(parseValidator(response.text));
 	console.log(temp);
-    	putcoauthorsData(temp);
+    	putCoauthorsData(temp);
     	readyMoreCoauthors=1;
-	updatecoauthors();}
+	updateCoauthors();}
 
-function putcoauthorsData(temp){
-	if(!statuscoauthors){
+function putCoauthorsData(temp){
+	if(!statusCoauthors){
 	try	{totalCoauthors= temp['search-results']['opensearch:totalResults'];}
-	catch(e){ updatecoauthors(); return;}
-		statuscoauthors=true;}
+	catch(e){ updateCoauthors(); return;}
+		statusCoauthors=true;}
 
 	try{ if(temp['service-error']['status']['statusCode']=='INVALID_INPUT'){
 		console.log("No coauthors");
