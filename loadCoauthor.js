@@ -36,7 +36,7 @@ function getCoauthors(response){
 	console.log(temp);
 	putCoauthorsData(temp);
 //	affiliationCoauthors=returnArray(temp['search-results']['facet']['category']);
-	if(totalCoauthors%25==0) { totalLevelCoauthors= Math.floor(totalCoauthors/200); lastLevelCoauthors=200;}
+	if(totalCoauthors%200==0) { totalLevelCoauthors= Math.floor(totalCoauthors/200); lastLevelCoauthors=200;}
 	else 			{ totalLevelCoauthors= Math.floor(totalCoauthors/200)+1;lastLevelCoauthors=totalCoauthors%200;}
 	currentLevelCoauthors=1;
 	readyMoreCoauthors=1;
