@@ -37,12 +37,6 @@ function getRef(response){
   }
 }
 
-function getRelevantDocument(response){
-		console.log("related document");
-		var temp = JSON.parse(parseValidator(response.data));
-       		console.log(temp);
-}
-
 function waiting( ms )
 {
 	var date = new Date();
