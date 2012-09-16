@@ -49,10 +49,10 @@ function getR(response){
 	var temp = JSON.parse(parseValidator(response.text));
 	var buffer=returnArray(temp['search-results']['entry']);
 	for(var i=0;i<buffer.length;i++){
-		try {console.log(buffer['affiliation-name']);} catch(e) {console.log("null");}
-		try {console.log(buffer['city']);} catch(e){console.log("null");}
-		try {console.log(buffer['country']);} catch(e){console.log("null");}
-		try {console.log(buffer['dc:identifier']);} catch(e) {console.log("null");}
+		try {console.log(buffer[i]['affiliation-name']);} catch(e) {console.log("null");}
+		try {console.log(buffer[i]['city']);} catch(e){console.log("null");}
+		try {console.log(buffer[i]['country']);} catch(e){console.log("null");}
+		try {console.log(buffer[i]['dc:identifier']);} catch(e) {console.log("null");}
 	}
 }
 function getTInit(){
