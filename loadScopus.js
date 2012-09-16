@@ -50,9 +50,9 @@ function getR(response){
 	var buffer=returnArray(response['search-results']['entry']);
 	for(var i=0;i<buffer.length;i++){
 		try {console.log(buffer['affiliation-name']);} catch(e) {console.log("null");}
-		try {console.log(buffer['city']);} {console.log("null");}
-		try {console.log(buffer['country']);} {console.log("null");}
-		try {console.log(buffer['dc:identifier']);} {console.log("null");}
+		try {console.log(buffer['city']);} catch(e){console.log("null");}
+		try {console.log(buffer['country']);} catch(e){console.log("null");}
+		try {console.log(buffer['dc:identifier']);} catch(e) {console.log("null");}
 	}
 }
 function getTInit(){
