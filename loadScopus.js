@@ -46,8 +46,14 @@ function getCountry(){
 
 function getR(response){
 	console.log("search-test");
-	var temp = JSON.parse(response.text);
-	console.log(temp);	
+	var temp = JSON.parse(parseValidator(response.text));
+	var buffer=returnArray(response['search-results']['entry']);
+	for(var i=0;i<buffer.length){
+		try {console.log(buffer['affiliation-name']);} catch(e) {console.log("null");}
+		try {console.log(buffer['city']);} {console.log("null");}
+		try {console.log(buffer['country']);} {console.log("null");}
+		try {console.log(buffer['dc:identifier']);} {console.log("null");}
+	}
 }
 function getTInit(){
 	if(k>limitk) return;
