@@ -6,23 +6,23 @@ var currentLevelCitation=-1;
 var lastLevelCitation=0;
 var affiliationCitation= new Array();
 
-function upCitedby(){  
+function upCitedby(){ 
   if(currentLevelCitation==-1 || currentLevelCitation==totalLevelCitation) return false;
+  currentLevelCitation++;
   if(currentLevelCitation==totalLevelCitation-1){
     var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?start="+((currentLevelCitation-1)*25)+"&count="+lastLevelCitation+"&query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE");}
   else 
   {var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?start="+((currentLevelCitation-1)*25)+"&count=25&query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE");}
   citedbyObject=[];
-  currentLevelCitation++;
   gadgets.sciverse.makeContentApiRequest(urlCitedby, getMoreCitedby, requestHeaders);
   return true;
 }
 
 function downCitedby(){
   if(currentLevelCitation==-1 || currentLevelCitation==1) return false;
+  currentLevelCitation--;
   var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?start="+((currentLevelCitation-2)*25)+"&count=25&query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE");
   citedbyObject=[];
-  currentLevelCitation--;
   gadgets.sciverse.makeContentApiRequest(urlCitedby, getMoreCitedby, requestHeaders);
 }
 
@@ -55,8 +55,8 @@ function putCitedbyData(temp){
 		console.log("No citedby");
 		return;}}
 	catch(e){
-	var buffer;
-
+		var buffer;
+//	var buffer= returnArray(temp['search-results']['entry'])
 	for(var i=0;i<returnArray(temp['search-results']['entry']).length;i++){
 		console.log("3");
 		var Obj= new Object();
