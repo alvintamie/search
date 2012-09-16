@@ -5,8 +5,9 @@ var totalLevelCitation=0;
 var currentLevelCitation=-1;
 var lastLevelCitation=0;
 var affiliationCitation= new Array();
-
+var readyMoreCitation=1;
 function upCitedby(){ 
+  if(readyMoreCitation==0) return;
   if(currentLevelCitation==-1 || currentLevelCitation==totalLevelCitation) return false;
   currentLevelCitation++;
   if(currentLevelCitation==totalLevelCitation){
@@ -14,15 +15,18 @@ function upCitedby(){
   else 
   {var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?start="+((currentLevelCitation-1)*25)+"&count=25&query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE");}
   citedbyObject=[];
+  readyMoreCitation=0;
   gadgets.sciverse.makeContentApiRequest(urlCitedby, getMoreCitedby, requestHeaders);
   return true;
 }
 
 function downCitedby(){
+  if(readyMoreCitation==0) return;
   if(currentLevelCitation==-1 || currentLevelCitation==1) return false;
   currentLevelCitation--;
   var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?start="+((currentLevelCitation-1)*25)+"&count=25&query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE");
   citedbyObject=[];
+  readyMoreCitation=0;
   gadgets.sciverse.makeContentApiRequest(urlCitedby, getMoreCitedby, requestHeaders);
 }
 
@@ -35,6 +39,7 @@ function getCitedby(response){
 	if(totalCitation%25==0) { totalLevelCitation= Math.floor(totalCitation/25); lastLevelCitation=25;}
 	else 			{ totalLevelCitation= Math.floor(totalCitation/25)+1;lastLevelCitation=totalCitation%25;}
 	currentLevelCitation=1;
+	readyMoreCitation=1;
 	updateCitedBy();
 }
 
@@ -43,6 +48,7 @@ function getMoreCitedby(response){
     	var temp = JSON.parse(parseValidator(response.text));
 	console.log(temp);
     	putCitedbyData(temp);
+    	readyMoreCitation=1;
 	updateCitedBy();}
 
 function putCitedbyData(temp){
@@ -78,6 +84,7 @@ function putCitedbyData(temp){
 		citedbyObject.push(Obj);
 		}
 	}
+	
 }
 
 function returnArray(a){
