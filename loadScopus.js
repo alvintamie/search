@@ -38,12 +38,13 @@ function getContextCallback(response) {
 	var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE&facets=country(count=200,sort=fd);");
 	var urlCoauthors=encodeURI( "http://api.elsevier.com/content/search/index:author?query=affil(university)&co-author="+context.au1Id+"&count=200&facets=country(count=200,sort=fd);");
 	var url=encodeURI( "http://api.elsevier.com/content/search/index:scopus?query=all(\"apple\")&sort=coverDate&facets=country(count=200,sort=fd);subjarea(count=100,sort=fd);pubyear(count=20);authname(count=20,sort=fd);");
+ 	var urlRelevantDocument=encodeURI("http://api.elsevier.com/content/search/index:SCOPUS?query=REFEID((2-s2.0-0015445334) OR (2-s2.0-0015576625) OR (2-s2.0-0027595234) OR (2-s2.0-0035400675) OR (2-s2.0-0033991480) OR (2-s2.0-0000076213)) AND NOT EID (2-s2.0-"+context.scDocId+")&sort=+relevance")
  	gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
  	gadgets.sciverse.makeContentApiRequest(urlCoauthors, getCoauthors, requestHeaders);
 
  //	setInterval(getTInit,150);
  //	setInterval(getNotRet,150);
- //	gadgets.sciverse.makeContentApiRequest(url, getR, requestHeaders);
+ 	gadgets.sciverse.makeContentApiRequest(urlRelevantDocument, getR, requestHeaders);
 
  //	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
  
