@@ -3,6 +3,7 @@ var readyRef=0;
 var numberRef=0;
 var currentReferenceSize=0;
 var urlRelevantDocument;
+var affiliationReference= new Array();
 function getRef(response){
   try{
   	console.log("ref is obtained");
@@ -28,7 +29,7 @@ function getRef(response){
 		idToIndex[Obj.identifier]=i;
 		gadgets.sciverse.makeContentApiRequest(urlRef, getRefAbstract, requestHeaders);
 		}
-	urlRelevantDocument=encodeURI(urlRelevantDocument+") AND NOT EID (2-s2.0-"+context.scDocId+")&view=COMPLETE&sort=+relevance");
+	urlRelevantDocument=encodeURI(urlRelevantDocument+") AND NOT EID (2-s2.0-"+context.scDocId+")&view=COMPLETE&sort=+relevance&&facets=country(count=200,sort=fd);");
 	gadgets.sciverse.makeContentApiRequest(urlRelevantDocument, getRelevantDocument, requestHeaders);
 	}
   catch(e){
