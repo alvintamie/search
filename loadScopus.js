@@ -37,7 +37,7 @@ function getContextCallback(response) {
 }
 
 function getCountry(){
-	country="Angola";
+	var country="Angola";
 	for(var i=0;i<1;i++){
 	var url=encodeURI( "http://api.elsevier.com/content/search/index:affiliation?query=("+country+")&field=dc:identifier,affiliation-name,name-variant,city,country");
 	gadgets.sciverse.makeContentApiRequest(url, getR, requestHeaders);
