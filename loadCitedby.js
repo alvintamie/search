@@ -35,7 +35,7 @@ function getCitedby(response){
     	var temp = JSON.parse(parseValidator(response.text));
 	console.log(temp);
 	putCitedbyData(temp);
-	affiliationCitation=returnArray(temp['search-results']['facet']['category']);
+//	affiliationCitation=returnArray(temp['search-results']['facet']['category']);
 	if(totalCitation%25==0) { totalLevelCitation= Math.floor(totalCitation/25); lastLevelCitation=25;}
 	else 			{ totalLevelCitation= Math.floor(totalCitation/25)+1;lastLevelCitation=totalCitation%25;}
 	currentLevelCitation=1;
@@ -65,9 +65,6 @@ function putCitedbyData(temp){
 	var buffer= returnArray(temp['search-results']['entry'])
 	for(var i=0;i<buffer.length;i++){
 		var Obj= new Object();
-	//	if( Object.prototype.toString.call( temp ['search-results']['entry']) === '[object Array]' ) {
-	//	       buffer= temp['search-results']['entry'][i];}
-//		else{  buffer= temp['search-results']['entry'];}
 		Obj.Abstract = buffer[i]['dc:description'];
 		Obj.title =    buffer[i]['dc:title'];
        		Obj.type =     buffer[i]['subtypeDescription'];
