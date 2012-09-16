@@ -58,6 +58,7 @@ function putCitedbyData(temp){
 	console.log("2");
 	var buffer;
 	for(var i=0;i<temp['search-results']['entry'].length;i++){
+		console.log("3");
 		var Obj= new Object();
 		if( Object.prototype.toString.call( temp ['search-results']['entry']) === '[object Array]' ) {
 		       buffer= temp['search-results']['entry'][i];}
