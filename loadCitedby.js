@@ -62,18 +62,18 @@ function putCitedbyData(temp){
 	//	if( Object.prototype.toString.call( temp ['search-results']['entry']) === '[object Array]' ) {
 	//	       buffer= temp['search-results']['entry'][i];}
 //		else{  buffer= temp['search-results']['entry'];}
-		Obj.Abstract = buffer['dc:description'];
-		Obj.title =    buffer['dc:title'];
-       		Obj.type =     buffer['subtypeDescription'];
-       		Obj.citedbyCount = buffer['citedby-count'];
-       		Obj.creator= buffer['creator'];
-       		Obj.publicationName = buffer['prism:publicationName'];
-       		var tempId=buffer['dc:identifier'].split(":");
+		Obj.Abstract = buffer[i]['dc:description'];
+		Obj.title =    buffer[i]['dc:title'];
+       		Obj.type =     buffer[i]['subtypeDescription'];
+       		Obj.citedbyCount = buffer[i]['citedby-count'];
+       		Obj.creator= buffer[i]['creator'];
+       		Obj.publicationName = buffer[i]['prism:publicationName'];
+       		var tempId=buffer[i]['dc:identifier'].split(":");
        		Obj.identifier= tempId[1];
-     	  	Obj.date =buffer['prism:coverDate'];
-       		Obj.volume = buffer['prim:volume'];
-       		Obj.author=returnArray(buffer['author']);     	
-       		Obj.affiliation= returnArray(buffer['affiliation']);
+     	  	Obj.date =buffer[i]['prism:coverDate'];
+       		Obj.volume = buffer[i]['prim:volume'];
+       		Obj.author=returnArray(buffer[i]['author']);     	
+       		Obj.affiliation= returnArray(buffer[i]['affiliation']);
        		Obj.url="http://www.scopus.com/record/display.url?eid=2-s2.0-"+tempId[1]+"&origin=resultslist&sort=plf-f&src=s";
 		citedbyObject.push(Obj);
 		}
