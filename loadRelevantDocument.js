@@ -11,12 +11,12 @@ function upRelevantDocument(){
   if(currentLevelRelevantDocument==-1 || currentLevelRelevantDocument==totalLevelRelevantDocument) return false;
   currentLevelRelevantDocument++;
   if(currentLevelRelevantDocument==totalLevelRelevantDocument){
-        var urlCoauthor=encodeURI( "http://api.elsevier.com/content/search/index:author?start="+((currentLevelRelevantDocument-1)*25)+"&count="+lastLevelRelevantDocument+"&query=affil(university)&co-author="+context.au1Id); }
+     var urlTemp=encodeURI(urlRelevantDocument+"&start="+((currentLevelRelevantDocument-1)*25)+"&count="+lastLevelRelevantDocument);
   else 
-  {    var urlCoauthor=encodeURI( "http://api.elsevier.com/content/search/index:author?start="+((currentLevelRelevantDocument-1)*25)+"&count=25&query=affil(university)&co-author="+context.au1Id);} 
+  {  var urlTemp=encodeURI(urlRelevantDocument+"&start="+((currentLevelRelevantDocument-1)*25)+"&count=25");
   relevantDocumentObject=[];
   readyMoreRelevantDocument=0;
-  gadgets.sciverse.makeContentApiRequest(urlRelevantDocument, getMoreRelevantDocument, requestHeaders);
+  gadgets.sciverse.makeContentApiRequest(urlTemp, getMoreRelevantDocument, requestHeaders);
   return true;
 }
 
@@ -24,10 +24,10 @@ function downRelevantDocument(){
   if(readyMoreRelevantDocument==0) return;
   if(currentLevelRelevantDocument==-1 || currentLevelRelevantDocument==1) return false;
   currentLevelRelevantDocument--;
-  var urlCoauthor=encodeURI( "http://api.elsevier.com/content/search/index:author?start="+((currentLevelRelevantDocument-1)*25)+"&count=25&query=affil(university)&co-author="+context.au1Id);
+  var urlTemp=encodeURI(urlRelevantDocument+"&start="+((currentLevelRelevantDocument-1)*25)+"&count=25");
   relevantDocumentObject=[];
   readyMoreRelevantDocument=0;
-  gadgets.sciverse.makeContentApiRequest(urlRelevantDocument, getMoreRelevantDocument, requestHeaders);
+  gadgets.sciverse.makeContentApiRequest(urlTemp, getMoreRelevantDocument, requestHeaders);
 }
 
 function getRelevantDocument(response){
@@ -61,7 +61,6 @@ function putRelevantDocumentData(temp){
 		console.log("No relevantDocument");
 		return;}}
 	catch(e){
-	//	var buffer;
 	var buffer= returnArray(temp['search-results']['entry'])
 	for(var i=0;i<buffer.length;i++){
 		var Obj= new Object();
@@ -78,8 +77,8 @@ function putRelevantDocumentData(temp){
        		Obj.author=returnArray(buffer[i]['author']);     	
        		Obj.affiliation= returnArray(buffer[i]['affiliation']);
        		Obj.url="http://www.scopus.com/record/display.url?eid=2-s2.0-"+tempId[1]+"&origin=resultslist&sort=plf-f&src=s";
-       		console.log(Obj);
-			relevantDocumentObject.push(Obj);
+       	//	console.log(Obj);
+		relevantDocumentObject.push(Obj);
 		}
 	}
 
