@@ -52,6 +52,7 @@ function getReference(response){
 			referenceObject[index].publicationName=buffer[i]['publicationName'];
 			referenceObject[index].volume=buffer[i]['volume'];
 			referenceObject[index].type=buffer[i]['subtypeDescription'];
+	}
 			/*
 			}
 		catch(e){
