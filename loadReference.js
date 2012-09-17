@@ -48,7 +48,7 @@ function getReference(response){
 }
 
 function referenceQuery(buffer){
-	urlReference="http://api.elsevier.com/content/search/index:SCOPUS?query=REFEID(";
+	urlReference="http://api.elsevier.com/content/search/index:SCOPUS?query=artnum(";
 	for(var i=0;i<1;i++){
 		scopusId=buffer[i]['scopus-id'];
 		if(i<numberRef){ urlReference=urlReference+"(2-s2.0-"+scopusId+")";}
