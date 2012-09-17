@@ -63,7 +63,7 @@ function getReference(response){
 }
 function getReferenceCity(){
 	console.log("get Reference city");
-	urlCity="http://api.elsevier.com/content/search/index:affiliation?af-id(";
+	urlCity="http://api.elsevier.com/content/search/index:affiliation?query=af-id(";
 	for(var i=0;i<referenceObject.length;i++){
 	console.log(referenceObject[i].afid);
 	if(!referenceObject[i].afid) { console.log("hai");continue;}
