@@ -18,7 +18,6 @@ function getRef(response){
 	console.log("SizeOfRef : "+buffer.length);
 	numberRef=buffer.length;
 	readyRef=1;
-	updateReference();
 	referenceObject=[];
 	for(var i=0;i<buffer.length;i++){
 		var Obj= new Object();
@@ -31,41 +30,47 @@ function getRef(response){
 	}
 	relatedDocumentQuery(buffer);
 	referenceQuery(buffer);
-	/*
-	for(var i=0;i<temp['abstracts-retrieval-response']['references']['reference'].length;i++){
-		scopusId=temp['abstracts-retrieval-response']['references']['reference'][i]['scopus-id'];
-
-		var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+scopusId+"?view=FULL");
-		var Obj= new Object();
-		Obj.citedbyCount=temp['abstracts-retrieval-response']['references']['reference'][i]['citedby-count'];
-		Obj.identifier=scopusId;
-		Obj.available=0;
-		waiting(50);
-		referenceObject.push(Obj);
-		idToIndex[Obj.identifier]=i;
-		gadgets.sciverse.makeContentApiRequest(urlRef, getRefAbstract, requestHeaders);
-		}
-		
-	}
-  catch(e){
-  	console.log("No reference Available");
-  	readyRef=2;
-  	updateReference();
-  }
-  */
 }
 
 function getReference(response){
 	console.log("ref details is obtained");
-	console.log(response);
+//	console.log(response);
 	var temp = JSON.parse(response.data);
 	console.log(temp);
 	buffer=returnArray(temp['search-results']['entry']);
 	for(var i=0;i<buffer.length;i++){
-	//	var index=buffer[i][
+		try{
+			var index=idToIndex[buffer[i]['dc:identifier'].split(':')[1]];
+			
+			referenceObject[index].afid=returnArray(buffer[i]['affiliation']['afid'])[0];
+			referenceObject[index].affilname=returnArray(buffer[i]['affiliation']['affilname'])[0];
+			referenceObject[index].authkeywords=buffer[i]['authkeywords'];
+			referenceObject[index].creator=buffer[i]['dc:creator'];
+			referenceObject[index].abstract=buffer[i]['dc:description'];
+			referenceObject[index].title=buffer[i]['dc:title'];
+			referenceObject[index].publicationName=buffer[i]['publicationName'];
+			referenceObject[index].volume=buffer[i]['volume'];
+			referenceObject[index].type=buffer[i]['subtypeDescription'];}
+		catch(e){
+			console.log("Reference details at index "+i+" is error");}
 	}
+     // updateReference();
+	getReferenceCity();
 }
-
+function getReferenceCity(){
+	console.log("get Reference city");
+	urlCity="http://api.elsevier.com/content/search/index:SCOPUS?in60029157 60016912
+//	for(var i=0;i<referenceObject.length){
+		
+//	}	
+	urlCity="http://api.elsevier.com/content/affiliation/affiliation_id:60029157 OR affiliation_id:60016912";
+		gadgets.sciverse.makeContentApiRequest(urlCity, getCity, requestHeaders);	
+}
+function getCity(){
+	console.log("get City now");
+	var temp = JSON.parse(response.data);
+	console.log(temp);
+}
 function referenceQuery(buffer){
 	urlReference="http://api.elsevier.com/content/search/index:SCOPUS?query=EID(";
 	for(var i=0;i<buffer.length;i++){
@@ -87,64 +92,5 @@ function relatedDocumentQuery(buffer){
 	urlRelevantDocument=encodeURI(urlRelevantDocument+") AND NOT EID (2-s2.0-"+context.scDocId+")&view=COMPLETE&sort=+relevance&&facets=country(count=200,sort=fd);");
 	gadgets.sciverse.makeContentApiRequest(urlRelevantDocument, getRelevantDocument, requestHeaders);
 }
-function waiting( ms )
-{
-	var date = new Date();
-	var curDate = null;
-	while (curDate - date < ms) curDate = new Date();
 
-}
 
-function getRefAbstract(response){
-
-console.log(currentReferenceSize++ + "ref abstract");
-	var Obj= new Object();	
-	if(!response.data) {
-		console.log("NULL reference, JSON is returned but NO DATA");
-		Obj.available=1;
-		return;}
-    	try{
-    		var b=String(response.data);  	                       
-    		var n;
-    		
-    		while(b.indexOf("\"$\" :\}")>0){
-    			b=b.replace("\"$\" :\}","    }");	}
-    		
-       		var temp = JSON.parse(b);
-       	//	console.log(temp);
-       	
-       		var tempId=temp['abstracts-retrieval-response']['coredata']['dc:identifier'].split(":");
-       		var index = idToIndex[tempId[1]];
-       	
-       		referenceObject[index].available=2;
-       		
-       		referenceObject[index].Abstract = temp['abstracts-retrieval-response']['coredata']['dc:description'];
-       		referenceObject[index].type = temp['abstracts-retrieval-response']['coredata']['prism:aggregation Type'];
-       		referenceObject[index].title = temp['abstracts-retrieval-response']['coredata']['dc:title'];
-       	//	Obj.citedbyCount = temp['abstracts-retrieval-response']['coredata']['citedby-count'];
-       	//	Obj.identifier= tempId[1];
-       		referenceObject[index].publicationName = temp['abstracts-retrieval-response']['coredata']['prism:publicationName'];
-     	  	referenceObject[index].date = temp['abstracts-retrieval-response']['coredata']['prism:coverDate'];
-     	  	tempId=temp['abstracts-retrieval-response']['affiliation']['@href'].split(":");
-     	  	referenceObject[index].url = "http://www.scopus.com/record/display.url?eid=2-s2.0-"+tempId[1]+"&origin=resultslist&sort=plf-f&src=s";
-       	
-       		referenceObject[index].volume = temp['abstracts-retrieval-response']['coredata']['prim:volume'];
-       		referenceObject[index].affiliation= temp['abstracts-retrieval-response']['affiliation']['affilname'];
-       		referenceObject[index].author=temp['abstracts-retrieval-response']['authors'];     
-       		referenceObject[index].affiliationId=temp['abstracts-retrieval-response']['affiliation']['@id'];
-       		insertReference(index);
-   	   }
-   
-   catch(e){
-       		console.log("JSON error");
-       		referenceObject[index].affiliationId="NO INFO";
-       		referenceObject[index].available=3;
-    	}
-	
-}
-
-function parseValidator(b){
-		while(b.indexOf("\"$\" :\}")>0){
-    			b=b.replace("\"$\" :\}","    }");	}
-    		return b;
-}
