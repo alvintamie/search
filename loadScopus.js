@@ -1,9 +1,6 @@
 var requestHeaders = {};
  var scopusId;
  var it;
- var referenceObject = new Array();
- var referenceSize;
- var currentReferenceSize;
  // var citedbyUrl = new Array();
 
  var k=4937;
