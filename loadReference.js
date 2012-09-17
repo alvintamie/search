@@ -67,7 +67,7 @@ function getReferenceCity(){
 //	for(var i=0;i<referenceObject.length){
 		
 //	}	
-	urlCity="http://api.elsevier.com/content/affiliation/affiliation_id:60029157";
+	urlCity="http://api.elsevier.com/content/affiliation/affiliation_id:{60029157,60016912}";
 	gadgets.sciverse.makeContentApiRequest(urlCity, getCity, requestHeaders);	
 }
 function getCity(response){
