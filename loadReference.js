@@ -71,7 +71,6 @@ function getReferenceCity(){
 	console.log("get Reference city");
 	urlCity="http://api.elsevier.com/content/search/index:affiliation?query=af-id(";
 	for(var i=0;i<referenceObject.length;i++){
-	console.log(referenceObject[i].affilname);
 	if(!referenceObject[i].afid) { continue;}
 	if(i<referenceObject.length) urlCity=urlCity+"("+referenceObject[i].afid+")";
 	if(i<referenceObject.length-1) urlCity=urlCity+"OR";
@@ -82,7 +81,6 @@ function getReferenceCity(){
 }
 function getCity(response){
 	console.log("get City now");
-	console.log(response);
 	var temp = JSON.parse(response.data);
 	console.log(temp);
 	var mapCity= new Object();
@@ -104,6 +102,7 @@ function getCity(response){
 		referenceObject[i].affilname=mapName[index];
 		referenceObject[i].affilurl=mapUrl[index];
 	}
+	console.log(referenceObject);
 //	updateReference();
 }
 
