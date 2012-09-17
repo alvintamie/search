@@ -49,8 +49,20 @@ function getMoreRelevantDocument(response){
     	var temp = JSON.parse(parseValidator(response.text));
 	console.log(temp);
     	putRelevantDocumentData(temp);
+    	getReferenceCity(relevantDocumentObject,getCityRelevantDocument);
     	readyMoreRelevantDocument=1;
-	updateRelevantDocument();}
+	}
+	
+	
+
+function getCityRelevantDocument(response){
+	getCityResponse(response,referenceObject,updateAllRelevantDocument);
+}
+function updateAllRelevantDocument(){
+	console.log("hellooo");
+	console.log(relenvantDocumentObject);
+	updateRelevantDocument();
+}
 
 function putRelevantDocumentData(temp){
 	if(!statusRelevantDocument){
