@@ -43,8 +43,8 @@ function getReference(response){
 	//	try{
 			var index=idToIndex[buffer[i]['dc:identifier'].split(':')[1]];
 			
-			referenceObject[index].afid=returnArray(buffer[i]['affiliation']['afid'])[0];
-			referenceObject[index].affilname=returnArray(buffer[i]['affiliation']['affilname'])[0];
+			referenceObject[index].afid=returnArray(buffer[i]['affiliation'])[0]['afid'];
+			referenceObject[index].affilname=returnArray(buffer[i]['affiliation'])[0]['affilname'];
 			referenceObject[index].authkeywords=buffer[i]['authkeywords'];
 			referenceObject[index].creator=buffer[i]['dc:creator'];
 			referenceObject[index].abstract=buffer[i]['dc:description'];
