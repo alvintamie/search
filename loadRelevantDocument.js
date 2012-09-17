@@ -42,7 +42,6 @@ function getRelevantDocument(response){
 	readyMoreRelevantDocument=1;
 //	for(var i=0;i<relevantDocumentObject.length;i++) console.log(relevantDocumentObject[i].Abstract);
 	getReferenceCity(relevantDocumentObject,getCityRelevantDocument);
-	updateRelevantDocument();
 }
 
 function getMoreRelevantDocument(response){
@@ -55,12 +54,11 @@ function getMoreRelevantDocument(response){
 	
 	
 function getCityRelevantDocument(response){
-	getCityResponse(response,referenceObject,updateAllRelevantDocument);
+	getCityResponse(response,relevantDocumentObject,updateAllRelevantDocument);
 }
 function updateAllRelevantDocument(){
 	console.log("hellooo");
 	console.log(relevantDocumentObject);
-	updateRelevantDocument();
 }
 
 function putRelevantDocumentData(temp){
