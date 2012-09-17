@@ -48,9 +48,11 @@ function getCountry(){
 	countryArray.push("United States");
 	country=countryArray[cc];
 	var url=encodeURI( "http://api.elsevier.com/content/search/index:affiliation?query=affil("+country+")&facets=affilcity(count=1000,sort=fd);");
+	var url1=encodeURI( "http://api.elsevier.com/content/search/index:affiliation?query=affil("+country+")&facets=affilcity(count=1000,sort=fdna);");
 	statusWait=0;
 	cc++;
-	gadgets.sciverse.makeContentApiRequest(url, getInitialR, requestHeaders);	
+	gadgets.sciverse.makeContentApiRequest(url, getInitialR, requestHeaders);
+	gadgets.sciverse.makeContentApiRequest(url1, getInitialR, requestHeaders);
 }
 var justCount=0;
 var justLast=0;
