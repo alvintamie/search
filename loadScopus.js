@@ -45,7 +45,7 @@ function getContextCallback(response) {
 function getCountry(){
 	if(statusWait==0) return;
 	if(cc>1) return;
-	countryArray.push("China");
+	countryArray.push("United States");
 	country=countryArray[cc];
 	var url=encodeURI( "http://api.elsevier.com/content/search/index:affiliation?query=affil("+country+")&facets=affilcity(count=1000,sort=fd);");
 	statusWait=0;
