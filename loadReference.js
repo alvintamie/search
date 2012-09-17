@@ -65,13 +65,13 @@ function getReference(response){
 		catch(e){
 			console.log("Reference details at index "+i+" is error");}
 	}
-      getReferenceCity(referenceObject,getCity);
+      getReferenceCity(referenceObject,getCityReference);
 }
 
-function getCity(response){
-	getCityResponse(response,referenceObject,updateAll);
+function getCityReference(response){
+	getCityResponse(response,referenceObject,updateAllReference);
 }
-function updateAll(){
+function updateAllReference(){
 	console.log("hello");
 }
 
