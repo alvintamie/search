@@ -97,14 +97,13 @@ function getCity(response){
 		mapName[index]=buffer[i]['affiliation-name'];
 		mapUrl[index]="www.scopus.com/affil/profile.url?afid="+index;
 	}
-	for(var i=0;i<referenceObject.length){
+	for(var i=0;i<referenceObject.length;i++){
 		var index=referenceObject[i].afid;
 		referenceObject[i].city=mapCountry[index];
 		referenceObject[i].country=mapCountry[index];
 		referenceObject[i].affilname=mapName[index];
 		referenceObject[i].affilurl=mapUrl[index];
 	}
-	c
 //	updateReference();
 }
 
