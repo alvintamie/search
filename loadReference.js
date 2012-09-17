@@ -43,7 +43,7 @@ function getRef(response){
 
 function getReference(response){
 	console.log("ref details is obtained");
-	var temp = JSON.parse(parseValidator(response.data));
+	var temp = JSON.parse(response.data);
 	console.log(temp);
 }
 
