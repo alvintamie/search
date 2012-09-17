@@ -67,6 +67,14 @@ function getReference(response){
 	}
       getReferenceCity(referenceObject,getCity);
 }
+
+function getCity(response){
+	getCityResponse(response,referenceObject,updateAll);
+}
+function updateAll(){
+	console.log("hello");
+}
+
 function getReferenceCity(Obj,getCity){
 	console.log("get Reference city");
 	//"http://api.elsevier.com/content/search/index:affiliation?query=af-id((60016912)OR(60029157))";
@@ -79,13 +87,6 @@ function getReferenceCity(Obj,getCity){
 	urlCity=encodeURI(urlCity+")&count=200");
 	gadgets.sciverse.makeContentApiRequest(urlCity, getCity, requestHeaders);	
 }
-function getCity(response){
-	getCityResponse(response,referenceObject,updateAll);
-}
-function updateAll(){
-	console.log("hello");
-}
-
 
 function getCityResponse(response,Obj,updateAll){
 	console.log("get City now");
@@ -125,5 +126,3 @@ function relatedDocumentQuery(buffer){
 	urlRelevantDocument=encodeURI(urlRelevantDocument+") AND NOT EID (2-s2.0-"+context.scDocId+")&view=COMPLETE&sort=+relevance&&facets=country(count=200,sort=fd);");
 	gadgets.sciverse.makeContentApiRequest(urlRelevantDocument, getRelevantDocument, requestHeaders);
 }
-
-
