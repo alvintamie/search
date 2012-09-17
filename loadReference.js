@@ -49,16 +49,16 @@ function getReference(response){
 }
 
 function referenceQuery(buffer){
-	urlReference="http://api.elsevier.com/content/search/index:SCOPUS?query=artnum(";
+	urlReference="http://api.elsevier.com/content/search/index:SCOPUS?query=EID(";
 	for(var i=0;i<buffer.length;i++){
 		scopusId=buffer[i]['scopus-id'];
 		if(i<numberRef){ urlReference=urlReference+"(2-s2.0-"+scopusId+")";}
 		if(i<numberRef-1){ urlReference=urlReference+" OR ";}
 	}
 	urlReference=encodeURI(urlReference+")&view=COMPLETE&facets=country(count=200,sort=fd);");
-	scopusId=buffer[0]['scopus-id'];
-	scopusId="0013129429";
-	urlReference=encodeURI("http://api.elsevier.com/content/search/index:SCOPUS?query=EID(2-s2.0-"+scopusId+")");
+//	scopusId=buffer[0]['scopus-id'];
+//	scopusId="0013129429";
+//	urlReference=encodeURI("http://api.elsevier.com/content/search/index:SCOPUS?query=EID(2-s2.0-"+scopusId+")");
 	gadgets.sciverse.makeContentApiRequest(urlReference, getReference, requestHeaders);
 }
 
