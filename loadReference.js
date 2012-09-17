@@ -63,8 +63,8 @@ function getReference(response){
 }
 function getReferenceCity(){
 	console.log("get Reference city");
-	urlCity="http://api.elsevier.com/content/search/index:SCOPUS?af-id(";
-	for(var i=0;i<5;i++){
+	urlCity="http://api.elsevier.com/content/search/index:affiliation?af-id(";
+	for(var i=0;i<referenceObject.length;i++){
 	console.log(referenceObject[i].afid);
 	if(!referenceObject[i].afid) { console.log("hai");continue;}
 	if(i<referenceObject.length) urlCity=urlCity+"("+referenceObject[i].afid+")";
@@ -73,8 +73,6 @@ function getReferenceCity(){
 //"http://api.elsevier.com/content/search/index:affiliation?query=af-id((60016912)OR(60029157))";
 //"http://api.elsevier.com/content/search/index:SCOPUS?af-id((60014171)OR(60020351)OR(60015150)OR
 	urlCity=encodeURI(urlCity+")");
-	console.log(urlCity);
-	urlCity="http://api.elsevier.com/content/search/index:SCOPUS?af-id((60014171)OR(60020351))";
 	gadgets.sciverse.makeContentApiRequest(urlCity, getCity, requestHeaders);	
 }
 function getCity(response){
