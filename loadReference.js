@@ -65,21 +65,25 @@ function getReference(response){
 		catch(e){
 			console.log("Reference details at index "+i+" is error");}
 	}
-      getReferenceCity();
+      getReferenceCity(referenceObject,getCity);
 }
-function getReferenceCity(){
+function getReferenceCity(Obj,getCity){
 	console.log("get Reference city");
+	//"http://api.elsevier.com/content/search/index:affiliation?query=af-id((60016912)OR(60029157))";
 	urlCity="http://api.elsevier.com/content/search/index:affiliation?query=af-id(";
-	for(var i=0;i<referenceObject.length;i++){
-	if(!referenceObject[i].afid) { continue;}
-	if(i<referenceObject.length) urlCity=urlCity+"("+referenceObject[i].afid+")";
-	if(i<referenceObject.length-1) urlCity=urlCity+"OR";
+	for(var i=0;i<Obj.length;i++){
+	if(!Obj[i].afid) { continue;}
+	if(i<Obj.length) urlCity=urlCity+"("+Obj[i].afid+")";
+	if(i<Obj.length-1) urlCity=urlCity+"OR";
 	}
-//"http://api.elsevier.com/content/search/index:affiliation?query=af-id((60016912)OR(60029157))";
 	urlCity=encodeURI(urlCity+")&count=200");
 	gadgets.sciverse.makeContentApiRequest(urlCity, getCity, requestHeaders);	
 }
 function getCity(response){
+	getCityResponse(referenceObject,1);
+}
+
+function getCityResponse(Obj,updateAll){
 	console.log("get City now");
 	var temp = JSON.parse(response.data);
 	console.log(temp);
@@ -95,18 +99,20 @@ function getCity(response){
 		mapName[index]=buffer[i]['affiliation-name'];
 		mapUrl[index]="www.scopus.com/affil/profile.url?afid="+index;
 	}
-	for(var i=0;i<referenceObject.length;i++){
-		var index=referenceObject[i].afid;
-		referenceObject[i].city=mapCity[index];
-		referenceObject[i].country=mapCountry[index];
-		referenceObject[i].affilname=mapName[index];
-		referenceObject[i].affilurl=mapUrl[index];
+	for(var i=0;i<Obj.length;i++){
+		var index=Obj[i].afid;
+		Obj[i].city=mapCity[index];
+		Obj[i].country=mapCountry[index];
+		Obj[i].affilname=mapName[index];
+		Obj[i].affilurl=mapUrl[index];
 	}
-	console.log(referenceObject);
+	console.log(Obj);
+	updateAll();
 //	updateReference();
 }
-
-
+function updateAll(){
+	console.log("hello");
+}
 function relatedDocumentQuery(buffer){
 	urlRelevantDocument="http://api.elsevier.com/content/search/index:SCOPUS?query=REFEID(";
 	for(var i=0;i<buffer.length;i++){
