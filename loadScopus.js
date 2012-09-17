@@ -56,8 +56,8 @@ var justCount=0;
 var justLast=0;
 function getInitialR(response){
 	console.log(country);
-	console.log(response);
-	var temp = JSON.parse(parseValidator(response.text));	
+	var temp = JSON.parse(parseValidator(response.text));
+	console.log(temp);
 	var total=temp['search-results']['opensearch:totalResults'];
 	console.log("total search = "+total);
 	if(total==0) { console.log("no result"); statusWait=1; return;}
@@ -71,7 +71,7 @@ function getInitialR(response){
 function getR(response){
 //	console.log("search-test");
 	var temp = JSON.parse(parseValidator(response.text));
-	console.log(temp);
+//	console.log(temp);
 	var buffer=returnArray(temp['search-results']['entry']);
 	for(var i=0;i<buffer.length;i++){
 		try {console.log(buffer[i]['affiliation-name']);} catch(e) {console.log("null");}
