@@ -47,7 +47,7 @@ function getReference(temp){
 	console.log(temp);
 }
 
-function referenceQuery(temp){
+function referenceQuery(buffer){
 	urlReference="http://api.elsevier.com/content/search/index:SCOPUS?query=REFEID(";
 	for(var i=0;i<buffer.length;i++){
 		scopusId=buffer[i]['scopus-id'];
@@ -58,10 +58,10 @@ function referenceQuery(temp){
 	gadgets.sciverse.makeContentApiRequest(urlReference, getReference, requestHeaders);
 }
 
-function relatedDocumentQuery(temp){
+function relatedDocumentQuery(buffer){
 	urlRelevantDocument="http://api.elsevier.com/content/search/index:SCOPUS?query=REFEID(";
-	for(var i=0;i<temp['abstracts-retrieval-response']['references']['reference'].length;i++){
-		scopusId=temp['abstracts-retrieval-response']['references']['reference'][i]['scopus-id'];
+	for(var i=0;i<buffer.length;i++){
+		scopusId=buffer[i]['scopus-id'];
 		if(i<numberRef){ urlRelevantDocument=urlRelevantDocument+"(2-s2.0-"+scopusId+")";}
 		if(i<numberRef-1){ urlRelevantDocument=urlRelevantDocument+" OR ";}
 	}
