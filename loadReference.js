@@ -52,7 +52,7 @@ function referenceQuery(buffer){
 	for(var i=0;i<buffer.length;i++){
 		scopusId=buffer[i]['scopus-id'];
 		if(i<numberRef){ urlRelevantDocument=urlRelevantDocument+"(2-s2.0-"+scopusId+")";}
-		if(i<numberRef-1){ urlRelevantDocument=urlRelevantDocument+" OR ";}
+		if(i<numberRef-1){ urlRelevantDocument=urlRelevantDocument+" AND ";}
 	}
 	urlReference=encodeURI(urlRelevantDocument+")&view=COMPLETE&facets=country(count=200,sort=fd);");
 	gadgets.sciverse.makeContentApiRequest(urlReference, getReference, requestHeaders);
