@@ -9,13 +9,15 @@ function getRef(response){
   	console.log("ref is obtained");
 	var temp = JSON.parse(response.data);
 	console.log(temp);
-	referenceSize=temp['abstracts-retrieval-response']['references']['reference'].length
-	console.log("SizeOfRef : "+temp['abstracts-retrieval-response']['references']['reference'].length);
-	numberRef=temp['abstracts-retrieval-response']['references']['reference'].length;
-		readyRef=1; //
+	var buffer=temp['abstracts-retrieval-response']['references']['reference'];
+	referenceSize=buffer.length;
+	console.log("SizeOfRef : "+buffer.length);
+	numberRef=buffer.length;
+	readyRef=1;
 	updateReference();
-	urlRelevantDocument="http://api.elsevier.com/content/search/index:SCOPUS?query=REFEID(";
-	relatedDocumentQuery(temp);
+	relatedDocumentQuery(buffer);
+	referenceQuery(buffer);
+	/*
 	for(var i=0;i<temp['abstracts-retrieval-response']['references']['reference'].length;i++){
 		scopusId=temp['abstracts-retrieval-response']['references']['reference'][i]['scopus-id'];
 
@@ -29,6 +31,7 @@ function getRef(response){
 		idToIndex[Obj.identifier]=i;
 		gadgets.sciverse.makeContentApiRequest(urlRef, getRefAbstract, requestHeaders);
 		}
+		*/
 	}
   catch(e){
   	console.log("No reference Available");
@@ -36,7 +39,26 @@ function getRef(response){
   	updateReference();
   }
 }
+
+function getReference(temp){
+	console.log("ref details is obtained");
+	var temp = JSON.parse(parseValidator(response.data));
+	console.log(temp);
+}
+
+function referenceQuery(temp){
+	urlReference="http://api.elsevier.com/content/search/index:SCOPUS?query=REFEID(";
+	for(var i=0;i<buffer.length;i++){
+		scopusId=buffer[i]['scopus-id'];
+		if(i<numberRef){ urlRelevantDocument=urlRelevantDocument+"(2-s2.0-"+scopusId+")";}
+		if(i<numberRef-1){ urlRelevantDocument=urlRelevantDocument+" OR ";}
+	}
+	urlReference=encodeURI(urlRelevantDocument+")&view=COMPLETE&facets=country(count=200,sort=fd);");
+	gadgets.sciverse.makeContentApiRequest(urlReference, getReference, requestHeaders);
+}
+
 function relatedDocumentQuery(temp){
+	urlRelevantDocument="http://api.elsevier.com/content/search/index:SCOPUS?query=REFEID(";
 	for(var i=0;i<temp['abstracts-retrieval-response']['references']['reference'].length;i++){
 		scopusId=temp['abstracts-retrieval-response']['references']['reference'][i]['scopus-id'];
 		if(i<numberRef){ urlRelevantDocument=urlRelevantDocument+"(2-s2.0-"+scopusId+")";}
