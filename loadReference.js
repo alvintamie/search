@@ -45,6 +45,7 @@ function getReference(response){
 			var tempAffil= returnArray(buffer[i]['affiliation']);
 			referenceObject[index].afid=tempAffil[0]['afid'];
 			referenceObject[index].affilname=tempAffil[0]['affilname'];
+			console.log(referenceObject[index].affilname);
 			referenceObject[index].authkeywords=buffer[i]['authkeywords'];
 			referenceObject[index].creator=buffer[i]['dc:creator'];
 			referenceObject[index].abstract=buffer[i]['dc:description'];
@@ -65,7 +66,7 @@ function getReferenceCity(){
 	console.log("get Reference city");
 	urlCity="http://api.elsevier.com/content/search/index:affiliation?query=af-id(";
 	for(var i=0;i<referenceObject.length;i++){
-	console.log(referenceObject[i].afid);
+	console.log(referenceObject[i].affilname);
 	if(!referenceObject[i].afid) { console.log("hai");continue;}
 	if(i<referenceObject.length) urlCity=urlCity+"("+referenceObject[i].afid+")";
 	if(i<referenceObject.length-1) urlCity=urlCity+"OR";
