@@ -7,7 +7,7 @@ var affiliationReference= new Array();
 function getRef(response){
 //  try{
   	console.log("ref is obtained");
-	var temp = JSON.parse(response.data);
+	var temp = JSON.parse(parseValidator(response.data));
 	console.log(temp);
 	var buffer=temp['abstracts-retrieval-response']['references']['reference'];
 	referenceSize=buffer.length;
