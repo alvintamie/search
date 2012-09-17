@@ -43,6 +43,7 @@ function getRef(response){
 
 function getReference(response){
 	console.log("ref details is obtained");
+	console.log(response);
 	var temp = JSON.parse(response.data);
 	console.log(temp);
 }
