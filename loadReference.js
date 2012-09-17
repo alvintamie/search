@@ -80,10 +80,10 @@ function getReferenceCity(Obj,getCity){
 	gadgets.sciverse.makeContentApiRequest(urlCity, getCity, requestHeaders);	
 }
 function getCity(response){
-	getCityResponse(referenceObject,1);
+	getCityResponse(response,referenceObject,1);
 }
 
-function getCityResponse(Obj,updateAll){
+function getCityResponse(response,Obj,updateAll){
 	console.log("get City now");
 	var temp = JSON.parse(response.data);
 	console.log(temp);
