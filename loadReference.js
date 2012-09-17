@@ -9,7 +9,6 @@ var referenceSize;
 var currentReferenceSize;
 var searchElement= new Array("All","Affiliation","City","Country","Organization","Abstract","Author Name","Author First Name","Author Last Name","First Author","Keywords","Reference","Source Title","Article Title","Subject Area");
 function getRef(response){
-//  try{
   	console.log("ref is obtained");
 	var temp = JSON.parse(response.data);
 	console.log(temp);
@@ -105,7 +104,7 @@ function getCity(response){
 		referenceObject[i].affilname=mapName[index];
 		referenceObject[i].affilurl=mapUrl[index];
 	}
-	updateReference();
+//	updateReference();
 }
 
 
