@@ -41,6 +41,7 @@ function getRelevantDocument(response){
 	currentLevelRelevantDocument=1;
 	readyMoreRelevantDocument=1;
 //	for(var i=0;i<relevantDocumentObject.length;i++) console.log(relevantDocumentObject[i].Abstract);
+	getReferenceCity(relevantDocumentObject,getCityRelevantDocument);
 	updateRelevantDocument();
 }
 
@@ -49,12 +50,10 @@ function getMoreRelevantDocument(response){
     	var temp = JSON.parse(parseValidator(response.text));
 	console.log(temp);
     	putRelevantDocumentData(temp);
-    	getReferenceCity(relevantDocumentObject,getCityRelevantDocument);
     	readyMoreRelevantDocument=1;
 	}
 	
 	
-
 function getCityRelevantDocument(response){
 	getCityResponse(response,referenceObject,updateAllRelevantDocument);
 }
