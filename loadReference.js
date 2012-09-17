@@ -104,6 +104,7 @@ function getCity(response){
 		referenceObject[i].affilname=mapName[index];
 		referenceObject[i].affilurl=mapUrl[index];
 	}
+	c
 //	updateReference();
 }
 
