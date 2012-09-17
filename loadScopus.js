@@ -50,7 +50,7 @@ function getCountry(){
 	var url=encodeURI( "http://api.elsevier.com/content/search/index:affiliation?query=affil("+country+")&facets=affilcity(count=100,sort=fd);");
 	statusWait=0;
 	cc++;
-//	gadgets.sciverse.makeContentApiRequest(url, getInitialR, requestHeaders);	
+	gadgets.sciverse.makeContentApiRequest(url, getInitialR, requestHeaders);	
 }
 var justCount=0;
 var justLast=0;
@@ -65,7 +65,7 @@ function getInitialR(response){
 	for(var i=0;i<Math.ceil(total/200);i++){
 		waiting(200);
 	var url=encodeURI( "http://api.elsevier.com/content/search/index:affiliation?query=affil("+country+")&start="+(200*i)+"&count=200");
-	gadgets.sciverse.makeContentApiRequest(url,getR,requestHeaders);
+//	gadgets.sciverse.makeContentApiRequest(url,getR,requestHeaders);
 	}
 }
 function getR(response){
