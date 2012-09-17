@@ -74,7 +74,7 @@ function getReferenceCity(){
 //"http://api.elsevier.com/content/search/index:SCOPUS?af-id((60014171)OR(60020351)OR(60015150)OR
 	urlCity=encodeURI(urlCity+")");
 	console.log(urlCity);
-	urlCity="http://api.elsevier.com/content/search/index:SCOPUS?af-id((60014171)OR(60020351)OR(60015150));
+	urlCity="http://api.elsevier.com/content/search/index:SCOPUS?af-id((60014171)OR(60020351)OR(60015150))";
 	gadgets.sciverse.makeContentApiRequest(urlCity, getCity, requestHeaders);	
 }
 function getCity(response){
