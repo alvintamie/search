@@ -59,7 +59,7 @@ function getReference(response){
 }
 function getReferenceCity(){
 	console.log("get Reference city");
-	urlCity="http://api.elsevier.com/content/search/index:SCOPUS?in60029157 60016912
+//	urlCity="http://api.elsevier.com/content/search/index:SCOPUS?in60029157 60016912
 //	for(var i=0;i<referenceObject.length){
 		
 //	}	
