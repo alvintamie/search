@@ -82,6 +82,10 @@ function getReferenceCity(Obj,getCity){
 function getCity(response){
 	getCityResponse(response,referenceObject,updateAll);
 }
+function updateAll(){
+	console.log("hello");
+}
+
 
 function getCityResponse(response,Obj,updateAll){
 	console.log("get City now");
@@ -110,9 +114,7 @@ function getCityResponse(response,Obj,updateAll){
 	updateAll();
 //	updateReference();
 }
-function updateAll(){
-	console.log("hello");
-}
+
 function relatedDocumentQuery(buffer){
 	urlRelevantDocument="http://api.elsevier.com/content/search/index:SCOPUS?query=REFEID(";
 	for(var i=0;i<buffer.length;i++){
