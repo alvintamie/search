@@ -42,7 +42,7 @@ function getReference(response){
 	for(var i=0;i<buffer.length;i++){
 	//	try{
 			var index=idToIndex[buffer[i]['dc:identifier'].split(':')[1]];
-				console.log(returnArray(buffer[i]['affiliation']);
+				console.log(returnArray(buffer[i]['affiliation']));
 			referenceObject[index].afid=returnArray(buffer[i]['affiliation'])[0]['afid'];
 		
 			referenceObject[index].affilname=returnArray(buffer[i]['affiliation'])[0]['affilname'];
