@@ -45,7 +45,7 @@ function getReference(response){
 			console.log(returnArray(buffer[i]['affiliation']));
 			var tempAffil= returnArray(buffer[i]['affiliation']);
 			referenceObject[index].afid=tempAffil[0]['afid'];
-			referenceObject[index].affilname=returnArray(buffer[i]['affiliation'])[0]['affilname'];
+			referenceObject[index].affilname=tempAffil[0]['affilname'];
 			referenceObject[index].authkeywords=buffer[i]['authkeywords'];
 			referenceObject[index].creator=buffer[i]['dc:creator'];
 			referenceObject[index].abstract=buffer[i]['dc:description'];
@@ -60,7 +60,7 @@ function getReference(response){
 	}
 	
      // updateReference();
-     // getReferenceCity();
+      getReferenceCity();
 }
 function getReferenceCity(){
 	console.log("get Reference city");
