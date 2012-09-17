@@ -35,7 +35,7 @@ function getCitedby(response){
     	var temp = JSON.parse(parseValidator(response.text));
 	console.log(temp);
 	putCitedbyData(temp);
-	affiliationCitation=returnArray(temp['search-results']['facet']['category']);
+	//affiliationCitation=returnArray(temp['search-results']['facet']['category']);
 	//console.log(affiliationCitation);
 	if(totalCitation%25==0) { totalLevelCitation= Math.floor(totalCitation/25); lastLevelCitation=25;}
 	else 			{ totalLevelCitation= Math.floor(totalCitation/25)+1;lastLevelCitation=totalCitation%25;}
