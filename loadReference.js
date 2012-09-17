@@ -69,10 +69,11 @@ function getReferenceCity(){
 		
 //	}	
 	urlCity="http://api.elsevier.com/content/affiliation/affiliation_id:60029157 OR affiliation_id:60016912";
-		gadgets.sciverse.makeContentApiRequest(urlCity, getCity, requestHeaders);	
+	gadgets.sciverse.makeContentApiRequest(urlCity, getCity, requestHeaders);	
 }
 function getCity(response){
 	console.log("get City now");
+	console.log(response);
 	var temp = JSON.parse(response.data);
 	console.log(temp);
 }
