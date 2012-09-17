@@ -32,10 +32,19 @@ function getRef(response){
 	referenceQuery(buffer);
 }
 
+function referenceQuery(buffer){
+	urlReference="http://api.elsevier.com/content/search/index:SCOPUS?query=EID(";
+	for(var i=0;i<buffer.length;i++){
+		scopusId=buffer[i]['scopus-id'];
+		if(i<numberRef){ urlReference=urlReference+"(2-s2.0-"+scopusId+")";}
+		if(i<numberRef-1){ urlReference=urlReference+" OR ";}
+	}
+	urlReference=encodeURI(urlReference+")&view=COMPLETE&facets=country(count=200,sort=fd);");
+	gadgets.sciverse.makeContentApiRequest(urlReference, getReference, requestHeaders);
+}
+
 function getReference(response){
 	console.log("ref details is obtained");
-//	console.log(response);
-	console.log(response);
 	var temp = JSON.parse(response.data);
 	console.log(temp);
 	buffer=returnArray(temp['search-results']['entry']);
@@ -52,14 +61,11 @@ function getReference(response){
 			referenceObject[index].title=buffer[i]['dc:title'];
 			referenceObject[index].publicationName=buffer[i]['publicationName'];
 			referenceObject[index].volume=buffer[i]['volume'];
-			referenceObject[index].type=buffer[i]['subtypeDescription'];
-			
+			referenceObject[index].type=buffer[i]['subtypeDescription'];	
 		}
 		catch(e){
 			console.log("Reference details at index "+i+" is error");}
 	}
-	
-     // updateReference();
       getReferenceCity();
 }
 function getReferenceCity(){
@@ -67,14 +73,12 @@ function getReferenceCity(){
 	urlCity="http://api.elsevier.com/content/search/index:affiliation?query=af-id(";
 	for(var i=0;i<referenceObject.length;i++){
 	console.log(referenceObject[i].affilname);
-	if(!referenceObject[i].afid) { console.log("hai");continue;}
+	if(!referenceObject[i].afid) { continue;}
 	if(i<referenceObject.length) urlCity=urlCity+"("+referenceObject[i].afid+")";
 	if(i<referenceObject.length-1) urlCity=urlCity+"OR";
 	}
 //"http://api.elsevier.com/content/search/index:affiliation?query=af-id((60016912)OR(60029157))";
-//"http://api.elsevier.com/content/search/index:SCOPUS?af-id((60014171)OR(60020351)OR(60015150)OR
-	urlCity=encodeURI(urlCity+")");
-	console.log(urlCity);
+	urlCity=encodeURI(urlCity+")&count=200");
 	gadgets.sciverse.makeContentApiRequest(urlCity, getCity, requestHeaders);	
 }
 function getCity(response){
@@ -82,17 +86,28 @@ function getCity(response){
 	console.log(response);
 	var temp = JSON.parse(response.data);
 	console.log(temp);
-}
-function referenceQuery(buffer){
-	urlReference="http://api.elsevier.com/content/search/index:SCOPUS?query=EID(";
+	var mapCity= new Object();
+	var mapCountry= new Object();
+	var mapName= new Object();
+	var mapUrl= new Object();
+	var buffer= temp['search-results']['entry'];
 	for(var i=0;i<buffer.length;i++){
-		scopusId=buffer[i]['scopus-id'];
-		if(i<numberRef){ urlReference=urlReference+"(2-s2.0-"+scopusId+")";}
-		if(i<numberRef-1){ urlReference=urlReference+" OR ";}
+		var index=buffer[i]['dc:identifier'].split(':')[1];
+		mapCity[index]=buffer[i]['city'];
+		mapCountry[index]=buffer[i]['country'];
+		mapName[index]=buffer[i]['affiliation-name'];
+		mapUrl[index]="www.scopus.com/affil/profile.url?afid="+index;
 	}
-	urlReference=encodeURI(urlReference+")&view=COMPLETE&facets=country(count=200,sort=fd);");
-	gadgets.sciverse.makeContentApiRequest(urlReference, getReference, requestHeaders);
+	for(var i=0;i<referenceObject.length){
+		var index=referenceObject[i].afid;
+		referenceObject[i].city=mapCountry[index];
+		referenceObject[i].country=mapCountry[index];
+		referenceObject[i].affilname=mapName[index];
+		referenceObject[i].affilurl=mapUrl[index];
+	}
+	updateReference();
 }
+
 
 function relatedDocumentQuery(buffer){
 	urlRelevantDocument="http://api.elsevier.com/content/search/index:SCOPUS?query=REFEID(";
