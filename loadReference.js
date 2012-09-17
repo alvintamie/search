@@ -5,7 +5,7 @@ var currentReferenceSize=0;
 var urlRelevantDocument;
 var affiliationReference= new Array();
 function getRef(response){
-  try{
+//  try{
   	console.log("ref is obtained");
 	var temp = JSON.parse(response.data);
 	console.log(temp);
@@ -31,13 +31,14 @@ function getRef(response){
 		idToIndex[Obj.identifier]=i;
 		gadgets.sciverse.makeContentApiRequest(urlRef, getRefAbstract, requestHeaders);
 		}
-		*/
+		
 	}
   catch(e){
   	console.log("No reference Available");
   	readyRef=2;
   	updateReference();
   }
+  */
 }
 
 function getReference(temp){
