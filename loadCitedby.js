@@ -41,7 +41,7 @@ function getCitedby(response){
 	else 			{ totalLevelCitation= Math.floor(totalCitation/25)+1;lastLevelCitation=totalCitation%25;}
 	currentLevelCitation=1;
 	readyMoreCitation=1;
-	updateCitedBy();
+	getReferenceCity(citedbyObject,getCityCitedby);
 }
 
 function getMoreCitedby(response){
@@ -50,7 +50,19 @@ function getMoreCitedby(response){
 	console.log(temp);
     	putCitedbyData(temp);
     	readyMoreCitation=1;
-	updateCitedBy();}
+	getReferenceCity(citedbyObject,getCityCitedby);}
+	
+
+
+function getCityCitedby(response){
+	getCityResponse(response,citedbyObject,updateAllCitedby(););
+}
+function updateAllCitedby(){
+	console.log("hellooo");
+	console.log(citedbyObject);
+	updateCitedBy();; //update david
+}
+
 
 function putCitedbyData(temp){
 	if(!statusCitedby){
