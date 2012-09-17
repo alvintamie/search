@@ -59,7 +59,7 @@ function getCityRelevantDocument(response){
 }
 function updateAllRelevantDocument(){
 	console.log("hellooo");
-	console.log(relenvantDocumentObject);
+	console.log(relevantDocumentObject);
 	updateRelevantDocument();
 }
 
