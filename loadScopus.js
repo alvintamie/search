@@ -56,6 +56,7 @@ var justCount=0;
 var justLast=0;
 function getInitialR(response){
 	console.log(country);
+	console.log(response);
 	var temp = JSON.parse(parseValidator(response.text));	
 	var total=temp['search-results']['opensearch:totalResults'];
 	console.log("total search = "+total);
