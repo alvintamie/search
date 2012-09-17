@@ -31,8 +31,8 @@ function downRelevantDocument(){
 }
 
 function getRelevantDocument(response){
-      console.log("relevantDocument initial");
-      var temp = JSON.parse(parseValidator(response.text));
+      	console.log("relevantDocument initial");
+      	var temp = JSON.parse(parseValidator(response.text));
 	console.log(temp);
 	putRelevantDocumentData(temp);
 	affiliationRelevantDocument=returnArray(temp['search-results']['facet']['category']);
@@ -40,8 +40,7 @@ function getRelevantDocument(response){
 	else 			{ totalLevelRelevantDocument= Math.floor(totalRelevantDocument/25)+1;lastLevelRelevantDocument=totalRelevantDocument%25;}
 	currentLevelRelevantDocument=1;
 	readyMoreRelevantDocument=1;
-//	for(var i=0;i<relevantDocumentObject.length;i++) console.log(relevantDocumentObject[i].Abstract);
-	getReferenceCity(relevantDocumentObject,getCityRelevantDocument);
+	getReferenceCity(relevantDocumentObject,getCityRelevantDocument); 
 }
 
 function getMoreRelevantDocument(response){
@@ -50,6 +49,7 @@ function getMoreRelevantDocument(response){
 	console.log(temp);
     	putRelevantDocumentData(temp);
     	readyMoreRelevantDocument=1;
+    	getReferenceCity(relevantDocumentObject,getCityRelevantDocument);
 	}
 	
 	
@@ -59,6 +59,7 @@ function getCityRelevantDocument(response){
 function updateAllRelevantDocument(){
 	console.log("hellooo");
 	console.log(relevantDocumentObject);
+	updateRelevantDocument(); //update david
 }
 
 function putRelevantDocumentData(temp){
