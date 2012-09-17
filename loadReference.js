@@ -57,7 +57,8 @@ function referenceQuery(buffer){
 	}
 	urlReference=encodeURI(urlReference+")&view=COMPLETE&facets=country(count=200,sort=fd);");
 	scopusId=buffer[0]['scopus-id'];
-	urlReference=encodeURI("http://api.elsevier.com/content/search/index:SCOPUS?query=EID(2-s2.0-"+context.scDocId+")");
+	scopusId="0004200460";
+	urlReference=encodeURI("http://api.elsevier.com/content/search/index:SCOPUS?query=EID(2-s2.0-"+scopusId+")");
 	gadgets.sciverse.makeContentApiRequest(urlReference, getReference, requestHeaders);
 }
 
