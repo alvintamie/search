@@ -80,7 +80,7 @@ function putRelevantDocumentData(temp){
 		Obj.title =    buffer[i]['dc:title'];
        		Obj.type =     buffer[i]['subtypeDescription'];
        		Obj.citedbyCount = buffer[i]['citedby-count'];
-       		Obj.creator= buffer[i]['creator'];
+       		Obj.creator= buffer[i]['dc:creator'];
        		Obj.publicationName = buffer[i]['prism:publicationName'];
        		var tempId=buffer[i]['dc:identifier'].split(":");
        		Obj.identifier= tempId[1];
