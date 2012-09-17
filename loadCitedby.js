@@ -55,7 +55,7 @@ function getMoreCitedby(response){
 
 
 function getCityCitedby(response){
-	getCityResponse(response,citedbyObject,updateAllCitedby(););
+	getCityResponse(response,citedbyObject,updateAllCitedby);
 }
 function updateAllCitedby(){
 	console.log("hellooo");
