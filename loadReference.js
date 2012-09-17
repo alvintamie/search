@@ -4,6 +4,7 @@ var numberRef=0;
 var currentReferenceSize=0;
 var urlRelevantDocument;
 var affiliationReference= new Array();
+var searchElement= new Array("All","Affiliation","City","Country","Organization","Abstract","Author Name","Author First Name","Author Last Name","First Author","Keywords","Reference","Source Title","Article Title","Subject Area");
 function getRef(response){
 //  try{
   	console.log("ref is obtained");
