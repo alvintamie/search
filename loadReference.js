@@ -91,7 +91,7 @@ function getReferenceCity(Obj,getCity){
 function getCityResponse(response,Obj,updateAll){
 	console.log("get City now");
 	var temp = JSON.parse(response.data);
-	console.log(temp);
+//	console.log(temp);
 	var mapCity= new Object();
 	var mapCountry= new Object();
 	var mapName= new Object();
@@ -111,7 +111,7 @@ function getCityResponse(response,Obj,updateAll){
 		Obj[i].affilname=mapName[index];
 		Obj[i].affilurl=mapUrl[index];
 	}
-	console.log(Obj);
+//	console.log(Obj);
 	updateAll();
 //	updateReference();
 }
