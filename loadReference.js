@@ -97,7 +97,7 @@ function getCity(response){
 	}
 	for(var i=0;i<referenceObject.length;i++){
 		var index=referenceObject[i].afid;
-		referenceObject[i].city=mapCountry[index];
+		referenceObject[i].city=mapCity[index];
 		referenceObject[i].country=mapCountry[index];
 		referenceObject[i].affilname=mapName[index];
 		referenceObject[i].affilurl=mapUrl[index];
