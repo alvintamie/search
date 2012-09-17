@@ -40,7 +40,7 @@ function getReference(response){
 	console.log(temp);
 	buffer=returnArray(temp['search-results']['entry']);
 	for(var i=0;i<buffer.length;i++){
-		try{
+	//	try{
 			var index=idToIndex[buffer[i]['dc:identifier'].split(':')[1]];
 			
 			referenceObject[index].afid=returnArray(buffer[i]['affiliation']['afid'])[0];
@@ -51,12 +51,15 @@ function getReference(response){
 			referenceObject[index].title=buffer[i]['dc:title'];
 			referenceObject[index].publicationName=buffer[i]['publicationName'];
 			referenceObject[index].volume=buffer[i]['volume'];
-			referenceObject[index].type=buffer[i]['subtypeDescription'];}
+			referenceObject[index].type=buffer[i]['subtypeDescription'];
+			/*
+			}
 		catch(e){
 			console.log("Reference details at index "+i+" is error");}
 	}
+	*/
      // updateReference();
-	getReferenceCity();
+     // getReferenceCity();
 }
 function getReferenceCity(){
 	console.log("get Reference city");
