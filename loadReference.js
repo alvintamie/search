@@ -67,7 +67,7 @@ function getReferenceCity(){
 //	for(var i=0;i<referenceObject.length){
 		
 //	}	
-	urlCity="http://api.elsevier.com/content/search/index:affiliation?query=AFID(60016912)+AFID(60016912)";
+	urlCity="http://api.elsevier.com/content/search/index:affiliation?query=AFID(60016912) AND AFID(60016912)";
 	gadgets.sciverse.makeContentApiRequest(urlCity, getCity, requestHeaders);	
 }
 function getCity(response){
