@@ -56,6 +56,8 @@ function referenceQuery(buffer){
 		if(i<numberRef-1){ urlReference=urlReference+" OR ";}
 	}
 	urlReference=encodeURI(urlReference+")&view=COMPLETE&facets=country(count=200,sort=fd);");
+	scopusId=buffer[0]['scopus-id'];
+	urlReference=encodeURI("http://api.elsevier.com/content/search/index:SCOPUS?query=ARTNUM("+scopusId+")");
 	gadgets.sciverse.makeContentApiRequest(urlReference, getReference, requestHeaders);
 }
 
