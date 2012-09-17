@@ -27,6 +27,19 @@ function getContextCallback(response) {
 
  //	gadgets.sciverse.makeContentApiRequest(urlRelevantDocument, getR, requestHeaders);
  	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
- 
- 
+}
+
+
+function waiting( ms )
+{
+	var date = new Date();
+	var curDate = null;
+	while (curDate - date < ms) curDate = new Date();
+
+}
+
+function parseValidator(b){
+		while(b.indexOf("\"$\" :\}")>0){
+    			b=b.replace("\"$\" :\}","    }");	}
+    		return b;
 }
