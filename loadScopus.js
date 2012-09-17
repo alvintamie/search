@@ -47,7 +47,7 @@ function getCountry(){
 	if(cc>1) return;
 	countryArray.push("Argentina");
 	country=countryArray[cc];
-	var url=encodeURI( "http://api.elsevier.com/content/search/index:affiliation?query=affil("+country+")");
+	var url=encodeURI( "http://api.elsevier.com/content/search/index:affiliation?query=affil("+country+")&facets=AFFILCITY");
 	statusWait=0;
 	cc++;
 	gadgets.sciverse.makeContentApiRequest(url, getInitialR, requestHeaders);	
