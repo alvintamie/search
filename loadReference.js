@@ -69,6 +69,7 @@ function getReferenceCity(){
 	if(i<referenceObject.length-1) urlCity=urlCity+"OR";
 	}
 //"http://api.elsevier.com/content/search/index:affiliation?query=af-id((60016912)OR(60029157))";
+	urlCity=encodeURI(urlCity+")");
 	gadgets.sciverse.makeContentApiRequest(urlCity, getCity, requestHeaders);	
 }
 function getCity(response){
