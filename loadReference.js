@@ -63,11 +63,12 @@ function getReference(response){
 }
 function getReferenceCity(){
 	console.log("get Reference city");
-//	urlCity="http://api.elsevier.com/content/search/index:SCOPUS?in60029157 60016912
-//	for(var i=0;i<referenceObject.length){
-		
-//	}	
-	urlCity="http://api.elsevier.com/content/search/index:affiliation?query=af-id((60016912)OR(60029157))";
+	urlCity="http://api.elsevier.com/content/search/index:SCOPUS?af-id(";
+	for(var i=0;i<referenceObject.length;i++){
+	if(i<referenceObject.length) urlCity=urlCity+"("+referenceObject[i].afid+")";
+	if(i<referenceObject.length-1) urlCity=urlCity+"OR";
+	}
+//"http://api.elsevier.com/content/search/index:affiliation?query=af-id((60016912)OR(60029157))";
 	gadgets.sciverse.makeContentApiRequest(urlCity, getCity, requestHeaders);	
 }
 function getCity(response){
