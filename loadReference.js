@@ -4,6 +4,9 @@ var numberRef=0;
 var currentReferenceSize=0;
 var urlRelevantDocument;
 var affiliationReference= new Array();
+var referenceObject = new Array();
+var referenceSize;
+var currentReferenceSize;
 var searchElement= new Array("All","Affiliation","City","Country","Organization","Abstract","Author Name","Author First Name","Author Last Name","First Author","Keywords","Reference","Source Title","Article Title","Subject Area");
 function getRef(response){
 //  try{
@@ -16,6 +19,16 @@ function getRef(response){
 	numberRef=buffer.length;
 	readyRef=1;
 	updateReference();
+	referenceObject=[];
+	for(var i=0;i<buffer.length;i++){
+		var Obj= new Object();
+		Obj.author=returnArray(buffer[i]['author-list']['author']);
+		Obj.citedby=buffer[i]['citedby-count'];
+		Obj.sourcetitle=buffer[i]['sourcetitle'];
+		Obj.scopusId=buffer[i]['scopus-id'];
+		idToIndex[Obj.scopusId]=i;
+		referenceObject.push(Obj);
+	}
 	relatedDocumentQuery(buffer);
 	referenceQuery(buffer);
 	/*
@@ -47,6 +60,10 @@ function getReference(response){
 	console.log(response);
 	var temp = JSON.parse(response.data);
 	console.log(temp);
+	buffer=returnArray(temp['search-results']['entry']);
+	for(var i=0;i<buffer.length;i++){
+	//	var index=buffer[i][
+	}
 }
 
 function referenceQuery(buffer){
@@ -56,10 +73,7 @@ function referenceQuery(buffer){
 		if(i<numberRef){ urlReference=urlReference+"(2-s2.0-"+scopusId+")";}
 		if(i<numberRef-1){ urlReference=urlReference+" OR ";}
 	}
-	urlReference=encodeURI(urlReference+")&field=dc:title&facets=country(count=200,sort=fd);");
-//	scopusId=buffer[0]['scopus-id'];
-//	scopusId="0013129429";
-//	urlReference=encodeURI("http://api.elsevier.com/content/search/index:SCOPUS?query=EID(2-s2.0-"+scopusId+")");
+	urlReference=encodeURI(urlReference+")&view=COMPLETE&facets=country(count=200,sort=fd);");
 	gadgets.sciverse.makeContentApiRequest(urlReference, getReference, requestHeaders);
 }
 
