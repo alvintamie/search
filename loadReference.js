@@ -45,7 +45,7 @@ function getReference(response){
 			var tempAffil= returnArray(buffer[i]['affiliation']);
 			referenceObject[index].afid=tempAffil[0]['afid'];
 			referenceObject[index].affilname=tempAffil[0]['affilname'];
-			//console.log(referenceObject[index].affilname);
+			console.log(referenceObject[index].affilname);
 			referenceObject[index].authkeywords=buffer[i]['authkeywords'];
 			referenceObject[index].creator=buffer[i]['dc:creator'];
 			referenceObject[index].abstract=buffer[i]['dc:description'];
