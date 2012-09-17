@@ -65,6 +65,7 @@ function getReferenceCity(){
 	console.log("get Reference city");
 	urlCity="http://api.elsevier.com/content/search/index:SCOPUS?af-id(";
 	for(var i=0;i<referenceObject.length;i++){
+	if(!referenceObject[i].afid) continue;
 	if(i<referenceObject.length) urlCity=urlCity+"("+referenceObject[i].afid+")";
 	if(i<referenceObject.length-1) urlCity=urlCity+"OR";
 	}
