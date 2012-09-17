@@ -47,7 +47,7 @@ function getCountry(){
 	if(cc>1) return;
 	countryArray.push("China");
 	country=countryArray[cc];
-	var url=encodeURI( "http://api.elsevier.com/content/search/index:affiliation?query=affil("+country+")&facets=affilcity(count=100,sort=fd);");
+	var url=encodeURI( "http://api.elsevier.com/content/search/index:affiliation?query=affil("+country+")&facets=affilcity(count=1000,sort=fd);");
 	statusWait=0;
 	cc++;
 	gadgets.sciverse.makeContentApiRequest(url, getInitialR, requestHeaders);	
