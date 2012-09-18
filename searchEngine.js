@@ -32,8 +32,8 @@ var queryAuthName=new Array();
 // querySearch.dateRange
 // querySearch.doctype;
 function resetQuery(){
-  queryCity=[];
-  queryCountry=[];
+  	queryCity=[];
+  	queryCountry=[];
 	queryOrganization=[];
 	affiliation= [];
 	queryAll= [];
