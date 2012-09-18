@@ -219,12 +219,3 @@ function downSearchEngine(){
 	readyMoreSearchEngine=0;
 	getSearchRequest(1);
 }
-
-
-
-	
-
-
-
-
-	
