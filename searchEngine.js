@@ -152,8 +152,9 @@ gadgets.sciverse.makeContentApiRequest(query, getSearchRequest, requestHeaders);
 }
 
 function getSearchRequest(response){
-	
+		
 		console.log("searchRequest is obtained");
+		console.log(response);
 		var temp = JSON.parse(parseValidator(response.data));
 		console.log(temp);
 		
