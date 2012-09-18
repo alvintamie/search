@@ -15,17 +15,9 @@ function getContextCallback(response) {
         requestHeaders['X-ELS-Authtoken'] = context.secureAuthtoken;      
         requestHeaders['Accept'] = "application/json, text/xml";
   	var urlAuthor = encodeURI("http://api.elsevier.com/content/search/index:author?query=auid("+context.au1Id+")");
-	var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+context.scDocId+"?view=REF");
-	var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE&facets=country(count=200,sort=fd);");
-	var urlCoauthors=encodeURI( "http://api.elsevier.com/content/search/index:author?query=affil(university)&co-author="+context.au1Id+"&count=200&facets=country(count=200,sort=fd);");
-        //gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
- 	//gadgets.sciverse.makeContentApiRequest(urlCoauthors, getCoauthors, requestHeaders);
- 	gadgets.sciverse.makeContentApiRequest(urlAuthor, getAuthor, requestHeaders);
- 	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
- 	//searchEngineTesting();
+  	gadgets.sciverse.makeContentApiRequest(urlAuthor, startingRequest, requestHeaders);
 }
-
-function getAuthor(response){
+function startingRequest(response){
 	console.log("main author");
 	var temp = JSON.parse(response.data);
 	console.log(temp);
@@ -35,8 +27,14 @@ function getAuthor(response){
 	authorObject.id=buffer['affiliation-id'];
 	authorObject.affiliationName=buffer['affiliation-name'];
 	authorObject.name=context.au1;
-	authorObject.title=context.docTitle;
+	authorObject.title=context.docTitle;	
 	
+	var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+context.scDocId+"?view=REF");
+	var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE&facets=country(count=200,sort=fd);");
+	var urlCoauthors=encodeURI( "http://api.elsevier.com/content/search/index:author?query=affil(university)&co-author="+context.au1Id+"&count=200&facets=country(count=200,sort=fd);");
+ 	//gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
+ 	//gadgets.sciverse.makeContentApiRequest(urlCoauthors, getCoauthors, requestHeaders);
+ 	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);      
 }
 
 function waiting( ms )
