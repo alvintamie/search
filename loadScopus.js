@@ -16,8 +16,7 @@ function getContextCallback(response) {
         requestHeaders['Accept'] = "application/json, text/xml";
   	initializeAuthorObject(response);
   	var urlAuthor = encodeURI("http://api.elsevier.com/content/search/index:author?query=auid("+context.au1Id+")");
-  //	var urlAuthor = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=EID(2-s2.0-"+context.scDocId+")&view=COMPLETE");
-  	var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+context.scDocId+"?view=REF");
+	var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+context.scDocId+"?view=REF");
 	var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE&facets=country(count=200,sort=fd);");
 	var urlCoauthors=encodeURI( "http://api.elsevier.com/content/search/index:author?query=affil(university)&co-author="+context.au1Id+"&count=200&facets=country(count=200,sort=fd);");
         //gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
@@ -31,6 +30,13 @@ function getAuthor(response){
 	console.log("main author");
 	var temp = JSON.parse(response.data);
 	console.log(temp);
+	var buffer = returnArray(temp['search-results']['entry'])[0]['affiliation-current'];
+	authorObject.country=buffer['affiliation-country'];
+	authorObject.city=buffer['affiliation-city'];
+	authorObject.id=buffer['affiliation-id'];
+	authorObject.affiliationName=buffer['affiliation-name'];
+	authorObject.name=context.au1;
+	authorObject.title=context.docTitle;
 }
 
 function waiting( ms )
@@ -47,6 +53,3 @@ function parseValidator(b){
     		return b;
 }
 
-function initializeAuthorObject(response){
-	
-}
