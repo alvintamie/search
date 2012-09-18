@@ -116,7 +116,7 @@ function _AND(query,i,buffer,and,Q){
 		and=1;}
 	if(i>0) query=query+"AND";
 	query=query+"("+Q[i]+")";
-	if(i==Q.length) {
+	if(i==Q.length-1) {
 	query=query+")";}
 	return query;
 }
