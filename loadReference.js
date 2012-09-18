@@ -78,6 +78,7 @@ function getCityReference(response){
 function updateAllReference(){
 	console.log("get city of references");
 	console.log(referenceObject);
+	showResult(0,referenceObject);
 }
 
 function getReferenceCity(Obj,getCity){
