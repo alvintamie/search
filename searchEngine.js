@@ -50,7 +50,7 @@ function resetQuery(){
 }
 function searchEngineTesting(){
   queryAll.push("heart");
-  // submitQuery
+  submitQuery(0);
 }
 function addQuery(query,index){
 	if(index==0){ queryAll.push(query);}
