@@ -47,8 +47,8 @@ function getRelevantDocument(response){
       	var temp = JSON.parse(parseValidator(response.text));
 	console.log(temp);
 	putRelevantDocumentData(temp);
-	console.log(temp['search-results']);
 	countryRelevantDocument=returnArray(temp['search-results']['facet']['category']);
+	console.log(countryRelevantDocument);
 	if(totalRelevantDocument%25==0) { totalLevelRelevantDocument= Math.floor(totalRelevantDocument/25); lastLevelRelevantDocument=25;}
 	else 			{ totalLevelRelevantDocument= Math.floor(totalRelevantDocument/25)+1;lastLevelRelevantDocument=totalRelevantDocument%25;}
 	currentLevelRelevantDocument=1;
