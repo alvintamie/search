@@ -116,14 +116,3 @@ function getCityResponse(response,Obj,updateAll){
 //	updateReference();
 }
 
-function relatedDocumentQuery(buffer){
-	urlRelevantDocument="http://api.elsevier.com/content/search/index:SCOPUS?query=REFEID(";
-	for(var i=0;i<buffer.length;i++){
-		scopusId=buffer[i]['scopus-id'];
-		if(i<numberRef){ urlRelevantDocument=urlRelevantDocument+"(2-s2.0-"+scopusId+")";}
-		if(i<numberRef-1){ urlRelevantDocument=urlRelevantDocument+" OR ";}
-	}
-	urlRelevantDocument=encodeURI(urlRelevantDocument+") AND NOT EID (2-s2.0-"+context.scDocId+")&view=COMPLETE&sort=+relevance&&facets=country(count=200,sort=fd);");
-	urlRelevantDocument=encodeURI(urlRelevantDocument+") AND NOT EID (2-s2.0-"+context.scDocId+")");
-	gadgets.sciverse.makeContentApiRequest(urlRelevantDocument, getRelevantDocument, requestHeaders);
-}
