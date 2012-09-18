@@ -15,7 +15,7 @@ function getContextCallback(response) {
         requestHeaders['X-ELS-Authtoken'] = context.secureAuthtoken;      
         requestHeaders['Accept'] = "application/json, text/xml";
   	initializeAuthorObject(response);
-  	var urlAuthor=encodeURI("http://api.elsevier.com/content/author/author_id:"+context.au1Id);
+  	var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=EID(2-s2.0-"+context.scDocId+")");
   	var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+context.scDocId+"?view=REF");
 	var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE&facets=country(count=200,sort=fd);");
 	var urlCoauthors=encodeURI( "http://api.elsevier.com/content/search/index:author?query=affil(university)&co-author="+context.au1Id+"&count=200&facets=country(count=200,sort=fd);");
