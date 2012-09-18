@@ -84,7 +84,7 @@ function getReferenceCity(Obj,getCity){
 	for(var i=0;i<Obj.length;i++){
 	if(!Obj[i].afid) { continue;}
 	if(count==1) urlCity=urlCity+"OR";
-	if(i<Obj.length) { urlCity=urlCity+"("+Obj[i].afid+")"; count=1;
+	if(i<Obj.length) { urlCity=urlCity+"("+Obj[i].afid+")"; count=1;}
 	}
 	urlCity=encodeURI(urlCity+")&count=200");
 	console.log(urlCity);
