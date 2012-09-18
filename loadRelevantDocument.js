@@ -47,7 +47,7 @@ function getRelevantDocument(response){
       	var temp = JSON.parse(parseValidator(response.text));
 	console.log(temp);
 	putRelevantDocumentData(temp);
-	affiliationRelevantDocument=returnArray(temp['search-results']['facet']['category']);
+	//affiliationRelevantDocument=returnArray(temp['search-results']['facet']['category']);
 	if(totalRelevantDocument%25==0) { totalLevelRelevantDocument= Math.floor(totalRelevantDocument/25); lastLevelRelevantDocument=25;}
 	else 			{ totalLevelRelevantDocument= Math.floor(totalRelevantDocument/25)+1;lastLevelRelevantDocument=totalRelevantDocument%25;}
 	currentLevelRelevantDocument=1;
