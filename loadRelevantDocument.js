@@ -4,7 +4,7 @@ var totalRelevantDocument=-1;
 var totalLevelRelevantDocument=0;
 var currentLevelRelevantDocument=-1;
 var lastLevelRelevantDocument=0;
-var affiliationRelevantDocument= new Array();
+var countryRelevantDocument= new Array();
 var readyMoreRelevantDocument=1;
 var urlRelevantDocument; // initally to get normal url relevant document without any parameter so can be extend
 var relevantDocumentAffiliation; // city of specified query
@@ -47,7 +47,8 @@ function getRelevantDocument(response){
       	var temp = JSON.parse(parseValidator(response.text));
 	console.log(temp);
 	putRelevantDocumentData(temp);
-	//affiliationRelevantDocument=returnArray(temp['search-results']['facet']['category']);
+	console.log(temp['search-results']);
+	countryRelevantDocument=returnArray(temp['search-results']['facet']['category']);
 	if(totalRelevantDocument%25==0) { totalLevelRelevantDocument= Math.floor(totalRelevantDocument/25); lastLevelRelevantDocument=25;}
 	else 			{ totalLevelRelevantDocument= Math.floor(totalRelevantDocument/25)+1;lastLevelRelevantDocument=totalRelevantDocument%25;}
 	currentLevelRelevantDocument=1;
