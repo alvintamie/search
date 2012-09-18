@@ -150,7 +150,7 @@ gadgets.sciverse.makeContentApiRequest(query, getSearchRequest, requestHeaders);
 function getSearchRequest(response){
 	
 		console.log("searchRequest is obtained");
-		var temp = JSON.parse(parseValidator(response.data);
+		var temp = JSON.parse(parseValidator(response.data));
 		console.log(temp);
 		
 		queryTotalResults=temp['search-results']['opensearch:totalResults'];
