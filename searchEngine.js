@@ -1,4 +1,3 @@
-var searchElement= new Array("All","Affiliation","City","Country","Organization","Abstract","Author Name","Author First Name","Author Last Name","First Author","Keywords","Reference","Source Title","Article Title","Subject Area");
 var queryAll=new Array();
 var affiliation=new Array();
 var queryCity=new Array();
