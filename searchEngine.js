@@ -16,8 +16,8 @@ var querySubjectArea= new Array();
 //for parameter url
 var queryStart=0;
 var queryCount=100;
-var queryStartYear;
-var queryEndYear;
+var queryStartYear=1980;
+var queryEndYear=1999;
 var querySort="+coverDate";
 //total search results
 var queryTotalResults=0;
@@ -130,15 +130,14 @@ for(var i=0;i<querySourceTitle.length;i++) 	 { if(empty==1) query+="+"; else emp
 for(var i=0;i<queryArticleTitle.length;i++)  { if(empty==1) query+="+"; else empty=1; query=query+"title("+queryAll[i]+")"; };
 for(var i=0;i<querySubjectArea.length;i++) 	 { if(empty==1) query+="+"; else empty=1; query=query+"subjarea("+queryAll[i]+")"; };
 
+*/
 
-if(queryEndYear<queryStartYear)
-	return 5;
 if(queryStartYear==queryEndYear){
 	query=query+"&PUBYEAR IS "+queryStartYear;}
 if(queryStartYear!=null && queryEndYear!=null){
 	query=query+"&PUBYEAR AFT "+queryStartYear+"&PUBYEAR BEF "+queryEndYear;
 }
-*/
+
 if(status==1)
 query=query+"&start="+queryStart+"&count="+queryCount;
 else
@@ -191,7 +190,7 @@ function getSearchRequest(response){
 		else 			{ totalLevelSearchEngine= Math.floor(queryTotalResults/100)+1;lastLevelSearchEngine=queryTotalResults%100;}
 		currentLevelSearchEngine=1;
 		readyMoreSearchEngine=1;
-		console.log("horee");
+
 	//	getReferenceCity(citedbyObject,getCityCitedby);
 }
 
