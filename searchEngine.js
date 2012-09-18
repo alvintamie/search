@@ -145,7 +145,7 @@ query=query+"&start="+queryStart+"&count="+queryCount;
 else
 query=query+"&count=100";
 query=query+"&sort="+querySort;
-//query=query+"&view=COMPLETE&facets=country(count=200,sort=fd);subjarea(count=100,sort=fd);pubyear(count=20,sort=na);authname(count=20,sort=fd);";
+query=query+"&view=COMPLETE&facets=country(count=200,sort=fd);subjarea(count=100,sort=fd);pubyear(count=20,sort=na);authname(count=20,sort=fd);";
 console.log(query);
 gadgets.sciverse.makeContentApiRequest(encodeURI(query), getSearchRequest, requestHeaders);
 }
