@@ -3,6 +3,7 @@ var readyRef=0;
 var numberRef=0;
 var currentReferenceSize=0;
 var urlRelevantDocument;
+var urlRelevantDocumentAffiliation;
 var affiliationReference= new Array();
 var referenceObject = new Array();
 var referenceSize;
@@ -123,5 +124,6 @@ function relatedDocumentQuery(buffer){
 		if(i<numberRef-1){ urlRelevantDocument=urlRelevantDocument+" OR ";}
 	}
 	urlRelevantDocument=encodeURI(urlRelevantDocument+") AND NOT EID (2-s2.0-"+context.scDocId+")&view=COMPLETE&sort=+relevance&&facets=country(count=200,sort=fd);");
+	urlRelevantDocument=encodeURI(urlRelevantDocument+") AND NOT EID (2-s2.0-"+context.scDocId+")");
 	gadgets.sciverse.makeContentApiRequest(urlRelevantDocument, getRelevantDocument, requestHeaders);
 }
