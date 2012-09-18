@@ -118,13 +118,14 @@ function _AND(query,i,buffer,and,Q){
 	query=query+"("+Q[i]+")";
 	if(i==Q.length) {
 	query=query+")";}
+	return query;
 }
 
 function submitQuery(status){
 var and=0;
 var query="http://api.elsevier.com/content/search/index:SCOPUS?query=";
 // if(i==0) query=query+"ALL("; if(empty==1) query+="AND"; else empty=1; and=1; query=query+"("+queryAll[i]+")"; if(i==queryAll.length-1) query=query+")";
-for(var i=0;i<queryAll.length;i++)			{  _AND(query,i,"ALL(",and,queryAll);}
+for(var i=0;i<queryAll.length;i++)			{  query=_AND(query,i,"ALL(",and,queryAll);}
 /*
 for(var i=0;i<queryAffiliation.length;i++)  {  _
 for(var i=0;i<queryAffiliation.length;i++) 	{ if(i==0) query=query+"AFFIL("; if(empty==1) query+="OR"; else empty=1; and=1; query=query+"(\""+queryAffiliation[i]+"\")"; if(i==queryAffiliation.length-1) query=query+")"; }; empty=0;
