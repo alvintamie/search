@@ -202,7 +202,21 @@ function getSearchRequest(response){
 		currentLevelSearchEngine=1;
 		readyMoreSearchEngine=1;
 
-	//	getReferenceCity(citedbyObject,getCityCitedby);
+		getReferenceCity(queryResults,getCitySearchEngine);
+}
+
+
+
+
+
+function getCitySearchEngine(response){
+	getCityResponse(response,queryResults,updateAllSearchEngine);
+}
+function updateAllSearchEngine(){
+	console.log("got citedby search engine");
+	console.log(queryResults);
+	 //updateCitedBy();
+	 //update david
 }
 
 var readyMoreSearchEngine=1;
