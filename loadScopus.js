@@ -1,6 +1,6 @@
 var requestHeaders = {};
- var scopusId;
- var it;
+var scopusId;
+var it;
  // var citedbyUrl = new Array();
 
  var k=4937;
