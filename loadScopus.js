@@ -23,6 +23,7 @@ function getContextCallback(response) {
         gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
  	//gadgets.sciverse.makeContentApiRequest(urlCoauthors, getCoauthors, requestHeaders);
  	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
+ 	searchEngineTesting();
 }
 
 
