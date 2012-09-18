@@ -19,8 +19,8 @@ function getContextCallback(response) {
 	var urlCoauthors=encodeURI( "http://api.elsevier.com/content/search/index:author?query=affil(university)&co-author="+context.au1Id+"&count=200&facets=country(count=200,sort=fd);");
         //gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
  	//gadgets.sciverse.makeContentApiRequest(urlCoauthors, getCoauthors, requestHeaders);
- 	//gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
- 	searchEngineTesting();
+ 	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
+ 	//searchEngineTesting();
 }
 
 
