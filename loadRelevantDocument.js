@@ -48,7 +48,9 @@ function getRelevantDocument(response){
 	console.log(temp);
 	putRelevantDocumentData(temp);
 	countryRelevantDocument=returnArray(temp['search-results']['facet']['category']);
+	console.log("oi");
 	console.log(countryRelevantDocument);
+	console.log("oi");
 	if(totalRelevantDocument%25==0) { totalLevelRelevantDocument= Math.floor(totalRelevantDocument/25); lastLevelRelevantDocument=25;}
 	else 			{ totalLevelRelevantDocument= Math.floor(totalRelevantDocument/25)+1;lastLevelRelevantDocument=totalRelevantDocument%25;}
 	currentLevelRelevantDocument=1;
