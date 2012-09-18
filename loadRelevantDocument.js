@@ -6,14 +6,23 @@ var currentLevelRelevantDocument=-1;
 var lastLevelRelevantDocument=0;
 var affiliationRelevantDocument= new Array();
 var readyMoreRelevantDocument=1;
+var urlRelevantDocument; // initally to get normal url relevant document without any parameter so can be extend
+var relevantDocumentAffiliation; // city of specified query
 function upRelevantDocument(){ 
   if(readyMoreRelevantDocument==0) return;
   if(currentLevelRelevantDocument==-1 || currentLevelRelevantDocument==totalLevelRelevantDocument) return false;
   currentLevelRelevantDocument++;
   if(currentLevelRelevantDocument==totalLevelRelevantDocument){
-     var urlTemp=encodeURI(urlRelevantDocument+"&start="+((currentLevelRelevantDocument-1)*25)+"&count="+lastLevelRelevantDocument);}
+     if(relevantDocumentAffiliation)
+     var urlTemp = encodeURI(urlRelevantDocument+" AND affil("+relevantDocumentAffiliation+")&view=COMPLETE&sort=+relevance&facets=country(count=200,sort=fd);&start="+((currentLevelRelevantDocument-1)*25)+"&count="+lastLevelRelevantDocument);
+     else
+     var urlTemp = encodeURI(urlRelevantDocument+"&view=COMPLETE&sort=+relevance&facets=country(count=200,sort=fd);&start="+((currentLevelRelevantDocument-1)*25)+"&count="+lastLevelRelevantDocument);}
   else 
-  {  var urlTemp=encodeURI(urlRelevantDocument+"&start="+((currentLevelRelevantDocument-1)*25)+"&count=25");}
+  {  
+     if(relevantDocumentAffiliation)
+     var urlTemp =encodeURI(urlRelevantDocument+" AND affil("+relevantDocumentAffiliation+")&view=COMPLETE&sort=+relevance&facets=country(count=200,sort=fd);&start="+((currentLevelRelevantDocument-1)*25)+"&count=25");
+     else
+     var urlTemp=encodeURI(urlRelevantDocument+"&start="+((currentLevelRelevantDocument-1)*25)+"&count=25");}
   relevantDocumentObject=[];
   readyMoreRelevantDocument=0;
   gadgets.sciverse.makeContentApiRequest(urlTemp, getMoreRelevantDocument, requestHeaders);
@@ -24,6 +33,9 @@ function downRelevantDocument(){
   if(readyMoreRelevantDocument==0) return;
   if(currentLevelRelevantDocument==-1 || currentLevelRelevantDocument==1) return false;
   currentLevelRelevantDocument--;
+  if(relevantDocumentAffiliation)
+  var urlTemp=encodeURI(urlRelevantDocument+" AND affil("+relevantDocumentAffiliation+")&view=COMPLETE&sort=+relevance&facets=country(count=200,sort=fd);&start="+((currentLevelRelevantDocument-1)*25)+"&count=25");
+  else
   var urlTemp=encodeURI(urlRelevantDocument+"&start="+((currentLevelRelevantDocument-1)*25)+"&count=25");
   relevantDocumentObject=[];
   readyMoreRelevantDocument=0;
@@ -60,6 +72,29 @@ function updateAllRelevantDocument(){
 	console.log("hellooo");
 	console.log(relevantDocumentObject);
 	updateRelevantDocument(); //update david
+}
+
+function getRelevantDocumentFilter(affiliation){
+	relevantDocumentAffiliation=affiliation;
+	var url = encodeURI(urlRelevantDocument+" AND affil("+affiliation+")&view=COMPLETE&sort=+relevance&facets=country(count=200,sort=fd);");
+	gadgets.sciverse.makeContentApiRequest(url, getRelevantDocument, requestHeaders);
+}
+
+function resetRelevantDocument(){
+	relatedDocumentQuery(referenceObjectTemp);
+}
+
+function relatedDocumentQuery(buffer){
+	var url="http://api.elsevier.com/content/search/index:SCOPUS?query=REFEID(";
+	relevantDocumentAffiliation="";
+	for(var i=0;i<buffer.length;i++){
+		scopusId=buffer[i]['scopus-id'];
+		if(i<numberRef){ urlRelevantDocument=urlRelevantDocument+"(2-s2.0-"+scopusId+")";}
+		if(i<numberRef-1){ urlRelevantDocument=urlRelevantDocument+" OR ";}
+	}
+	url=encodeURI(url+") AND NOT EID (2-s2.0-"+context.scDocId+")&view=COMPLETE&sort=+relevance&facets=country(count=200,sort=fd);");
+	urlRelevantDocument=encodeURI(urlRelevantDocument+") AND NOT EID (2-s2.0-"+context.scDocId+")");
+	gadgets.sciverse.makeContentApiRequest(url, getRelevantDocument, requestHeaders);
 }
 
 function putRelevantDocumentData(temp){
