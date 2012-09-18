@@ -4,7 +4,7 @@ var totalCitation=-1;
 var totalLevelCitation=0;
 var currentLevelCitation=-1;
 var lastLevelCitation=0;
-var countryCitedby=
+var countryCitedby= new Array();
 var readyMoreCitation=1;
 var citedbyAffiliation;
 function upCitedby(){ 
