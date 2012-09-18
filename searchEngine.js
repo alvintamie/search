@@ -150,7 +150,7 @@ query=query+"&sort="+querySort;
 //query=query+"&view=COMPLETE&facets=country(count=200,sort=fd);subjarea(count=100,sort=fd);pubyear(count=20,sort=na);authname(count=20,sort=fd);";
 console.log(query);
 //query=encodeURI("http://api.elsevier.com/content/search/index:SCOPUS?query=REFEID((2-s2.0-0015445334) OR (2-s2.0-0015576625) OR (2-s2.0-0027595234) OR (2-s2.0-0035400675) OR (2-s2.0-0033991480) OR (2-s2.0-0000076213)) AND NOT EID (2-s2.0-0036954856)&sort=+relevance");
-query=encodeURI("http://api.elsevier.com/content/search/index:SCOPUS?query=ALL(\"heart\") AND AFFIL(china)")
+//query=encodeURI("http://api.elsevier.com/content/search/index:SCOPUS?query=ALL(\"heart\") AND AFFIL(china)")
 gadgets.sciverse.makeContentApiRequest(query, getSearchRequest, requestHeaders);
 }
 
