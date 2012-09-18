@@ -157,24 +157,24 @@ function getSearchRequest(response){
 		var buffer= returnArray(temp['search-results']['entry']);
 		for(var i=0;i<buffer.length;i++){
 		var Obj= new Object();
-	    try{
+	    	try{
 			Obj.Abstract = buffer[i]['dc:description'];
 			Obj.title =    buffer[i]['dc:title'];
-       		Obj.type =     buffer[i]['subtypeDescription'];
-       		Obj.citedbyCount = buffer[i]['citedby-count'];
-       		Obj.creator= buffer[i]['dc:creator'];
-       		Obj.publicationName = buffer[i]['prism:publicationName'];
-       		var tempId=buffer[i]['dc:identifier'].split(":");
-       		Obj.identifier= tempId[1];
-     	  	Obj.date =buffer[i]['prism:coverDate'];
-       		Obj.volume = buffer[i]['prim:volume'];
-       		Obj.author=returnArray(buffer[i]['author']);
+	       		Obj.type =     buffer[i]['subtypeDescription'];
+	       		Obj.citedbyCount = buffer[i]['citedby-count'];
+	       		Obj.creator= buffer[i]['dc:creator'];
+	       		Obj.publicationName = buffer[i]['prism:publicationName'];
+	       		var tempId=buffer[i]['dc:identifier'].split(":");
+	       		Obj.identifier= tempId[1];
+	     	  	Obj.date =buffer[i]['prism:coverDate'];
+	       		Obj.volume = buffer[i]['prim:volume'];
+	       		Obj.author=returnArray(buffer[i]['author']);
        		try{
        			Obj.afid= returnArray(buffer[i]['affiliation'])[0]['afid'];
        			Obj.affilname= returnArray(buffer[i]['affiliation'])[0]['affilname'];}
-       		catch(e){ console.log("error no affiliation in search engine");}
+       		catch(e){ console.log("error no affiliation in search engine "+i);}
 	    	}
-	    catch(e){ console.log("error no some property in search engine");}
+	        catch(e){ console.log("error no some property in search engine");}
        		Obj.url="http://www.scopus.com/record/display.url?eid=2-s2.0-"+tempId[1]+"&origin=resultslist&sort=plf-f&src=s";
        	//	console.log(Obj);
 		queryResults.push(Obj);
