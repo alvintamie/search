@@ -1,11 +1,8 @@
 var requestHeaders = {};
 var scopusId;
 var it;
- // var citedbyUrl = new Array();
-
- var k=4937;
- //var k        =60055420;
- var limitk   =60070000;
+var k=4937;
+var limitk   =60070000;
 
 function getContextCallback(response) {
 	context = response;
