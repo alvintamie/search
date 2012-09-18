@@ -1,10 +1,10 @@
 var relevantDocumentObject = new Array();
+var countryRelevantDocument= new Array();
 var statusRelevantDocument=0;
 var totalRelevantDocument=-1;
 var totalLevelRelevantDocument=0;
 var currentLevelRelevantDocument=-1;
 var lastLevelRelevantDocument=0;
-var countryRelevantDocument= new Array();
 var readyMoreRelevantDocument=1;
 var urlRelevantDocument; // initally to get normal url relevant document without any parameter so can be extend
 var relevantDocumentAffiliation; // city of specified query
