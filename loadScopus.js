@@ -32,11 +32,7 @@ function getAuthor(response){
 	console.log(temp);
 	var buffer = returnArray(temp['search-results']['entry'])[0]['affiliation-current'];
 	authorObject.country=buffer['affiliation-country'];
-	authorObject.city=buffer['affiliation-city'];
-	authorObject.id=buffer['affiliation-id'];
-	authorObject.affiliationName=buffer['affiliation-name'];
-	authorObject.name=context.au1;
-	authorObject.title=context.docTitle;
+
 }
 
 function waiting( ms )
