@@ -4,7 +4,7 @@ var totalCitation=-1;
 var totalLevelCitation=0;
 var currentLevelCitation=-1;
 var lastLevelCitation=0;
-var affiliationCitation= new Array();
+var countryCitedby=
 var readyMoreCitation=1;
 var citedbyAffiliation;
 function upCitedby(){ 
@@ -103,6 +103,7 @@ function putCitedbyData(temp){
 	catch(e){
 	//	var buffer;
 	var buffer= returnArray(temp['search-results']['entry'])
+	countryCitedby=returnArray(temp['search-results']['facet']['category']);
 	for(var i=0;i<buffer.length;i++){
 		var Obj= new Object();
 	   try{
