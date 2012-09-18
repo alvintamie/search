@@ -93,7 +93,7 @@ function relatedDocumentQuery(buffer){
 		if(i<numberRef-1){ urlRelevantDocument=urlRelevantDocument+" OR ";}
 	}
 	url=encodeURI(url+") AND NOT EID (2-s2.0-"+context.scDocId+")&view=COMPLETE&sort=+relevance&facets=country(count=200,sort=fd);");
-	urlRelevantDocument=encodeURI(urlRelevantDocument+") AND NOT EID (2-s2.0-"+context.scDocId+")");
+	urlRelevantDocument=encodeURI(url+") AND NOT EID (2-s2.0-"+context.scDocId+")");
 	gadgets.sciverse.makeContentApiRequest(url, getRelevantDocument, requestHeaders);
 }
 
