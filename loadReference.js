@@ -52,9 +52,11 @@ function getReference(response){
 	for(var i=0;i<buffer.length;i++){
 		try{
 			var index=idToIndex[buffer[i]['dc:identifier'].split(':')[1]];
+			try{
 			var tempAffil= returnArray(buffer[i]['affiliation']);
 			referenceObject[index].afid=tempAffil[0]['afid'];
-			referenceObject[index].affilname=tempAffil[0]['affilname'];
+			referenceObject[index].affilname=tempAffil[0]['affilname'];}
+			catch(e) { console.log("No affiliation property in reference");}
 			referenceObject[index].authkeywords=buffer[i]['authkeywords'];
 			referenceObject[index].creator=buffer[i]['dc:creator'];
 			referenceObject[index].abstract=buffer[i]['dc:description'];
