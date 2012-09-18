@@ -62,7 +62,18 @@ function getMoreCitedby(response){
     	putCitedbyData(temp);
     	readyMoreCitation=1;
 	getReferenceCity(citedbyObject,getCityCitedby);}
-	
+
+
+
+function getCityCitedby(response){
+	getCityResponse(response,citedbyObject,updateAllCitedby);
+}
+function updateAllCitedby(){
+	console.log("hellooo");
+	console.log(relevantDocumentObject);
+	updateCitedby(); //update david
+}
+
 
 function getCitedbyFilter(affiliation){
 	citedbyAffiliation=affiliation;
