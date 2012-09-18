@@ -55,7 +55,12 @@ function getMoreCitedby(response){
 
 function getCitedbyFilter(){
 	var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=(refeid(2-s2.0-"+context.scDocId+") AND affil(China))&view=COMPLETE&facets=country(count=200,sort=fd);");
-
+ 	gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedbyFilterResponse, requestHeaders);
+}
+function getCitedbyFilterResponse(response){
+	console.log("citedby more initial country");
+    	var temp = JSON.parse(parseValidator(response.text));
+	console.log(temp);
 }
 function getCityCitedby(response){
 	getCityResponse(response,citedbyObject,updateAllCitedby);
@@ -64,6 +69,7 @@ function updateAllCitedby(){
 	console.log("hellooo");
 	console.log(citedbyObject);
 	updateCitedBy();; //update david
+	getCitedbyFilter();
 }
 
 
