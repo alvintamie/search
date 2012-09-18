@@ -53,7 +53,10 @@ function getMoreCitedby(response){
 	getReferenceCity(citedbyObject,getCityCitedby);}
 	
 
+function getCitedbyFilter(){
+	var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=(refeid(2-s2.0-"+context.scDocId+") AND affil(China))&view=COMPLETE&facets=country(count=200,sort=fd);");
 
+}
 function getCityCitedby(response){
 	getCityResponse(response,citedbyObject,updateAllCitedby);
 }
