@@ -122,9 +122,12 @@ function putRelevantDocumentData(temp){
        		Obj.identifier= tempId[1];
      	  	Obj.date =buffer[i]['prism:coverDate'];
        		Obj.volume = buffer[i]['prim:volume'];
-       		Obj.author=returnArray(buffer[i]['author']);     	
+       		Obj.author=returnArray(buffer[i]['author']);
+       		try{
        		Obj.afid= returnArray(buffer[i]['affiliation'])[0]['afid'];
-       		Obj.affilname= returnArray(buffer[i]['affiliation'])[0]['affilname'];
+       		Obj.affilname= returnArray(buffer[i]['affiliation'])[0]['affilname'];}
+       		catch(e){ console.log("error no affiliation in relevant document");}
+		
        		Obj.url="http://www.scopus.com/record/display.url?eid=2-s2.0-"+tempId[1]+"&origin=resultslist&sort=plf-f&src=s";
        	//	console.log(Obj);
 		relevantDocumentObject.push(Obj);
