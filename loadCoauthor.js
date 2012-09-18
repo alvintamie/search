@@ -73,7 +73,7 @@ function putCoauthorsData(temp){
        		Obj.country=buffer[i]['affiliation-current']['affiliation-country'];
        		Obj.affiliationId=buffer[i]['affiliation-current']['affiliation-id'];
        		Obj.affiliationName=buffer[i]['affiliation-current']['affiliation-name'];}
-		catch(e){};
+		catch(e){ console.log("coauthor no affiliation")};
        		Obj.id=buffer[i]['dc:identifier'].split(":")[1];
        		Obj.documentCount=buffer[i]['document-count'];
        		Obj.name=buffer[i]['preferred-name'];
