@@ -38,7 +38,6 @@ function downCitedby(){
   var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?start="+((currentLevelCitation-1)*25)+"&count=25&query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE");
   citedbyObject=[];
   readyMoreCitation=0;
-  updateCitedBy();
   gadgets.sciverse.makeContentApiRequest(urlCitedby, getMoreCitedby, requestHeaders);
 }
 
@@ -63,6 +62,7 @@ function getMoreCitedby(response){
 	console.log(temp);
     	putCitedbyData(temp);
     	readyMoreCitation=1;
+    	updateCitedBy();
 	getReferenceCity(citedbyObject,getCityCitedby);}
 
 
