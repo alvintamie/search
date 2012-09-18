@@ -86,6 +86,7 @@ function getReferenceCity(Obj,getCity){
 	if(i<Obj.length-1) urlCity=urlCity+"OR";
 	}
 	urlCity=encodeURI(urlCity+")&count=200");
+	console.log(urlCity);
 	gadgets.sciverse.makeContentApiRequest(urlCity, getCity, requestHeaders);	
 }
 
