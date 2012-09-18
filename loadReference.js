@@ -21,10 +21,12 @@ function getRef(response){
 	referenceObject=[];
 	for(var i=0;i<buffer.length;i++){
 		var Obj= new Object();
-		Obj.author=returnArray(buffer[i]['author-list']['author']);
-		Obj.citedby=buffer[i]['citedby-count'];
-		Obj.sourcetitle=buffer[i]['sourcetitle'];
-		Obj.scopusId=buffer[i]['scopus-id'];
+		try{
+			Obj.author=returnArray(buffer[i]['author-list']['author']);
+			Obj.citedby=buffer[i]['citedby-count'];
+			Obj.sourcetitle=buffer[i]['sourcetitle'];
+			Obj.scopusId=buffer[i]['scopus-id'];}
+		catch(e){ console.log("initial reference property error");}
 		idToIndex[Obj.scopusId]=i;
 		referenceObject.push(Obj);
 	}
