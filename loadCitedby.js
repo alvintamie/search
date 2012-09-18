@@ -84,6 +84,9 @@ function getCitedbyFilter(affiliation){
 
 function resetCitedbyAffiliation(){
 	citedbyAffiliation="";
+	var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE&facets=country(count=200,sort=fd);");
+	gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
+
 }
 
 
