@@ -52,7 +52,7 @@ function getRelevantDocument(response){
 	else 			{ totalLevelRelevantDocument= Math.floor(totalRelevantDocument/25)+1;lastLevelRelevantDocument=totalRelevantDocument%25;}
 	currentLevelRelevantDocument=1;
 	readyMoreRelevantDocument=1;
-	getReferenceCity(relevantDocumentObject,getCityRelevantDocument); 
+//	getReferenceCity(relevantDocumentObject,getCityRelevantDocument); 
 }
 
 function getMoreRelevantDocument(response){
@@ -61,7 +61,7 @@ function getMoreRelevantDocument(response){
 	console.log(temp);
     	putRelevantDocumentData(temp);
     	readyMoreRelevantDocument=1;
-    	getReferenceCity(relevantDocumentObject,getCityRelevantDocument);
+//    	getReferenceCity(relevantDocumentObject,getCityRelevantDocument);
 	}
 	
 	
