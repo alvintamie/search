@@ -22,11 +22,11 @@ function getContextCallback(response) {
 	var urlCoauthors=encodeURI( "http://api.elsevier.com/content/search/index:author?query=affil(university)&co-author="+context.au1Id+"&count=200&facets=country(count=200,sort=fd);");
 //	var url=encodeURI( "http://api.elsevier.com/content/search/index:scopus?query=all(\"apple\")&sort=coverDate&facets=country(count=200,sort=fd);subjarea(count=100,sort=fd);pubyear(count=20);authname(count=20,sort=fd);");
 //	var url=encodeURI( "http://api.elsevier.com/content/search/index:scopus?query=all((a) OR (b) OR (c) OR (d) OR (e) OR (f) OR (g) OR (h) OR (i) OR (j) OR (k) OR (l) OR (m) OR (n) OR (o) OR (p) OR (q) OR (r) OR (s) OR (t) OR (u) OR (v) OR (w) OR (x) OR (y) OR (z))&sort=coverDate&facets=country(count=250,sort=fd);");
-	gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
+//		gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
 // 	gadgets.sciverse.makeContentApiRequest(urlCoauthors, getCoauthors, requestHeaders);
 
  //	gadgets.sciverse.makeContentApiRequest(urlRelevantDocument, getR, requestHeaders);
- //	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
+ 	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);
 }
 
 
