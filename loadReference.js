@@ -2,7 +2,6 @@ var idToIndex= new Object();
 var readyRef=0;
 var numberRef=0;
 var currentReferenceSize=0;
-var affiliationReference= new Array();
 var referenceObject = new Array();
 var referenceObjectTemp;
 var referenceSize;
