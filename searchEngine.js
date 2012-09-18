@@ -137,6 +137,7 @@ if(queryStartYear==queryEndYear){
 	query=query+"AND PUBYEAR IS "+queryStartYear;}
 if(queryStartYear!=null && queryEndYear!=null){
 // query=query+" AND ALL(attack)"; 
+query=query+"AND NOT EID (2-s2.0-0036954856)";
 //	query=query+"AND(PUBYEAR AFT "+queryStartYear+")";
 	//+" AND PUBYEAR BEF "+queryEndYear;
 }
