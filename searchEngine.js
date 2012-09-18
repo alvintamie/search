@@ -210,6 +210,7 @@ function getSearchRequest(response){
 
 
 function getCitySearchEngine(response){
+	console.log("get City search Engine");
 	getCityResponse(response,queryResults,updateAllSearchEngine);
 }
 function updateAllSearchEngine(){
