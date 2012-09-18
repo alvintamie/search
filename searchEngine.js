@@ -114,7 +114,7 @@ function submitQuery(status){
 var empty=0;
 var query="http://api.elsevier.com/content/search/index:SCOPUS?query=";
      
-for(var i=0;i<queryAll.length;i++)			{ if(i==0) query=query+"ALL("; if(empty==1) query+="AND"; else empty=1; query=query+"\""+queryAll[i]+"\""; if(i==queryAll.length-1) query=query+")"; }; empty=0;
+for(var i=0;i<queryAll.length;i++)			{ if(i==0) query=query+"ALL("; if(empty==1) query+="AND"; else empty=1; query=query+"\"("+queryAll[i]+"\")"; if(i==queryAll.length-1) query=query+")"; }; empty=0;
 /*
 for(var i=0;i<queryAffiliation.length;i++) 	{ if(empty==1) query+="+"; else empty=1; query=query+"affil("+queryAffiliation[i]+")"; };
 for(var i=0;i<queryCity.length;i++) 			{ if(empty==1) query+="+"; else empty=1; query=query+"affilcity("+queryCity[i]+")"; };
@@ -136,10 +136,8 @@ for(var i=0;i<querySubjectArea.length;i++) 	 { if(empty==1) query+="+"; else emp
 if(queryStartYear==queryEndYear){
 	query=query+"AND PUBYEAR IS "+queryStartYear;}
 if(queryStartYear!=null && queryEndYear!=null){
- query=query+" AND AFFIL(china)"; 
-//query=query+"AND NOT EID (2-s2.0-0036954856)";
-//	query=query+"AND(PUBYEAR AFT "+queryStartYear+")";
-	//+" AND PUBYEAR BEF "+queryEndYear;
+
+	query=query+" AND(PUBYEAR AFT "+queryStartYear+") AND PUBYEAR BEF "+queryEndYear+" ";
 }
 
 if(status==1)
@@ -149,8 +147,6 @@ query=query+"&count=100";
 query=query+"&sort="+querySort;
 //query=query+"&view=COMPLETE&facets=country(count=200,sort=fd);subjarea(count=100,sort=fd);pubyear(count=20,sort=na);authname(count=20,sort=fd);";
 console.log(query);
-//query=encodeURI("http://api.elsevier.com/content/search/index:SCOPUS?query=REFEID((2-s2.0-0015445334) OR (2-s2.0-0015576625) OR (2-s2.0-0027595234) OR (2-s2.0-0035400675) OR (2-s2.0-0033991480) OR (2-s2.0-0000076213)) AND NOT EID (2-s2.0-0036954856)&sort=+relevance");
-//query=encodeURI("http://api.elsevier.com/content/search/index:SCOPUS?query=ALL(\"heart\") AND AFFIL(china)")
 gadgets.sciverse.makeContentApiRequest(encodeURI(query), getSearchRequest, requestHeaders);
 }
 
