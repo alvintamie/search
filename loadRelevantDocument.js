@@ -7,7 +7,7 @@ var currentLevelRelevantDocument=-1;
 var lastLevelRelevantDocument=0;
 var readyMoreRelevantDocument=1;
 var urlRelevantDocument; // initally to get normal url relevant document without any parameter so can be extend
-var relevantDocumentAffiliation; // city of specified query
+var relevantDocumentAffiliation=""; // city of specified query
 function upRelevantDocument(){ 
   if(readyMoreRelevantDocument==0) return;
   if(currentLevelRelevantDocument==-1 || currentLevelRelevantDocument==totalLevelRelevantDocument) return false;
