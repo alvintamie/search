@@ -38,6 +38,7 @@ function downCitedby(){
   var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?start="+((currentLevelCitation-1)*25)+"&count=25&query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE");
   citedbyObject=[];
   readyMoreCitation=0;
+  updateCitedBy();
   gadgets.sciverse.makeContentApiRequest(urlCitedby, getMoreCitedby, requestHeaders);
 }
 
@@ -52,6 +53,7 @@ function getCitedby(response){
 	else 			{ totalLevelCitation= Math.floor(totalCitation/25)+1;lastLevelCitation=totalCitation%25;}
 	currentLevelCitation=1;
 	readyMoreCitation=1;
+	updateCitedBy();
 	getReferenceCity(citedbyObject,getCityCitedby);
 }
 
@@ -71,7 +73,7 @@ function getCityCitedby(response){
 function updateAllCitedby(){
 	console.log("hellooo");
 	console.log(citedbyObject);
-	updateCitedBy(); //update david
+	 //update david
 }
 
 
@@ -105,7 +107,7 @@ function putCitedbyData(temp){
 		Obj.title =    buffer[i]['dc:title'];
        		Obj.type =     buffer[i]['subtypeDescription'];
        		Obj.citedbyCount = buffer[i]['citedby-count'];
-       		Obj.creator= buffer[i]['creator'];
+       		Obj.creator= buffer[i]['dc:creator'];
        		Obj.publicationName = buffer[i]['prism:publicationName'];
        		var tempId=buffer[i]['dc:identifier'].split(":");
        		Obj.identifier= tempId[1];
