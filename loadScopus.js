@@ -7,7 +7,7 @@ var limitk   =60070000;
 
 function getContextCallback(response) {
 	context = response;
-	
+	console.log(response);
 	var prefs= new gadgets.Prefs();
    
         requestHeaders['Accept-Charset'] = "utf-8";
