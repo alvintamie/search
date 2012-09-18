@@ -83,5 +83,4 @@ function putCoauthorsData(temp){
 		coauthorsObject.push(Obj);
 		}
 	}
-	console.log(coauthorsObject.length);
 }
