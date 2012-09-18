@@ -133,9 +133,9 @@ for(var i=0;i<querySubjectArea.length;i++) 	 { if(empty==1) query+="+"; else emp
 */
 
 if(queryStartYear==queryEndYear){
-	query=query+"&PUBYEAR IS "+queryStartYear;}
+	query=query+"AND PUBYEAR IS "+queryStartYear;}
 if(queryStartYear!=null && queryEndYear!=null){
-	query=query+"&PUBYEAR AFT "+queryStartYear+"&PUBYEAR BEF "+queryEndYear;
+	query=query+"AND PUBYEAR AFT "+queryStartYear+"AND PUBYEAR BEF "+queryEndYear;
 }
 
 if(status==1)
