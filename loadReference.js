@@ -4,8 +4,10 @@ var numberRef=0;
 var currentReferenceSize=0;
 var affiliationReference= new Array();
 var referenceObject = new Array();
+var referenceObjectTemp;
 var referenceSize;
 var currentReferenceSize;
+
 var searchElement= new Array("All","Affiliation","City","Country","Organization","Abstract","Author Name","Author First Name","Author Last Name","First Author","Keywords","Reference","Source Title","Article Title","Subject Area");
 function getRef(response){
   	console.log("ref is obtained");
@@ -26,6 +28,7 @@ function getRef(response){
 		idToIndex[Obj.scopusId]=i;
 		referenceObject.push(Obj);
 	}
+	referenceObjectTemp=buffer;
 	relatedDocumentQuery(buffer);
 	referenceQuery(buffer);
 }
