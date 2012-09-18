@@ -87,10 +87,12 @@ function resetRelevantDocument(){
 function relatedDocumentQuery(buffer){
 	var url="http://api.elsevier.com/content/search/index:SCOPUS?query=REFEID(";
 	relevantDocumentAffiliation="";
+	var count=0;
 	for(var i=0;i<buffer.length;i++){
 		scopusId=buffer[i]['scopus-id'];
-		if(i<numberRef){ urlRelevantDocument=urlRelevantDocument+"(2-s2.0-"+scopusId+")";}
-		if(i<numberRef-1){ urlRelevantDocument=urlRelevantDocument+" OR ";}
+		if(count==1){ urlRelevantDocument=urlRelevantDocument+" OR ";}
+		if(i<numberRef){ urlRelevantDocument=urlRelevantDocument+"(2-s2.0-"+scopusId+")"; count=1;}
+		
 	}
 	url=encodeURI(url+") AND NOT EID (2-s2.0-"+context.scDocId+")&view=COMPLETE&sort=+relevance&facets=country(count=200,sort=fd);");
 	urlRelevantDocument=encodeURI(url+") AND NOT EID (2-s2.0-"+context.scDocId+")");
