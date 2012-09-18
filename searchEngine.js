@@ -114,7 +114,7 @@ function submitQuery(status){
 var empty=0;
 var query="http://api.elsevier.com/content/search/index:SCOPUS?query=";
      
-for(var i=0;i<queryAll.length;i++)			{ if(i==0) query=query+"ALL("; if(empty==1) query+="AND"; else empty=1; query=query+"(\""+queryAll[i]+"\")"; if(i==queryAll.length-1) query=query+")"; }; empty=0;
+for(var i=0;i<queryAll.length;i++)			{ if(i==0) query=query+"ALL("; if(empty==1) query+="AND"; else empty=1; query=query+"\""+queryAll[i]+"\""; if(i==queryAll.length-1) query=query+")"; }; empty=0;
 /*
 for(var i=0;i<queryAffiliation.length;i++) 	{ if(empty==1) query+="+"; else empty=1; query=query+"affil("+queryAffiliation[i]+")"; };
 for(var i=0;i<queryCity.length;i++) 			{ if(empty==1) query+="+"; else empty=1; query=query+"affilcity("+queryCity[i]+")"; };
