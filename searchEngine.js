@@ -108,16 +108,27 @@ if(index==7){ querySort="+title";}
 if(index==8){ querySort="-title";}
 if(index==9){ querySort="+relevance";}
 }
-
+function _AND(query,i,buffer,and,Q){
+	if(i==0){
+		if(and==1){query=query+" AND ";}
+		query=query+buffer;
+		and=1;}
+	if(i>0) query=query+"AND";
+	query=query+"("+Q[i]+")";
+	if(i==Q.length) {
+	query=query+")";}
+}
 
 function submitQuery(status){
-var empty=0;
+var and=0;
 var query="http://api.elsevier.com/content/search/index:SCOPUS?query=";
-     
-for(var i=0;i<queryAll.length;i++)			{ if(i==0) query=query+"ALL("; if(empty==1) query+="AND"; else empty=1; query=query+"(\""+queryAll[i]+"\")"; if(i==queryAll.length-1) query=query+")"; }; empty=0;
+// if(i==0) query=query+"ALL("; if(empty==1) query+="AND"; else empty=1; and=1; query=query+"("+queryAll[i]+")"; if(i==queryAll.length-1) query=query+")";
+for(var i=0;i<queryAll.length;i++)			{  _AND(query,i,"ALL(",and,empty,queryAll);}
 /*
-for(var i=0;i<queryAffiliation.length;i++) 	{ if(empty==1) query+="+"; else empty=1; query=query+"affil("+queryAffiliation[i]+")"; };
-for(var i=0;i<queryCity.length;i++) 			{ if(empty==1) query+="+"; else empty=1; query=query+"affilcity("+queryCity[i]+")"; };
+for(var i=0;i<queryAffiliation.length;i++)  {  _
+for(var i=0;i<queryAffiliation.length;i++) 	{ if(i==0) query=query+"AFFIL("; if(empty==1) query+="OR"; else empty=1; and=1; query=query+"(\""+queryAffiliation[i]+"\")"; if(i==queryAffiliation.length-1) query=query+")"; }; empty=0;
+for(var i=0;i<queryCity.length;i++)			{ if(i==0) query=query+"AFFILCITY("; if(empty==1) query+="OR"; else empty=1; and=1; query=query+"(\""+queryCity[i]+"\")"; if(i==queryCity.length-1) query=query+")"; }; empty=0;
+
 for(var i=0;i<queryCountry.length;i++)		{ if(empty==1) query+="+"; else empty=1; query=query+"affilcountry("+queryCountry[i]+")"; };
 for(var i=0;i<queryOrganization.length;i++)  { if(empty==1) query+="+"; else empty=1; query=query+"affilorg("+queryOrganization[i]+")"; };
 for(var i=0;i<queryAbstract.length;i++) 		{ if(empty==1) query+="+"; else empty=1; query=query+"abs("+queryAbstract[i]+")"; };
@@ -134,11 +145,9 @@ for(var i=0;i<querySubjectArea.length;i++) 	 { if(empty==1) query+="+"; else emp
 */
 
 if(queryStartYear==queryEndYear){
-	query=query+" AND PUBYEAR IS "+queryStartYear;}
+	query=query+" AND PUBYEAR IS "+queryStartYear+" ";}
 if(queryStartYear!=null && queryEndYear!=null){
-
-	query=query+" AND PUBYEAR AFT "+queryStartYear+" AND PUBYEAR BEF "+queryEndYear+" ";
-}
+	query=query+" AND PUBYEAR AFT "+queryStartYear+" AND PUBYEAR BEF "+queryEndYear+" ";}
 
 if(status==1)
 query=query+"&start="+queryStart+"&count="+queryCount;
