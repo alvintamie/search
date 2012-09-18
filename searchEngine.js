@@ -109,12 +109,12 @@ if(index==7){ querySort="+title";}
 if(index==8){ querySort="-title";}
 if(index==9){ querySort="+relevance";}
 }
-function _AND(query,i,buffer,and,Q){
+function _ANDOR(query,i,buffer,and,Q,andor){
 	if(i==0){
 		if(and==1){query=query+" AND ";}
 		query=query+buffer;
 		and=1;}
-	if(i>0) query=query+"AND";
+	if(i>0) query=query+andor;
 	query=query+"("+Q[i]+")";
 	if(i==Q.length-1) {
 	query=query+")";}
@@ -125,26 +125,23 @@ function submitQuery(status){
 var and=0;
 var query="http://api.elsevier.com/content/search/index:SCOPUS?query=";
 // if(i==0) query=query+"ALL("; if(empty==1) query+="AND"; else empty=1; and=1; query=query+"("+queryAll[i]+")"; if(i==queryAll.length-1) query=query+")";
-for(var i=0;i<queryAll.length;i++)			{  query=_AND(query,i,"ALL(",and,queryAll);}
-/*
-for(var i=0;i<queryAffiliation.length;i++)  {  _
-for(var i=0;i<queryAffiliation.length;i++) 	{ if(i==0) query=query+"AFFIL("; if(empty==1) query+="OR"; else empty=1; and=1; query=query+"(\""+queryAffiliation[i]+"\")"; if(i==queryAffiliation.length-1) query=query+")"; }; empty=0;
-for(var i=0;i<queryCity.length;i++)			{ if(i==0) query=query+"AFFILCITY("; if(empty==1) query+="OR"; else empty=1; and=1; query=query+"(\""+queryCity[i]+"\")"; if(i==queryCity.length-1) query=query+")"; }; empty=0;
+for(var i=0;i<queryAll.length;i++)			{  query=_ANDOR(query,i,"ALL(",and,queryAll,"AND");}
+for(var i=0;i<queryAffiliation.length;i++)  {  query=_ANDOR(query,i,"AFFIL(",and,queryAffiliation,"OR");}
+for(var i=0;i<queryCity.length;i++)			{  query=_ANDOR(query,i,"affilcity(",and,queryCity,"OR");}
+for(var i=0;i<queryCountry.length;i++)		{  query=_ANDOR(query,i,"affilcountry(",and,queryCountry,"OR");}
+for(var i=0;i<queryOrganization.length;i++) {  query=_ANDOR(query,i,"affilorg(",and,queryOrganization,"OR");}
+for(var i=0;i<queryAbstract.length;i++) 	{  query=_ANDOR(query,i,"abs(",and,queryAbstract,"AND");}
 
-for(var i=0;i<queryCountry.length;i++)		{ if(empty==1) query+="+"; else empty=1; query=query+"affilcountry("+queryCountry[i]+")"; };
-for(var i=0;i<queryOrganization.length;i++)  { if(empty==1) query+="+"; else empty=1; query=query+"affilorg("+queryOrganization[i]+")"; };
-for(var i=0;i<queryAbstract.length;i++) 		{ if(empty==1) query+="+"; else empty=1; query=query+"abs("+queryAbstract[i]+")"; };
-for(var i=0;i<queryAuthorName.length;i++) 	{ if(empty==1) query+="+"; else empty=1; query=query+"author-name("+queryAuthorName[i]+")"; };
-for(var i=0;i<queryAuthorFirstName.length;i++){ if(empty==1) query+="+"; else empty=1; query=query+"authfirst("+queryAuthorFirstName[i]+")"; };
-for(var i=0;i<queryAuthorLastName.length;i++){ if(empty==1) query+="+"; else empty=1; query=query+"authlastname("+queryAuthorLastName[i]+")"; };
-for(var i=0;i<queryFirstAuthor.length;i++) 	 { if(empty==1) query+="+"; else empty=1; query=query+"firstauth("+queryAuthor[i]+")"; };
-for(var i=0;i<queryKeywords.length;i++)		 { if(empty==1) query+="+"; else empty=1; query=query+"key("+queryAll[i]+")"; };
-for(var i=0;i<queryReference.length;i++)	 { if(empty==1) query+="+"; else empty=1; query=query+"ref("+queryAll[i]+")"; };
-for(var i=0;i<querySourceTitle.length;i++) 	 { if(empty==1) query+="+"; else empty=1; query=query+"srctitle("+queryAll[i]+")"; };
-for(var i=0;i<queryArticleTitle.length;i++)  { if(empty==1) query+="+"; else empty=1; query=query+"title("+queryAll[i]+")"; };
-for(var i=0;i<querySubjectArea.length;i++) 	 { if(empty==1) query+="+"; else empty=1; query=query+"subjarea("+queryAll[i]+")"; };
 
-*/
+for(var i=0;i<queryAuthorName.length;i++) 		{  query=_ANDOR(query,i,"author-name(",and,queryAuthorName,"OR");}
+for(var i=0;i<queryAuthorFirstName.length;i++)	{  query=_ANDOR(query,i,"authfirst(",and,queryAuthorFirstName,"OR");}
+for(var i=0;i<queryAuthorLastName.length;i++)	{  query=_ANDOR(query,i,"authlastname(",and,queryAuthorLastName,"OR");}
+for(var i=0;i<queryFirstAuthor.length;i++) 		{  query=_ANDOR(query,i,"firstauth(",and,queryFirstAuthor,"OR");}
+for(var i=0;i<queryKeywords.length;i++)		 	{  query=_ANDOR(query,i,"key(",and,queryKeywords,"AND");}
+for(var i=0;i<queryReference.length;i++)		{  query=_ANDOR(query,i,"ref(",and,queryReference,"AND");}
+for(var i=0;i<querySourceTitle.length;i++) 		{  query=_ANDOR(query,i,"srctitle(",and,querySourceTitle,"AND");}
+for(var i=0;i<queryArticleTitle.length;i++)  	{  query=_ANDOR(query,i,"title(",and,queryArticleTitle.length,"AND");}
+for(var i=0;i<querySubjectArea.length;i++) 	 	{  query=_ANDOR(query,i,"subjarea(",and,querySubjectArea,"AND");}
 
 if(queryStartYear==queryEndYear){
 	query=query+" AND PUBYEAR IS "+queryStartYear+" ";}
