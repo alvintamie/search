@@ -70,7 +70,7 @@ function getCityCitedby(response){
 }
 function updateAllCitedby(){
 	console.log("hellooo");
-	console.log(relevantDocumentObject);
+	console.log(citedbyObject);
 	updateCitedby(); //update david
 }
 
@@ -85,11 +85,6 @@ function resetCitedbyAffiliation(){
 	citedbyAffiliation="";
 }
 
-function updateAllCitedby(){
-	console.log("hellooo");
-	console.log(citedbyObject);
-	updateCitedBy();; //update david
-}
 
 
 function putCitedbyData(temp){
