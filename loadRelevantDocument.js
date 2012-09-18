@@ -112,6 +112,7 @@ function putRelevantDocumentData(temp){
 	var buffer= returnArray(temp['search-results']['entry'])
 	for(var i=0;i<buffer.length;i++){
 		var Obj= new Object();
+	    try{
 		Obj.Abstract = buffer[i]['dc:description'];
 		Obj.title =    buffer[i]['dc:title'];
        		Obj.type =     buffer[i]['subtypeDescription'];
@@ -124,10 +125,11 @@ function putRelevantDocumentData(temp){
        		Obj.volume = buffer[i]['prim:volume'];
        		Obj.author=returnArray(buffer[i]['author']);
        		try{
-       		Obj.afid= returnArray(buffer[i]['affiliation'])[0]['afid'];
-       		Obj.affilname= returnArray(buffer[i]['affiliation'])[0]['affilname'];}
+       			Obj.afid= returnArray(buffer[i]['affiliation'])[0]['afid'];
+       			Obj.affilname= returnArray(buffer[i]['affiliation'])[0]['affilname'];}
        		catch(e){ console.log("error no affiliation in relevant document");}
-		
+	    	}
+	    catch(e){ console.log("error no some property in relevant document");}
        		Obj.url="http://www.scopus.com/record/display.url?eid=2-s2.0-"+tempId[1]+"&origin=resultslist&sort=plf-f&src=s";
        	//	console.log(Obj);
 		relevantDocumentObject.push(Obj);
