@@ -92,6 +92,7 @@ function _queryList0(query,i){ // for i =0
 }
 
 function _queryList1(query,i){ // for i =0
+        if(!queryList[i].string.length) return query;
 	var OR="";
 	var AND="";
 	var statusOR=0;
