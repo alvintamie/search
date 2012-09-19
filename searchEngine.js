@@ -45,6 +45,7 @@ queryList[i].string=[];
 }}
 
 function addQuery(query,index,or){
+	console.log("add david"+query+" "+index+" "+or);
 	for(var i=0;i<15;i++){
 	if(index==i){
 		var Obj= new Object();
