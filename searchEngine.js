@@ -50,10 +50,9 @@ function addQuery(query,index,or){
 		Obj.value=query;
 		Obj.state=or;
 		queryList[index].string.push(Obj);
-}}}
+}
 
 function deleteQuery(index,number){
-
 		queryList[index].string.splice(number,1);
 }
 
