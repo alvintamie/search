@@ -214,10 +214,9 @@ function getCitySearchEngine(response){
 	getCityResponse(response,queryResults,updateAllSearchEngine);
 }
 function updateAllSearchEngine(){
-	console.log("got citedby search engine");
+	console.log("got city search engine");
 	console.log(queryResults);
-	 //updateCitedBy();
-	 //update david
+	//update david
 }
 
 var readyMoreSearchEngine=1;
