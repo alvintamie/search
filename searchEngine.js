@@ -121,6 +121,17 @@ function _ANDOR(query,i,buffer,and,Q,andor){
 	return query;
 }
 
+function _ANDORO(query,i,buffer,and,Q,andor){
+//	andor=" "+andor+" ";
+	if(i==0){
+		if(and==1){query=query+" AND ";}
+	//	query=query+buffer;
+		and=1;}
+	if(i>0) query=query+andor;
+	query=query+"ALL("+Q[i]+")";
+	return query;
+}
+
 function submitQuery(status){
 var and=0;
 var query="http://api.elsevier.com/content/search/index:SCOPUS?query=";
