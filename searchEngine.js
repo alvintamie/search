@@ -23,23 +23,24 @@ for(var i=0;i<15;i++){
 	var Obj=new Object();
 	Obj.string=new Array();
 	queryList.push(Obj);}
-queryList[0].syntax="ALL";
-queryList[1].syntax="AFFIL";
-queryList[2].syntax="affilcity";
-queryList[3].syntax="affilcountry";
-queryList[4].syntax="affilorg";
-queryList[5].syntax="abs";
-queryList[6].syntax="author-name";
-queryList[7].syntax="authfirst";
-queryList[8].syntax="authlastname";
-queryList[9].syntax="firstauth";
-queryList[10].syntax="key";
-queryList[11].syntax="ref";
-queryList[12].syntax="srctitle";
-queryList[13].syntax="title";
-queryList[14].syntax="subjarea";
+	queryList[0].syntax="ALL";
+	queryList[1].syntax="AFFIL";
+	queryList[2].syntax="affilcity";
+	queryList[3].syntax="affilcountry";
+	queryList[4].syntax="affilorg";
+	queryList[5].syntax="abs";
+	queryList[6].syntax="author-name";
+	queryList[7].syntax="authfirst";
+	queryList[8].syntax="authlastname";
+	queryList[9].syntax="firstauth";
+	queryList[10].syntax="key";
+	queryList[11].syntax="ref";
+	queryList[12].syntax="srctitle";
+	queryList[13].syntax="title";
+	queryList[14].syntax="subjarea";
 
 function resetQuery(){
+queryResults=
 for(var i=0;i<15;i++){
 queryList[i].string=[];
 }}
@@ -118,6 +119,7 @@ function _queryList1(query,i){ // for i =0
 }
 var Qstatus;
 function submitQuery(status){
+queryResults=[];
 var and=0;
 var query="http://api.elsevier.com/content/search/index:SCOPUS?query=";
 var Qstatus=0;
