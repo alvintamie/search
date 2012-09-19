@@ -72,7 +72,7 @@ function getCityRelevantDocument(response){
 function updateAllRelevantDocument(){
 	console.log("got city of relevant document");
 	console.log(relevantDocumentObject);
-	 //update david
+	showResult(0,relevantDocumentObject);
 }
 
 function getRelevantDocumentFilter(affiliation){
