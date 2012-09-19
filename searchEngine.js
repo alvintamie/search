@@ -108,9 +108,9 @@ function _queryList1(query,i){ // for i =0
 			else 
 			OR=OR+" OR ("+queryList[i].string[j].value+")";}
 	}
-	if(!status&&AND){
+	if(!Qstatus&&AND){
 		query=query+queryList[i].syntax+"("+AND+")";Qstatus=1;}
-	if(status&&AND){
+	if(Qstatus&&AND){
 		query=query+" AND "+queryList[i].syntax+"("+AND+")";Qstatus=1;}
 	if(OR)
 	query=query+" OR "+queryList[i].syntax+"("+OR+")";
