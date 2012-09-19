@@ -144,7 +144,7 @@ for(var i=0;i<queryAffiliation.length;i++)  {  query=_ANDOR(query,i,"AFFIL(",and
 for(var i=0;i<queryCity.length;i++)			{  query=_ANDOR(query,i,"affilcity(",and,queryCity,"OR");}
 for(var i=0;i<queryCountry.length;i++)		{  query=_ANDOR(query,i,"affilcountry(",and,queryCountry,"OR");}
 for(var i=0;i<queryOrganization.length;i++) {  query=_ANDOR(query,i,"affilorg(",and,queryOrganization,"OR");}
-for(var i=0;i<queryAbstract.length;i++) 	{  query=_ANDOR(query,i,"abs(",and,queryAbstract,"AND");}
+for(var i=0;i<queryAbstract.length;i++) 	{  query=_ANDORO(query,i,"abs(",and,queryAbstract,"AND");}
 
 
 for(var i=0;i<queryAuthorName.length;i++) 		{  query=_ANDOR(query,i,"author-name(",and,queryAuthorName,"OR");}
@@ -152,9 +152,9 @@ for(var i=0;i<queryAuthorFirstName.length;i++)	{  query=_ANDOR(query,i,"authfirs
 for(var i=0;i<queryAuthorLastName.length;i++)	{  query=_ANDOR(query,i,"authlastname(",and,queryAuthorLastName,"OR");}
 for(var i=0;i<queryFirstAuthor.length;i++) 		{  query=_ANDOR(query,i,"firstauth(",and,queryFirstAuthor,"OR");}
 for(var i=0;i<queryKeywords.length;i++)		 	{  query=_ANDOR(query,i,"key(",and,queryKeywords,"AND");}
-for(var i=0;i<queryReference.length;i++)		{  query=_ANDOR(query,i,"ref(",and,queryReference,"AND");}
+for(var i=0;i<queryReference.length;i++)		{  query=_ANDORO(query,i,"ref(",and,queryReference,"AND");}
 for(var i=0;i<querySourceTitle.length;i++) 		{  query=_ANDOR(query,i,"srctitle(",and,querySourceTitle,"AND");}
-for(var i=0;i<queryArticleTitle.length;i++)  	{  query=_ANDOR(query,i,"title(",and,queryArticleTitle.length,"AND");}
+for(var i=0;i<queryArticleTitle.length;i++)  	{  query=_ANDORO(query,i,"title(",and,queryArticleTitle.length,"AND");}
 for(var i=0;i<querySubjectArea.length;i++) 	 	{  query=_ANDOR(query,i,"subjarea(",and,querySubjectArea,"AND");}
 
 if(queryStartYear==queryEndYear){
