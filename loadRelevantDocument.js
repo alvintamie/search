@@ -52,6 +52,7 @@ function getRelevantDocument(response){
 	else 			{ totalLevelRelevantDocument= Math.floor(totalRelevantDocument/25)+1;lastLevelRelevantDocument=totalRelevantDocument%25;}
 	currentLevelRelevantDocument=1;
 	readyMoreRelevantDocument=1;
+	updateRelevantDocument(relevantDocumentObject,0);
 	getReferenceCity(relevantDocumentObject,getCityRelevantDocument); 
 }
 
@@ -71,7 +72,7 @@ function getCityRelevantDocument(response){
 function updateAllRelevantDocument(){
 	console.log("got city of relevant document");
 	console.log(relevantDocumentObject);
-	updateRelevantDocument(); //update david
+	 //update david
 }
 
 function getRelevantDocumentFilter(affiliation){
