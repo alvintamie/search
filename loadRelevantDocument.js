@@ -22,7 +22,7 @@ function upRelevantDocument(){
      if(relevantDocumentAffiliation)
      var urlTemp =encodeURI(urlRelevantDocument+" AND affil("+relevantDocumentAffiliation+")&view=COMPLETE&sort=+relevance&facets=country(count=200,sort=fd);&start="+((currentLevelRelevantDocument-1)*25)+"&count=25");
      else
-     var urlTemp = encodeURI(urlRelevantDocument+"&view=COMPLETE&sort=+relevance&facets=country(count=200,sort=fd);&start="+((currentLevelRelevantDocument-1)*25)+"&count=25");
+     var urlTemp = encodeURI(urlRelevantDocument+"&view=COMPLETE&sort=+relevance&facets=country(count=200,sort=fd);&start="+((currentLevelRelevantDocument-1)*25)+"&count=25");}
   relevantDocumentObject=[];
   readyMoreRelevantDocument=0;
   console.log(urlTemp);
@@ -37,7 +37,7 @@ function downRelevantDocument(){
   if(relevantDocumentAffiliation)
   var urlTemp=encodeURI(urlRelevantDocument+" AND affil("+relevantDocumentAffiliation+")&view=COMPLETE&sort=+relevance&facets=country(count=200,sort=fd);&start="+((currentLevelRelevantDocument-1)*25)+"&count=25");
   else
-  var urlTemp = encodeURI(urlRelevantDocument+"&view=COMPLETE&sort=+relevance&facets=country(count=200,sort=fd);&start="+((currentLevelRelevantDocument-1)*25)+"&count=25");}
+  var urlTemp = encodeURI(urlRelevantDocument+"&view=COMPLETE&sort=+relevance&facets=country(count=200,sort=fd);&start="+((currentLevelRelevantDocument-1)*25)+"&count=25");
   relevantDocumentObject=[];
   readyMoreRelevantDocument=0;
   gadgets.sciverse.makeContentApiRequest(urlTemp, getMoreRelevantDocument, requestHeaders);
