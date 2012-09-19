@@ -109,7 +109,7 @@ if(index==8){ querySort="-title";}
 if(index==9){ querySort="+relevance";}
 }
 function _ANDOR(query,i,buffer,and,Q,andor){
-	andor=" "+andor+" ";
+//	andor=" "+andor+" ";
 	if(i==0){
 		if(and==1){query=query+" AND ";}
 		query=query+buffer;
