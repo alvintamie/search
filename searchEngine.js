@@ -1,24 +1,10 @@
 var searchElement= new Array("All","Affiliation","City","Country","Organization","Abstract","Author Name","Author First Name","Author Last Name","First Author","Keywords","Reference","Source Title","Article Title","Subject Area");
-var queryAll=new Array();
-var queryAffiliation=new Array();
-var queryCity=new Array();
-var queryCountry=new Array();
-var queryOrganization=new Array();
-var queryAbstract= new Array();
-var queryAuthorName= new Array();
-var queryAuthorFirstName=new Array();
-var queryAuthorLastName=new Array();
-var queryFirstAuthor= new Array();
-var queryKeywords= new Array();
-var queryReference= new Array();
-var querySourceTitle= new Array();
-var queryArticleTitle= new Array();
-var querySubjectArea= new Array();
+
 //for parameter url
 var queryStart=0;
 var queryCount=100;
-var queryStartYear=1980;
-var queryEndYear=1999;
+var queryStartYear;
+var queryEndYear;
 var querySort="+coverDate";
 //total search results
 var queryTotalResults=0;
@@ -32,69 +18,51 @@ var queryAuthName=new Array();
 //subject
 // querySearch.dateRange
 // querySearch.doctype;
+var queryList=new Array();
+for(var i=0;i<15;i++){
+	var Obj=new Object();
+	Obj.string=new Array();
+	queryList.push(Obj);}
+queryList[0].syntax="ALL";
+queryList[1].syntax="AFFIL";
+queryList[2].syntax="affilcity";
+queryList[3].syntax="affilcountry";
+queryList[4].syntax="affilorg";
+queryList[5].syntax="abs";
+queryList[6].syntax="author-name";
+queryList[7].syntax="authfirst";
+queryList[8].syntax="authlastname";
+queryList[9].syntax="firstauth";
+queryList[10].syntax="key";
+queryList[11].syntax="ref";
+queryList[12].syntax="srctitle";
+queryList[13].syntax="title";
+queryList[14].syntax="subjarea";
+
 function resetQuery(){
-  	queryCity=[];
-  	queryCountry=[];
-	queryOrganization=[];
-	affiliation= [];
-	queryAll= [];
-	queryAbstract=[];
-	queryAuthorName=[];
-	queryAuthorFirstName=[];
-	queryAuthorLastName=[];
-	queryFirstAuthor=[];
-	queryKeywords=[];
-	queryReference=[];
-	querySourceTitle=[]; // publisher(journal, conference dkk)
-	queryArticleTitle=[];
-}
-function searchEngineTesting(){
-  queryAll.push("heart");
-  submitQuery(0);
-}
-function addQuery(query,index){
-	if(index==0){ queryAll.push(query);}
-	if(index==1){ queryAffiliation.push(query);}
-	if(index==2){ queryCity.push(query);}
-	if(index==3){ queryCountry.push(query);}
-	if(index==4){ queryOrganization.push(query);}
-	if(index==5){ queryAbstract.push(query);}
-	if(index==6){ queryAuthorName.push(query);}
-	if(index==7){ queryAuthorFirstName.push(query);}
-	if(index==8){ queryAuthorLastName.push(query);}
-	if(index==9){ queryFirstAuthor.push(query);}
-	if(index==10){queryKeywords.push(query);}
-	if(index==11){queryReference.push(query);}
-	if(index==12){querySourceTitle.push(query);}
-	if(index==13){queryArticleTitle.push("\""+query+"\"");}
-	if(index==14){querySubjectArea.push(query);}
-}
+for(var i=0;i<15;i++){
+queryList[i].string=[];
+}}
+
+function addQuery(query,index,or){
+	for(var i=0;i<15;i++){
+	if(index==i){
+		var Obj= new Object();
+		Obj.value=query;
+		Obj.state=or;
+		queryList[i].string.push(Obj);
+}}}
 
 function deleteQuery(index,number){
-	if(index==0){ queryAll.splice(number,1);}
-	if(index==1){ queryAffiliation.splice(number,1);}
-	if(index==2){ queryCity.splice(number,1);}
-	if(index==3){ queryCountry.splice(number,1);}
-	if(index==4){ queryOrganization.splice(number,1);}
-	if(index==5){ queryAbstract.splice(number,1);}
-	if(index==6){ queryAuthorName.splice(number,1);}
-	if(index==7){ queryAuthorFirstName.splice(number,1);}
-	if(index==8){ queryAuthorLastName.splice(number,1);}
-	if(index==9){ queryFirstAuthor.splice(number,1);}
-	if(index==10){queryKeywords.splice(number,1);}
-	if(index==11){queryReference.splice(number,1);}
-	if(index==12){querySourceTitle.splice(number,1);}
-	if(index==13){queryArticleTitle.splice(number,1);}
-	if(index==14){querySubjectArea.splice(number,1);}
-}
+	for(var i=0;i<15;i++){
+	if(index==i){
+		queryList[i].string.splice(number,1);
+}}}
 
 function resetAffiliation(){
-affiliation=[];
-queryCity=[];
-queryCountry=[];
-queryOrganization=[];
-resetFacet();
-}
+	for(i=1;i<5;i++){
+	queryList[i].string=[];	
+}}
 
 function changeSort(index){
 if(index==0){ querySort="+coverDate";}
@@ -108,54 +76,55 @@ if(index==7){ querySort="+title";}
 if(index==8){ querySort="-title";}
 if(index==9){ querySort="+relevance";}
 }
-function _ANDOR(query,i,buffer,and,Q,andor){
-//	andor=" "+andor+" ";
-	if(i==0){
-		if(and==1){query=query+" AND ";}
-		query=query+buffer;
-		and=1;}
-	if(i>0) query=query+andor;
-	query=query+"("+Q[i]+")";
-	if(i==Q.length-1) {
-	query=query+")";}
+
+
+
+function _queryList0(query,i){ // for i =0
+	var OR="";
+	var AND="";
+	query=query+queryList[i].syntax+"(";
+	for(var j=0;j<queryList[i].string.length;j++){
+		if(queryList[i].string[j].state)
+			AND=AND+queryList[i].string[j].value+" ";
+		else{
+			OR=OR+" OR ("+queryList[i].string[j].value+")";}
+	}
+	query="("+AND+")"+OR+")";
+	if(OR||AND) Qstatus=1;
 	return query;
 }
 
-function _ANDORO(query,i,buffer,and,Q,andor){
-	andor=" "+andor+" ";
-	if(i==0){
-		if(and==1){query=query+" AND ";}
-		query=query+buffer;
-		and=1;}
-//	if(i>0) query=query+andor;
-		if(i>0) query=query+" ";
-	query=query+Q[i];
-	if(i==Q.length-1) {
-	query=query+")";}
+function _queryList1(query,i){ // for i =0
+	var OR="";
+	var AND="";
+	var statusOR=0;
+	query=query+queryList[i].syntax+"(";
+	for(var j=0;j<queryList[i].string.length;j++){
+		if(queryList[i].string[j].state)
+			AND=AND+queryList[i].string[j].value+" ";
+		else{
+			if(statusOR==0)
+			{ OR=OR+"("+queryList[i].string[j].value+")"; statusOR=1;}
+			else 
+			OR=OR+" OR ("+queryList[i].string[j].value+")";}
+	}
+	if(!status&&AND){
+		query=query+queryList[i].syntax+"("+AND+")";Qstatus=1;}
+	if(status&&AND){
+		query=query+" AND "+queryList[i].syntax+"("+AND+")";Qstatus=1;}
+	if(OR)
+	query=query+" OR "+queryList[i].syntax+"("+OR+")";
 	return query;
 }
-
+var Qstatus;
 function submitQuery(status){
 var and=0;
 var query="http://api.elsevier.com/content/search/index:SCOPUS?query=";
+var Qstatus=0;
 // if(i==0) query=query+"ALL("; if(empty==1) query+="AND"; else empty=1; and=1; query=query+"("+queryAll[i]+")"; if(i==queryAll.length-1) query=query+")";
-for(var i=0;i<queryAll.length;i++)			{  query=_ANDORO(query,i,"ALL(",and,queryAll,"AND");}
-for(var i=0;i<queryAffiliation.length;i++)  {  query=_ANDOR(query,i,"AFFIL(",and,queryAffiliation,"OR");}
-for(var i=0;i<queryCity.length;i++)			{  query=_ANDOR(query,i,"affilcity(",and,queryCity,"OR");}
-for(var i=0;i<queryCountry.length;i++)		{  query=_ANDOR(query,i,"affilcountry(",and,queryCountry,"OR");}
-for(var i=0;i<queryOrganization.length;i++) {  query=_ANDOR(query,i,"affilorg(",and,queryOrganization,"OR");}
-for(var i=0;i<queryAbstract.length;i++) 	{  query=_ANDORO(query,i,"abs(",and,queryAbstract,"AND");}
-
-
-for(var i=0;i<queryAuthorName.length;i++) 		{  query=_ANDOR(query,i,"author-name(",and,queryAuthorName,"OR");}
-for(var i=0;i<queryAuthorFirstName.length;i++)	{  query=_ANDOR(query,i,"authfirst(",and,queryAuthorFirstName,"OR");}
-for(var i=0;i<queryAuthorLastName.length;i++)	{  query=_ANDOR(query,i,"authlastname(",and,queryAuthorLastName,"OR");}
-for(var i=0;i<queryFirstAuthor.length;i++) 		{  query=_ANDOR(query,i,"firstauth(",and,queryFirstAuthor,"OR");}
-for(var i=0;i<queryKeywords.length;i++)		 	{  query=_ANDOR(query,i,"key(",and,queryKeywords,"AND");}
-for(var i=0;i<queryReference.length;i++)		{  query=_ANDORO(query,i,"ref(",and,queryReference,"AND");}
-for(var i=0;i<querySourceTitle.length;i++) 		{  query=_ANDOR(query,i,"srctitle(",and,querySourceTitle,"AND");}
-for(var i=0;i<queryArticleTitle.length;i++)  	{  query=_ANDORO(query,i,"title(",and,queryArticleTitle.length,"AND");}
-for(var i=0;i<querySubjectArea.length;i++) 	 	{  query=_ANDOR(query,i,"subjarea(",and,querySubjectArea,"AND");}
+var status=0;
+_queryList0(query,0);
+for(int i=1;i<15;i++){ _queryList1(query,i);}
 
 if(queryStartYear==queryEndYear){
 	query=query+" AND PUBYEAR IS "+queryStartYear+" ";}
