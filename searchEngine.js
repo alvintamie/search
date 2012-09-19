@@ -130,6 +130,8 @@ function _ANDORO(query,i,buffer,and,Q,andor){
 //	if(i>0) query=query+andor;
 		if(i>0) query=query+" ";
 	query=query+Q[i];
+	if(i==Q.length-1) {
+	query=query+")";}
 	return query;
 }
 
