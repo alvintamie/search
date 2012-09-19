@@ -158,10 +158,13 @@ gadgets.sciverse.makeContentApiRequest(encodeURI(query), getSearchRequest, reque
 function getSearchRequest(response){
 		
 		console.log("searchRequest is obtained");
-		console.log(response);
+		//console.log(response);
+		try{
 		var temp = JSON.parse(parseValidator(response.data));
-		console.log(temp);
-		
+		console.log(temp);}
+		catch(e){
+			console.log("NO RESULTS FROM SEARCH ENGINE");	
+		}
 		queryTotalResults=temp['search-results']['opensearch:totalResults'];
 		var buffer= returnArray(temp['search-results']['entry']);
 		for(var i=0;i<buffer.length;i++){
