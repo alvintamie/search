@@ -90,7 +90,7 @@ function getReferenceCity(Obj,getCity){
 		if(count==1) urlCity=urlCity+"OR";
 		if(i<Obj.length) { urlCity=urlCity+"("+Obj[i].afid+")"; count=1;}
 	}
-	urlCity=encodeURI(urlCity+")&count=200");
+	urlCity=encodeURI(urlCity+")");
 	console.log(urlCity);
 	gadgets.sciverse.makeContentApiRequest(urlCity, getCity, requestHeaders);	
 }
