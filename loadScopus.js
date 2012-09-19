@@ -94,7 +94,7 @@ function _queryList0(query,i){ // for i =0
 	return query;
 }
 
-function queryList1(query,i){ // for i =0
+function _queryList1(query,i){ // for i =0
 	var OR="";
 	var AND="";
 	var statusOR=0;
@@ -124,7 +124,7 @@ var Qstatus=0;
 // if(i==0) query=query+"ALL("; if(empty==1) query+="AND"; else empty=1; and=1; query=query+"("+queryAll[i]+")"; if(i==queryAll.length-1) query=query+")";
 var status=0;
 _queryList0(query,0);
-for(var i=1;i<15;i++){ queryList1(query,i);}
+for(var i=1;i<15;i++){ _queryList1(query,i);}
 
 if(queryStartYear==queryEndYear){
 	query=query+" AND PUBYEAR IS "+queryStartYear+" ";}
