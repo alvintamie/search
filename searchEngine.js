@@ -77,6 +77,7 @@ if(index==9){ querySort="+relevance";}
 
 
 function _queryList0(query,i){ // for i =0
+	if(!queryList[i].string.length) return query;
 	var OR="";
 	var AND="";
 	query=query+queryList[i].syntax+"(";
