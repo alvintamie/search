@@ -80,14 +80,15 @@ function updateAllReference(){
 }
 
 function getReferenceCity(Obj,getCity){
-	console.log("get Reference city");
+	console.log("get city");
 	//"http://api.elsevier.com/content/search/index:affiliation?query=af-id((60016912)OR(60029157))";
 	urlCity="http://api.elsevier.com/content/search/index:affiliation?query=af-id(";
 	var count=0;
+	if(Obj.length==0) { console.log("reference city is 0"); return;}
 	for(var i=0;i<Obj.length;i++){
-	if(!Obj[i].afid) { continue;}
-	if(count==1) urlCity=urlCity+"OR";
-	if(i<Obj.length) { urlCity=urlCity+"("+Obj[i].afid+")"; count=1;}
+		if(!Obj[i].afid) { continue;}
+		if(count==1) urlCity=urlCity+"OR";
+		if(i<Obj.length) { urlCity=urlCity+"("+Obj[i].afid+")"; count=1;}
 	}
 	urlCity=encodeURI(urlCity+")&count=200");
 	console.log(urlCity);
