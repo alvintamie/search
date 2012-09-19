@@ -25,7 +25,7 @@ for(var i=0;i<15;i++){
 	queryList.push(Obj);}
 	queryList[0].syntax="ALL";
 	queryList[1].syntax="AFFIL";
-	queryList[2].syntax="affilcity";
+	queryList[2].syntax="AFFILCITY";
 	queryList[3].syntax="affilcountry";
 	queryList[4].syntax="affilorg";
 	queryList[5].syntax="abs";
