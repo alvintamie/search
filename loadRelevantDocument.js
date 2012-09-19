@@ -25,6 +25,7 @@ function upRelevantDocument(){
      var urlTemp=encodeURI(urlRelevantDocument+"&start="+((currentLevelRelevantDocument-1)*25)+"&count=25");}
   relevantDocumentObject=[];
   readyMoreRelevantDocument=0;
+  console.log(urlTemp);
   gadgets.sciverse.makeContentApiRequest(urlTemp, getMoreRelevantDocument, requestHeaders);
   return true;
 }
