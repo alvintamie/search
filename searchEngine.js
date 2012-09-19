@@ -98,7 +98,6 @@ function _queryList1(query,i){ // for i =0
 	var OR="";
 	var AND="";
 	var statusOR=0;
-	query=query+queryList[i].syntax+"(";
 	for(var j=0;j<queryList[i].string.length;j++){
 		console.log("query list state : "+queryList[i].string[j].state);
 		if(queryList[i].string[j].state)
