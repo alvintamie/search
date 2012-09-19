@@ -62,6 +62,7 @@ function getMoreRelevantDocument(response){
 	console.log(temp);
     	putRelevantDocumentData(temp);
     	readyMoreRelevantDocument=1;
+    	updateRelevantDocument(relevantDocumentObject,0);
    	getReferenceCity(relevantDocumentObject,getCityRelevantDocument);
 	}
 	
