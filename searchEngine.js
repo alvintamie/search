@@ -40,7 +40,7 @@ for(var i=0;i<15;i++){
 	queryList[14].syntax="subjarea";
 
 function resetQuery(){
-queryResults=
+queryResults=[];
 for(var i=0;i<15;i++){
 queryList[i].string=[];
 }}
