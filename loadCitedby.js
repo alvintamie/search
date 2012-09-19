@@ -13,15 +13,15 @@ function upCitedby(){
   currentLevelCitation++;
   if(currentLevelCitation==totalLevelCitation){
     if(citedbyAffiliation)
-    var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?start="+((currentLevelCitation-1)*25)+"&count="+lastLevelCitation+"&query=(refeid(2-s2.0-"+context.scDocId+") AND affil("+citedbyAffiliation+"))&view=COMPLETE");
+    var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?start="+((currentLevelCitation-1)*25)+"&count="+lastLevelCitation+"&query=(refeid(2-s2.0-"+context.scDocId+") AND affil("+citedbyAffiliation+"))&view=COMPLETE&facets=country(count=200,sort=fd);");
     else
-    var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?start="+((currentLevelCitation-1)*25)+"&count="+lastLevelCitation+"&query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE");}
+    var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?start="+((currentLevelCitation-1)*25)+"&count="+lastLevelCitation+"&query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE&facets=country(count=200,sort=fd);");}
   else 
   {
     if(citedbyAffiliation)
-     var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?start="+((currentLevelCitation-1)*25)+"&count=25&query=(refeid(2-s2.0-"+context.scDocId+") AND affil("+citedbyAffiliation+"))&view=COMPLETE");
+     var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?start="+((currentLevelCitation-1)*25)+"&count=25&query=(refeid(2-s2.0-"+context.scDocId+") AND affil("+citedbyAffiliation+"))&view=COMPLETE&facets=country(count=200,sort=fd);");
     else
-     var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?start="+((currentLevelCitation-1)*25)+"&count=25&query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE");}
+     var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?start="+((currentLevelCitation-1)*25)+"&count=25&query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE&facets=country(count=200,sort=fd);");}
   citedbyObject=[];
   readyMoreCitation=0;
   gadgets.sciverse.makeContentApiRequest(urlCitedby, getMoreCitedby, requestHeaders);
@@ -33,9 +33,9 @@ function downCitedby(){
   if(currentLevelCitation==-1 || currentLevelCitation==1) return false;
   currentLevelCitation--;
   if(citedbyAffiliation)
-  var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?start="+((currentLevelCitation-1)*25)+"&count=25&query=(refeid(2-s2.0-"+context.scDocId+") AND affil("+citedbyAffiliation+"))&view=COMPLETE");
+  var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?start="+((currentLevelCitation-1)*25)+"&count=25&query=(refeid(2-s2.0-"+context.scDocId+") AND affil("+citedbyAffiliation+"))&view=COMPLETE&facets=country(count=200,sort=fd);");
   else
-  var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?start="+((currentLevelCitation-1)*25)+"&count=25&query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE");
+  var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?start="+((currentLevelCitation-1)*25)+"&count=25&query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE&facets=country(count=200,sort=fd);");
   citedbyObject=[];
   readyMoreCitation=0;
   gadgets.sciverse.makeContentApiRequest(urlCitedby, getMoreCitedby, requestHeaders);
