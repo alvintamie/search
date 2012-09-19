@@ -47,7 +47,6 @@ function resetQuery(){
 	queryReference=[];
 	querySourceTitle=[]; // publisher(journal, conference dkk)
 	queryArticleTitle=[];
-	resetFacet();
 }
 function searchEngineTesting(){
   queryAll.push("heart");
