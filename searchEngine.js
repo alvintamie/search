@@ -99,13 +99,19 @@ function _queryList1(query,i){ // for i =0
 	var AND="";
 	var statusOR=0;
 	var numberOR=0;
+	var numberAND=0;
+	var numberANDCount=0;
 	for(var j=0;j<queryList[i].string.length;j++)
 		if(!queryList[i].string[j].state)
 			numberOR++;
+		else numberAND++;
 	for(var j=0;j<queryList[i].string.length;j++){
 		console.log("query list state : "+queryList[i].string[j].state);
-		if(queryList[i].string[j].state)
-			AND=AND+queryList[i].string[j].value+" ";
+		if(queryList[i].string[j].state){
+			AND=AND+queryList[i].string[j].value;
+			numberANDCount++;
+			if(numberANDCount!=numberAND)
+			AND=AND+" ";}
 		else{
 			if(statusOR==0)
 			{ 	if(numberOR==1) { OR=OR+queryList[i].string[j].value; statusOR=1; continue;}
