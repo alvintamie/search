@@ -120,8 +120,8 @@ var query="http://api.elsevier.com/content/search/index:SCOPUS?query=";
 var Qstatus=0;
 // if(i==0) query=query+"ALL("; if(empty==1) query+="AND"; else empty=1; and=1; query=query+"("+queryAll[i]+")"; if(i==queryAll.length-1) query=query+")";
 var status=0;
-_queryList0(query,0);
-for(var i=1;i<15;i++){ _queryList1(query,i);}
+query=_queryList0(query,0);
+for(var i=1;i<15;i++){ query=_queryList1(query,i);}
 
 if(queryStartYear==queryEndYear){
 	query=query+" AND PUBYEAR IS "+queryStartYear+" ";}
