@@ -3,8 +3,8 @@ var searchElement= new Array("All","Affiliation","City","Country","Organization"
 //for parameter url
 var queryStart=0;
 var queryCount=100;
-var queryStartYear;
-var queryEndYear;
+var queryStartYear=0;
+var queryEndYear=0;
 var querySort="+coverDate";
 //total search results
 var queryTotalResults=0;
@@ -87,7 +87,7 @@ function _queryList0(query,i){ // for i =0
 		else{
 			OR=OR+" OR ("+queryList[i].string[j].value+")";}
 	}
-	query="("+AND+")"+OR+")";
+	query=query+"("+AND+")"+OR+")";
 	if(OR||AND) Qstatus=1;
 	return query;
 }
@@ -125,9 +125,9 @@ var status=0;
 query=_queryList0(query,0);
 for(var i=1;i<15;i++){ query=_queryList1(query,i);}
 
-if(queryStartYear==queryEndYear){
+if(queryStartYear==queryEndYear && queryStartYear!=0){
 	query=query+" AND PUBYEAR IS "+queryStartYear+" ";}
-if(queryStartYear!=null && queryEndYear!=null){
+if(queryStartYear!=0 && queryEndYear!=0){
 	query=query+" AND PUBYEAR AFT "+queryStartYear+" AND PUBYEAR BEF "+queryEndYear+" ";}
 
 if(status==1)
