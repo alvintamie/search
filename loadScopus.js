@@ -2,8 +2,7 @@ var requestHeaders = {};
 var authorObject=new Object();
 var scopusId;
 var it;
-var k=4937;
-var limitk   =60070000;
+
 
 function getContextCallback(response) {
 	context = response;
