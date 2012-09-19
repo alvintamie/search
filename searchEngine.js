@@ -46,19 +46,16 @@ queryList[i].string=[];
 
 function addQuery(query,index,or){
 	console.log("add david"+query+" "+index+" "+or);
-	for(var i=0;i<15;i++){
-	if(index==i){
 		var Obj= new Object();
 		Obj.value=query;
 		Obj.state=or;
-		queryList[i].string.push(Obj);
+		queryList[index].string.push(Obj);
 }}}
 
 function deleteQuery(index,number){
-	for(var i=0;i<15;i++){
-	if(index==i){
-		queryList[i].string.splice(number,1);
-}}}
+
+		queryList[index].string.splice(number,1);
+}
 
 function resetAffiliation(){
 	for(i=1;i<5;i++){
