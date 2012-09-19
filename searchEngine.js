@@ -98,13 +98,19 @@ function _queryList1(query,i){ // for i =0
 	var OR="";
 	var AND="";
 	var statusOR=0;
+	var numberOR=0;
+	for(var j=0;j<queryList[i].string.length;j++)
+		if(!queryList[i].string[j].state)
+			numberOR++;
 	for(var j=0;j<queryList[i].string.length;j++){
 		console.log("query list state : "+queryList[i].string[j].state);
 		if(queryList[i].string[j].state)
 			AND=AND+queryList[i].string[j].value+" ";
 		else{
 			if(statusOR==0)
-			{ OR=OR+"("+queryList[i].string[j].value+")"; statusOR=1;}
+			{ 	if(numberOR==1) { OR=OR+queryList[i].string[j].value; statusOR=1; continue;}
+				OR=OR+"("+queryList[i].string[j].value+")"; statusOR=1;
+			}
 			else 
 			OR=OR+" OR ("+queryList[i].string[j].value+")";}
 	}
