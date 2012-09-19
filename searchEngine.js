@@ -122,10 +122,10 @@ function _ANDOR(query,i,buffer,and,Q,andor){
 }
 
 function _ANDORO(query,i,buffer,and,Q,andor){
-//	andor=" "+andor+" ";
+	andor=" "+andor+" ";
 	if(i==0){
 		if(and==1){query=query+" AND ";}
-	//	query=query+buffer;
+		query=query+buffer;
 		and=1;}
 	if(i>0) query=query+andor;
 	query=query+"ALL("+Q[i]+")";
