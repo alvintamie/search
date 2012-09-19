@@ -31,7 +31,7 @@ function startingRequest(response){
 	var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+context.scDocId+"?view=REF");
 	var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE&facets=country(count=200,sort=fd);");
 	var urlCoauthors=encodeURI( "http://api.elsevier.com/content/search/index:author?query=affil(university)&co-author="+context.au1Id+"&count=200&facets=country(count=200,sort=fd);");
- 	var urlTest = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=all(\"ayam\"AND\"bebek\")");
+ 	var urlTest = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=all(\"ayam\" AND \"bebek\")");
  	//gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
  	//gadgets.sciverse.makeContentApiRequest(urlCoauthors, getCoauthors, requestHeaders);
  	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);      
