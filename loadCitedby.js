@@ -52,6 +52,7 @@ function getCitedby(response){
 	else 			{ totalLevelCitation= Math.floor(totalCitation/25)+1;lastLevelCitation=totalCitation%25;}
 	currentLevelCitation=1;
 	readyMoreCitation=1;
+	updateCitedBy(citedbyObject,0);
 	getReferenceCity(citedbyObject,getCityCitedby);
 }
 
@@ -61,6 +62,7 @@ function getMoreCitedby(response){
 	console.log(temp);
     	putCitedbyData(temp);
     	readyMoreCitation=1;
+    	updateCitedBy(citedbyObject,0);
 	getReferenceCity(citedbyObject,getCityCitedby);}
 
 
