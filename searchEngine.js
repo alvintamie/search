@@ -250,6 +250,7 @@ function upSearchEngine(){
 	queryStart=(currentLevelSearchEngine-1)*100; queryCount=100;}
 	queryResults=[];
 	readyMoreSearchEngine=0;
+	currentLevelSearhEngine++;
 	submitQuery(1);
 }
 
@@ -261,5 +262,6 @@ function downSearchEngine(){
 	queryStart=(currentLevelSearchEngine-1)*100; queryCount=100;
 	queryResults=[];
 	readyMoreSearchEngine=0;
+	currentLevelSearhEngine--;
 	submitQuery(1);
 }
