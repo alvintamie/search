@@ -162,7 +162,7 @@ else if(queryEndYear=="Present"){
 else if(queryStartYear!=0 && queryEndYear!=0){
 	query=query+" AND PUBYEAR AFT "+queryStartYear+" AND PUBYEAR BEF "+queryEndYear+" ";}
 
-if(status==1)
+if(statusQ==2)
 query=query+"&start="+queryStart+"&count="+queryCount;
 else
 query=query+"&count=100";
