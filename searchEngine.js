@@ -50,6 +50,7 @@ function addQuery(query,index,or){
 		var Obj= new Object();
 		Obj.value=query;
 		Obj.state=or;
+		
 		queryList[index].string.push(Obj);
 }
 
@@ -141,7 +142,16 @@ for(var i=1;i<15;i++){ query=_queryList1(query,i);}
 
 if(queryStartYear==queryEndYear && queryStartYear!=0){
 	query=query+" AND PUBYEAR IS "+queryStartYear+" ";}
-if(queryStartYear!=0 && queryEndYear!=0){
+else if (queryStartYear=="All years" && queryEndYear=="Present"){
+	query=query+" PUBYEAR BEF 2013 ";
+}
+else if(queryEndYear=="Before 1960"){
+	query=query+" PUBYEAR BEF 1960 ";
+}
+else if(queryEndYear=="Present"){
+	query=query+" AND PUBYEAR AFT "+queryStartYear+" AND PUBYEAR BEF 2013 ";
+}
+else if(queryStartYear!=0 && queryEndYear!=0){
 	query=query+" AND PUBYEAR AFT "+queryStartYear+" AND PUBYEAR BEF "+queryEndYear+" ";}
 
 if(status==1)
