@@ -147,7 +147,7 @@ else if (queryStartYear=="All years" && queryEndYear=="Present"){
 }
 else if (queryStartYear=="All years" && queryEndYear!=0){
 	query=query+" AND PUBYEAR BEF "+queryEndYear+" ";}
-}
+
 else if(queryEndYear=="Before 1960"){
 	query=query+" PUBYEAR BEF 1960 ";
 }
