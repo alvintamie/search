@@ -262,6 +262,6 @@ function downSearchEngine(){
 	queryStart=(currentLevelSearchEngine-1)*100; queryCount=100;
 	queryResults=[];
 	readyMoreSearchEngine=0;
-	currentLevelSearhEngine--;
+	currentLevelSearchEngine--;
 	submitQuery(1);
 }
