@@ -7,6 +7,7 @@ var lastLevelCitation=0;
 var countryCitedby= new Array();
 var readyMoreCitation=1;
 var citedbyAffiliation;
+var countryCitedby=new Array();
 function upCitedby(){ 
   if(readyMoreCitation==0) return;
   if(currentLevelCitation==-1 || currentLevelCitation==totalLevelCitation) return false;
@@ -46,14 +47,12 @@ function getCitedby(response){
     	var temp = JSON.parse(parseValidator(response.text));
 	console.log(temp);
 	putCitedbyData(temp);
-	//affiliationCitation=returnArray(temp['search-results']['facet']['category']);
+	countryCitedby=returnArray(temp['search-results']['facet']['category']);
 	//console.log(affiliationCitation);
 	if(totalCitation%25==0) { totalLevelCitation= Math.floor(totalCitation/25); lastLevelCitation=25;}
 	else 			{ totalLevelCitation= Math.floor(totalCitation/25)+1;lastLevelCitation=totalCitation%25;}
 	currentLevelCitation=1;
-	readyMoreCitation=1;
-	console.log("ini dia");
-	console.log(citedbyObject);
+	readyMoreCitation=1;);
 	updateCitedBy(citedbyObject,0);
 	getReferenceCity(citedbyObject,getCityCitedby);
 }
