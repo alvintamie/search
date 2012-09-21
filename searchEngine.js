@@ -218,7 +218,7 @@ function getSearchRequest(response){
 		if(queryTotalResults%100==0) { totalLevelSearchEngine= Math.floor(queryTotalResults/100); lastLevelSearchEngine=100;}
 		else 			{ totalLevelSearchEngine= Math.floor(queryTotalResults/100)+1;lastLevelSearchEngine=queryTotalResults%100;}
 		readyMoreSearchEngine=1;
-		if(statusQ==0)
+		if(statusQ==1)
 		currentLevelSearchEngine=1;
 		updateSearch(queryResults,0);
 		showOverallCountrySearch(queryCtry);
@@ -252,6 +252,7 @@ function upSearchEngine(){
 	else{
 	queryStart=(currentLevelSearchEngine-1)*100; queryCount=100;}
 	queryResults=[];
+	statusQ=2;
 	readyMoreSearchEngine=0;
 	submitQuery(1);
 }
@@ -264,5 +265,6 @@ function downSearchEngine(){
 	queryStart=(currentLevelSearchEngine-1)*100; queryCount=100;
 	queryResults=[];
 	readyMoreSearchEngine=0;
+	statusQ=2;
 	submitQuery(1);
 }
