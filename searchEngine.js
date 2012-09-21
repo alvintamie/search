@@ -136,7 +136,7 @@ function _queryList1(query,i){ // for i =0
 }
 var Qstatus=0;
 function submitQuery(status){
-statusQ++;
+statusQ=1;
 queryResults=[];
 var and=0;
 var query="http://api.elsevier.com/content/search/index:SCOPUS?query=";
