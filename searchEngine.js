@@ -211,7 +211,9 @@ function getSearchRequest(response){
 		else 			{ totalLevelSearchEngine= Math.floor(queryTotalResults/100)+1;lastLevelSearchEngine=queryTotalResults%100;}
 		currentLevelSearchEngine=1;
 		readyMoreSearchEngine=1;
-
+		
+		updateSearch(queryResults,0);
+		showOverallCountrySearch(queryCtry);
 		getReferenceCity(queryResults,getCitySearchEngine);
 }
 
