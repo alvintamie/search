@@ -15,6 +15,7 @@ var queryCtry= new Array();
 var querySubjArea= new Array();
 var queryPubYear=new Array();
 var queryAuthName=new Array();
+var statusQ=0;
 //subject
 // querySearch.dateRange
 // querySearch.doctype;
@@ -40,12 +41,14 @@ for(var i=0;i<15;i++){
 	queryList[14].syntax="subjarea";
 
 function resetQuery(){
+	statusQ=0;
 queryResults=[];
 for(var i=0;i<15;i++){
 queryList[i].string=[];
 }}
 
 function addQuery(query,index,or){
+	statusQ=0;
 	console.log("add david"+query+" "+index+" "+or);
 		var Obj= new Object();
 		Obj.value=query;
@@ -55,10 +58,12 @@ function addQuery(query,index,or){
 }
 
 function deleteQuery(index,number){
+		statusQ=0;
 		queryList[index].string.splice(number,1);
 }
 
 function resetAffiliation(){
+	statusQ=0;
 	for(i=1;i<5;i++){
 	queryList[i].string=[];	
 }}
@@ -129,12 +134,12 @@ function _queryList1(query,i){ // for i =0
 	query=query+" OR "+queryList[i].syntax+"("+OR+")";
 	return query;
 }
-var Qstatus;
+var Qstatus=0;
 function submitQuery(status){
+statusQ++;
 queryResults=[];
 var and=0;
 var query="http://api.elsevier.com/content/search/index:SCOPUS?query=";
-Qstatus=0;
 // if(i==0) query=query+"ALL("; if(empty==1) query+="AND"; else empty=1; and=1; query=query+"("+queryAll[i]+")"; if(i==queryAll.length-1) query=query+")";
 var status=0;
 query=_queryList0(query,0);
@@ -212,16 +217,14 @@ function getSearchRequest(response){
 
 		if(queryTotalResults%100==0) { totalLevelSearchEngine= Math.floor(queryTotalResults/100); lastLevelSearchEngine=100;}
 		else 			{ totalLevelSearchEngine= Math.floor(queryTotalResults/100)+1;lastLevelSearchEngine=queryTotalResults%100;}
-		currentLevelSearchEngine=1;
 		readyMoreSearchEngine=1;
-		
+		if(statusQ==0)
+		currentLevelSearchEngine=1;
 		updateSearch(queryResults,0);
 		showOverallCountrySearch(queryCtry);
+		
 		getReferenceCity(queryResults,getCitySearchEngine);
 }
-
-
-
 
 
 function getCitySearchEngine(response){
@@ -250,7 +253,6 @@ function upSearchEngine(){
 	queryStart=(currentLevelSearchEngine-1)*100; queryCount=100;}
 	queryResults=[];
 	readyMoreSearchEngine=0;
-	
 	submitQuery(1);
 }
 
@@ -262,6 +264,5 @@ function downSearchEngine(){
 	queryStart=(currentLevelSearchEngine-1)*100; queryCount=100;
 	queryResults=[];
 	readyMoreSearchEngine=0;
-	
 	submitQuery(1);
 }
