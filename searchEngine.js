@@ -136,7 +136,6 @@ function _queryList1(query,i){ // for i =0
 }
 var Qstatus=0;
 function submitQuery(status){
-statusQ=1;
 queryResults=[];
 var and=0;
 var query="http://api.elsevier.com/content/search/index:SCOPUS?query=";
@@ -218,7 +217,7 @@ function getSearchRequest(response){
 		if(queryTotalResults%100==0) { totalLevelSearchEngine= Math.floor(queryTotalResults/100); lastLevelSearchEngine=100;}
 		else 			{ totalLevelSearchEngine= Math.floor(queryTotalResults/100)+1;lastLevelSearchEngine=queryTotalResults%100;}
 		readyMoreSearchEngine=1;
-		if(statusQ==1)
+		if(statusQ==0)
 		currentLevelSearchEngine=1;
 		updateSearch(queryResults,0);
 		showOverallCountrySearch(queryCtry);
