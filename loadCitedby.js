@@ -96,7 +96,7 @@ function resetCitedbyAffiliation(){
 function putCitedbyData(temp){
 	if(!statusCitedby){
 	try	{totalCitation= temp['search-results']['opensearch:totalResults'];}
-	catch(e){ updateCitedBy(); return;}
+	catch(e){  console.log("NO citedby catch "); updateCitedBy(new Array(),0); return;}
 		statusCitedby=true;}
 		
 	try{ if(temp['service-error']['status']['statusCode']=='INVALID_INPUT'){
