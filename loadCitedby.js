@@ -52,7 +52,7 @@ function getCitedby(response){
 	if(totalCitation%25==0) { totalLevelCitation= Math.floor(totalCitation/25); lastLevelCitation=25;}
 	else 			{ totalLevelCitation= Math.floor(totalCitation/25)+1;lastLevelCitation=totalCitation%25;}
 	currentLevelCitation=1;
-	readyMoreCitation=1;);
+	readyMoreCitation=1;
 	updateCitedBy(citedbyObject,0);
 	getReferenceCity(citedbyObject,getCityCitedby);
 }
