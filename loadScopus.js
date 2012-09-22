@@ -38,7 +38,7 @@ function startingRequest(response){
  	gadgets.sciverse.makeContentApiRequest(urlTest,getTest,requestHeaders);
  	//searchEngineTesting()
 }
-var urlTest
+
 function getTest(response){
 	console.log(urlTest);
 	console.log("testing results");
