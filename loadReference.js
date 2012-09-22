@@ -67,7 +67,7 @@ function getReference(response){
 		catch(e){
 			console.log("Reference details at index "+i+" is error");}
 	}
-      updateReference(referenceObject,0);
+      
       getReferenceCity(referenceObject,getCityReference);
 }
 
@@ -78,6 +78,7 @@ function updateAllReference(){
 	console.log("get city of references");
 	console.log(referenceObject);
 	_readyScroll=1;
+	updateReference(referenceObject,0);
 	showResult(0,referenceObject);
 }
 
@@ -93,7 +94,7 @@ function getReferenceCity(Obj,getCity){
 		if(i<Obj.length) { urlCity=urlCity+"("+Obj[i].afid+")"; count=1;}
 	}
 	urlCity=encodeURI(urlCity+")");
-	console.log(urlCity);
+	updateReference(referenceObject,0);
 	gadgets.sciverse.makeContentApiRequest(urlCity, getCity, requestHeaders);	
 }
 
