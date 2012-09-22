@@ -96,8 +96,8 @@ function updateAllReference(){
 	_readyScroll=1;
 	updateReference(referenceObject,0);
 	showOverallCountryReference(filterReferenceCountry(referenceObject));
-
 	showResult(0,referenceObject);
+	_readyScroll=1;
 }
 
 function filterReferenceCountry(Obj){
