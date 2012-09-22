@@ -89,10 +89,22 @@ function getRelevantDocumentFilter(array){
 	gadgets.sciverse.makeContentApiRequest(url, getRelevantDocument, requestHeaders);
 }
 
-function resetRelevantDocument(){
+function resetQueryRelevantDocument(){
 	relatedDocumentQuery(referenceObjectTemp);
 }
 
+function resetRelevantDocument(){
+relevantDocumentObject = new Array();
+countryRelevantDocument= new Array();
+statusRelevantDocument=0;
+totalRelevantDocument=-1;
+totalLevelRelevantDocument=0;
+currentLevelRelevantDocument=-1;
+lastLevelRelevantDocument=0;
+readyMoreRelevantDocument=1;
+urlRelevantDocument;
+relevantDocumentAffiliation="";
+}
 function relatedDocumentQuery(buffer){
 	var url="http://api.elsevier.com/content/search/index:SCOPUS?query=REFEID(";
 	relevantDocumentAffiliation="";
