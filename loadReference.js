@@ -58,12 +58,12 @@ function getReference(response){
 			catch(e) { console.log("No affiliation property in reference");}
 			referenceObject[index].authkeywords=buffer[i]['authkeywords'];
 			referenceObject[index].creator=buffer[i]['dc:creator'];
-			referenceObject[index].abstract=buffer[i]['dc:description'];
+			referenceObject[index].Abstract=buffer[i]['dc:description'];
 			referenceObject[index].title=buffer[i]['dc:title'];
 			referenceObject[index].publicationName=buffer[i]['publicationName'];
 			referenceObject[index].volume=buffer[i]['volume'];
 			referenceObject[index].type=buffer[i]['subtypeDescription'];
-			console.log("index "+index+" "+buffer[i]['dc:title']);
+			// console.log("index "+index+" "+buffer[i]['dc:title']);
 		}
 		catch(e){
 			console.log("Reference details at index "+i+" is error");}
