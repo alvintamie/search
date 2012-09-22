@@ -35,7 +35,7 @@ function getRef(response){
 	else{
 		referenceSize=referenceObject.length;
 		numberRef=referenceObject.length;
-		//relatedDocumentQuery(buffer);
+		relatedDocumentQuery(buffer);
 	referenceQuery(referenceObject);}
 }
 
