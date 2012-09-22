@@ -103,12 +103,29 @@ function filterReferenceCountry(){
 	var temp= new Object();
 	for(var i=0;i<referenceObject.length;i++){
 		if( typeof temp[referenceObject[i].country]=='undefined')
-		temp[referenceObject[i].country]=0;
+		temp[referenceObject[i].country]=1;
 		else
 		temp[referenceObject[i].country]++;
 	}
+	var buffer = new Array();
+	for(key in temp){
+		if(temp[key]=='undefined') continue;
+		var b= new Object();
+		b.country=key;
+		b.hitcount=temp[key];
+		buffer.push(b);
+	}
+	for(var i=0;i<buffer.length;i++){
+		for(var j=i+1;j<buffer.length;j++){
+			if(buffer[i].hitcount<buffer[j].hitcount){
+				var x = buffer[j];
+				buffer[j]=buffer[i];
+				buffer[i]=x;
+			}
+		}
+	}
 	console.log("anak ajaib");
-	console.log(temp);
+	console.log(buffer);
 	
 }
 
