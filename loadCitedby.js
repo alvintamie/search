@@ -123,7 +123,7 @@ function putCitedbyData(temp){
        		Obj.creator= buffer[i]['dc:creator'];
        		Obj.publicationName = buffer[i]['prism:publicationName'];
        		var tempId=buffer[i]['dc:identifier'].split(":");
-       		Obj.identifier= tempId[1];
+       		Obj.scopusId= tempId[1];
      	  	Obj.date =buffer[i]['prism:coverDate'];
        		Obj.volume = buffer[i]['prim:volume'];
        		Obj.author=returnArray(buffer[i]['author']);  
