@@ -81,12 +81,13 @@ function getRelevantDocumentFilter1(array){
 	console.log("get Coauthors filter all");
 	
 	var affiliation="";
+	if(array.length==1) affiliation=array[0].country;
+	else
 	for(var i=0;i<array.length;i++){
 		if(i!=0) 
 		affiliation=affiliation+" OR ";
 		affiliation=affiliation+"("+array[i].country+")";
 	}
-	
 	relevantDocumentAffiliation=affiliation;
 	var url = encodeURI(urlRelevantDocument+" AND affil("+affiliation+")&view=COMPLETE&sort=+relevance&facets=country(count=200,sort=fd);");
 	console.log(url);
