@@ -56,7 +56,14 @@ function getMoreCoauthors(response){
 	showOverallCountryCoAuthor(filterReferenceCountry(coauthorsObject));
 }
 
-
+function getCoauthorsFilter(response){
+	var temp=new Array();
+	for(var i=0;i<coauthorsObject.length;i++){
+		if(coauthorsObject[i].country==response)
+			temp.push(coauthorsObject[i]);
+	}
+	return temp;
+}
 
 function putCoauthorsData(temp){
 	if(!statusCoauthors){
