@@ -100,13 +100,13 @@ function updateAllReference(){
 	showResult(0,referenceObject);
 }
 
-function filterReferenceCountry(){
+function filterReferenceCountry(Obj){
 	var temp= new Object();
-	for(var i=0;i<referenceObject.length;i++){
-		if( typeof temp[referenceObject[i].country]=='undefined')
-		temp[referenceObject[i].country]=1;
+	for(var i=0;i<Obj.length;i++){
+		if( typeof temp[Obj[i].country]=='undefined')
+		temp[Obj[i].country]=1;
 		else
-		temp[referenceObject[i].country]++;
+		temp[Obj[i].country]++;
 	}
 	var buffer = new Array();
 	for(key in temp){
