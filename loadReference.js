@@ -102,6 +102,9 @@ function updateAllReference(){
 function filterReferenceCountry(){
 	var temp= new Object();
 	for(var i=0;i<referenceObject.length;i++){
+		if(temp[referenceObject[i]=='undefined')
+		temp[referenceObject[i].country]=0;
+		else
 		temp[referenceObject[i].country]++;
 	}
 	console.log("anak ajaib");
