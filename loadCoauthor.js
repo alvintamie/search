@@ -57,15 +57,16 @@ function getMoreCoauthors(response){
 }
 
 function getCoauthorsFilter(response){
-	
+	console.log("get Coauthors filter");
 	var temp=new Array();
 	for(var i=0;i<coauthorsObject.length;i++){
-		for(var j=0;j<response.length;j++)
+		for(var j=0;j<response.length;j++){
 		if(coauthorsObject[i].country==response[j])
-			temp.push(coauthorsObject[i]);
+			{ temp.push(coauthorsObject[i]);}
 	}
+	console.log(temp);
+	showResult(0,coauthorsObject);
 	updateCoauthors(temp,1);
-	
 }
 
 function resetCoauthors(){
