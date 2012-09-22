@@ -55,7 +55,7 @@ function referenceQuery(buffer){
 function getReference(response){
 	console.log("ref details is obtained");
 	var temp = JSON.parse(response.data);
-	     console.log(temp);
+	   
 	buffer=returnArray(temp['search-results']['entry']);
 	for(var i=0;i<buffer.length;i++){
 		try{
@@ -77,7 +77,7 @@ function getReference(response){
 		catch(e){
 			console.log("Reference details at index "+i+" is error");}
 	}
-
+     console.log(referenceObject);
       updateReference(referenceObject,0);
       getReferenceCity(referenceObject,getCityReference);
 }
