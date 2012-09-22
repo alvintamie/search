@@ -27,7 +27,7 @@ function getRef(response){
 		referenceObject.push(Obj);
 	}
 	referenceObjectTemp=buffer;
-	relatedDocumentQuery(buffer);
+	// relatedDocumentQuery(buffer);
 	if(buffer.length==40){
 		referenceLevel++;
 		var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+context.scDocId+"?view=REF&startref="+referenceLevel*40+"&refcount=40");
@@ -39,6 +39,8 @@ function getRef(response){
 
 function referenceQuery(buffer){
 	urlReference="http://api.elsevier.com/content/search/index:SCOPUS?query=EID(";
+	console.log("hoi");
+	console.log(buffer);
 	for(var i=0;i<buffer.length;i++){
 		scopusId=buffer[i].scopusId;
 		if(i<buffer.length){ urlReference=urlReference+"(2-s2.0-"+scopusId+")";}
