@@ -6,13 +6,13 @@ var referenceObjectTemp;
 var referenceSize;
 var currentReferenceSize;
 var referenceLevel=0;
+var countryReference= new Array();
 function getRef(response){
   	console.log("ref is obtained");
 	var temp = JSON.parse(response.data);
 	console.log(temp);
 	var buffer=temp['abstracts-retrieval-response']['references']['reference'];
 	console.log("SizeOfRef : "+buffer.length);
-
 	readyRef=1;
 	for(var i=0;i<buffer.length;i++){
 		var Obj= new Object();
@@ -81,9 +81,10 @@ function getReference(response){
 		catch(e){
 			console.log("Reference details at index "+i+" is error");}
 	}
-      updateReference(referenceObject,0);
+    
       getReferenceCity(referenceObject,getCityReference);
 }
+
 
 function getCityReference(response){
 	getCityResponse(response,referenceObject,updateAllReference);
@@ -92,7 +93,20 @@ function updateAllReference(){
 	console.log("get city of references");
 	console.log(referenceObject);
 	_readyScroll=1;
+	updateReference(referenceObject,0);
+	//showoverallCountryReference()
+	filterReferenceCountry();
 	showResult(0,referenceObject);
+}
+
+function filterReferenceCountry(){
+	var temp= new Object();
+	for(var i=0;i<referenceObject.length;i++){
+		temp[referenceObject[i].country]++;
+	}
+	console.log("anak ajaib");
+	console.log(temp);
+	
 }
 
 function getReferenceCity(Obj,getCity){
@@ -107,7 +121,6 @@ function getReferenceCity(Obj,getCity){
 		if(i<Obj.length) { urlCity=urlCity+"("+Obj[i].afid+")"; count=1;}
 	}
 	urlCity=encodeURI(urlCity+")&start=0&count=200");
-	updateReference(referenceObject,0);
 	gadgets.sciverse.makeContentApiRequest(urlCity, getCity, requestHeaders);	
 }
 
