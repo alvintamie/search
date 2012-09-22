@@ -125,6 +125,7 @@ function filterReferenceCountry(){
 			}
 		}
 	}
+	console.log(buffer);
 	return buffer;
 }
 
