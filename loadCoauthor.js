@@ -41,7 +41,7 @@ function getCoauthors(response){
 	readyMoreCoauthors=1;
 	updateCoauthors(coauthorsObject,0);
 	showResults(0,coauthorsObject);
-		showOverallCountryReference(filterReferenceCountry(coauthorsObject));
+		showOverallCountryCoAuthor(filterReferenceCountry(coauthorsObject));
 }
 
 function getMoreCoauthors(response){
@@ -52,7 +52,7 @@ function getMoreCoauthors(response){
     	readyMoreCoauthors=1;
 	updateCoauthors(coauthorsObject,0);
 	showResults(0,coauthorsObject);
-	showOverallCountryReference(filterReferenceCountry(coauthorsObject));
+	showOverallCountryCoAuthor(filterReferenceCountry(coauthorsObject));
 }
 
 
