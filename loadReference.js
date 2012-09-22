@@ -40,7 +40,7 @@ function getRef(response){
 }
 
 function referenceQuery(buffer){
-	var urlReference="http://api.elsevier.com/content/search/index:SCOPUS?query=EID(";
+	var urlR="http://api.elsevier.com/content/search/index:SCOPUS?query=EID(";
 	console.log("hoi "+buffer.length);
 	console.log(buffer);
 	for(var i=0;i<buffer.length;i++){
@@ -49,8 +49,8 @@ function referenceQuery(buffer){
 		if(i<buffer.length-1){ urlReference=urlReference+" OR ";}
 	}
 	console.log(urlReference);
-	var urlReference=encodeURI(urlReference+")&view=COMPLETE&start=0&count=200&facets=country(count=200,sort=fd);");
-	gadgets.sciverse.makeContentApiRequest(urlReference, getReference, requestHeaders);
+	urlR=encodeURI(urlReference+")&view=COMPLETE&start=0&count=200&facets=country(count=200,sort=fd);");
+	gadgets.sciverse.makeContentApiRequest(urlR, getReference, requestHeaders);
 }
 
 function getReference(response){
