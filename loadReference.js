@@ -118,7 +118,7 @@ function filterReferenceCountry(){
 	}
 	for(var i=0;i<buffer.length;i++){
 		for(var j=i+1;j<buffer.length;j++){
-			if(buffer[i].hitcount<buffer[j].hitcount){
+			if(buffer[i].hitCount<buffer[j].hitCount){
 				var x = buffer[j];
 				buffer[j]=buffer[i];
 				buffer[i]=x;
