@@ -33,8 +33,8 @@ function getRef(response){
 		var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+context.scDocId+"?view=REF&startref="+referenceLevel*40+"&refcount=40");
 		gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);    
 	}
-	else
-	referenceQuery(referenceObject);
+	else{
+	referenceQuery(referenceObject);}
 }
 
 function referenceQuery(buffer){
