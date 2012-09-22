@@ -40,6 +40,7 @@ function getCoauthors(response){
 	currentLevelCoauthors=1;
 	readyMoreCoauthors=1;
 	updateCoauthors(coauthorsObject,0);
+	showResults(0,coauthorsObject);
 }
 
 function getMoreCoauthors(response){
@@ -48,7 +49,9 @@ function getMoreCoauthors(response){
 	console.log(temp);
     	putCoauthorsData(temp);
     	readyMoreCoauthors=1;
-	updateCoauthors(coauthorsObject,0);}
+	updateCoauthors(coauthorsObject,0);
+	showResults(0,coauthorsObject);
+}
 
 
 
