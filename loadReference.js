@@ -16,7 +16,6 @@ function getRef(response){
 	console.log("SizeOfRef : "+buffer.length);
 	numberRef=buffer.length;
 	readyRef=1;
-	referenceObject=[];
 	for(var i=0;i<buffer.length;i++){
 		var Obj= new Object();
 		try{
