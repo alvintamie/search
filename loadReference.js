@@ -18,6 +18,7 @@ function getRef(response){
 		var Obj= new Object();
 		try{
 			Obj.author=returnArray(buffer[i]['author-list']['author']);
+			try { Obj.authorId=Obj.author[0]['scopus-id'];} catch(e) { console.log("error at no auth id");}
 			Obj.citedby=buffer[i]['citedby-count'];
 			Obj.sourcetitle=buffer[i]['sourcetitle'];
 			Obj.scopusId=buffer[i]['scopus-id'];}
