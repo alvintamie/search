@@ -94,7 +94,7 @@ function updateAllReference(){
 	console.log(referenceObject);
 	_readyScroll=1;
 	updateReference(referenceObject,0);
-	//showoverallCountryReference()
+	showoverallCountryReference(filterReferenceCountry());
 	filterReferenceCountry();
 	showResult(0,referenceObject);
 }
@@ -125,9 +125,7 @@ function filterReferenceCountry(){
 			}
 		}
 	}
-	console.log("anak ajaib");
-	console.log(buffer);
-	
+	return buffer;
 }
 
 function getReferenceCity(Obj,getCity){
