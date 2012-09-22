@@ -63,7 +63,7 @@ function getCoauthorsFilter(response){
 		for(var j=0;j<response.length;j++){
 		if(coauthorsObject[i].country==response[j])
 			{ temp.push(coauthorsObject[i]);}
-	}
+	}}
 	console.log(temp);
 	showResult(0,coauthorsObject);
 	updateCoauthors(temp,1);
