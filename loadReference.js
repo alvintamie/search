@@ -173,3 +173,15 @@ function getCityResponse(response,Obj,updateAll){
 	updateAll();
 //	updateReference();
 }
+
+function resetReference(){
+idToIndex= new Object();
+readyRef=0;
+currentReferenceSize=0;
+referenceObject = new Array();
+referenceObjectTemp;
+referenceSize;
+currentReferenceSize;
+referenceLevel=0;
+countryReference= new Array();
+}
