@@ -57,7 +57,7 @@ function waiting( ms )
 function newMainArticle(Obj){
 	context= new Object();
 	context.scDocId=Obj.auId;
-	context.scopusId;
+	context.scopusId=Obj.scopusId;
 	
 }
 
@@ -68,71 +68,11 @@ function parseValidator(b){
 }
 
 function masterReset(){
-	var authorObject=new Object();
-	var idToIndex= new Object();
-
-var readyRef=0;
-var currentReferenceSize=0;
-var referenceObject = new Array();
-var referenceObjectTemp;
-var referenceSize;
-var currentReferenceSize;
-var referenceLevel=0;
-var countryReference= new Array();
-	
-var citedbyObject = new Array();
-var statusCitedby=0;
-var totalCitation=-1;
-var totalLevelCitation=0;
-var currentLevelCitation=-1;
-var lastLevelCitation=0;
-var countryCitedby= new Array();
-var readyMoreCitation=1;
-var citedbyAffiliation;
-var countryCitedby=new Array();
-
-var relevantDocumentObject = new Array();
-var countryRelevantDocument= new Array();
-var statusRelevantDocument=0;
-var totalRelevantDocument=-1;
-var totalLevelRelevantDocument=0;
-var currentLevelRelevantDocument=-1;
-var lastLevelRelevantDocument=0;
-var readyMoreRelevantDocument=1;
-var urlRelevantDocument; // initally to get normal url relevant document without any parameter so can be extend
-var relevantDocumentAffiliation=""; 
-
-var coauthorsObject = new Array();
-var statusCoauthors=0;
-var totalCoauthors=-1;
-var totalLevelCoauthors=0;
-var currentLevelCoauthors=-1;
-var lastLevelCoauthors=0;
-var affiliationCoauthors= new Array();
-var readyMoreCoauthors=1;
-
-var queryStart=0;
-var queryCount=100;
-var queryStartYear=0;
-var queryEndYear=0;
-var querySort="+coverDate";
-//total search results
-var queryTotalResults=0;
-//resultsObject
-var queryResults=new Array();
-//facets
-var queryCtry= new Array();
-var querySubjArea= new Array();
-var queryPubYear=new Array();
-var queryAuthName=new Array();
-var statusQ=0;
-//subject
-// querySearch.dateRange
-// querySearch.doctype;
-var readyMoreSearchEngine=1;
-var currentLevelSearchEngine=-1;
-var totalLevelSearchEngine=0;
-var lastLevelSearchEngine=0;
-var queryList=new Array();
-
+authorObject=new Object();
+idToIndex= new Object();
+resetSearchEngine();
+resetReference();
+resetCoauthors();
+resetRelevantDocument();
+resetCitedby();
 }
