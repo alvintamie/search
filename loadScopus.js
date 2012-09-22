@@ -54,8 +54,10 @@ function waiting( ms )
 
 }
 
-function newMainArticle(){
-	
+function newMainArticle(Obj){
+	context= new Object();
+	context.scDocId=Obj.auId;
+	context.scopusId;
 	
 }
 
@@ -109,7 +111,6 @@ var lastLevelCoauthors=0;
 var affiliationCoauthors= new Array();
 var readyMoreCoauthors=1;
 
-or parameter url
 var queryStart=0;
 var queryCount=100;
 var queryStartYear=0;
