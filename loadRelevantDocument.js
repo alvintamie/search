@@ -87,6 +87,7 @@ function getRelevantDocumentFilter1(array){
 	}
 	relevantDocumentAffiliation=affiliation;
 	var url = encodeURI(urlRelevantDocument+" AND affil("+affiliation+")&view=COMPLETE&sort=+relevance&facets=country(count=200,sort=fd);");
+	console.log(url);
 	gadgets.sciverse.makeContentApiRequest(url, getRelevantDocument, requestHeaders);
 }
 
