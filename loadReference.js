@@ -62,7 +62,8 @@ function getReference(response){
 			referenceObject[index].title=buffer[i]['dc:title'];
 			referenceObject[index].publicationName=buffer[i]['publicationName'];
 			referenceObject[index].volume=buffer[i]['volume'];
-			referenceObject[index].type=buffer[i]['subtypeDescription'];	
+			referenceObject[index].type=buffer[i]['subtypeDescription'];
+			console.log("index "+index+" "+buffer[i]['dc:title']);
 		}
 		catch(e){
 			console.log("Reference details at index "+i+" is error");}
