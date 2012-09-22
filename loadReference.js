@@ -6,6 +6,7 @@ var referenceObject = new Array();
 var referenceObjectTemp;
 var referenceSize;
 var currentReferenceSize;
+var referenceLevel=0;
 function getRef(response){
   	console.log("ref is obtained");
 	var temp = JSON.parse(response.data);
@@ -29,6 +30,12 @@ function getRef(response){
 	}
 	referenceObjectTemp=buffer;
 	relatedDocumentQuery(buffer);
+	if(buffer.length==40){
+		var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+context.scDocId+"?view=REF&startref="+referenceLevel*40+"&refcount=40");
+		referenceLevel++;
+		gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);    
+	}
+	else
 	referenceQuery(buffer);
 }
 
