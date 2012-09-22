@@ -41,7 +41,7 @@ function getRef(response){
 
 function referenceQuery(buffer){
 	urlReference="http://api.elsevier.com/content/search/index:SCOPUS?query=EID(";
-	console.log("hoi");
+	console.log("hoi "+buffer.length);
 	console.log(buffer);
 	for(var i=0;i<buffer.length;i++){
 		scopusId=buffer[i].scopusId;
