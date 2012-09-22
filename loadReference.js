@@ -39,7 +39,7 @@ function referenceQuery(buffer){
 		if(i<numberRef){ urlReference=urlReference+"(2-s2.0-"+scopusId+")";}
 		if(i<numberRef-1){ urlReference=urlReference+" OR ";}
 	}
-	urlReference=encodeURI(urlReference+")&view=COMPLETE&facets=country(count=200,sort=fd);");
+	urlReference=encodeURI(urlReference+")&view=COMPLETE&start=0&count=200&facets=country(count=200,sort=fd);");
 	gadgets.sciverse.makeContentApiRequest(urlReference, getReference, requestHeaders);
 }
 
