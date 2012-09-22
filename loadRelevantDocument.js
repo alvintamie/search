@@ -77,7 +77,8 @@ function updateAllRelevantDocument(){
 }
 
 
-function getRelevantDocumentFilter(array){
+function getRelevantDocumentFilter1(array){
+	console.log("get Coauthors filter all");
 	affiliation="";
 	for(var i=0;i<array.length;i++){
 		if(i!=0) 
@@ -88,6 +89,20 @@ function getRelevantDocumentFilter(array){
 	var url = encodeURI(urlRelevantDocument+" AND affil("+affiliation+")&view=COMPLETE&sort=+relevance&facets=country(count=200,sort=fd);");
 	gadgets.sciverse.makeContentApiRequest(url, getRelevantDocument, requestHeaders);
 }
+
+function getRelevantDocumentFilter2(response){
+	console.log("get Coauthors filter 25");
+	var temp=new Array();
+	for(var i=0;i<relevantDocumentObject.length;i++){
+		for(var j=0;j<response.length;j++){
+		if(relevantDocumentObject[i].country==response[j])
+			{ temp.push(relevantDocumentObject[i]);}
+	}}
+	console.log(temp);
+	updateRelevantDocument(temp,1);
+	showResult(0,relevantDocumentObject);
+}
+
 
 function resetQueryRelevantDocument(){
 	relatedDocumentQuery(referenceObjectTemp);
