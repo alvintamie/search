@@ -76,6 +76,7 @@ function getReference(response){
 			referenceObject[index].publicationName=buffer[i]['publicationName'];
 			referenceObject[index].volume=buffer[i]['volume'];
 			referenceObject[index].type=buffer[i]['subtypeDescription'];
+			referenceObject[index].url="http://www.scopus.com/record/display.url?eid=2-s2.0-"+referenceObject[index].scopusId+"&origin=resultslist&sort=plf-f&src=s";
 			// console.log("index "+index+" "+buffer[i]['dc:title']);
 		}
 		catch(e){
