@@ -40,7 +40,7 @@ function getCoauthors(response){
 	else 			{ totalLevelCoauthors= Math.floor(totalCoauthors/200)+1;lastLevelCoauthors=totalCoauthors%200;}
 	currentLevelCoauthors=1;
 	readyMoreCoauthors=1;
-	updateCoauthors();
+	updateCoauthors(coauthorsObject,0);
 }
 
 function getMoreCoauthors(response){
@@ -49,7 +49,7 @@ function getMoreCoauthors(response){
 	console.log(temp);
     	putCoauthorsData(temp);
     	readyMoreCoauthors=1;
-	updateCoauthors();}
+	updateCoauthors(coauthorsObject,0);}
 
 function putCoauthorsData(temp){
 	if(!statusCoauthors){
