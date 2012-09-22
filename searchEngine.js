@@ -19,7 +19,12 @@ var statusQ=0;
 //subject
 // querySearch.dateRange
 // querySearch.doctype;
+var readyMoreSearchEngine=1;
+var currentLevelSearchEngine=-1;
+var totalLevelSearchEngine=0;
+var lastLevelSearchEngine=0;
 var queryList=new Array();
+//end initial
 for(var i=0;i<15;i++){
 	var Obj=new Object();
 	Obj.string=new Array();
@@ -194,7 +199,7 @@ function getSearchRequest(response){
 	       		Obj.creator= buffer[i]['dc:creator'];
 	       		Obj.publicationName = buffer[i]['prism:publicationName'];
 	       		var tempId=buffer[i]['dc:identifier'].split(":");
-	       		Obj.identifier= tempId[1];
+	       		Obj.scopusId= tempId[1];
 	     	  	Obj.date =buffer[i]['prism:coverDate'];
 	       		Obj.volume = buffer[i]['prim:volume'];
 	       		Obj.author=returnArray(buffer[i]['author']);
@@ -237,10 +242,7 @@ function updateAllSearchEngine(){
 	showResult(0,queryResults);
 }
 
-var readyMoreSearchEngine=1;
-var currentLevelSearchEngine=-1;
-var totalLevelSearchEngine=0;
-var lastLevelSearchEngine=0;
+
 
 function upSearchEngine(){
 	if(readyMoreSearchEngine==0) return;
