@@ -62,7 +62,8 @@ function getCoauthorsFilter(response){
 		if(coauthorsObject[i].country==response)
 			temp.push(coauthorsObject[i]);
 	}
-	return temp;
+	updateCoauthors(temp,1);
+	
 }
 
 function putCoauthorsData(temp){
