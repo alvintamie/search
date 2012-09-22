@@ -42,7 +42,7 @@ function getRef(response){
 function referenceQuery(buffer){
 	urlReference="http://api.elsevier.com/content/search/index:SCOPUS?query=EID(";
 	for(var i=0;i<buffer.length;i++){
-		scopusId=buffer[i]['scopus-id'];
+		scopusId=buffer[i].scopusId;
 		if(i<numberRef){ urlReference=urlReference+"(2-s2.0-"+scopusId+")";}
 		if(i<numberRef-1){ urlReference=urlReference+" OR ";}
 	}
