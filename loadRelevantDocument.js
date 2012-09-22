@@ -76,7 +76,14 @@ function updateAllRelevantDocument(){
 	showResult(0,relevantDocumentObject);
 }
 
-function getRelevantDocumentFilter(affiliation){
+
+function getRelevantDocumentFilter(array){
+	affiliation="";
+	for(var i=0;i<array.length;i++){
+		if(i!=0) 
+		affiliation=affiliation+" OR ";
+		affiliation=affiliation+"("+array[i].country+")";
+	}
 	relevantDocumentAffiliation=affiliation;
 	var url = encodeURI(urlRelevantDocument+" AND affil("+affiliation+")&view=COMPLETE&sort=+relevance&facets=country(count=200,sort=fd);");
 	gadgets.sciverse.makeContentApiRequest(url, getRelevantDocument, requestHeaders);
@@ -123,7 +130,7 @@ function putRelevantDocumentData(temp){
        		Obj.creator= buffer[i]['dc:creator'];
        		Obj.publicationName = buffer[i]['prism:publicationName'];
        		var tempId=buffer[i]['dc:identifier'].split(":");
-       		Obj.identifier= tempId[1];
+       		Obj.scopusId= tempId[1];
      	  	Obj.date =buffer[i]['prism:coverDate'];
        		Obj.volume = buffer[i]['prim:volume'];
        		Obj.author=returnArray(buffer[i]['author']);
