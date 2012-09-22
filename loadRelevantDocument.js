@@ -79,7 +79,8 @@ function updateAllRelevantDocument(){
 
 function getRelevantDocumentFilter1(array){
 	console.log("get Coauthors filter all");
-	affiliation="";
+	
+	var affiliation="";
 	for(var i=0;i<array.length;i++){
 		if(i!=0) 
 		affiliation=affiliation+" OR ";
