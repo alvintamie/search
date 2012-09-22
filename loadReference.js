@@ -45,11 +45,11 @@ function referenceQuery(buffer){
 	console.log(buffer);
 	for(var i=0;i<buffer.length;i++){
 		scopusId=buffer[i].scopusId;
-		if(i<buffer.length){ urlReference=urlReference+"(2-s2.0-"+scopusId+")";}
-		if(i<buffer.length-1){ urlReference=urlReference+" OR ";}
+		if(i<buffer.length){ urlReference=urlR+"(2-s2.0-"+scopusId+")";}
+		if(i<buffer.length-1){ urlReference=urlR+" OR ";}
 	}
 	console.log(urlReference);
-	urlR=encodeURI(urlReference+")&view=COMPLETE&start=0&count=200&facets=country(count=200,sort=fd);");
+	urlR=encodeURI(urlR+")&view=COMPLETE&start=0&count=200&facets=country(count=200,sort=fd);");
 	gadgets.sciverse.makeContentApiRequest(urlR, getReference, requestHeaders);
 }
 
