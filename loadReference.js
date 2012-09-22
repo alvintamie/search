@@ -94,7 +94,7 @@ function getReferenceCity(Obj,getCity){
 		if(count==1) urlCity=urlCity+"OR";
 		if(i<Obj.length) { urlCity=urlCity+"("+Obj[i].afid+")"; count=1;}
 	}
-	urlCity=encodeURI(urlCity+")");
+	urlCity=encodeURI(urlCity+")&start=0&count=200");
 	updateReference(referenceObject,0);
 	gadgets.sciverse.makeContentApiRequest(urlCity, getCity, requestHeaders);	
 }
