@@ -40,7 +40,7 @@ function getCoauthors(response){
 	currentLevelCoauthors=1;
 	readyMoreCoauthors=1;
 	updateCoauthors(coauthorsObject,0);
-	showResults(0,coauthorsObject);
+	showResult(0,coauthorsObject);
 		showOverallCountryCoAuthor(filterReferenceCountry(coauthorsObject));
 }
 
