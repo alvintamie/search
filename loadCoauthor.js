@@ -57,6 +57,7 @@ function getMoreCoauthors(response){
 }
 
 function getCoauthorsFilter(response){
+	
 	var temp=new Array();
 	for(var i=0;i<coauthorsObject.length;i++){
 		if(coauthorsObject[i].country==response)
@@ -64,6 +65,17 @@ function getCoauthorsFilter(response){
 	}
 	updateCoauthors(temp,1);
 	
+}
+
+function resetCoauthors(){
+coauthorsObject = new Array();
+statusCoauthors=0;
+totalCoauthors=-1;
+totalLevelCoauthors=0;
+currentLevelCoauthors=-1;
+lastLevelCoauthors=0;
+affiliationCoauthors= new Array();
+readyMoreCoauthors=1;
 }
 
 function putCoauthorsData(temp){
