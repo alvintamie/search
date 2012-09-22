@@ -94,7 +94,7 @@ function updateAllReference(){
 	console.log(referenceObject);
 	_readyScroll=1;
 	updateReference(referenceObject,0);
-	showoverallCountryReference(filterReferenceCountry());
+	showOverallCountryReference(filterReferenceCountry());
 	filterReferenceCountry();
 	showResult(0,referenceObject);
 }
