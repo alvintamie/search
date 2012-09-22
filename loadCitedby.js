@@ -98,6 +98,18 @@ function resetCitedbyAffiliation(){
 	gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
 }
 
+function resetCitedby(){
+citedbyObject = new Array();
+statusCitedby=0;
+ totalCitation=-1;
+ totalLevelCitation=0;
+ currentLevelCitation=-1;
+ lastLevelCitation=0;
+ countryCitedby= new Array();
+ readyMoreCitation=1;
+ citedbyAffiliation;
+ countryCitedby=new Array();
+}
 
 
 function putCitedbyData(temp){
@@ -127,6 +139,7 @@ function putCitedbyData(temp){
      	  	Obj.date =buffer[i]['prism:coverDate'];
        		Obj.volume = buffer[i]['prim:volume'];
        		Obj.author=returnArray(buffer[i]['author']);  
+       		Obj.authorId=Obj.author[0]['authid'];
        		try{
        			Obj.afid= returnArray(buffer[i]['affiliation'])[0]['afid'];
        			Obj.affilname=returnArray(buffer[i]['affiliation'])[0]['affilname'];}
