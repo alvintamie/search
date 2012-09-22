@@ -269,3 +269,29 @@ function downSearchEngine(){
 	statusQ=2;
 	submitQuery(1);
 }
+
+function resetSearchEngine(){
+	var queryStart=0;
+queryCount=100;
+queryStartYear=0;
+queryEndYear=0;
+querySort="+coverDate";
+//total search results
+queryTotalResults=0;
+//resultsObject
+queryResults=new Array();
+//facets
+queryCtry= new Array();
+querySubjArea= new Array();
+queryPubYear=new Array();
+queryAuthName=new Array();
+statusQ=0;
+//subject
+// querySearch.dateRange
+// querySearch.doctype;
+readyMoreSearchEngine=1;
+currentLevelSearchEngine=-1;
+totalLevelSearchEngine=0;
+lastLevelSearchEngine=0;
+queryList=new Array();
+}
