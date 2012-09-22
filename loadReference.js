@@ -1,11 +1,11 @@
 var idToIndex= new Object();
 var readyRef=0;
-var numberRef=0;
 var currentReferenceSize=0;
 var referenceObject = new Array();
 var referenceObjectTemp;
 var referenceSize;
 var currentReferenceSize;
+var referenceLevel=0;
 function getRef(response){
   	console.log("ref is obtained");
 	var temp = JSON.parse(response.data);
@@ -15,7 +15,6 @@ function getRef(response){
 	console.log("SizeOfRef : "+buffer.length);
 	numberRef=buffer.length;
 	readyRef=1;
-	referenceObject=[];
 	for(var i=0;i<buffer.length;i++){
 		var Obj= new Object();
 		try{
@@ -28,14 +27,20 @@ function getRef(response){
 		referenceObject.push(Obj);
 	}
 	referenceObjectTemp=buffer;
-//	relatedDocumentQuery(buffer);
-	referenceQuery(buffer);
+	relatedDocumentQuery(buffer);
+	if(buffer.length==40){
+		referenceLevel++;
+		var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+context.scDocId+"?view=REF&startref="+referenceLevel*40+"&refcount=40");
+		gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);    
+	}
+	else
+	referenceQuery(referenceObject);
 }
 
 function referenceQuery(buffer){
 	urlReference="http://api.elsevier.com/content/search/index:SCOPUS?query=EID(";
 	for(var i=0;i<buffer.length;i++){
-		scopusId=buffer[i]['scopus-id'];
+		scopusId=buffer[i].scopusId;
 		if(i<buffer.length){ urlReference=urlReference+"(2-s2.0-"+scopusId+")";}
 		if(i<buffer.length-1){ urlReference=urlReference+" OR ";}
 	}
