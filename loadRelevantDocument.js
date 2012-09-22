@@ -85,6 +85,7 @@ function getRelevantDocumentFilter1(array){
 		affiliation=affiliation+" OR ";
 		affiliation=affiliation+"("+array[i].country+")";
 	}
+	console.log(affiliation);
 	relevantDocumentAffiliation=affiliation;
 	var url = encodeURI(urlRelevantDocument+" AND affil("+affiliation+")&view=COMPLETE&sort=+relevance&facets=country(count=200,sort=fd);");
 	console.log(url);
