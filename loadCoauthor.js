@@ -41,7 +41,7 @@ function getCoauthors(response){
 	readyMoreCoauthors=1;
 	updateCoauthors(coauthorsObject,0);
 	showResult(0,coauthorsObject);
-	console.log("testing");
+	console.log("testing baru");
 		showOverallCountryCoAuthor(filterReferenceCountry(coauthorsObject));
 }
 
