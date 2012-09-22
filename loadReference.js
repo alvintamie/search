@@ -131,6 +131,19 @@ function filterReferenceCountry(Obj){
 	return buffer;
 }
 
+function getReferenceFilter(response){
+	console.log("get reference filter");
+	var temp=new Array();
+	for(var i=0;i<referenceObject.length;i++){
+		for(var j=0;j<response.length;j++){
+		if(referenceObject[i].country==response[j])
+			{ temp.push(referenceObject[i]);}
+	}}
+	console.log(temp);
+	updateReference(temp,1);
+	showResult(0,temp);
+	
+}
 function getReferenceCity(Obj,getCity){
 	console.log("get city");
 	//"http://api.elsevier.com/content/search/index:affiliation?query=af-id((60016912)OR(60029157))";
