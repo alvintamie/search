@@ -113,6 +113,7 @@ function filterReferenceCountry(){
 		var b= new Object();
 		b.country=key;
 		b.hitcount=temp[key];
+		if(b.country=='undefined') continue;
 		buffer.push(b);
 	}
 	for(var i=0;i<buffer.length;i++){
