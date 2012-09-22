@@ -31,12 +31,12 @@ function getRef(response){
 	referenceObjectTemp=buffer;
 	relatedDocumentQuery(buffer);
 	if(buffer.length==40){
-		var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+context.scDocId+"?view=REF&startref="+referenceLevel*40+"&refcount=40");
 		referenceLevel++;
+		var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+context.scDocId+"?view=REF&startref="+referenceLevel*40+"&refcount=40");
 		gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);    
 	}
 	else
-	referenceQuery(buffer);
+	referenceQuery(referenceObject);
 }
 
 function referenceQuery(buffer){
