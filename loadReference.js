@@ -48,6 +48,7 @@ function referenceQuery(buffer){
 		if(i<buffer.length){ urlReference=urlReference+"(2-s2.0-"+scopusId+")";}
 		if(i<buffer.length-1){ urlReference=urlReference+" OR ";}
 	}
+	console.log(urlReference);
 	urlReference=encodeURI(urlReference+")&view=COMPLETE&start=0&count=200&facets=country(count=200,sort=fd);");
 	gadgets.sciverse.makeContentApiRequest(urlReference, getReference, requestHeaders);
 }
@@ -57,6 +58,7 @@ function getReference(response){
 	var temp = JSON.parse(response.data);
 	   
 	buffer=returnArray(temp['search-results']['entry']);
+	console.log(buffer.length);
 	for(var i=0;i<buffer.length;i++){
 		try{
 			var index=idToIndex[buffer[i]['dc:identifier'].split(':')[1]];
@@ -77,7 +79,6 @@ function getReference(response){
 		catch(e){
 			console.log("Reference details at index "+i+" is error");}
 	}
-     console.log(referenceObject);
       updateReference(referenceObject,0);
       getReferenceCity(referenceObject,getCityReference);
 }
