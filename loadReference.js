@@ -49,8 +49,9 @@ function referenceQuery(buffer){
 		if(i<buffer.length){ urlR=urlR+"(2-s2.0-"+sc+")";}
 		if(i<buffer.length-1){ urlR=urlR+" OR ";}
 	}
-	console.log(urlR);
+
 	urlR=encodeURI(urlR+")&view=COMPLETE&start=0&count=200&facets=country(count=200,sort=fd);");
+	console.log(urlR);
 	gadgets.sciverse.makeContentApiRequest(urlR, getReference, requestHeaders);
 }
 
