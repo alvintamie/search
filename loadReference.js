@@ -22,7 +22,7 @@ function getRef(response){
 			Obj.sourcetitle=buffer[i]['sourcetitle'];
 			Obj.scopusId=buffer[i]['scopus-id'];}
 		catch(e){ console.log("initial reference property error");}
-		idToIndex[Obj.scopusId]=i;
+		idToIndex[Obj.scopusId]=i*(40*referenceLevel);
 		referenceObject.push(Obj);
 	}
 	referenceObjectTemp=buffer;
