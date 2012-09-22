@@ -105,6 +105,7 @@ function getRelevantDocumentFilter2(response){
 
 
 function resetQueryRelevantDocument(){
+	resetRelevantDocument();
 	relatedDocumentQuery(referenceObjectTemp);
 }
 
