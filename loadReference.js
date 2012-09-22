@@ -67,6 +67,7 @@ function getReference(response){
 		catch(e){
 			console.log("Reference details at index "+i+" is error");}
 	}
+      updateReference(referenceObject,0);
       getReferenceCity(referenceObject,getCityReference);
 }
 
