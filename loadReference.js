@@ -11,9 +11,8 @@ function getRef(response){
 	var temp = JSON.parse(response.data);
 	console.log(temp);
 	var buffer=temp['abstracts-retrieval-response']['references']['reference'];
-	referenceSize=buffer.length;
 	console.log("SizeOfRef : "+buffer.length);
-	numberRef=buffer.length;
+
 	readyRef=1;
 	for(var i=0;i<buffer.length;i++){
 		var Obj= new Object();
@@ -27,13 +26,16 @@ function getRef(response){
 		referenceObject.push(Obj);
 	}
 	referenceObjectTemp=buffer;
-	// relatedDocumentQuery(buffer);
+	// 
 	if(buffer.length==40){
 		referenceLevel++;
 		var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+context.scDocId+"?view=REF&startref="+referenceLevel*40+"&refcount=40");
 		gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);    
 	}
 	else{
+		referenceSize=referenceObject.length;
+		numberRef=referenceObject.length;
+		//relatedDocumentQuery(buffer);
 	referenceQuery(referenceObject);}
 }
 
