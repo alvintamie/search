@@ -56,7 +56,7 @@ function newMainArticle(Obj){
 	context= new Object();
 	context.scDocId=Obj.auId;
 	context.scopusId=Obj.scopusId;
-	var urlAuthor = encodeURI("http://api.elsevier.com/content/search/index:author?query=auid("+context.au1Id+")");
+	var urlAuthor = encodeURI("http://api.elsevier.com/content/search/index:author?query=auid("+context.scopusId+")");
   	gadgets.sciverse.makeContentApiRequest(urlAuthor, startingRequest, requestHeaders);
 }
 
