@@ -112,6 +112,8 @@ function updateAllReference(){
 
 function filterReferenceCountry(Obj){
 	var temp= new Object();
+	console.log("filterReferenceCountry");
+	console.log(Obj);
 	for(var i=0;i<Obj.length;i++){
 		if( typeof temp[Obj[i].country]=='undefined')
 		temp[Obj[i].country]=1;
