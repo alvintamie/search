@@ -123,6 +123,7 @@ function changeModeRelevantDocument(){
 
 function resetQueryRelevantDocument(){
 	resetRelevantDocument();
+	showOverallCountryRelevantDocument(countryRelevantDocument);
 	relatedDocumentQuery(referenceObjectTemp);
 }
 
