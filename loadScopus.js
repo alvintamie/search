@@ -18,6 +18,7 @@ function getContextCallback(response) {
   	gadgets.sciverse.makeContentApiRequest(urlAuthor, startingRequest, requestHeaders);
 }
 function startingRequest(response){
+	loadingStatus--;
 	console.log("main author");
 	var temp = JSON.parse(response.data);
 	console.log(temp);
