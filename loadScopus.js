@@ -14,9 +14,11 @@ function getContextCallback(response) {
         requestHeaders['X-ELS-Authtoken'] = context.secureAuthtoken;      
         requestHeaders['Accept'] = "application/json, text/xml";
   	var urlAuthor = encodeURI("http://api.elsevier.com/content/search/index:author?query=auid("+context.au1Id+")");
+  	loadingStatus++;
   	gadgets.sciverse.makeContentApiRequest(urlAuthor, startingRequest, requestHeaders);
 }
 function startingRequest(response){
+	loadingStatus--;
 	console.log("main author");
 	var temp = JSON.parse(response.data);
 	console.log(temp);
@@ -29,24 +31,24 @@ function startingRequest(response){
 	authorObject.title=context.docTitle;	
 	var div= document.getElementById('judul');
        	div.innerHTML= "<b>"+context.docTitle+"</b><br>"+context.au1;
+
+	console.log(authorObject.title);
+	console.log("///////////");
+
 	var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+context.scDocId+"?view=REF");
 	var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE&&facets=country(count=200,sort=fd);");
 	var urlCoauthors=encodeURI( "http://api.elsevier.com/content/search/index:author?query=affil(university)&co-author="+context.au1Id+"&count=200&facets=country(count=200,sort=fd);");
         urlTest = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=all(quantum) AND AFFIL((singapore) OR (japan))&facets=country(count=200,sort=fd);");
+ 	loadingStatus++;
  	gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
- 	//gadgets.sciverse.makeContentApiRequest(urlCoauthors, getCoauthors, requestHeaders);
+ 	loadingStatus++;
+ 	gadgets.sciverse.makeContentApiRequest(urlCoauthors, getCoauthors, requestHeaders);
+ 	loadingStatus++;
  	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);      
- 	gadgets.sciverse.makeContentApiRequest(urlTest,getTest,requestHeaders);
  	//searchEngineTesting()
 }
-var urlTest
-function getTest(response){
-	console.log(urlTest);
-	console.log("testing results");
-	console.log(response);
-	var temp = JSON.parse(response.data);
-	console.log(temp);
-}
+
+
 function waiting( ms )
 {
 	var date = new Date();
@@ -55,8 +57,30 @@ function waiting( ms )
 
 }
 
+function newMainArticle(Obj){
+	console.log("newMainArticle");
+	console.log(Obj.url);
+	context= new Object();
+	context.scDocId=Obj.scopusId;
+	context.authorId=Obj.authorId;
+	masterReset();
+	var urlAuthor = encodeURI("http://api.elsevier.com/content/search/index:author?query=auid("+context.authorId+")");
+  	console.log(Obj.authorId+" "+Obj.scopusId);
+  	gadgets.sciverse.makeContentApiRequest(urlAuthor, startingRequest, requestHeaders);
+}
+
 function parseValidator(b){
 		while(b.indexOf("\"$\" :\}")>0){
     			b=b.replace("\"$\" :\}","    }");	}
     		return b;
+}
+
+function masterReset(){
+authorObject=new Object();
+idToIndex= new Object();
+resetSearchEngine();
+resetReference();
+resetCoauthors();
+resetRelevantDocument();
+resetCitedby();
 }
