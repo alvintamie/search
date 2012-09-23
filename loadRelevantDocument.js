@@ -26,6 +26,7 @@ function upRelevantDocument(){
   relevantDocumentObject=[];
   readyMoreRelevantDocument=0;
   console.log(urlTemp);
+  loadingStatus++;
   gadgets.sciverse.makeContentApiRequest(urlTemp, getMoreRelevantDocument, requestHeaders);
   return true;
 }
@@ -40,10 +41,12 @@ function downRelevantDocument(){
   var urlTemp = encodeURI(urlRelevantDocument+"&view=COMPLETE&sort=+relevance&facets=country(count=200,sort=fd);&start="+((currentLevelRelevantDocument-1)*25)+"&count=25");
   relevantDocumentObject=[];
   readyMoreRelevantDocument=0;
+  loadingStatus++;
   gadgets.sciverse.makeContentApiRequest(urlTemp, getMoreRelevantDocument, requestHeaders);
 }
 
 function getRelevantDocument(response){
+        loadingStatus--;
       	console.log("relevantDocument initial");
       	var temp = JSON.parse(parseValidator(response.text));
 	console.log(temp);
@@ -58,6 +61,7 @@ function getRelevantDocument(response){
 }
 
 function getMoreRelevantDocument(response){
+        loadingStatus--;
     	console.log("relevantDocument more initial");
     	var temp = JSON.parse(parseValidator(response.text));
 	console.log(temp);
