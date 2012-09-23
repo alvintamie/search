@@ -122,8 +122,7 @@ function changeModeRelevantDocument(){
 
 
 function resetQueryRelevantDocument(){
-	resetRelevantDocument();
-	changeModeRelevantDocument();
+		resetRelevantDocument();
 	relatedDocumentQuery(referenceObjectTemp);
 }
 
