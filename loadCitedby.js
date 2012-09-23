@@ -25,6 +25,7 @@ function upCitedby(){
      var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?start="+((currentLevelCitation-1)*25)+"&count=25&query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE&facets=country(count=200,sort=fd);");}
   citedbyObject=[];
   readyMoreCitation=0;
+  loadingScopus++;
   gadgets.sciverse.makeContentApiRequest(urlCitedby, getMoreCitedby, requestHeaders);
   return true;
 }
@@ -39,10 +40,12 @@ function downCitedby(){
   var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?start="+((currentLevelCitation-1)*25)+"&count=25&query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE&facets=country(count=200,sort=fd);");
   citedbyObject=[];
   readyMoreCitation=0;
+  loadingScopus++;
   gadgets.sciverse.makeContentApiRequest(urlCitedby, getMoreCitedby, requestHeaders);
 }
 
 function getCitedby(response){
+    loadingScopus--;
     	console.log("citedby initial");
     	var temp = JSON.parse(parseValidator(response.text));
 	console.log(temp);
@@ -59,6 +62,7 @@ function getCitedby(response){
 }
 
 function getMoreCitedby(response){
+        loadingScopus++;
     	console.log("citedby more initial");
     	var temp = JSON.parse(parseValidator(response.text));
 	console.log(temp);
@@ -89,7 +93,8 @@ function getCitedbyFilter(array){
 	}
 	citedbyAffiliation=affiliation;
 	var url = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=refeid(2-s2.0-"+context.scDocId+")&"+citedbyAffiliation+"view=COMPLETE&&facets=country(count=200,sort=fd);");
-	gadgets.sciverse.makeContentApiRequest(url, getCitedby, requestHeaders);
+	loadingScopus++;
+        gadgets.sciverse.makeContentApiRequest(url, getCitedby, requestHeaders);
 }
 
 function getCitedbyFilter1(array){
@@ -106,7 +111,8 @@ function getCitedbyFilter1(array){
 	var url = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=refeid(2-s2.0-"+context.scDocId+") AND affilcountry("+citedbyAffiliation+")&view=COMPLETE&&facets=country(count=200,sort=fd);");
 	console.log(url);
 	resetCitedby();
-	gadgets.sciverse.makeContentApiRequest(url, getCitedby, requestHeaders);
+	loadingScopus++;
+        gadgets.sciverse.makeContentApiRequest(url, getCitedby, requestHeaders);
 }
 
 function getCitedbyFilter2(response){
@@ -131,7 +137,8 @@ function changeModeCitedby(){
 function resetQueryCitedby(){
 	resetCitedby();
 	var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE&&facets=country(count=200,sort=fd);");
-	gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
+	loadingScopus++;
+        gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
 }
 
 function resetCitedby(){
