@@ -14,7 +14,6 @@ function getContextCallback(response) {
         requestHeaders['X-ELS-Authtoken'] = context.secureAuthtoken;      
         requestHeaders['Accept'] = "application/json, text/xml";
   	var urlAuthor = encodeURI("http://api.elsevier.com/content/search/index:author?query=auid("+context.au1Id+")");
-  
   	authorObject.name=context.au1;
 	authorObject.title=context.docTitle;	
 	var div= document.getElementById('judul');
@@ -68,7 +67,55 @@ function newMainArticle(Obj){
 	masterReset();
 	var urlAuthor = encodeURI("http://api.elsevier.com/content/search/index:author?query=eid(2-s2.0-"+context.scDocId+")&view=COMPLETE)");
   	console.log(Obj.authorId+" "+Obj.scopusId);
-  //	gadgets.sciverse.makeContentApiRequest(urlAuthor, startingRequestAgain, requestHeaders);
+  	gadgets.sciverse.makeContentApiRequest(urlAuthor, startingRequestAgain, requestHeaders);
+}
+
+
+function startingRequestAgain(response){
+	var temp = JSON.parse(parseValidator(response.text));
+	console.log(temp);
+	try{ if(temp['service-error']['status']['statusCode']=='INVALID_INPUT'){
+		console.log("No citedby");
+		return;}}
+	catch(e){
+	//	var buffer;
+	var buffer= returnArray(temp['search-results']['entry'])
+	countryCitedby=returnArray(temp['search-results']['facet']['category']);
+	for(var i=0;i<buffer.length;i++){
+		var Obj= new Object();
+	   try{
+		Obj.Abstract = buffer[i]['dc:description'];
+		Obj.title =    buffer[i]['dc:title'];
+       		Obj.type =     buffer[i]['subtypeDescription'];
+       		Obj.citedbyCount = buffer[i]['citedby-count'];
+       		Obj.creator= buffer[i]['dc:creator'];
+       		Obj.publicationName = buffer[i]['prism:publicationName'];
+       		var tempId=buffer[i]['dc:identifier'].split(":");
+       		Obj.scopusId= tempId[1];
+     	  	Obj.date =buffer[i]['prism:coverDate'];
+       		Obj.volume = buffer[i]['prim:volume'];
+       		Obj.author=returnArray(buffer[i]['author']);  
+       		Obj.authorId=Obj.author[0]['authid'];
+       		try{
+       			Obj.afid= returnArray(buffer[i]['affiliation'])[0]['afid'];
+       			Obj.affilname=returnArray(buffer[i]['affiliation'])[0]['affilname'];}
+       		catch(e){ console.log("No affiliation property in citedby data");}
+	      }
+	    catch(e){ console.log("No some property in citedby data");}
+       		Obj.url="http://www.scopus.com/record/display.url?eid=2-s2.0-"+tempId[1]+"&origin=resultslist&sort=plf-f&src=s";
+		
+		
+		var urlAuthor = encodeURI("http://api.elsevier.com/content/search/index:author?query=auid("+context.authorId+")");
+  
+	  	authorObject.name=Obj.creator;
+		authorObject.title=Obj.title;	
+		var div= document.getElementById('judul');
+	       	div.innerHTML= "<b>"+context.docTitle+"</b><br>"+context.au1;
+	       	loadingStatus++;
+	  	gadgets.sciverse.makeContentApiRequest(urlAuthor, startingRequest, requestHeaders);
+		}
+	}
+
 }
 
 
