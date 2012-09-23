@@ -78,6 +78,8 @@ function getReference(response){
 			referenceObject[index].creator=buffer[i]['dc:creator'];
 			referenceObject[index].Abstract=buffer[i]['dc:description'];
 			referenceObject[index].title=buffer[i]['dc:title'];
+			referenceObject[index].author=returnArray(buffer[i]['author']);
+			referenceObject[index].authorId=referenceObject[index].author[0]['authid'];
 			referenceObject[index].publicationName=buffer[i]['publicationName'];
 			referenceObject[index].volume=buffer[i]['volume'];
 			referenceObject[index].type=buffer[i]['subtypeDescription'];
