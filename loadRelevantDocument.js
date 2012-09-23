@@ -53,6 +53,7 @@ function getRelevantDocument(response){
 	currentLevelRelevantDocument=1;
 	readyMoreRelevantDocument=1;
 	updateRelevantDocument(relevantDocumentObject,0);
+	changeModeRelevantDocument()
 	getReferenceCity(relevantDocumentObject,getCityRelevantDocument); 
 }
 
@@ -63,6 +64,7 @@ function getMoreRelevantDocument(response){
     	putRelevantDocumentData(temp);
     	readyMoreRelevantDocument=1;
     	updateRelevantDocument(relevantDocumentObject,0);
+    	changeModeRelevantDocument()
    	getReferenceCity(relevantDocumentObject,getCityRelevantDocument);
 	}
 	
