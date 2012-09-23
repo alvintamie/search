@@ -56,7 +56,7 @@ function newMainArticle(Obj){
 	context= new Object();
 	context.scDocId=Obj.auId;
 	context.scopusId=Obj.scopusId;
-	contest.authorId=Obj.authorId;
+	context.authorId=Obj.authorId;
 	masterReset();
 	var urlAuthor = encodeURI("http://api.elsevier.com/content/search/index:author?query=auid("+context.authorId+")");
   	console.log(Obj.authorId+" "+Obj.scopusId);
