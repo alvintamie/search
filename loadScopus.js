@@ -28,7 +28,9 @@ function startingRequest(response){
 	authorObject.id=buffer['affiliation-id'];
 	authorObject.affiliationName=buffer['affiliation-name'];
 	authorObject.name=context.au1;
-	authorObject.title=context.docTitle;	
+	authorObject.title=context.docTitle;
+	console.log(authorObject.title);
+	console.log("///////////");
 
 	var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+context.scDocId+"?view=REF");
 	var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE&&facets=country(count=200,sort=fd);");
