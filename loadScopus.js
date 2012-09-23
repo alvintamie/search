@@ -72,10 +72,6 @@ function newMainArticle(Obj){
 }
 
 function startingRequestAgain(temp){
-	if(!statusCitedby){
-	try	{totalCitation= temp['search-results']['opensearch:totalResults'];}
-	catch(e){  console.log("NO citedby catch "); updateCitedBy(new Array(),0); return;}
-		statusCitedby=true;}
 
 	try{ if(temp['service-error']['status']['statusCode']=='INVALID_INPUT'){
 		console.log("No citedby");
