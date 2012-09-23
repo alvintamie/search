@@ -97,7 +97,7 @@ function updateAllReference(){
 	_readyScroll=1;
 	updateReference(referenceObject,0);
 	showOverallCountryReference(filterReferenceCountry(referenceObject));
-	showResult(0,referenceObject);
+	showResult(referenceMode,referenceObject);
 	_readyScroll=1;
 }
 
@@ -142,7 +142,7 @@ function getReferenceFilter(response){
 	}}
 	console.log(temp);
 	updateReference(temp,1);
-	showResult(0,temp);
+	showResult(referenceMode,temp);
 	
 }
 function getReferenceCity(Obj,getCity){
