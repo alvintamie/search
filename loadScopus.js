@@ -40,8 +40,6 @@ function startingRequest(response){
  	gadgets.sciverse.makeContentApiRequest(urlCoauthors, getCoauthors, requestHeaders);
  	loadingStatus++;
  	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);      
- 	loadingStatus++;
- 	gadgets.sciverse.makeContentApiRequest(urlTest,getTest,requestHeaders);
  	//searchEngineTesting()
 }
 
