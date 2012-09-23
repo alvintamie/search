@@ -80,7 +80,7 @@ function getCityCitedby(response){
 function updateAllCitedby(){
 	console.log("got citedby city");
 	console.log(citedbyObject);
-	showresult(citedByMode,citedbyObject);
+	showResult(citedByMode,citedbyObject);
 	 //update david
 }
 
