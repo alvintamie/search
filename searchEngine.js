@@ -181,7 +181,7 @@ gadgets.sciverse.makeContentApiRequest(encodeURI(query), getSearchRequest, reque
 }
 
 function getSearchRequest(response){
-		loadingStatus++;
+		loadingStatus--;
 		console.log("searchRequest is obtained");
 		//console.log(response);
 		try{
