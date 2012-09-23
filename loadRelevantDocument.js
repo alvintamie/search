@@ -121,6 +121,10 @@ function resetQueryRelevantDocument(){
 	relatedDocumentQuery(referenceObjectTemp);
 }
 
+function changeModeRelevantDocument1(){
+	showOverallCountryRelevantDocument(filterReferenceCountry(countryRelevantDocument));	
+}
+
 function resetRelevantDocument(){
 relevantDocumentObject = new Array();
 countryRelevantDocument= new Array();
