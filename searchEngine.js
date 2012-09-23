@@ -86,7 +86,9 @@ if(index==8){ querySort="-title";}
 if(index==9){ querySort="+relevance";}
 }
 
-
+function changeDate(a,b){
+queryStartYear=a;
+queryEndYear=b;}
 
 function _queryList0(query,i){ // for i =0
 	if(!queryList[i].string.length) return query;
