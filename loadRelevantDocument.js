@@ -109,7 +109,7 @@ function getRelevantDocumentFilter2(response){
 }
 
 function changeModeRelevantDocument(){
-	filterReferenceCountry(relevantDocumentObject);
+	showOverallCountryRelevantDocument(filterReferenceCountry(relevantDocumentObject));
 }
 
 
