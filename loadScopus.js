@@ -71,8 +71,9 @@ function newMainArticle(Obj){
   	gadgets.sciverse.makeContentApiRequest(urlAuthor, startingRequestAgain, requestHeaders);
 }
 
-function startingRequestAgain(temp){
-
+function startingRequestAgain(response){
+	var temp = JSON.parse(parseValidator(response.text));
+	console.log(temp);
 	try{ if(temp['service-error']['status']['statusCode']=='INVALID_INPUT'){
 		console.log("No citedby");
 		return;}}
