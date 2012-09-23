@@ -103,7 +103,7 @@ function getCitedbyFilter1(array){
 		affiliation=affiliation+"("+array[i].country+")";
 	}
 	citedbyAffiliation=affiliation;
-	var url = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=refeid(2-s2.0-"+context.scDocId+")&"+citedbyAffiliation+"view=COMPLETE&&facets=country(count=200,sort=fd);");
+	var url = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=refeid(2-s2.0-"+context.scDocId+") AND affilcountry("+citedbyAffiliation+")&view=COMPLETE&&facets=country(count=200,sort=fd);");
 	console.log(url);
 	resetCitedby();
 	gadgets.sciverse.makeContentApiRequest(url, getCitedby, requestHeaders);
