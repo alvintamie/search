@@ -88,8 +88,8 @@ function getCitedbyFilter(array){
 		affiliation=affiliation+"("+array[i].country+")";
 	}
 	citedbyAffiliation=affiliation;
-	var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=(refeid(2-s2.0-"+context.scDocId+") AND affil("+citedbyAffiliation+"))&view=COMPLETE&facets=country(count=200,sort=fd);");
- 	gadgets.sciverse.makeContentApiRequest(url, getCitedby, requestHeaders);
+	var url = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=refeid(2-s2.0-"+context.scDocId+")&"+citedbyAffiliation+"view=COMPLETE&&facets=country(count=200,sort=fd);");
+	gadgets.sciverse.makeContentApiRequest(url, getCitedby, requestHeaders);
 }
 
 function getCitedbyFilter1(array){
@@ -128,10 +128,9 @@ function changeModeCitedby(){
 }
 
 
-function resetCitedbyAffiliation(){
-	citedbyAffiliation="";
+function resetQueryCitedby(){
 	resetCitedby();
-	var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE&facets=country(count=200,sort=fd);");
+	var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE&&facets=country(count=200,sort=fd);");
 	gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
 }
 
