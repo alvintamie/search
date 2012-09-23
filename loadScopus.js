@@ -2,7 +2,7 @@ var requestHeaders = {};
 var authorObject=new Object();
 var scopusId;
 var it;
-
+var loadingStatus=0;
 
 function getContextCallback(response) {
 	context = response;
@@ -28,7 +28,7 @@ function startingRequest(response){
 	authorObject.name=context.au1;
 	authorObject.title=context.docTitle;	
 	var div= document.getElementById('judul');
-       	div.innerHTML= context.docTitle+"<br>"+context.au1;
+       	div.innerHTML= "<b>"+context.docTitle+"</b><br>"+context.au1;
 	var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+context.scDocId+"?view=REF");
 	var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE&&facets=country(count=200,sort=fd);");
 	var urlCoauthors=encodeURI( "http://api.elsevier.com/content/search/index:author?query=affil(university)&co-author="+context.au1Id+"&count=200&facets=country(count=200,sort=fd);");
