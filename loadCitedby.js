@@ -119,8 +119,8 @@ function getCitedbyFilter2(response){
 			{ temp.push(citedbyObject[i]);}
 	}}
 	console.log(temp);
-	updateRelevantDocument(temp,1);
-	showResult(0,relevantDocumentObject);
+	updateCitedBy(temp,1);
+	showResult(0,citedbyObject);
 }
 
 function changeModeCitedby(){
