@@ -54,8 +54,7 @@ function waiting( ms )
 
 function newMainArticle(Obj){
 	context= new Object();
-	context.scDocId=Obj.auId;
-	context.scopusId=Obj.scopusId;
+	context.scDocId=Obj.scopusId;
 	context.authorId=Obj.authorId;
 	masterReset();
 	var urlAuthor = encodeURI("http://api.elsevier.com/content/search/index:author?query=auid("+context.authorId+")");
