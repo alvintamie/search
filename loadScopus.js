@@ -65,7 +65,7 @@ function newMainArticle(Obj){
 	context.scDocId=Obj.scopusId;
 	context.authorId=Obj.authorId;
 	masterReset();
-	var urlAuthor = encodeURI("http://api.elsevier.com/content/search/index:author?query=eid(2-s2.0-"+context.scDocId+")&view=COMPLETE)");
+	var urlAuthor = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=eid(2-s2.0-"+context.scDocId+")&view=COMPLETE)");
   	console.log(Obj.authorId+" "+Obj.scopusId);
   	gadgets.sciverse.makeContentApiRequest(urlAuthor, startingRequestAgain, requestHeaders);
 }
