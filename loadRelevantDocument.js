@@ -66,7 +66,7 @@ function getMoreRelevantDocument(response){
    	getReferenceCity(relevantDocumentObject,getCityRelevantDocument);
 	}
 	
-	
+
 function getCityRelevantDocument(response){
 	getCityResponse(response,relevantDocumentObject,updateAllRelevantDocument);
 }
@@ -107,6 +107,11 @@ function getRelevantDocumentFilter2(response){
 	updateRelevantDocument(temp,1);
 	showResult(0,relevantDocumentObject);
 }
+
+function changeModeRelevantDocument(){
+	filterReferenceCountry(relevantDocumentObject);
+}
+
 
 
 function resetQueryRelevantDocument(){
