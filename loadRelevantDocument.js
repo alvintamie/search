@@ -88,7 +88,7 @@ function getRelevantDocumentFilter1(array){
 		affiliation=affiliation+"("+array[i].country+")";
 	}
 	relevantDocumentAffiliation=affiliation;
-	var url = encodeURI(urlRelevantDocument+" AND affil("+affiliation+")&view=COMPLETE&sort=+relevance&facets=country(count=200,sort=fd);");
+	var url = encodeURI(urlRelevantDocument+" AND AFFILCOUNTRY("+affiliation+")&view=COMPLETE&sort=+relevance&facets=country(count=200,sort=fd);");
 	console.log(url);
 	resetRelevantDocument();
 	gadgets.sciverse.makeContentApiRequest(url, getRelevantDocument, requestHeaders);
