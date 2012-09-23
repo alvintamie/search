@@ -63,7 +63,7 @@ function getReference(response){
         loadingStatus--;
 	console.log("ref details is obtained");
 	var temp = JSON.parse(response.data);
-	   
+	 console.log(temp);
 	buffer=returnArray(temp['search-results']['entry']);
 	console.log(buffer.length);
 	for(var i=0;i<buffer.length;i++){
