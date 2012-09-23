@@ -112,8 +112,6 @@ function updateAllReference(){
 
 function filterReferenceCountry(Obj){
 	var temp= new Object();
-	console.log("filterReferenceCountry");
-	console.log(Obj);
 	for(var i=0;i<Obj.length;i++){
 		if( typeof temp[Obj[i].country]=='undefined')
 		temp[Obj[i].country]=1;
@@ -126,7 +124,6 @@ function filterReferenceCountry(Obj){
 		var b= new Object();
 		b.name=key;
 		b.hitCount=temp[key];
-		console.log("test"+b.name+b.hitCount);
 		if(b.name=='undefined') continue;
 		buffer.push(b);
 	}
@@ -140,8 +137,8 @@ function filterReferenceCountry(Obj){
 			}
 		}
 	}
-	console.log("buffer");
-	console.log(buffer);y
+
+
 	return buffer;
 }
 
