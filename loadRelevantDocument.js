@@ -152,6 +152,7 @@ function relatedDocumentQuery(buffer){
 	}
 	urlRelevantDocument=encodeURI(url+")");
 	url=encodeURI(url+") AND NOT EID (2-s2.0-"+context.scDocId+")&view=COMPLETE&sort=+relevance&facets=country(count=200,sort=fd);");	
+	loadingStatus++;
 	gadgets.sciverse.makeContentApiRequest(url, getRelevantDocument, requestHeaders);
 }
 
