@@ -2,7 +2,7 @@ var requestHeaders = {};
 var authorObject=new Object();
 var scopusId;
 var it;
-
+var loadingStatus=0;
 
 function getContextCallback(response) {
 	context = response;
@@ -14,6 +14,7 @@ function getContextCallback(response) {
         requestHeaders['X-ELS-Authtoken'] = context.secureAuthtoken;      
         requestHeaders['Accept'] = "application/json, text/xml";
   	var urlAuthor = encodeURI("http://api.elsevier.com/content/search/index:author?query=auid("+context.au1Id+")");
+  	loadingStatus++;
   	gadgets.sciverse.makeContentApiRequest(urlAuthor, startingRequest, requestHeaders);
 }
 function startingRequest(response){
@@ -32,20 +33,18 @@ function startingRequest(response){
 	var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE&&facets=country(count=200,sort=fd);");
 	var urlCoauthors=encodeURI( "http://api.elsevier.com/content/search/index:author?query=affil(university)&co-author="+context.au1Id+"&count=200&facets=country(count=200,sort=fd);");
         urlTest = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=all(quantum) AND AFFIL((singapore) OR (japan))&facets=country(count=200,sort=fd);");
+ 	loadingStatus++;
  	gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
+ 	loadingStatus++;
  	gadgets.sciverse.makeContentApiRequest(urlCoauthors, getCoauthors, requestHeaders);
+ 	loadingStatus++;
  	gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);      
+ 	loadingStatus++;
  	gadgets.sciverse.makeContentApiRequest(urlTest,getTest,requestHeaders);
  	//searchEngineTesting()
 }
 
-function getTest(response){
-	console.log(urlTest);
-	console.log("testing results");
-	console.log(response);
-	var temp = JSON.parse(response.data);
-	console.log(temp);
-}
+
 function waiting( ms )
 {
 	var date = new Date();
@@ -58,7 +57,8 @@ function newMainArticle(Obj){
 	context= new Object();
 	context.scDocId=Obj.auId;
 	context.scopusId=Obj.scopusId;
-	
+	var urlAuthor = encodeURI("http://api.elsevier.com/content/search/index:author?query=auid("+context.au1Id+")");
+  	gadgets.sciverse.makeContentApiRequest(urlAuthor, startingRequest, requestHeaders);
 }
 
 function parseValidator(b){
