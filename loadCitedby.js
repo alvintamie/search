@@ -54,6 +54,7 @@ function getCitedby(response){
 	currentLevelCitation=1;
 	readyMoreCitation=1;
 	updateCitedBy(citedbyObject,0);
+	changeModeCitedby();
 	getReferenceCity(citedbyObject,getCityCitedby);
 }
 
@@ -64,6 +65,7 @@ function getMoreCitedby(response){
     	putCitedbyData(temp);
     	readyMoreCitation=1;
     	updateCitedBy(citedbyObject,0);
+    	changeModeCitedby();
 	getReferenceCity(citedbyObject,getCityCitedby);}
 
 
@@ -90,10 +92,45 @@ function getCitedbyFilter(array){
  	gadgets.sciverse.makeContentApiRequest(url, getCitedby, requestHeaders);
 }
 
+function getCitedbyFilter1(array){
+	console.log("get Citedby filter all");
+	var affiliation="";
+	if(array.length==1) affiliation=array[0].country;
+	else
+	for(var i=0;i<array.length;i++){
+		if(i!=0) 
+		affiliation=affiliation+" OR ";
+		affiliation=affiliation+"("+array[i].country+")";
+	}
+	citedbyAffiliation=affiliation;
+	var url = encodeURI(urlRelevantDocument+" AND AFFILCOUNTRY("+affiliation+")&view=COMPLETE&sort=+relevance&facets=country(count=200,sort=fd);");
+	console.log(url);
+	resetCitedby();
+	gadgets.sciverse.makeContentApiRequest(url, getCitedby, requestHeaders);
+}
+
+function getCitedbyFilter2(response){
+	console.log("get Coauthors filter 25");
+
+	var temp=new Array();
+	for(var i=0;i<citedbyObject.length;i++){
+		for(var j=0;j<response.length;j++){
+		if(citedbyObject[i].country==response[j])
+			{ temp.push(citedbyObject[i]);}
+	}}
+	console.log(temp);
+	updateRelevantDocument(temp,1);
+	showResult(0,relevantDocumentObject);
+}
+
+function changeModeCitedby(){
+	showOverallCountryCitedBy(filterReferenceCountry(citedbyObject));
+}
 
 
 function resetCitedbyAffiliation(){
 	citedbyAffiliation="";
+	resetCitedby();
 	var urlCitedby = encodeURI("http://api.elsevier.com/content/search/index:scopus?query=refeid(2-s2.0-"+context.scDocId+")&view=COMPLETE&facets=country(count=200,sort=fd);");
 	gadgets.sciverse.makeContentApiRequest(urlCitedby, getCitedby, requestHeaders);
 }
