@@ -40,7 +40,7 @@ function getCoauthors(response){
 	currentLevelCoauthors=1;
 	readyMoreCoauthors=1;
 	updateCoauthors(coauthorsObject,0);
-	showResult(0,coauthorsObject);
+	showResult(coAuthorsMode,coauthorsObject);
 	console.log("testing baru");
 		showOverallCountryCoAuthor(filterReferenceCountry(coauthorsObject));
 }
@@ -52,7 +52,7 @@ function getMoreCoauthors(response){
     	putCoauthorsData(temp);
     	readyMoreCoauthors=1;
 	updateCoauthors(coauthorsObject,0);
-	showResults(0,coauthorsObject);
+	showResults(coAuthorsMode,coauthorsObject);
 	showOverallCountryCoAuthor(filterReferenceCountry(coauthorsObject));
 }
 
@@ -65,7 +65,7 @@ function getCoauthorsFilter(response){
 			{ temp.push(coauthorsObject[i]);}
 	}}
 	console.log(temp);
-	showResult(0,coauthorsObject);
+	showResult(coAuthorsMode,coauthorsObject);
 	updateCoauthors(temp,1);
 }
 
