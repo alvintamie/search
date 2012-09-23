@@ -76,7 +76,7 @@ function getCityCitedby(response){
 function updateAllCitedby(){
 	console.log("got citedby city");
 	console.log(citedbyObject);
-	showResult(0,citedbyObject);
+	showresult(citedByMode,citedbyObject);
 	 //update david
 }
 
@@ -120,7 +120,7 @@ function getCitedbyFilter2(response){
 	}}
 	console.log(temp);
 	updateCitedBy(temp,1);
-	showResult(0,citedbyObject);
+	showResult(citedByMode,citedbyObject);
 }
 
 function changeModeCitedby(){
