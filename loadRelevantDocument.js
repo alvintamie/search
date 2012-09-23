@@ -96,6 +96,7 @@ function getRelevantDocumentFilter1(array){
 
 function getRelevantDocumentFilter2(response){
 	console.log("get Coauthors filter 25");
+	resetRelevantDocument();
 	var temp=new Array();
 	for(var i=0;i<relevantDocumentObject.length;i++){
 		for(var j=0;j<response.length;j++){
