@@ -55,7 +55,7 @@ function referenceQuery(buffer){
 
 	urlR=encodeURI(urlR+")&view=COMPLETE&start=0&count=200&facets=country(count=200,sort=fd);");
 	console.log(urlR);
-        loadStatus++;
+        loadingStatus++;
 	gadgets.sciverse.makeContentApiRequest(urlR, getReference, requestHeaders);
 }
 
