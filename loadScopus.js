@@ -59,7 +59,7 @@ function newMainArticle(Obj){
 	contest.authorId=Obj.authorId;
 	masterReset();
 	var urlAuthor = encodeURI("http://api.elsevier.com/content/search/index:author?query=auid("+context.authorId+")");
-  	console.log(urlAuthor);
+  	console.log(Obj.authorId+" "+Obj.scopusId);
   	gadgets.sciverse.makeContentApiRequest(urlAuthor, startingRequest, requestHeaders);
 }
 
