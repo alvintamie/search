@@ -8,6 +8,7 @@ var currentReferenceSize;
 var referenceLevel=0;
 var countryReference= new Array();
 function getRef(response){
+        loadStatus--;
   	console.log("ref is obtained");
 	var temp = JSON.parse(response.data);
 	console.log(temp);
@@ -31,7 +32,8 @@ function getRef(response){
 	if(buffer.length==40){
 		referenceLevel++;
 		var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+context.scDocId+"?view=REF&startref="+referenceLevel*40+"&refcount=40");
-		gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);    
+		loadStatus++;
+                gadgets.sciverse.makeContentApiRequest(urlRef, getRef, requestHeaders);    
 	}
 	else{
 		referenceSize=referenceObject.length;
@@ -53,10 +55,12 @@ function referenceQuery(buffer){
 
 	urlR=encodeURI(urlR+")&view=COMPLETE&start=0&count=200&facets=country(count=200,sort=fd);");
 	console.log(urlR);
+        loadStatus++;
 	gadgets.sciverse.makeContentApiRequest(urlR, getReference, requestHeaders);
 }
 
 function getReference(response){
+        loadStatus--;
 	console.log("ref details is obtained");
 	var temp = JSON.parse(response.data);
 	   
@@ -157,10 +161,12 @@ function getReferenceCity(Obj,getCity){
 		if(i<Obj.length) { urlCity=urlCity+"("+Obj[i].afid+")"; count=1;}
 	}
 	urlCity=encodeURI(urlCity+")&start=0&count=200");
+        loadStatus++;
 	gadgets.sciverse.makeContentApiRequest(urlCity, getCity, requestHeaders);	
 }
 
 function getCityResponse(response,Obj,updateAll){
+        loadStatus--;
 	console.log("get City now");
 	var temp = JSON.parse(response.data);
 //	console.log(temp);
