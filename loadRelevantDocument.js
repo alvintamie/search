@@ -116,6 +116,8 @@ function getRelevantDocumentFilter2(response){
 }
 
 function changeModeRelevantDocument(){
+	console.log("change mode");
+	console.log(relevantDocumentObject);
 	showOverallCountryRelevantDocument(filterReferenceCountry(relevantDocumentObject));
 }
 
