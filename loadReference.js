@@ -80,13 +80,9 @@ function getReference(response){
 			referenceObject[index].title=buffer[i]['dc:title'];
 			referenceObject[index].author=returnArray(buffer[i]['author']);
 			referenceObject[index].authorId=referenceObject[index].author[0]['authid'];
-			referenceObject[index].scopusId=buffer[i]['dc:identifier']['dc:identifier'].split(':')[1];
-			console.log("a");
-				console.log("http://www.scopus.com/record/display.url?eid=2-s2.0-"+referenceObject[index].scopusId+"&origin=resultslist&sort=plf-f&src=s");
-			
+			referenceObject[index].scopusId=buffer[i]['dc:identifier'].split(':')[1];
 			referenceObject[index].url="http://www.scopus.com/record/display.url?eid=2-s2.0-"+referenceObject[index].scopusId+"&origin=resultslist&sort=plf-f&src=s";
-			console.log("b");
-		console.log(referenceObject[index].url);
+		
 			referenceObject[index].publicationName=buffer[i]['publicationName'];
 			referenceObject[index].volume=buffer[i]['volume'];
 			//referenceObject[index].type=buffer[i]['subtypeDescription'];
