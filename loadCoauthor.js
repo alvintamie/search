@@ -69,7 +69,7 @@ function getCoauthorsFilter(response){
 			{ temp.push(coauthorsObject[i]);}
 	}}
 	console.log(temp);
-	showResult(coAuthorsMode,coauthorsObject);
+	showResult(coAuthorsMode,temp);
 	updateCoauthors(temp,1);
 }
 
