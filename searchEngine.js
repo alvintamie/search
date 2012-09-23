@@ -242,7 +242,7 @@ function updateAllSearchEngine(){
 	console.log("got city search engine");
 	console.log(queryResults);
 	//update david
-	showResult(0,queryResults);
+	showResult(searchMode,queryResults);
 }
 
 
