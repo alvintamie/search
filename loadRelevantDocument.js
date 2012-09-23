@@ -79,7 +79,7 @@ function getCityRelevantDocument(response){
 function updateAllRelevantDocument(){
 	console.log("got city of relevant document");
 	console.log(relevantDocumentObject);
-	showResult(0,relevantDocumentObject);
+	showResult(relevantDocumentMode,relevantDocumentObject);
 }
 
 
@@ -111,7 +111,7 @@ function getRelevantDocumentFilter2(response){
 	}}
 	console.log(temp);
 	updateRelevantDocument(temp,1);
-	showResult(0,relevantDocumentObject);
+	showResult(relevantDocumentMode,relevantDocumentObject);
 }
 
 function changeModeRelevantDocument(){
