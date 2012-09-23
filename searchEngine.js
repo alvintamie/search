@@ -176,11 +176,12 @@ query=query+"&sort="+querySort;
 query=query+"&view=COMPLETE&facets=country(count=200,sort=fd);subjarea(count=100,sort=fd);pubyear(count=20,sort=na);authname(count=20,sort=fd);";
 console.log(query);
 //console.log("queryList "+queryList[0].string[0].value)
+loadingStatus++;
 gadgets.sciverse.makeContentApiRequest(encodeURI(query), getSearchRequest, requestHeaders);
 }
 
 function getSearchRequest(response){
-		
+		loadingStatus++;
 		console.log("searchRequest is obtained");
 		//console.log(response);
 		try{
