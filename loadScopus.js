@@ -33,7 +33,7 @@ function startingRequest(response){
 	authorObject.affiliationName=buffer['affiliation-name'];
 
 
-	console.log(authorObject.title);
+	console.log(context.scDocId.title);
 	console.log("///////////");
 
 	var urlRef = encodeURI("http://api.elsevier.com/content/abstract/scopus_id:"+context.scDocId+"?view=REF");
