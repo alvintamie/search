@@ -95,6 +95,7 @@ function startingRequestAgain(response){
        		Obj.volume = buffer[i]['prim:volume'];
        		Obj.author=returnArray(buffer[i]['author']);  
        		Obj.authorId=Obj.author[0]['authid'];
+       		
        		try{
        			Obj.afid= returnArray(buffer[i]['affiliation'])[0]['afid'];
        			Obj.affilname=returnArray(buffer[i]['affiliation'])[0]['affilname'];}
@@ -105,11 +106,10 @@ function startingRequestAgain(response){
 		
 		
 		var urlAuthor = encodeURI("http://api.elsevier.com/content/search/index:author?query=auid("+context.authorId+")");
-  
-	  	authorObject.name=Obj.creator+" halo ";
-		authorObject.title=Obj.title;	
-		var div= document.getElementById('judul');
-	       	div.innerHTML= "<b>"+context.docTitle+"</b><br>"+context.au1;
+  	authorObject.name=context.au1;
+	authorObject.title=context.docTitle;	
+	var div= document.getElementById('judul');
+       	div.innerHTML= "<b>"+context.docTitle+"</b><br>"+context.au1;
 	       	loadingStatus++;
 	  	gadgets.sciverse.makeContentApiRequest(urlAuthor, startingRequest, requestHeaders);
 		}
