@@ -80,6 +80,7 @@ function getReference(response){
 			referenceObject[index].title=buffer[i]['dc:title'];
 			referenceObject[index].author=returnArray(buffer[i]['author']);
 			referenceObject[index].authorId=referenceObject[index].author[0]['authid'];
+			referenceObject[index].scopusId=buffer[i]['dc:identifier']['dc:identifier'].split(':')[1];
 			referenceObject[index].publicationName=buffer[i]['publicationName'];
 			referenceObject[index].volume=buffer[i]['volume'];
 			referenceObject[index].type=buffer[i]['subtypeDescription'];
