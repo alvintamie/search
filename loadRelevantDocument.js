@@ -79,7 +79,7 @@ function updateAllRelevantDocument(){
 
 function getRelevantDocumentFilter1(array){
 	console.log("get Coauthors filter all");
-	
+		resetRelevantDocument();
 	var affiliation="";
 	if(array.length==1) affiliation=array[0].country;
 	else
@@ -96,7 +96,7 @@ function getRelevantDocumentFilter1(array){
 
 function getRelevantDocumentFilter2(response){
 	console.log("get Coauthors filter 25");
-	resetRelevantDocument();
+
 	var temp=new Array();
 	for(var i=0;i<relevantDocumentObject.length;i++){
 		for(var j=0;j<response.length;j++){
