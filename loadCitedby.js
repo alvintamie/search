@@ -45,7 +45,7 @@ function downCitedby(){
 }
 
 function getCitedby(response){
-    loadingScopus--;
+    loadingStatus--;
     	console.log("citedby initial");
     	var temp = JSON.parse(parseValidator(response.text));
 	console.log(temp);
