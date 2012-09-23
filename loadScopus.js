@@ -75,12 +75,11 @@ function startingRequestAgain(response){
 	var temp = JSON.parse(parseValidator(response.text));
 	console.log(temp);
 	try{ if(temp['service-error']['status']['statusCode']=='INVALID_INPUT'){
-		console.log("No citedby");
+
 		return;}}
 	catch(e){
 	//	var buffer;
 	var buffer= returnArray(temp['search-results']['entry'])
-	countryCitedby=returnArray(temp['search-results']['facet']['category']);
 	for(var i=0;i<buffer.length;i++){
 		var Obj= new Object();
 	   try{
