@@ -126,9 +126,11 @@ function filterReferenceCountry(Obj){
 		var b= new Object();
 		b.name=key;
 		b.hitCount=temp[key];
+		console.log("test"+b.name+b.hitCount);
 		if(b.name=='undefined') continue;
 		buffer.push(b);
 	}
+	console.log(buffer);
 	for(var i=0;i<buffer.length;i++){
 		for(var j=i+1;j<buffer.length;j++){
 			if(buffer[i].hitCount<buffer[j].hitCount){
@@ -139,7 +141,7 @@ function filterReferenceCountry(Obj){
 		}
 	}
 	console.log("buffer");
-	console.log(buffer);
+	console.log(buffer);y
 	return buffer;
 }
 
