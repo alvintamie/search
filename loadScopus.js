@@ -53,6 +53,8 @@ function waiting( ms )
 }
 
 function newMainArticle(Obj){
+	console.log("newMainArticle");
+	console.log(Obj.url);
 	context= new Object();
 	context.scDocId=Obj.scopusId;
 	context.authorId=Obj.authorId;
