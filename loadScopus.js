@@ -108,7 +108,7 @@ function startingRequestAgain(temp){
        		Obj.url="http://www.scopus.com/record/display.url?eid=2-s2.0-"+tempId[1]+"&origin=resultslist&sort=plf-f&src=s";
 		
 		
-			var urlAuthor = encodeURI("http://api.elsevier.com/content/search/index:author?query=auid("+context.au1Id+")");
+		var urlAuthor = encodeURI("http://api.elsevier.com/content/search/index:author?query=auid("+context.authorId+")");
   
 	  	authorObject.name=Obj.creator;
 		authorObject.title=Obj.title;	
