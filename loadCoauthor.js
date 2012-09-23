@@ -16,7 +16,7 @@ function upCoauthors(){
   {    var urlCoauthor=encodeURI( "http://api.elsevier.com/content/search/index:author?start="+((currentLevelCoauthors-1)*200)+"&count=200&query=affil(university)&co-author="+context.au1Id);} 
   coauthorsObject=[];
   readyMoreCoauthors=0;
-  loadStatus++;
+  loadingStatus++;
   gadgets.sciverse.makeContentApiRequest(urlCoauthors, getMoreCoauthors, requestHeaders);
   return true;
 }
@@ -28,12 +28,12 @@ function downCoauthors(){
   var urlCoauthor=encodeURI( "http://api.elsevier.com/content/search/index:author?start="+((currentLevelCoauthors-1)*200)+"&count=200&query=affil(university)&co-author="+context.au1Id);
   coauthorsObject=[];
   readyMoreCoauthors=0;
-  loadStatus++;
+  loadingStatus++;
   gadgets.sciverse.makeContentApiRequest(urlCoauthors, getMoreCoauthors, requestHeaders);
 }
 
 function getCoauthors(response){
-        loadStatus--;
+        loadingStatus--;
     	console.log("coauthors initial");
     	var temp = JSON.parse(parseValidator(response.text));
 	console.log(temp);
@@ -49,7 +49,7 @@ function getCoauthors(response){
 }
 
 function getMoreCoauthors(response){
-        loadStatus--;
+        loadingStatus--;
     	console.log("coauthors more initial");
     	var temp = JSON.parse(parseValidator(response.text));
 	console.log(temp);
