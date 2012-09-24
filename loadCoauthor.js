@@ -11,9 +11,9 @@ function upCoauthors(){
   if(currentLevelCoauthors==-1 || currentLevelCoauthors==totalLevelCoauthors) return false;
   currentLevelCoauthors++;
   if(currentLevelCoauthors==totalLevelCoauthors){
-        var urlCoauthor=encodeURI( "http://api.elsevier.com/content/search/index:author?start="+((currentLevelCoauthors-1)*200)+"&count="+lastLevelCoauthors+"&query=affil(university)&co-author="+context.au1Id); }
+        var urlCoauthors=encodeURI( "http://api.elsevier.com/content/search/index:author?start="+((currentLevelCoauthors-1)*200)+"&count="+lastLevelCoauthors+"&query=affil(university)&co-author="+context.au1Id); }
   else 
-  {    var urlCoauthor=encodeURI( "http://api.elsevier.com/content/search/index:author?start="+((currentLevelCoauthors-1)*200)+"&count=200&query=affil(university)&co-author="+context.au1Id);} 
+  {    var urlCoauthors=encodeURI( "http://api.elsevier.com/content/search/index:author?start="+((currentLevelCoauthors-1)*200)+"&count=200&query=affil(university)&co-author="+context.au1Id);} 
   coauthorsObject=[];
   readyMoreCoauthors=0;
   loadingStatus++;
@@ -25,7 +25,7 @@ function downCoauthors(){
   if(readyMoreCoauthors==0) return;
   if(currentLevelCoauthors==-1 || currentLevelCoauthors==1) return false;
   currentLevelCoauthors--;
-  var urlCoauthor=encodeURI( "http://api.elsevier.com/content/search/index:author?start="+((currentLevelCoauthors-1)*200)+"&count=200&query=affil(university)&co-author="+context.au1Id);
+  var urlCoauthors=encodeURI( "http://api.elsevier.com/content/search/index:author?start="+((currentLevelCoauthors-1)*200)+"&count=200&query=affil(university)&co-author="+context.au1Id);
   coauthorsObject=[];
   readyMoreCoauthors=0;
   loadingStatus++;
