@@ -57,7 +57,7 @@ function getRelevantDocument(response){
 	readyMoreRelevantDocument=1;    	
 	console.log("anak ajaib");
     	console.log(relevantDocumentObject);
-	updateRelevantDocument(relevantDocumentObject,0);
+	
 	
 	getReferenceCity(relevantDocumentObject,getCityRelevantDocument); 
 }
@@ -69,7 +69,7 @@ function getMoreRelevantDocument(response){
 	console.log(temp);
     	putRelevantDocumentData(temp);
     	readyMoreRelevantDocument=1;
-    	updateRelevantDocument(relevantDocumentObject,0);
+   
    	getReferenceCity(relevantDocumentObject,getCityRelevantDocument);
 	}
 	
@@ -81,6 +81,7 @@ function updateAllRelevantDocument(){
 	console.log("got city of relevant document");
 	console.log(relevantDocumentObject);
     	changeModeRelevantDocument();
+    	updateRelevantDocument(relevantDocumentObject,0);
 	showResult(relevantDocumentMode,relevantDocumentObject);
 }
 
