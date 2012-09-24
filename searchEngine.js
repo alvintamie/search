@@ -62,6 +62,12 @@ function addQuery(query,index,or){
 		queryList[index].string.push(Obj);
 }
 
+function quickSearch(temp){
+	resetQuery();
+	addQuery(temp,0,1);
+	submitQuery(0);
+}
+
 function deleteQuery(index,number){
 		statusQ=0;
 		queryList[index].string.splice(number,1);
