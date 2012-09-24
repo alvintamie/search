@@ -161,7 +161,10 @@ function relatedDocumentQuery(buffer){
 
 function putRelevantDocumentData(temp){
 	if(!statusRelevantDocument){
-	try	{totalRelevantDocument= temp['search-results']['opensearch:totalResults'];}
+	try	{totalRelevantDocument= temp['search-results']['opensearch:totalResults'];
+		total_Relevant_Document=totalRelevantDocument;
+	
+	}
 	catch(e){ updateRelevantDocument(); return;}
 		statusRelevantDocument=true;}
 
