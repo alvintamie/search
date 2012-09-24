@@ -112,7 +112,8 @@ function startingRequestAgain(response){
 		
 		var urlAuthor = encodeURI("http://api.elsevier.com/content/search/index:author?query=auid("+context.authorId+")");
   	context.docTitle=Obj.title;
-	context.au1=Obj.creator;	
+	context.au1=Obj.creator;
+	context.au1Id=Obj.authorId;
 	var div= document.getElementById('judul');
        	div.innerHTML= "<b>"+context.docTitle+"</b><br>"+context.au1;
 	       	loadingStatus++;
