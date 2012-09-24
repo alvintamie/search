@@ -191,6 +191,7 @@ function getSearchRequest(response){
 			console.log("NO RESULTS FROM SEARCH ENGINE");	
 		}
 		queryTotalResults=temp['search-results']['opensearch:totalResults'];
+		total_Search_Engine=queryTotalResults;
 		var buffer= returnArray(temp['search-results']['entry']);
 		for(var i=0;i<buffer.length;i++){
 		var Obj= new Object();
