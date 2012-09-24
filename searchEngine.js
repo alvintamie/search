@@ -235,7 +235,7 @@ function getSearchRequest(response){
 		if(statusQ==0)
 		currentLevelSearchEngine=1;
 		
-		showOverallCountrySearch(queryCtry);
+		showOverallCountrySearch(queryResults);
 		
 		getReferenceCity(queryResults,getCitySearchEngine);
 }
