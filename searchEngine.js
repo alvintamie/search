@@ -274,7 +274,7 @@ function downSearchEngine(){
 }
 
 function resetSearchEngine(){
-	var queryStart=0;
+queryStart=0;
 queryCount=100;
 queryStartYear=0;
 queryEndYear=0;
