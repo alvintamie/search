@@ -67,6 +67,8 @@ function getMoreRelevantDocument(response){
 	console.log(temp);
     	putRelevantDocumentData(temp);
     	readyMoreRelevantDocument=1;
+    	console.log("anak ajaib");
+    	console.log(relevantDocumentObject);
     	updateRelevantDocument(relevantDocumentObject,0);
    	getReferenceCity(relevantDocumentObject,getCityRelevantDocument);
 	}
