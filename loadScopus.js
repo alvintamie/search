@@ -118,6 +118,8 @@ function startingRequestAgain(response){
 }
 
 
+
+
 function parseValidator(b){
 		while(b.indexOf("\"$\" :\}")>0){
     			b=b.replace("\"$\" :\}","    }");	}
@@ -128,8 +130,31 @@ function masterReset(){
 authorObject=new Object();
 idToIndex= new Object();
 resetSearchEngine();
+
 resetReference();
 resetCoauthors();
 resetRelevantDocument();
 resetCitedby();
+
+
+
+for(var i=0;i<15;i++){
+	var Obj=new Object();
+	Obj.string=new Array();
+	queryList.push(Obj);}
+	queryList[0].syntax="ALL";
+	queryList[1].syntax="AFFIL";
+	queryList[2].syntax="AFFILCITY";
+	queryList[3].syntax="affilcountry";
+	queryList[4].syntax="affilorg";
+	queryList[5].syntax="abs";
+	queryList[6].syntax="author-name";
+	queryList[7].syntax="authfirst";
+	queryList[8].syntax="authlastname";
+	queryList[9].syntax="firstauth";
+	queryList[10].syntax="key";
+	queryList[11].syntax="ref";
+	queryList[12].syntax="srctitle";
+	queryList[13].syntax="title";
+	queryList[14].syntax="subjarea";
 }
