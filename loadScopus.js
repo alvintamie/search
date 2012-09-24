@@ -36,8 +36,8 @@ function startingRequest(response){
 	authorObject.city=buffer['affiliation-city'];
 	authorObject.id=buffer['affiliation-id'];
 	authorObject.affiliationName=buffer['affiliation-name'];
-
-
+	showResult(referenceMode, new Array(authorObject));
+	
 	console.log(context.scDocId.title);
 	console.log("///////////");
 
