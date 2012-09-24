@@ -54,7 +54,9 @@ function getRelevantDocument(response){
 	if(totalRelevantDocument%25==0) { totalLevelRelevantDocument= Math.floor(totalRelevantDocument/25); lastLevelRelevantDocument=25;}
 	else 			{ totalLevelRelevantDocument= Math.floor(totalRelevantDocument/25)+1;lastLevelRelevantDocument=totalRelevantDocument%25;}
 	currentLevelRelevantDocument=1;
-	readyMoreRelevantDocument=1;
+	readyMoreRelevantDocument=1;    	
+	console.log("anak ajaib");
+    	console.log(relevantDocumentObject);
 	updateRelevantDocument(relevantDocumentObject,0);
 	
 	getReferenceCity(relevantDocumentObject,getCityRelevantDocument); 
@@ -67,8 +69,6 @@ function getMoreRelevantDocument(response){
 	console.log(temp);
     	putRelevantDocumentData(temp);
     	readyMoreRelevantDocument=1;
-    	console.log("anak ajaib");
-    	console.log(relevantDocumentObject);
     	updateRelevantDocument(relevantDocumentObject,0);
    	getReferenceCity(relevantDocumentObject,getCityRelevantDocument);
 	}
