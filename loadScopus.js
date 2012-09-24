@@ -4,6 +4,11 @@ var scopusId;
 var it;
 var loadingStatus=0;
 
+var total_Reference=0;
+var total_Coauthors=0;
+var total_Citedby=0;
+var total_Relevant_Document=0;
+var total_Search_Engine=0;
 function getContextCallback(response) {
 	context = response;
 	console.log(response);
