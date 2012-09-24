@@ -235,7 +235,7 @@ function getSearchRequest(response){
 		if(statusQ==0)
 		currentLevelSearchEngine=1;
 		
-		showOverallCountrySearch(queryResults);
+	
 		
 		getReferenceCity(queryResults,getCitySearchEngine);
 }
@@ -250,6 +250,7 @@ function updateAllSearchEngine(){
 	console.log(queryResults);
 	//update david
 	updateSearch(queryResults,0);
+		showOverallCountrySearch(queryResults);
 	showResult(searchMode,queryResults);
 }
 
