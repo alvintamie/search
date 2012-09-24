@@ -236,7 +236,7 @@ function getSearchRequest(response){
 		currentLevelSearchEngine=1;
 		
 		
-		
+		showResult(searchMode,queryCtry);
 		getReferenceCity(queryResults,getCitySearchEngine);
 }
 
@@ -251,7 +251,7 @@ function updateAllSearchEngine(){
 	//update david
 	updateSearch(queryResults,0);
 	//	showOverallCountrySearch(queryResults);
-	showResult(searchMode,queryCtry);
+	
 }
 
 
