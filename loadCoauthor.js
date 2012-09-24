@@ -56,7 +56,7 @@ function getMoreCoauthors(response){
     	putCoauthorsData(temp);
     	readyMoreCoauthors=1;
 	updateCoauthors(coauthorsObject,0);
-	showResults(coAuthorsMode,coauthorsObject);
+	showResult(coAuthorsMode,coauthorsObject);
 	showOverallCountryCoAuthor(filterReferenceCountry(coauthorsObject));
 }
 
