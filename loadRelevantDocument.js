@@ -190,7 +190,7 @@ function putRelevantDocumentData(temp){
      	  	Obj.date =buffer[i]['prism:coverDate'];
        		Obj.volume = buffer[i]['prim:volume'];
        		Obj.author=returnArray(buffer[i]['author']);
-       		Obj.authorId=Obj.author[0]['afid'];
+       		Obj.authorId=Obj.author[0]['authid'];
        		try{
        			Obj.afid= returnArray(buffer[i]['affiliation'])[0]['afid'];
        			Obj.affilname= returnArray(buffer[i]['affiliation'])[0]['affilname'];}
