@@ -157,7 +157,9 @@ statusCitedby=0;
 
 function putCitedbyData(temp){
 	if(!statusCitedby){
-	try	{totalCitation= temp['search-results']['opensearch:totalResults'];}
+	try	{totalCitation= temp['search-results']['opensearch:totalResults'];
+		 total_Citedby=totalCitation;
+	}
 	catch(e){  console.log("NO citedby catch "); updateCitedBy(new Array(),0); return;}
 		statusCitedby=true;}
 		
