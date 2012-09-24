@@ -234,7 +234,7 @@ function getSearchRequest(response){
 		readyMoreSearchEngine=1;
 		if(statusQ==0)
 		currentLevelSearchEngine=1;
-		updateSearch(queryResults,0);
+		
 		showOverallCountrySearch(queryCtry);
 		
 		getReferenceCity(queryResults,getCitySearchEngine);
@@ -249,6 +249,7 @@ function updateAllSearchEngine(){
 	console.log("got city search engine");
 	console.log(queryResults);
 	//update david
+	updateSearch(queryResults,0);
 	showResult(searchMode,queryResults);
 }
 
