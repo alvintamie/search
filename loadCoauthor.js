@@ -86,7 +86,9 @@ readyMoreCoauthors=1;
 
 function putCoauthorsData(temp){
 	if(!statusCoauthors){
-	try	{totalCoauthors= temp['search-results']['opensearch:totalResults'];}
+	try	{	totalCoauthors= temp['search-results']['opensearch:totalResults'];
+			total_Coauthors=totalCoauthors;
+	}
 	catch(e){ updateCoauthors(); return;}
 		statusCoauthors=true;}
 
@@ -98,6 +100,7 @@ function putCoauthorsData(temp){
 	for(var i=0;i<buffer.length;i++){
 		var Obj= new Object();
 		try{
+	
 		Obj.city= buffer[i]['affiliation-current']['affiliation-city'];
        		Obj.country=buffer[i]['affiliation-current']['affiliation-country'];
        		Obj.affiliationId=buffer[i]['affiliation-current']['affiliation-id'];
@@ -107,7 +110,6 @@ function putCoauthorsData(temp){
        		Obj.documentCount=buffer[i]['document-count'];
        		Obj.name=buffer[i]['preferred-name'];
        		Obj.url="http://www.scopus.com/authid/detail.url?authorId="+Obj.id;
-       		console.log(Obj);
       		coauthorsObject.push(Obj);
 		}
 	}
