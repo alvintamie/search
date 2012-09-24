@@ -65,7 +65,7 @@ function addQuery(query,index,or){
 function quickSearch(temp){
 	resetQuery();
 	addQuery(temp,0,1);
-	submitQuery(0);
+	submiQuery(0);
 }
 
 function deleteQuery(index,number){
